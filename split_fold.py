@@ -22,7 +22,7 @@ def main():
 
     print(df.head())
 
-    df.to_csv('folds_assignment.csv')
+    df.to_csv('/csv/folds_assignment.csv')
 
 
 if __name__ == '__main__':
