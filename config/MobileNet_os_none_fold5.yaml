@@ -1,16 +1,16 @@
-train_list: '/Data/luy8/centermix/train.json'
+train_list: '/Data/luy8/centermix/json/trainset5_os.json'
 
-val_list: '/Data/luy8/GitHub/json/fold_1/validate.json'
+val_list: '/Data/luy8/centermix/json/fold1.json'
 
-test_list: '/Data/luy8/GitHub/json/fold_1/test.json'
+test_list: '/Data/luy8/centermix/json/fold2.json'
 
-output_csv_dir: '/Data/luy8/GitHub/mixmatch/result'
+output_csv_dir: 'exp_results'
 
 supervised: True # True means use simple supervised method
 
 num_classes: 2
 
-epochs: 50
+epochs: 10
 
 start_epoch: 0
 
@@ -56,4 +56,4 @@ beta: 1
 
 cutmix_prob: 0
 
-circlemix_prob: 1
+centermix_prob: 0

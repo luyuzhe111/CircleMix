@@ -62,11 +62,10 @@ parser = argparse.ArgumentParser(description='PyTorch MixMatch Training')
 parser.add_argument('--config', default='EfficientNetb1_none_none_fold1.yaml', help='config file')
 
 args = parser.parse_args([])
-# config = sys.argv[1]
-# config = 'EfficientNetb1_augcirclemix_circlemix_fold1.yaml'
-config = 'MobileNet_none_none_fold1.yaml'
+config = sys.argv[1]
+# config = 'MobileNet_none_none_fold1.yaml'
 print('Train with ' + config)
-config_file = os.path.join('/Data/luy8/centermix/config', config)
+config_file = os.path.join('/Data/luy8/centermix/config/', config)
 args = cfg_from_file(config_file)
 
 args = Namespace(**args)
@@ -87,11 +86,6 @@ def main():
     # Use CUDA
     os.environ['CUDA_VISIBLE_DEVICES'] = args.gpu
     use_cuda = torch.cuda.is_available()
-
-    # Random seed
-    if args.manualSeed is None:
-        args.manualSeed = random.randint(1, 10000)
-    np.random.seed(args.manualSeed)
 
     # best test accuracy
     # global best_acc
@@ -115,7 +109,7 @@ def main():
         dataset.ToTensor(),
     ])
 
-    train_labeled_set = DataLoader(args.train_list, transform=transform_train, split='train_known')
+    train_labeled_set = DataLoader(args.train_list, transform=transform_train, split='train')
 
     labeled_trainloader = torch.utils.data.DataLoader(train_labeled_set, batch_size=args.batch_size, shuffle=True,
                                                       num_workers=args.num_workers)
@@ -127,7 +121,6 @@ def main():
     # Model
     print("==> creating model")
 
-    # num_classes = 3# yaml
     num_classes = args.num_classes
     def create_model(args, num_classes, ema=False):
         if args.network == 101:
@@ -181,10 +174,10 @@ def main():
         ema_model.load_state_dict(checkpoint['ema_state_dict'])
         optimizer.load_state_dict(checkpoint['optimizer'])
         logger = Logger(os.path.join(args.out, 'log.txt'), title=title, resume=True)
-        logger.set_names(['Train Loss', 'Train Loss X', 'Train Loss U', 'Valid Loss', 'Valid Acc'])
+        logger.set_names(['Train Loss', 'Valid Loss', 'Valid Acc'])
     else:
         logger = Logger(os.path.join(args.out, 'log.txt'), title=title)
-        logger.set_names(['Train Loss', 'Train Loss X', 'Train Loss U', 'Valid Loss', 'Valid Acc'])
+        logger.set_names(['Train Loss', 'Valid Loss', 'Valid Acc'])
 
     writer = SummaryWriter(args.out)
     test_accs = []
@@ -193,17 +186,17 @@ def main():
 
     # Train and val
     df = pd.DataFrame(columns=['cur_model', 'supervised', 'epoch_num', 'train_loss',
-                               'val_loss', 'val_acc', 'train_acc', 'f1_0', 'f1_1', 'f1_2', 'f1_3',  'f1_4', 'f1_avg'])
+                               'val_loss', 'val_acc', 'train_acc', 'f1_0', 'f1_1', 'f1_avg'])
 
     for epoch in range(start_epoch, args.epochs):
+        epoch += 1
 
-        print('\nEpoch: [%d | %d] LR: %f' % (epoch + 1, args.epochs, state['lr']))
+        print('\nEpoch: [%d | %d] LR: %f' % (epoch, args.epochs, state['lr']))
 
-        train_loss, train_loss_x, train_loss_u, train_acc = train_supervise(labeled_trainloader, model, optimizer, criterion, use_cuda)
-        # _, train_acc, _, _ = validate(output_csv_dir, labeled_trainloader, model, criterion, epoch, use_cuda, mode='Train Stats')
+        train_loss, train_acc = train_supervise(labeled_trainloader, model, optimizer, criterion, use_cuda)
         val_loss, val_acc, f1s, f1_avg = validate(output_csv_dir, val_loader, model, criterion, epoch, use_cuda, mode='Valid Stats')
 
-        step = args.val_iteration * (epoch + 1)
+        step = args.val_iteration * (epoch)
 
         writer.add_scalar('losses/train_loss', train_loss, step)
         writer.add_scalar('losses/valid_loss', val_loss, step)
@@ -212,12 +205,12 @@ def main():
         writer.add_scalar('accuracy/train_acc', train_acc, step)
         writer.add_scalar('accuracy/val_acc', val_acc, step)
 
-        logger.append([train_loss, train_loss_x, train_loss_u, val_loss, val_acc])
+        logger.append([train_loss, val_loss, val_acc])
 
         # write to csv
-        f1_0, f1_1, f1_2, f1_3, f1_4 = f1s
+        f1_0, f1_1 = f1s
         df.loc[epoch] = [args.network, args.supervised, epoch, train_loss,
-                         val_loss, val_acc, train_acc, f1_0, f1_1, f1_2, f1_3, f1_4, f1_avg]
+                         val_loss, val_acc, train_acc, f1_0, f1_1, f1_avg]
 
         output_csv_file = os.path.join(output_csv_dir, 'output.csv')
         df.to_csv(output_csv_file, index=False)
@@ -258,11 +251,12 @@ def train_supervise(labeled_trainloader, model, optimizer, criterion, use_cuda):
         # measure data loading time
         data_time.update(time.time() - end)
         #
+        inputs = inputs.float()
         if use_cuda:
             inputs, targets = inputs.cuda(), targets.cuda()
 
         r = np.random.rand(1)
-        if args.circlemix_prob > r:
+        if args.centermix_prob > r:
             # generate circlemix sample
             rand_index = torch.randperm(inputs.size()[0])
             target_a = targets
@@ -411,9 +405,7 @@ def train_supervise(labeled_trainloader, model, optimizer, criterion, use_cuda):
 
         tbar.set_description('\r Train Loss: %.3f | Top1: %.3f' % (losses.avg, top1.avg))
 
-    losses_x = losses
-    losses_u = losses
-    return losses.avg, losses_x.avg, losses_u.avg, top1.avg
+    return losses.avg, top1.avg
 
 
 def polygon_vertices(size, start, end):
@@ -487,6 +479,7 @@ def validate(out_dir, valloader, model, criterion, epoch, use_cuda, mode):
         for batch_idx, (inputs, targets, image_path) in enumerate(tbar):
             # measure data loading time
             data_time.update(time.time() - end)
+            inputs = inputs.float()
 
             if use_cuda:
                 inputs, targets = inputs.cuda(), targets.cuda(non_blocking=True)
@@ -519,7 +512,6 @@ def validate(out_dir, valloader, model, criterion, epoch, use_cuda, mode):
 
         f1s = f1_score(pred_history, target_history, average=None)
         f1_avg = sum(f1s)/len(f1s)
-        # f1 = f1_score(pred_history, target_history, average='weighted')
         epoch_summary(out_dir, epoch, name_history, pred_history, target_history, prob_history, top1.avg)
 
     return losses.avg, top1.avg, f1s, f1_avg
@@ -532,14 +524,19 @@ def epoch_summary(out_dir, epoch, name_history, pred_history, target_history, pr
         os.makedirs(epoch_dir)
     csv_file_name = os.path.join(epoch_dir, 'epoch_%04d.csv' % epoch)
 
-    columns = ['image', 'prediction', 'true', 'acc']
-    for pi in range(prob_history.shape[1]):
-        columns = columns + ['clss_%d'%(pi)]
+    df = pd.DataFrame()
+    df['image'] = name_history
+    df['prediction'] = pred_history
+    df['target'] = target_history
 
-    df = DataFrame(columns=columns)
-    for i in range(len(pred_history)):
-        # df.loc[i] = [name_history[i], pred_history[i], target_history[i]]
-        df.loc[i] = [name_history[i], pred_history[i], target_history[i], acc] + list(prob_history[i])
+    # columns = ['image', 'prediction', 'true', 'acc']
+    # for pi in range(prob_history.shape[1]):
+    #     columns = columns + ['clss_%d'%(pi)]
+    #
+    # df = DataFrame(columns=columns)
+    # for i in range(len(pred_history)):
+    #     # df.loc[i] = [name_history[i], pred_history[i], target_history[i]]
+    #     df.loc[i] = [name_history[i], pred_history[i], target_history[i], acc] + list(prob_history[i])
     df.to_csv(csv_file_name)
 
 

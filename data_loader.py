@@ -43,9 +43,9 @@ class DataLoader(data.Dataset):
         label = data['target']
 
         img = cv2.imread(image_dir)
-        img = transpose(img)
+        img = transpose(normalise(img))
 
-        if self.split == 'train_known':
+        if self.split == 'train':
             if self.transform is not None:
                 img = self.transform(img)
             return img, label, image_dir
