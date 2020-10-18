@@ -26,6 +26,8 @@ import os
 import pandas as pd
 from pandas import DataFrame
 from sklearn.metrics import f1_score
+from sklearn.metrics import precision_score
+from sklearn.metrics import recall_score
 
 import models.resnet as resnet
 import models.wideresnet as models
@@ -45,7 +47,7 @@ import yaml
 from utils import focal_loss
 
 import imgaug.augmenters as iaa
-from data_loader import normalise
+from data_loader import normalise, transpose
 from PIL import Image
 
 
@@ -109,14 +111,21 @@ def main():
         dataset.ToTensor(),
     ])
 
-    train_labeled_set = DataLoader(args.train_list, transform=transform_train, split='train')
+    train_labeled_set = DataLoader(args.train_list,
+                                   transform=transform_train,
+                                   split='train', aug=args.aug,
+                                   aggregate=args.aggregate)
 
-    labeled_trainloader = torch.utils.data.DataLoader(train_labeled_set, batch_size=args.batch_size, shuffle=True,
+    labeled_trainloader = torch.utils.data.DataLoader(train_labeled_set,
+                                                      batch_size=args.batch_size,
+                                                      shuffle=True,
                                                       num_workers=args.num_workers)
 
-    val_set = DataLoader(args.val_list, transform=transform_val, split='val')
-    val_loader = torch.utils.data.DataLoader(val_set, batch_size=args.batch_size, shuffle=False,
-                                             num_workers=args.num_workers)
+    val_set = DataLoader(args.val_list, transform=transform_val, split='val', aug=args.aug, aggregate=args.aggregate)
+    val_loader = torch.utils.data.DataLoader(val_set,
+                                             batch_size=args.batch_size,
+                                             shuffle=False,
+                                             num_workers=args.num_workers,)
 
     # Model
     print("==> creating model")
@@ -186,7 +195,7 @@ def main():
 
     # Train and val
     df = pd.DataFrame(columns=['cur_model', 'supervised', 'epoch_num', 'train_loss',
-                               'val_loss', 'val_acc', 'train_acc', 'f1_0', 'f1_1', 'f1_avg'])
+                               'val_loss', 'val_acc', 'train_acc', 'precision', 'recall', 'f1'])
 
     for epoch in range(start_epoch, args.epochs):
         epoch += 1
@@ -194,13 +203,12 @@ def main():
         print('\nEpoch: [%d | %d] LR: %f' % (epoch, args.epochs, state['lr']))
 
         train_loss, train_acc = train_supervise(labeled_trainloader, model, optimizer, criterion, use_cuda)
-        val_loss, val_acc, f1s, f1_avg = validate(output_csv_dir, val_loader, model, criterion, epoch, use_cuda, mode='Valid Stats')
+        val_loss, val_acc, precision, recall, f1 = validate(output_csv_dir, val_loader, model, criterion, epoch, use_cuda, mode='Valid Stats')
 
         step = args.val_iteration * (epoch)
 
         writer.add_scalar('losses/train_loss', train_loss, step)
         writer.add_scalar('losses/valid_loss', val_loss, step)
-        # writer.add_scalar('losses/test_loss', test_loss, step)
 
         writer.add_scalar('accuracy/train_acc', train_acc, step)
         writer.add_scalar('accuracy/val_acc', val_acc, step)
@@ -208,16 +216,16 @@ def main():
         logger.append([train_loss, val_loss, val_acc])
 
         # write to csv
-        f1_0, f1_1 = f1s
         df.loc[epoch] = [args.network, args.supervised, epoch, train_loss,
-                         val_loss, val_acc, train_acc, f1_0, f1_1, f1_avg]
+                         val_loss, val_acc, train_acc, precision, recall, f1]
 
         output_csv_file = os.path.join(output_csv_dir, 'output.csv')
         df.to_csv(output_csv_file, index=False)
 
         # save model
-        is_best = f1_avg > best_f1
-        best_f1 = max(f1_avg, best_f1)
+        is_best_f1 = f1 > best_f1
+        best_f1 = max(f1, best_f1)
+        is_best_acc = val_acc > best_acc
         best_acc = max(val_acc, best_acc)
         save_checkpoint({
             'epoch': epoch,
@@ -226,7 +234,7 @@ def main():
             'acc': val_acc,
             'best_acc': best_acc,
             'optimizer': optimizer.state_dict(),
-        }, is_best, epoch, save_model_dir)
+        }, is_best_acc, is_best_f1, epoch, save_model_dir)
         test_accs.append(val_acc)
     logger.close()
     writer.close()
@@ -250,8 +258,7 @@ def train_supervise(labeled_trainloader, model, optimizer, criterion, use_cuda):
     for batch_idx, (inputs, targets, image_path) in enumerate(tbar):
         # measure data loading time
         data_time.update(time.time() - end)
-        #
-        inputs = inputs.float()
+
         if use_cuda:
             inputs, targets = inputs.cuda(), targets.cuda()
 
@@ -293,38 +300,9 @@ def train_supervise(labeled_trainloader, model, optimizer, criterion, use_cuda):
             inputs2 = inputs[rand_index].clone()
             inputs[roi_mask_batch > 0] = inputs2[roi_mask_batch > 0]
 
-            # # common data augmentation
-            # seq = iaa.Sequential([
-            #     # iaa.ChannelShuffle(0.35),
-            #     iaa.MultiplyAndAddToBrightness(mul=(0.5, 1.5), add=(-30, 30)),
-            #     iaa.Affine(rotate=(-180, 180)),
-            #     # iaa.Affine(translate_percent={"x": (-0.2, 0.2), "y": (-0.2, 0.2)}),
-            #     # iaa.Affine(shear=(-16, 16)),
-            #     iaa.Fliplr(0.5),
-            #     iaa.GaussianBlur(sigma=(0, 1.0))
-            # ])
-            #
-            # transform_train = transforms.Compose([
-            #     dataset.ToTensor(),
-            # ])
-            #
-            # inputs = inputs.cpu().numpy()
-            # inputs_normed = np.zeros(inputs.shape)
-            # for i in range(inputs.shape[0]):
-            #     tmp = inputs[i]
-            #     tmp = np.transpose(tmp, (1, 2, 0))
-            #     tmp_img = np.expand_dims(tmp, axis=0)
-            #     tmp_img = seq(images=tmp_img)
-            #
-            #     # if we would like to see the data augmentation
-            #     # seq.show_grid([tmp_img[0]], cols=16, rows=8)
-            #
-            #     tmp = np.transpose(normalise(tmp_img[0]), (2, 0, 1))
-            #     # tmp = transform_train(tmp)
-            #     inputs_normed[i] = tmp
-            #
-            # # compute output
-            # inputs = transform_train(inputs_normed)
+            # common data augmentation
+            inputs = runtime_da(inputs)
+
             inputs = inputs.float()
             inputs = inputs.cuda()
 
@@ -341,51 +319,18 @@ def train_supervise(labeled_trainloader, model, optimizer, criterion, use_cuda):
             target_b = targets[rand_index]
             bbx1, bby1, bbx2, bby2 = rand_bbox(inputs.size(), lam)
             inputs[:, :, bbx1:bbx2, bby1:bby2] = inputs[rand_index, :, bbx1:bbx2, bby1:bby2]
-            # adjust lambda to exactly match pixel ratio
 
+            # adjust lambda to exactly match pixel ratio
             lam = 1 - ((bbx2 - bbx1) * (bby2 - bby1) / (inputs.size()[-1] * inputs.size()[-2]))
 
-            seq = iaa.Sequential([
-                # iaa.ChannelShuffle(0.35),
-                iaa.MultiplyAndAddToBrightness(mul=(0.5, 1.5), add=(-30, 30)),
-                iaa.Affine(rotate=(-180, 180)),
-                # iaa.Affine(translate_percent={"x": (-0.2, 0.2), "y": (-0.2, 0.2)}),
-                # iaa.Affine(shear=(-16, 16)),
-                iaa.Fliplr(0.5),
-                iaa.GaussianBlur(sigma=(0, 1.0))
-            ])
-
-            transform_train = transforms.Compose([
-                dataset.ToTensor(),
-            ])
-
-            # inputs_normed = np.zeros(inputs.shape)
-            # inputs = inputs.float()
-            inputs = inputs.cpu().numpy()
-            inputs_normed = np.zeros(inputs.shape)
-            for i in range(inputs.shape[0]):
-                tmp = inputs[i]
-                tmp = np.transpose(tmp, (1, 2, 0))
-                tmp_img = np.expand_dims(tmp, axis=0)
-                tmp_img = seq(images=tmp_img)
-
-                # if we would like to see the data augmentation
-                # seq.show_grid([tmp_img[0]], cols=16, rows=8)
-
-                tmp = np.transpose(normalise(tmp_img[0]), (2, 0, 1))
-                # tmp = transform_train(tmp)
-                inputs_normed[i] = tmp
-
-            # compute output
-            inputs = transform_train(inputs_normed)
-            inputs = inputs.float()
-            inputs = inputs.cuda()
+            inputs = runtime_da(inputs)
 
             # compute output
             outputs = model(inputs)
             loss = criterion(outputs, target_a) * lam + criterion(outputs, target_b) * (1. - lam)
 
         else:
+            inputs = inputs.float()
             outputs = model(inputs)
             loss = criterion(outputs, targets)
 
@@ -406,6 +351,39 @@ def train_supervise(labeled_trainloader, model, optimizer, criterion, use_cuda):
         tbar.set_description('\r Train Loss: %.3f | Top1: %.3f' % (losses.avg, top1.avg))
 
     return losses.avg, top1.avg
+
+
+def runtime_da(inputs):
+    seq = iaa.Sequential([
+        iaa.MultiplyAndAddToBrightness(mul=(0.5, 1.5), add=(-30, 30)),
+        iaa.Affine(rotate=(-180, 180)),
+        iaa.Fliplr(0.5),
+        iaa.GaussianBlur(sigma=(0, 1.0))
+    ])
+
+    transform_train = transforms.Compose([
+        dataset.ToTensor(),
+    ])
+
+    # inputs_normed = np.zeros(inputs.shape)
+    # inputs = inputs.float()
+    inputs = inputs.cpu().numpy()
+    inputs_normed = np.zeros(inputs.shape)
+    for i in range(inputs.shape[0]):
+        tmp = inputs[i]
+        tmp = np.transpose(tmp, (1, 2, 0))
+        tmp_img = np.expand_dims(tmp, axis=0)
+        tmp_img = seq(images=tmp_img)
+
+        # if we would like to see the data augmentation
+        # seq.show_grid([tmp_img[0]], cols=4, rows=4)
+
+        tmp = transpose(normalise(tmp_img[0]))
+        # tmp = transform_train(tmp)
+        inputs_normed[i] = tmp
+
+    inputs = transform_train(inputs_normed).float().cuda()
+    return inputs
 
 
 def polygon_vertices(size, start, end):
@@ -510,15 +488,17 @@ def validate(out_dir, valloader, model, criterion, epoch, use_cuda, mode):
 
             tbar.set_description('\r %s Loss: %.3f | Top1: %.3f' % (mode, losses.avg, top1.avg))
 
-        f1s = f1_score(pred_history, target_history, average=None)
-        f1_avg = sum(f1s)/len(f1s)
-        epoch_summary(out_dir, epoch, name_history, pred_history, target_history, prob_history, top1.avg)
+        precision = precision_score(pred_history, target_history, average='binary')
+        recall = recall_score(pred_history, target_history, average='binary')
+        f1 = f1_score(pred_history, target_history, average='binary')
 
-    return losses.avg, top1.avg, f1s, f1_avg
+        epoch_summary(out_dir, epoch, name_history, pred_history, target_history)
+
+    return losses.avg, top1.avg, precision, recall, f1
 
 
 # output csv file for result in each epoch
-def epoch_summary(out_dir, epoch, name_history, pred_history, target_history, prob_history, acc):
+def epoch_summary(out_dir, epoch, name_history, pred_history, target_history):
     epoch_dir = os.path.join(out_dir, 'epochs')
     if not os.path.exists(epoch_dir):
         os.makedirs(epoch_dir)
@@ -540,12 +520,14 @@ def epoch_summary(out_dir, epoch, name_history, pred_history, target_history, pr
     df.to_csv(csv_file_name)
 
 
-def save_checkpoint(state, is_best, epoch, checkpoint, filename='checkpoint.pth.tar'):
+def save_checkpoint(state, is_best_acc, is_best_f1, epoch, checkpoint, filename='checkpoint.pth.tar'):
     filename = 'epoch' + str(epoch) + '_' + filename
     filepath = os.path.join(checkpoint, filename)
     torch.save(state, filepath)
-    if is_best:
-        shutil.copyfile(filepath, os.path.join(checkpoint, 'model_best.pth.tar'))
+    if is_best_acc:
+        shutil.copyfile(filepath, os.path.join(checkpoint, 'model_best_acc.pth.tar'))
+    if is_best_f1:
+        shutil.copyfile(filepath, os.path.join(checkpoint, 'model_best_f1.pth.tar'))
 
 
 def load_checkpoint(model, filepath):

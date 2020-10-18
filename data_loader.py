@@ -19,7 +19,7 @@ class TransformTwice:
 
 
 class DataLoader(data.Dataset):
-    def __init__(self, train_list, transform=None, split=None):
+    def __init__(self, train_list, transform=None, split=None, aug=None, aggregate=None):
         with open(train_list) as json_file:
             data = json.load(json_file)
 
@@ -28,6 +28,8 @@ class DataLoader(data.Dataset):
         self.transform = transform
         self.split = split
         self.target_transform = None
+        self.aug = aug
+        self.aggregate = aggregate
 
     def __getitem__(self, index):
         """
@@ -43,14 +45,18 @@ class DataLoader(data.Dataset):
         label = data['target']
 
         img = cv2.imread(image_dir)
-        img = transpose(normalise(img))
 
         if self.split == 'train':
+            if self.aggregate == 'True':
+                img = transpose(img)
+            else:
+                img = self.augmentation(img) if self.aug == 'True' else transpose(normalise(img))
             if self.transform is not None:
                 img = self.transform(img)
             return img, label, image_dir
 
         elif self.split == 'val':
+            img = transpose(normalise(img))
             if self.transform is not None:
                 img = self.transform(img)
             return img, label, image_dir
@@ -59,18 +65,18 @@ class DataLoader(data.Dataset):
         input_img = np.expand_dims(pil_img, axis=0)
 
         prob = random.uniform(0, 1)
-        if self.split == 'train_known' and prob >= 0:  # we do augmentation in 50% of the cases
+        if self.split == 'train' and prob >= 0:  # we do augmentation in 50% of the cases
             seq = iaa.Sequential([
-                # iaa.ChangeColorspace(from_colorspace="RGB", to_colorspace='RGB'),
                 # iaa.ChannelShuffle(0.35),
                 # iaa.Cutout(nb_iterations=(1, 5), size=0.1, squared=False, fill_mode="constant", cval=0),
                 # iaa.CoarseDropout((0.0, 0.05), size_percent=(0.02, 0.25)),
-                iaa.MultiplyAndAddToBrightness(mul=(0.5, 1.5), add=(-30, 30)),
                 # iaa.MultiplyHueAndSaturation((0.5, 1.5), per_channel=True),
                 # iaa.GammaContrast((0.5, 2.0)),
                 # iaa.Affine(translate_percent={"x": (-0.2, 0.2), "y": (-0.2, 0.2)}),
-                iaa.Affine(rotate=(-180, 180)),
                 # iaa.Affine(shear=(-16, 16)),
+
+                iaa.MultiplyAndAddToBrightness(mul=(0.5, 1.5), add=(-30, 30)),
+                iaa.Affine(rotate=(-180, 180)),
                 iaa.Fliplr(0.5),
                 iaa.GaussianBlur(sigma=(0, 1.0))
             ])
@@ -78,20 +84,11 @@ class DataLoader(data.Dataset):
 
             # if we would like to see the data augmentation
             # segmaps_aug = np.concatenate((segmaps_aug,segmaps_aug,segmaps_aug), 3)
-            # seq.show_grid([images_aug[0], segmaps_aug[0]*255], cols=16, rows=8)
+            # seq.show_grid(images_aug[0], cols=8, rows=8)
+            output_img = transpose(normalise(images_aug[0]))
+            return output_img
 
-            output_img = np.transpose(normalise(images_aug[0]), (2, 0, 1))
-            # output_img = images_aug[0]
-            # output_img = images_aug[0]
-        else:
-            seq = iaa.Sequential([
-                iaa.ChangeColorspace(from_colorspace="RGB", to_colorspace='RGB'),
-            ])
-            images_aug = seq(images=input_img)
-            # output_img = images_aug[0]
-            output_img = np.transpose(normalise(images_aug[0]), (2, 0, 1))
-
-        return output_img
+        return pil_img
 
     def __len__(self):
         return len(self.data)
@@ -204,4 +201,3 @@ class Resize(object):
         img = cv2.resize(img, self.size, interpolation=cv2.INTER_AREA)
         img = np.transpose(img, [2, 0, 1])
         return img
-        # return F.resize(img, self.size, self.interpolation)

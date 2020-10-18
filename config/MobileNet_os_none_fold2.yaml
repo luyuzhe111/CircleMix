@@ -4,7 +4,7 @@ val_list: '/Data/luy8/centermix/json/fold5.json'
 
 test_list: '/Data/luy8/centermix/json/fold1.json'
 
-output_csv_dir: 'exp_results'
+output_csv_dir: '/Data/luy8/centermix/exp_results'
 
 supervised: True # True means use simple supervised method
 
