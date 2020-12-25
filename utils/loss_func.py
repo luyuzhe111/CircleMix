@@ -1,0 +1,44 @@
+import torch.nn as nn
+from torch.nn import functional as F
+import torch
+import numpy as np
+
+class FocalLoss(nn.Module):
+    def __init__(self, alpha=1, gamma=2, logits=False, reduce=True):
+        super(FocalLoss, self).__init__()
+        self.alpha = alpha
+        self.gamma = gamma
+        self.logits = logits
+        self.reduce = reduce
+        self.nll_loss = nn.NLLLoss(reduction='none')
+
+    def forward(self, inputs, targets):
+        log_p = F.log_softmax(inputs, dim=-1)
+        ce = self.nll_loss(log_p, targets)
+        all_rows = torch.arange(len(inputs))
+        log_pt = log_p[all_rows, targets]
+
+        pt = log_pt.exp()
+        focal_term = (1 - pt) ** self.gamma
+        F_loss = focal_term * ce
+        if self.reduce:
+            return torch.mean(F_loss)
+        else:
+            return F_loss
+
+
+class EffectiveSamplesLoss(nn.Module):
+    def __init__(self, beta=0.9, num_cls=2, sample_per_cls=None):
+        super(EffectiveSamplesLoss, self).__init__()
+        self.beta = beta
+        self.num_cls = num_cls
+        self.effective_num = 1.0 - np.power(self.beta, sample_per_cls)
+        self.nll_loss = nn.NLLLoss(reduction='none')
+
+    def forward(self, inputs, targets):
+        weights = torch.from_numpy( (1 - self.beta) / np.array(self.effective_num) ).float().cuda()
+        weights = weights / torch.sum(weights) * self.num_cls
+        log_p = F.log_softmax(inputs, dim=-1)
+        CELoss = self.nll_loss(log_p, targets)
+        ESLoss = weights[targets] * CELoss
+        return torch.mean(ESLoss)
