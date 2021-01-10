@@ -2,13 +2,13 @@ import os
 import pandas as pd
 import json
 
-csv_dir = 'csv_folds'
+csv_dir = 'renal/folds_csv'
 csv_f = os.listdir(csv_dir)
 csv_f.sort()
 
-json_dir = '/Data/luy8/centermix/renal/json'
+json_dir = 'renal/json'
 
-data_dir = '/Data/luy8/centermix/renal/resized_image'
+data_dir = 'renal/resized_image'
 
 fold = 1
 for csv in csv_f:

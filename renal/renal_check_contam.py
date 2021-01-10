@@ -1,8 +1,7 @@
 import json
-import os
 
-train = '/Data/luy8/centermix/renal/json/trainset1_us.json'
-test = '/Data/luy8/centermix/renal/json/fold5_us.json'
+train = 'renal/json/trainset1_us.json'
+test = '/renal/json/fold5_us.json'
 
 with open(train) as ftr:
     train_data = json.load(ftr)

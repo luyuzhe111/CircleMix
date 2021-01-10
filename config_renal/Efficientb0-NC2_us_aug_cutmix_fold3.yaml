@@ -1,0 +1,44 @@
+train_list: '/Data/luy8/centermix/renal/json/ng_trainset3.json'
+
+val_list: '/Data/luy8/centermix/renal/json/ng_fold1.json'
+
+test_list: '/Data/luy8/centermix/renal/json/ng_fold2.json'
+
+output_csv_dir: '/Data/luy8/centermix/exp_results/config_renal'
+
+supervised: True # True means use simple supervised method
+
+c5_pretrained: True
+
+num_classes: 2
+
+epochs: 60
+
+start_epoch: 0
+
+batch_size: 16
+
+lr: 0.001
+
+optimizer: 'SGD'
+
+## Checkpoints
+resume: ''
+
+## Miscs
+manualSeed: 0
+
+##Device options
+gpu: '0'
+
+network: 105
+
+num_workers: 4
+
+aug: 'True'
+
+beta: 1
+
+cutmix_prob: 1
+
+centermix_prob: 0

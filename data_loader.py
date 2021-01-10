@@ -5,21 +5,10 @@ import cv2
 import torch
 import json
 import imgaug.augmenters as iaa
-import random
-
-
-class TransformTwice:
-    def __init__(self, transform):
-        self.transform = transform
-
-    def __call__(self, inp):
-        out1 = self.transform(inp)
-        out2 = self.transform(inp)
-        return out1, out2
 
 
 class DataLoader(data.Dataset):
-    def __init__(self, train_list, transform=None, split=None, aug=None, aggregate=None):
+    def __init__(self, train_list, transform=None, split=None, aug=None):
         with open(train_list) as json_file:
             data = json.load(json_file)
 
@@ -29,7 +18,6 @@ class DataLoader(data.Dataset):
         self.split = split
         self.target_transform = None
         self.aug = aug
-        self.aggregate = aggregate
 
     def __getitem__(self, index):
         """
@@ -47,16 +35,16 @@ class DataLoader(data.Dataset):
         img = cv2.imread(image_dir)
 
         if self.split == 'train':
-            if self.aggregate == 'True':
-                img = transpose(img)
+            if self.aug == 'True':
+                img = self.augmentation(normalise(img))
             else:
-                img = self.augmentation(img) if self.aug == 'True' else transpose(normalise(img))
+                img = normalise(img)
             if self.transform is not None:
                 img = self.transform(img)
             return img, label, image_dir
 
         elif self.split == 'val':
-            img = transpose(normalise(img))
+            img = normalise(img)
             if self.transform is not None:
                 img = self.transform(img)
             return img, label, image_dir
@@ -64,29 +52,17 @@ class DataLoader(data.Dataset):
     def augmentation(self, pil_img):
         input_img = np.expand_dims(pil_img, axis=0)
 
-        prob = random.uniform(0, 1)
-        if self.split == 'train' and prob >= 0:  # we do augmentation in 50% of the cases
+        if self.split == 'train':
             seq = iaa.Sequential([
-                # iaa.ChannelShuffle(0.35),
-                # iaa.Cutout(nb_iterations=(1, 5), size=0.1, squared=False, fill_mode="constant", cval=0),
-                # iaa.CoarseDropout((0.0, 0.05), size_percent=(0.02, 0.25)),
-                # iaa.MultiplyHueAndSaturation((0.5, 1.5), per_channel=True),
-                # iaa.GammaContrast((0.5, 2.0)),
-                # iaa.Affine(translate_percent={"x": (-0.2, 0.2), "y": (-0.2, 0.2)}),
-                # iaa.Affine(shear=(-16, 16)),
-
-                iaa.MultiplyAndAddToBrightness(mul=(0.5, 1.5), add=(-30, 30)),
-                iaa.Affine(rotate=(-180, 180)),
-                iaa.Fliplr(0.5),
-                iaa.GaussianBlur(sigma=(0, 1.0))
-            ])
+                iaa.Crop(px=(0, 16)),
+                iaa.Fliplr(0.5),  # horizontal flips
+                iaa.Flipud(0.5),  # vertical  flips
+            ], random_order=True)  # apply augmenters in random order
             images_aug = seq(images=input_img)
 
             # if we would like to see the data augmentation
-            # segmaps_aug = np.concatenate((segmaps_aug,segmaps_aug,segmaps_aug), 3)
             # seq.show_grid(images_aug[0], cols=8, rows=8)
-            output_img = transpose(normalise(images_aug[0]))
-            return output_img
+            return images_aug[0]
 
         return pil_img
 

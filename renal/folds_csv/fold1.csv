@@ -1,0 +1,1804 @@
+image,condition,label
+22558_2017-04-08 12_34_57-x-ROI_0-x-glomerulus-x-50195-x-80396-x-1082-x-1083.png,Normal,0
+22558_2017-04-08 12_34_57-x-ROI_1-x-glomerulus-x-44551-x-98519-x-1028-x-1028.png,Normal,0
+22558_2017-04-08 12_34_57-x-ROI_10-x-glomerulus-x-40955-x-107123-x-1006-x-1006.png,Normal,0
+22558_2017-04-08 12_34_57-x-ROI_100-x-glomerulus-x-32208-x-107017-x-721-x-721.png,Global obsolescent glomerulosclerosis,1
+22558_2017-04-08 12_34_57-x-ROI_101-x-glomerulus-x-46301-x-85715-x-551-x-551.png,Global obsolescent glomerulosclerosis,1
+22558_2017-04-08 12_34_57-x-ROI_102-x-glomerulus-x-44675-x-85189-x-774-x-774.png,Global obsolescent glomerulosclerosis,1
+22558_2017-04-08 12_34_57-x-ROI_103-x-glomerulus-x-50497-x-86517-x-751-x-751.png,Global obsolescent glomerulosclerosis,1
+22558_2017-04-08 12_34_57-x-ROI_104-x-glomerulus-x-40465-x-103033-x-614-x-614.png,Normal,0
+22558_2017-04-08 12_34_57-x-ROI_105-x-glomerulus-x-38727-x-83125-x-575-x-575.png,Global obsolescent glomerulosclerosis,1
+22558_2017-04-08 12_34_57-x-ROI_106-x-glomerulus-x-41761-x-65996-x-1080-x-1080.png,Normal,0
+22558_2017-04-08 12_34_57-x-ROI_107-x-glomerulus-x-52565-x-82966-x-865-x-864.png,Normal,0
+22558_2017-04-08 12_34_57-x-ROI_108-x-glomerulus-x-54892-x-82854-x-888-x-889.png,Normal,0
+22558_2017-04-08 12_34_57-x-ROI_109-x-glomerulus-x-36539-x-110616-x-622-x-622.png,Global obsolescent glomerulosclerosis,1
+22558_2017-04-08 12_34_57-x-ROI_11-x-glomerulus-x-49784-x-85028-x-868-x-868.png,Periglomerular fibrosis,4
+22558_2017-04-08 12_34_57-x-ROI_110-x-glomerulus-x-41144-x-93862-x-590-x-589.png,Normal,0
+22558_2017-04-08 12_34_57-x-ROI_111-x-glomerulus-x-30231-x-108587-x-847-x-848.png,Global obsolescent glomerulosclerosis,1
+22558_2017-04-08 12_34_57-x-ROI_112-x-glomerulus-x-39917-x-98506-x-543-x-543.png,Global obsolescent glomerulosclerosis,1
+22558_2017-04-08 12_34_57-x-ROI_113-x-glomerulus-x-43628-x-106266-x-909-x-910.png,Normal,0
+22558_2017-04-08 12_34_57-x-ROI_114-x-glomerulus-x-31415-x-107120-x-615-x-615.png,Global obsolescent glomerulosclerosis,1
+22558_2017-04-08 12_34_57-x-ROI_115-x-glomerulus-x-43268-x-81269-x-733-x-733.png,Normal,0
+22558_2017-04-08 12_34_57-x-ROI_116-x-glomerulus-x-45044-x-83846-x-776-x-776.png,Global obsolescent glomerulosclerosis,1
+22558_2017-04-08 12_34_57-x-ROI_117-x-glomerulus-x-50554-x-61361-x-731-x-731.png,Normal,0
+22558_2017-04-08 12_34_57-x-ROI_118-x-glomerulus-x-30683-x-107013-x-672-x-671.png,Global obsolescent glomerulosclerosis,1
+22558_2017-04-08 12_34_57-x-ROI_119-x-glomerulus-x-43735-x-102509-x-559-x-559.png,Normal,0
+22558_2017-04-08 12_34_57-x-ROI_12-x-glomerulus-x-54420-x-94649-x-990-x-990.png,Normal,0
+22558_2017-04-08 12_34_57-x-ROI_120-x-glomerulus-x-35673-x-108999-x-583-x-584.png,Normal,0
+22558_2017-04-08 12_34_57-x-ROI_121-x-glomerulus-x-31043-x-105507-x-775-x-774.png,Normal,0
+22558_2017-04-08 12_34_57-x-ROI_122-x-glomerulus-x-31196-x-110224-x-617-x-617.png,Global obsolescent glomerulosclerosis,1
+22558_2017-04-08 12_34_57-x-ROI_123-x-glomerulus-x-32171-x-109211-x-860-x-860.png,Normal,0
+22558_2017-04-08 12_34_57-x-ROI_124-x-glomerulus-x-32333-x-106439-x-720-x-720.png,Global obsolescent glomerulosclerosis,1
+22558_2017-04-08 12_34_57-x-ROI_125-x-glomerulus-x-33478-x-99594-x-775-x-775.png,Periglomerular fibrosis,4
+22558_2017-04-08 12_34_57-x-ROI_126-x-glomerulus-x-32368-x-97516-x-782-x-783.png,Periglomerular fibrosis,4
+22558_2017-04-08 12_34_57-x-ROI_127-x-glomerulus-x-33823-x-97299-x-650-x-650.png,Global obsolescent glomerulosclerosis,1
+22558_2017-04-08 12_34_57-x-ROI_128-x-glomerulus-x-33638-x-94754-x-635-x-635.png,Global obsolescent glomerulosclerosis,1
+22558_2017-04-08 12_34_57-x-ROI_129-x-glomerulus-x-34426-x-93709-x-817-x-818.png,Global obsolescent glomerulosclerosis,1
+22558_2017-04-08 12_34_57-x-ROI_13-x-glomerulus-x-43605-x-97209-x-810-x-811.png,Periglomerular fibrosis,4
+22558_2017-04-08 12_34_57-x-ROI_130-x-glomerulus-x-38046-x-84324-x-650-x-650.png,Global obsolescent glomerulosclerosis,1
+22558_2017-04-08 12_34_57-x-ROI_131-x-glomerulus-x-35848-x-96784-x-1095-x-1095.png,Normal,0
+22558_2017-04-08 12_34_57-x-ROI_132-x-glomerulus-x-37938-x-99502-x-940-x-940.png,Periglomerular fibrosis,4
+22558_2017-04-08 12_34_57-x-ROI_133-x-glomerulus-x-39303-x-98709-x-1025-x-1025.png,Normal,0
+22558_2017-04-08 12_34_57-x-ROI_134-x-glomerulus-x-38953-x-85139-x-870-x-870.png,Periglomerular fibrosis,4
+22558_2017-04-08 12_34_57-x-ROI_135-x-glomerulus-x-39958-x-86059-x-740-x-740.png,Global obsolescent glomerulosclerosis,1
+22558_2017-04-08 12_34_57-x-ROI_136-x-glomerulus-x-43658-x-80354-x-605-x-605.png,Normal,0
+22558_2017-04-08 12_34_57-x-ROI_137-x-glomerulus-x-43823-x-81091-x-665-x-665.png,Global disappearing glomerulosclerosis,3
+22558_2017-04-08 12_34_57-x-ROI_138-x-glomerulus-x-42910-x-83284-x-615-x-615.png,Normal,0
+22558_2017-04-08 12_34_57-x-ROI_139-x-glomerulus-x-43765-x-83777-x-888-x-887.png,Global obsolescent glomerulosclerosis,1
+22558_2017-04-08 12_34_57-x-ROI_14-x-glomerulus-x-38304-x-83755-x-849-x-849.png,Global obsolescent glomerulosclerosis,1
+22558_2017-04-08 12_34_57-x-ROI_140-x-glomerulus-x-47341-x-66712-x-922-x-922.png,Global obsolescent glomerulosclerosis,1
+22558_2017-04-08 12_34_57-x-ROI_141-x-glomerulus-x-47553-x-80804-x-595-x-595.png,Global obsolescent glomerulosclerosis,1
+22558_2017-04-08 12_34_57-x-ROI_142-x-glomerulus-x-47876-x-86219-x-720-x-720.png,Global disappearing glomerulosclerosis,3
+22558_2017-04-08 12_34_57-x-ROI_143-x-glomerulus-x-48553-x-86494-x-808-x-807.png,Global obsolescent glomerulosclerosis,1
+22558_2017-04-08 12_34_57-x-ROI_144-x-glomerulus-x-52150-x-103001-x-1195-x-1195.png,Periglomerular fibrosis,4
+22558_2017-04-08 12_34_57-x-ROI_145-x-glomerulus-x-51466-x-91926-x-917-x-918.png,Global obsolescent glomerulosclerosis,1
+22558_2017-04-08 12_34_57-x-ROI_146-x-glomerulus-x-53285-x-85392-x-708-x-707.png,Global obsolescent glomerulosclerosis,1
+22558_2017-04-08 12_34_57-x-ROI_147-x-glomerulus-x-60013-x-97621-x-917-x-918.png,Normal,0
+22558_2017-04-08 12_34_57-x-ROI_148-x-glomerulus-x-60952-x-100876-x-1250-x-1250.png,Normal,0
+22558_2017-04-08 12_34_57-x-ROI_149-x-glomerulus-x-61605-x-103317-x-1188-x-1187.png,Normal,0
+22558_2017-04-08 12_34_57-x-ROI_15-x-glomerulus-x-43174-x-89591-x-825-x-825.png,Periglomerular fibrosis,4
+22558_2017-04-08 12_34_57-x-ROI_150-x-glomerulus-x-41159-x-84196-x-622-x-622.png,Global obsolescent glomerulosclerosis,1
+22558_2017-04-08 12_34_57-x-ROI_151-x-glomerulus-x-42659-x-84059-x-545-x-545.png,Global disappearing glomerulosclerosis,3
+22558_2017-04-08 12_34_57-x-ROI_152-x-glomerulus-x-43818-x-75383-x-667-x-668.png,Global disappearing glomerulosclerosis,3
+22558_2017-04-08 12_34_57-x-ROI_153-x-glomerulus-x-43736-x-73169-x-696-x-696.png,Global disappearing glomerulosclerosis,3
+22558_2017-04-08 12_34_57-x-ROI_154-x-glomerulus-x-52404-x-58862-x-826-x-826.png,Global obsolescent glomerulosclerosis,1
+22558_2017-04-08 12_34_57-x-ROI_155-x-glomerulus-x-51484-x-60070-x-538-x-538.png,Global obsolescent glomerulosclerosis,1
+22558_2017-04-08 12_34_57-x-ROI_156-x-glomerulus-x-50950-x-60537-x-705-x-704.png,Global obsolescent glomerulosclerosis,1
+22558_2017-04-08 12_34_57-x-ROI_157-x-glomerulus-x-54451-x-59697-x-600-x-600.png,Global disappearing glomerulosclerosis,3
+22558_2017-04-08 12_34_57-x-ROI_158-x-glomerulus-x-49592-x-70317-x-1048-x-1048.png,Periglomerular fibrosis,4
+22558_2017-04-08 12_34_57-x-ROI_16-x-glomerulus-x-44776-x-89872-x-1052-x-1052.png,Normal,0
+22558_2017-04-08 12_34_57-x-ROI_17-x-glomerulus-x-61355-x-102563-x-885-x-885.png,Periglomerular fibrosis,4
+22558_2017-04-08 12_34_57-x-ROI_18-x-glomerulus-x-53664-x-88619-x-943-x-943.png,Normal,0
+22558_2017-04-08 12_34_57-x-ROI_19-x-glomerulus-x-41270-x-88602-x-873-x-873.png,Global obsolescent glomerulosclerosis,1
+22558_2017-04-08 12_34_57-x-ROI_2-x-glomerulus-x-47816-x-86879-x-885-x-885.png,Periglomerular fibrosis,4
+22558_2017-04-08 12_34_57-x-ROI_20-x-glomerulus-x-51236-x-84064-x-906-x-907.png,Periglomerular fibrosis,4
+22558_2017-04-08 12_34_57-x-ROI_21-x-glomerulus-x-46650-x-79114-x-895-x-894.png,Periglomerular fibrosis,4
+22558_2017-04-08 12_34_57-x-ROI_22-x-glomerulus-x-59515-x-91139-x-1023-x-1022.png,Normal,0
+22558_2017-04-08 12_34_57-x-ROI_23-x-glomerulus-x-47789-x-94776-x-1001-x-1001.png,Normal,0
+22558_2017-04-08 12_34_57-x-ROI_24-x-glomerulus-x-56620-x-88672-x-1016-x-1016.png,Normal,0
+22558_2017-04-08 12_34_57-x-ROI_25-x-glomerulus-x-41118-x-90562-x-858-x-858.png,Periglomerular fibrosis,4
+22558_2017-04-08 12_34_57-x-ROI_26-x-glomerulus-x-62028-x-99656-x-830-x-830.png,Normal,0
+22558_2017-04-08 12_34_57-x-ROI_27-x-glomerulus-x-50579-x-88000-x-859-x-859.png,Periglomerular fibrosis,4
+22558_2017-04-08 12_34_57-x-ROI_28-x-glomerulus-x-52675-x-96892-x-958-x-958.png,Normal,0
+22558_2017-04-08 12_34_57-x-ROI_29-x-glomerulus-x-47186-x-104152-x-870-x-870.png,Normal,0
+22558_2017-04-08 12_34_57-x-ROI_3-x-glomerulus-x-66244-x-102189-x-1097-x-1097.png,Periglomerular fibrosis,4
+22558_2017-04-08 12_34_57-x-ROI_30-x-glomerulus-x-41842-x-86521-x-816-x-815.png,Normal,0
+22558_2017-04-08 12_34_57-x-ROI_31-x-glomerulus-x-44159-x-85998-x-730-x-731.png,Periglomerular fibrosis,4
+22558_2017-04-08 12_34_57-x-ROI_32-x-glomerulus-x-35873-x-88157-x-936-x-936.png,Normal,0
+22558_2017-04-08 12_34_57-x-ROI_33-x-glomerulus-x-46741-x-82674-x-816-x-816.png,Periglomerular fibrosis,4
+22558_2017-04-08 12_34_57-x-ROI_34-x-glomerulus-x-45082-x-69674-x-695-x-695.png,Periglomerular fibrosis,4
+22558_2017-04-08 12_34_57-x-ROI_35-x-glomerulus-x-35647-x-93376-x-844-x-845.png,Normal,0
+22558_2017-04-08 12_34_57-x-ROI_36-x-glomerulus-x-31373-x-105831-x-895-x-894.png,Periglomerular fibrosis,4
+22558_2017-04-08 12_34_57-x-ROI_37-x-glomerulus-x-36820-x-92920-x-800-x-800.png,Periglomerular fibrosis,4
+22558_2017-04-08 12_34_57-x-ROI_38-x-glomerulus-x-35352-x-112693-x-818-x-818.png,Normal,0
+22558_2017-04-08 12_34_57-x-ROI_39-x-glomerulus-x-39397-x-81868-x-666-x-666.png,Global obsolescent glomerulosclerosis,1
+22558_2017-04-08 12_34_57-x-ROI_4-x-glomerulus-x-53074-x-92475-x-952-x-952.png,Periglomerular fibrosis,4
+22558_2017-04-08 12_34_57-x-ROI_40-x-glomerulus-x-50568-x-92917-x-1084-x-1084.png,Global solidified glomerulosclerosis,2
+22558_2017-04-08 12_34_57-x-ROI_41-x-glomerulus-x-39145-x-87086-x-699-x-698.png,Periglomerular fibrosis,4
+22558_2017-04-08 12_34_57-x-ROI_42-x-glomerulus-x-42785-x-86306-x-921-x-921.png,Periglomerular fibrosis,4
+22558_2017-04-08 12_34_57-x-ROI_43-x-glomerulus-x-52352-x-57800-x-703-x-703.png,Periglomerular fibrosis,4
+22558_2017-04-08 12_34_57-x-ROI_44-x-glomerulus-x-39772-x-85548-x-720-x-720.png,Periglomerular fibrosis,4
+22558_2017-04-08 12_34_57-x-ROI_45-x-glomerulus-x-49809-x-72602-x-866-x-867.png,Periglomerular fibrosis,4
+22558_2017-04-08 12_34_57-x-ROI_46-x-glomerulus-x-41638-x-90136-x-790-x-789.png,Periglomerular fibrosis,4
+22558_2017-04-08 12_34_57-x-ROI_47-x-glomerulus-x-49216-x-103743-x-904-x-904.png,Normal,0
+22558_2017-04-08 12_34_57-x-ROI_48-x-glomerulus-x-38581-x-96917-x-769-x-769.png,Global obsolescent glomerulosclerosis,1
+22558_2017-04-08 12_34_57-x-ROI_49-x-glomerulus-x-44902-x-78318-x-756-x-755.png,Global obsolescent glomerulosclerosis,1
+22558_2017-04-08 12_34_57-x-ROI_5-x-glomerulus-x-56672-x-102965-x-1063-x-1063.png,Normal,0
+22558_2017-04-08 12_34_57-x-ROI_50-x-glomerulus-x-38264-x-93884-x-740-x-740.png,Periglomerular fibrosis,4
+22558_2017-04-08 12_34_57-x-ROI_51-x-glomerulus-x-40945-x-104871-x-1012-x-1012.png,Normal,0
+22558_2017-04-08 12_34_57-x-ROI_52-x-glomerulus-x-46818-x-81289-x-851-x-851.png,Normal,0
+22558_2017-04-08 12_34_57-x-ROI_53-x-glomerulus-x-38062-x-94930-x-808-x-808.png,Global obsolescent glomerulosclerosis,1
+22558_2017-04-08 12_34_57-x-ROI_54-x-glomerulus-x-53176-x-100519-x-1025-x-1026.png,Normal,0
+22558_2017-04-08 12_34_57-x-ROI_55-x-glomerulus-x-59434-x-96297-x-1088-x-1089.png,Normal,0
+22558_2017-04-08 12_34_57-x-ROI_56-x-glomerulus-x-46773-x-107715-x-681-x-682.png,Periglomerular fibrosis,4
+22558_2017-04-08 12_34_57-x-ROI_57-x-glomerulus-x-42902-x-82112-x-730-x-731.png,Global obsolescent glomerulosclerosis,1
+22558_2017-04-08 12_34_57-x-ROI_58-x-glomerulus-x-48201-x-68188-x-755-x-755.png,Periglomerular fibrosis,4
+22558_2017-04-08 12_34_57-x-ROI_59-x-glomerulus-x-48047-x-89552-x-877-x-877.png,Normal,0
+22558_2017-04-08 12_34_57-x-ROI_6-x-glomerulus-x-39951-x-108965-x-1139-x-1140.png,Normal,0
+22558_2017-04-08 12_34_57-x-ROI_60-x-glomerulus-x-46622-x-70057-x-910-x-911.png,Normal,0
+22558_2017-04-08 12_34_57-x-ROI_61-x-glomerulus-x-46629-x-101340-x-663-x-664.png,Normal,0
+22558_2017-04-08 12_34_57-x-ROI_62-x-glomerulus-x-58496-x-97667-x-776-x-776.png,Normal,0
+22558_2017-04-08 12_34_57-x-ROI_63-x-glomerulus-x-51618-x-84646-x-962-x-961.png,Periglomerular fibrosis,4
+22558_2017-04-08 12_34_57-x-ROI_64-x-glomerulus-x-39467-x-81100-x-818-x-818.png,Global obsolescent glomerulosclerosis,1
+22558_2017-04-08 12_34_57-x-ROI_65-x-glomerulus-x-45893-x-88446-x-907-x-907.png,Periglomerular fibrosis,4
+22558_2017-04-08 12_34_57-x-ROI_66-x-glomerulus-x-34232-x-107136-x-1042-x-1041.png,Normal,0
+22558_2017-04-08 12_34_57-x-ROI_67-x-glomerulus-x-36384-x-96577-x-908-x-908.png,Periglomerular fibrosis,4
+22558_2017-04-08 12_34_57-x-ROI_68-x-glomerulus-x-34947-x-98852-x-902-x-901.png,Periglomerular fibrosis,4
+22558_2017-04-08 12_34_57-x-ROI_69-x-glomerulus-x-51138-x-63694-x-711-x-711.png,Periglomerular fibrosis,4
+22558_2017-04-08 12_34_57-x-ROI_7-x-glomerulus-x-46396-x-106648-x-771-x-770.png,Periglomerular fibrosis,4
+22558_2017-04-08 12_34_57-x-ROI_70-x-glomerulus-x-35102-x-95293-x-916-x-916.png,Normal,0
+22558_2017-04-08 12_34_57-x-ROI_71-x-glomerulus-x-57580-x-96208-x-867-x-867.png,Periglomerular fibrosis,4
+22558_2017-04-08 12_34_57-x-ROI_72-x-glomerulus-x-57753-x-95211-x-721-x-721.png,Normal,0
+22558_2017-04-08 12_34_57-x-ROI_73-x-glomerulus-x-38684-x-90115-x-706-x-706.png,Periglomerular fibrosis,4
+22558_2017-04-08 12_34_57-x-ROI_74-x-glomerulus-x-52326-x-62048-x-936-x-935.png,Normal,0
+22558_2017-04-08 12_34_57-x-ROI_75-x-glomerulus-x-38767-x-99850-x-631-x-630.png,Global obsolescent glomerulosclerosis,1
+22558_2017-04-08 12_34_57-x-ROI_76-x-glomerulus-x-40069-x-88626-x-836-x-836.png,Global obsolescent glomerulosclerosis,1
+22558_2017-04-08 12_34_57-x-ROI_77-x-glomerulus-x-50659-x-82258-x-784-x-783.png,Global obsolescent glomerulosclerosis,1
+22558_2017-04-08 12_34_57-x-ROI_78-x-glomerulus-x-36875-x-95443-x-700-x-699.png,Periglomerular fibrosis,4
+22558_2017-04-08 12_34_57-x-ROI_79-x-glomerulus-x-50432-x-81344-x-780-x-780.png,Periglomerular fibrosis,4
+22558_2017-04-08 12_34_57-x-ROI_8-x-glomerulus-x-37112-x-99822-x-1013-x-1013.png,Normal,0
+22558_2017-04-08 12_34_57-x-ROI_80-x-glomerulus-x-47765-x-65031-x-726-x-727.png,Global obsolescent glomerulosclerosis,1
+22558_2017-04-08 12_34_57-x-ROI_81-x-glomerulus-x-47699-x-89945-x-946-x-946.png,Global obsolescent glomerulosclerosis,1
+22558_2017-04-08 12_34_57-x-ROI_82-x-glomerulus-x-46840-x-65756-x-610-x-610.png,Global disappearing glomerulosclerosis,3
+22558_2017-04-08 12_34_57-x-ROI_83-x-glomerulus-x-31264-x-100570-x-795-x-794.png,Global obsolescent glomerulosclerosis,1
+22558_2017-04-08 12_34_57-x-ROI_84-x-glomerulus-x-51140-x-99616-x-995-x-995.png,Normal,0
+22558_2017-04-08 12_34_57-x-ROI_85-x-glomerulus-x-62699-x-102850-x-906-x-906.png,Periglomerular fibrosis,4
+22558_2017-04-08 12_34_57-x-ROI_86-x-glomerulus-x-52187-x-93759-x-684-x-685.png,Global obsolescent glomerulosclerosis,1
+22558_2017-04-08 12_34_57-x-ROI_87-x-glomerulus-x-50217-x-93630-x-710-x-710.png,Periglomerular fibrosis,4
+22558_2017-04-08 12_34_57-x-ROI_88-x-glomerulus-x-30412-x-110078-x-605-x-605.png,Global obsolescent glomerulosclerosis,1
+22558_2017-04-08 12_34_57-x-ROI_89-x-glomerulus-x-42222-x-80598-x-694-x-693.png,Periglomerular fibrosis,4
+22558_2017-04-08 12_34_57-x-ROI_9-x-glomerulus-x-48439-x-107775-x-1032-x-1032.png,Normal,0
+22558_2017-04-08 12_34_57-x-ROI_90-x-glomerulus-x-51614-x-59354-x-559-x-558.png,Global disappearing glomerulosclerosis,3
+22558_2017-04-08 12_34_57-x-ROI_91-x-glomerulus-x-45970-x-76173-x-619-x-620.png,Periglomerular fibrosis,4
+22558_2017-04-08 12_34_57-x-ROI_92-x-glomerulus-x-47120-x-76317-x-734-x-734.png,Global obsolescent glomerulosclerosis,1
+22558_2017-04-08 12_34_57-x-ROI_93-x-glomerulus-x-46235-x-79754-x-688-x-689.png,Global obsolescent glomerulosclerosis,1
+22558_2017-04-08 12_34_57-x-ROI_94-x-glomerulus-x-52917-x-57389-x-736-x-736.png,Normal,0
+22558_2017-04-08 12_34_57-x-ROI_95-x-glomerulus-x-34634-x-111021-x-1135-x-1135.png,Normal,0
+22558_2017-04-08 12_34_57-x-ROI_96-x-glomerulus-x-48199-x-83901-x-975-x-975.png,Normal,0
+22558_2017-04-08 12_34_57-x-ROI_97-x-glomerulus-x-52844-x-63481-x-753-x-753.png,Periglomerular fibrosis,4
+22558_2017-04-08 12_34_57-x-ROI_98-x-glomerulus-x-33853-x-112403-x-661-x-661.png,Normal,0
+22558_2017-04-08 12_34_57-x-ROI_99-x-glomerulus-x-42887-x-82633-x-702-x-702.png,Global obsolescent glomerulosclerosis,1
+22732_2017-04-07 18_17_08-x-ROI_0-x-glomerulus-x-35640-x-156054-x-882-x-882.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_1-x-glomerulus-x-44682-x-76842-x-860-x-859.png,Periglomerular fibrosis,4
+22732_2017-04-07 18_17_08-x-ROI_10-x-glomerulus-x-53487-x-163308-x-797-x-797.png,Periglomerular fibrosis,4
+22732_2017-04-07 18_17_08-x-ROI_100-x-glomerulus-x-68422-x-84534-x-747-x-747.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_101-x-glomerulus-x-75165-x-172754-x-658-x-658.png,Periglomerular fibrosis,4
+22732_2017-04-07 18_17_08-x-ROI_102-x-glomerulus-x-59922-x-87322-x-715-x-715.png,Global obsolescent glomerulosclerosis,1
+22732_2017-04-07 18_17_08-x-ROI_103-x-glomerulus-x-58896-x-172617-x-604-x-604.png,Global disappearing glomerulosclerosis,3
+22732_2017-04-07 18_17_08-x-ROI_104-x-glomerulus-x-73857-x-91862-x-611-x-612.png,Global disappearing glomerulosclerosis,3
+22732_2017-04-07 18_17_08-x-ROI_105-x-glomerulus-x-59552-x-166352-x-648-x-649.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_106-x-glomerulus-x-34402-x-155910-x-858-x-858.png,Periglomerular fibrosis,4
+22732_2017-04-07 18_17_08-x-ROI_107-x-glomerulus-x-53876-x-87107-x-527-x-527.png,Global obsolescent glomerulosclerosis,1
+22732_2017-04-07 18_17_08-x-ROI_108-x-glomerulus-x-48178-x-169146-x-627-x-627.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_109-x-glomerulus-x-67942-x-84724-x-623-x-622.png,Global obsolescent glomerulosclerosis,1
+22732_2017-04-07 18_17_08-x-ROI_11-x-glomerulus-x-39571-x-158081-x-822-x-822.png,Periglomerular fibrosis,4
+22732_2017-04-07 18_17_08-x-ROI_110-x-glomerulus-x-62943-x-163602-x-700-x-701.png,Periglomerular fibrosis,4
+22732_2017-04-07 18_17_08-x-ROI_111-x-glomerulus-x-64930-x-90485-x-590-x-590.png,Global obsolescent glomerulosclerosis,1
+22732_2017-04-07 18_17_08-x-ROI_112-x-glomerulus-x-50130-x-168968-x-597-x-597.png,Global obsolescent glomerulosclerosis,1
+22732_2017-04-07 18_17_08-x-ROI_113-x-glomerulus-x-43503-x-162629-x-829-x-829.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_114-x-glomerulus-x-64978-x-175521-x-567-x-567.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_115-x-glomerulus-x-66534-x-90623-x-540-x-540.png,Global disappearing glomerulosclerosis,3
+22732_2017-04-07 18_17_08-x-ROI_116-x-glomerulus-x-57336-x-173653-x-657-x-657.png,Global disappearing glomerulosclerosis,3
+22732_2017-04-07 18_17_08-x-ROI_117-x-glomerulus-x-47685-x-164757-x-845-x-846.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_118-x-glomerulus-x-64961-x-172464-x-574-x-574.png,Global disappearing glomerulosclerosis,3
+22732_2017-04-07 18_17_08-x-ROI_119-x-glomerulus-x-69780-x-81034-x-621-x-621.png,Periglomerular fibrosis,4
+22732_2017-04-07 18_17_08-x-ROI_12-x-glomerulus-x-39474-x-73465-x-807-x-808.png,Periglomerular fibrosis,4
+22732_2017-04-07 18_17_08-x-ROI_120-x-glomerulus-x-39212-x-63830-x-633-x-633.png,Global obsolescent glomerulosclerosis,1
+22732_2017-04-07 18_17_08-x-ROI_121-x-glomerulus-x-68670-x-85957-x-625-x-626.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_122-x-glomerulus-x-61611-x-89119-x-628-x-628.png,Global obsolescent glomerulosclerosis,1
+22732_2017-04-07 18_17_08-x-ROI_123-x-glomerulus-x-34593-x-152367-x-604-x-604.png,Periglomerular fibrosis,4
+22732_2017-04-07 18_17_08-x-ROI_124-x-glomerulus-x-45177-x-166866-x-719-x-719.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_125-x-glomerulus-x-74839-x-92091-x-537-x-538.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_126-x-glomerulus-x-60592-x-171982-x-799-x-799.png,Global obsolescent glomerulosclerosis,1
+22732_2017-04-07 18_17_08-x-ROI_127-x-glomerulus-x-59622-x-88289-x-649-x-650.png,Global obsolescent glomerulosclerosis,1
+22732_2017-04-07 18_17_08-x-ROI_128-x-glomerulus-x-53399-x-78188-x-822-x-821.png,Periglomerular fibrosis,4
+22732_2017-04-07 18_17_08-x-ROI_129-x-glomerulus-x-70147-x-91465-x-630-x-630.png,Global disappearing glomerulosclerosis,3
+22732_2017-04-07 18_17_08-x-ROI_13-x-glomerulus-x-70125-x-165308-x-641-x-640.png,Periglomerular fibrosis,4
+22732_2017-04-07 18_17_08-x-ROI_130-x-glomerulus-x-56141-x-166142-x-635-x-635.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_131-x-glomerulus-x-38178-x-150065-x-583-x-582.png,Global obsolescent glomerulosclerosis,1
+22732_2017-04-07 18_17_08-x-ROI_132-x-glomerulus-x-61565-x-169845-x-589-x-589.png,Global disappearing glomerulosclerosis,3
+22732_2017-04-07 18_17_08-x-ROI_133-x-glomerulus-x-74220-x-88747-x-685-x-685.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_134-x-glomerulus-x-73509-x-89221-x-644-x-645.png,Global obsolescent glomerulosclerosis,1
+22732_2017-04-07 18_17_08-x-ROI_135-x-glomerulus-x-68617-x-170425-x-753-x-754.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_136-x-glomerulus-x-64009-x-91002-x-565-x-566.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_137-x-glomerulus-x-69891-x-168369-x-851-x-850.png,Periglomerular fibrosis,4
+22732_2017-04-07 18_17_08-x-ROI_138-x-glomerulus-x-49753-x-83668-x-602-x-602.png,Global disappearing glomerulosclerosis,3
+22732_2017-04-07 18_17_08-x-ROI_139-x-glomerulus-x-62867-x-88770-x-550-x-550.png,Global obsolescent glomerulosclerosis,1
+22732_2017-04-07 18_17_08-x-ROI_14-x-glomerulus-x-50359-x-160747-x-866-x-865.png,Periglomerular fibrosis,4
+22732_2017-04-07 18_17_08-x-ROI_140-x-glomerulus-x-36243-x-153057-x-632-x-632.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_141-x-glomerulus-x-59618-x-89435-x-530-x-530.png,Global disappearing glomerulosclerosis,3
+22732_2017-04-07 18_17_08-x-ROI_142-x-glomerulus-x-37098-x-66703-x-669-x-669.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_143-x-glomerulus-x-37834-x-64961-x-636-x-636.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_144-x-glomerulus-x-68449-x-173076-x-579-x-579.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_145-x-glomerulus-x-74286-x-175343-x-665-x-665.png,Global disappearing glomerulosclerosis,3
+22732_2017-04-07 18_17_08-x-ROI_146-x-glomerulus-x-73765-x-175254-x-517-x-517.png,Global obsolescent glomerulosclerosis,1
+22732_2017-04-07 18_17_08-x-ROI_147-x-glomerulus-x-62371-x-86855-x-713-x-714.png,Global obsolescent glomerulosclerosis,1
+22732_2017-04-07 18_17_08-x-ROI_148-x-glomerulus-x-72603-x-91124-x-588-x-588.png,Global obsolescent glomerulosclerosis,1
+22732_2017-04-07 18_17_08-x-ROI_149-x-glomerulus-x-71519-x-177909-x-528-x-529.png,Global obsolescent glomerulosclerosis,1
+22732_2017-04-07 18_17_08-x-ROI_15-x-glomerulus-x-50443-x-75443-x-866-x-866.png,Periglomerular fibrosis,4
+22732_2017-04-07 18_17_08-x-ROI_150-x-glomerulus-x-34076-x-65399-x-613-x-613.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_151-x-glomerulus-x-65982-x-81156-x-594-x-594.png,Global obsolescent glomerulosclerosis,1
+22732_2017-04-07 18_17_08-x-ROI_152-x-glomerulus-x-67454-x-175039-x-520-x-520.png,Global disappearing glomerulosclerosis,3
+22732_2017-04-07 18_17_08-x-ROI_153-x-glomerulus-x-75067-x-175944-x-526-x-526.png,Global disappearing glomerulosclerosis,3
+22732_2017-04-07 18_17_08-x-ROI_154-x-glomerulus-x-32568-x-153104-x-687-x-687.png,Periglomerular fibrosis,4
+22732_2017-04-07 18_17_08-x-ROI_155-x-glomerulus-x-59792-x-80910-x-821-x-820.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_156-x-glomerulus-x-70792-x-93093-x-623-x-622.png,Global disappearing glomerulosclerosis,3
+22732_2017-04-07 18_17_08-x-ROI_157-x-glomerulus-x-58136-x-87815-x-585-x-586.png,Global disappearing glomerulosclerosis,3
+22732_2017-04-07 18_17_08-x-ROI_158-x-glomerulus-x-64178-x-87947-x-538-x-539.png,Global obsolescent glomerulosclerosis,1
+22732_2017-04-07 18_17_08-x-ROI_159-x-glomerulus-x-40700-x-159311-x-664-x-664.png,Periglomerular fibrosis,4
+22732_2017-04-07 18_17_08-x-ROI_16-x-glomerulus-x-51135-x-169316-x-738-x-737.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_160-x-glomerulus-x-51494-x-75846-x-559-x-559.png,Global disappearing glomerulosclerosis,3
+22732_2017-04-07 18_17_08-x-ROI_161-x-glomerulus-x-71258-x-175690-x-652-x-652.png,Global disappearing glomerulosclerosis,3
+22732_2017-04-07 18_17_08-x-ROI_162-x-glomerulus-x-57069-x-165689-x-635-x-635.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_163-x-glomerulus-x-62773-x-78940-x-634-x-634.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_164-x-glomerulus-x-48814-x-84785-x-569-x-568.png,Global disappearing glomerulosclerosis,3
+22732_2017-04-07 18_17_08-x-ROI_165-x-glomerulus-x-59198-x-81566-x-616-x-616.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_166-x-glomerulus-x-60955-x-85139-x-601-x-602.png,Global disappearing glomerulosclerosis,3
+22732_2017-04-07 18_17_08-x-ROI_167-x-glomerulus-x-63713-x-173413-x-541-x-540.png,Global obsolescent glomerulosclerosis,1
+22732_2017-04-07 18_17_08-x-ROI_168-x-glomerulus-x-75251-x-173836-x-795-x-794.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_169-x-glomerulus-x-74507-x-173287-x-581-x-581.png,Global obsolescent glomerulosclerosis,1
+22732_2017-04-07 18_17_08-x-ROI_17-x-glomerulus-x-52977-x-79616-x-800-x-800.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_170-x-glomerulus-x-52304-x-87728-x-624-x-623.png,Global disappearing glomerulosclerosis,3
+22732_2017-04-07 18_17_08-x-ROI_171-x-glomerulus-x-73332-x-93519-x-618-x-618.png,Global obsolescent glomerulosclerosis,1
+22732_2017-04-07 18_17_08-x-ROI_172-x-glomerulus-x-73851-x-167153-x-654-x-654.png,Periglomerular fibrosis,4
+22732_2017-04-07 18_17_08-x-ROI_173-x-glomerulus-x-54264-x-86552-x-797-x-796.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_174-x-glomerulus-x-74680-x-177575-x-597-x-597.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_175-x-glomerulus-x-65310-x-85089-x-715-x-715.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_176-x-glomerulus-x-73916-x-177894-x-484-x-483.png,Global disappearing glomerulosclerosis,3
+22732_2017-04-07 18_17_08-x-ROI_177-x-glomerulus-x-72576-x-93801-x-501-x-501.png,Global disappearing glomerulosclerosis,3
+22732_2017-04-07 18_17_08-x-ROI_178-x-glomerulus-x-66340-x-165689-x-584-x-585.png,Global obsolescent glomerulosclerosis,1
+22732_2017-04-07 18_17_08-x-ROI_179-x-glomerulus-x-58728-x-83720-x-802-x-802.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_18-x-glomerulus-x-42860-x-78068-x-817-x-817.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_180-x-glomerulus-x-57217-x-78248-x-882-x-882.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_181-x-glomerulus-x-40694-x-61030-x-605-x-605.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_182-x-glomerulus-x-74832-x-172176-x-488-x-489.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_183-x-glomerulus-x-67962-x-86076-x-730-x-731.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_184-x-glomerulus-x-64377-x-170731-x-537-x-536.png,Global disappearing glomerulosclerosis,3
+22732_2017-04-07 18_17_08-x-ROI_185-x-glomerulus-x-41323-x-162812-x-633-x-633.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_186-x-glomerulus-x-66312-x-91116-x-489-x-489.png,Global disappearing glomerulosclerosis,3
+22732_2017-04-07 18_17_08-x-ROI_187-x-glomerulus-x-60348-x-174123-x-663-x-662.png,Global disappearing glomerulosclerosis,3
+22732_2017-04-07 18_17_08-x-ROI_188-x-glomerulus-x-60111-x-165731-x-828-x-829.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_189-x-glomerulus-x-54512-x-169093-x-613-x-614.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_19-x-glomerulus-x-33474-x-153311-x-757-x-757.png,Periglomerular fibrosis,4
+22732_2017-04-07 18_17_08-x-ROI_190-x-glomerulus-x-72632-x-93398-x-471-x-471.png,Global disappearing glomerulosclerosis,3
+22732_2017-04-07 18_17_08-x-ROI_191-x-glomerulus-x-66219-x-175335-x-492-x-491.png,Global disappearing glomerulosclerosis,3
+22732_2017-04-07 18_17_08-x-ROI_192-x-glomerulus-x-72020-x-177351-x-605-x-605.png,Global disappearing glomerulosclerosis,3
+22732_2017-04-07 18_17_08-x-ROI_193-x-glomerulus-x-49263-x-170088-x-555-x-555.png,Global disappearing glomerulosclerosis,3
+22732_2017-04-07 18_17_08-x-ROI_194-x-glomerulus-x-46336-x-167827-x-582-x-581.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_195-x-glomerulus-x-73594-x-173308-x-780-x-780.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_196-x-glomerulus-x-47585-x-79313-x-811-x-810.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_197-x-glomerulus-x-60393-x-173024-x-684-x-684.png,Global obsolescent glomerulosclerosis,1
+22732_2017-04-07 18_17_08-x-ROI_198-x-glomerulus-x-72675-x-89258-x-766-x-766.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_199-x-glomerulus-x-72291-x-93035-x-564-x-564.png,Global disappearing glomerulosclerosis,3
+22732_2017-04-07 18_17_08-x-ROI_2-x-glomerulus-x-39236-x-64988-x-896-x-896.png,Periglomerular fibrosis,4
+22732_2017-04-07 18_17_08-x-ROI_20-x-glomerulus-x-49835-x-165438-x-822-x-821.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_200-x-glomerulus-x-63754-x-86119-x-515-x-515.png,Global obsolescent glomerulosclerosis,1
+22732_2017-04-07 18_17_08-x-ROI_201-x-glomerulus-x-51326-x-161017-x-644-x-643.png,Global disappearing glomerulosclerosis,3
+22732_2017-04-07 18_17_08-x-ROI_202-x-glomerulus-x-54017-x-83996-x-725-x-725.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_203-x-glomerulus-x-46919-x-160914-x-510-x-510.png,Periglomerular fibrosis,4
+22732_2017-04-07 18_17_08-x-ROI_204-x-glomerulus-x-52996-x-172876-x-595-x-595.png,Global disappearing glomerulosclerosis,3
+22732_2017-04-07 18_17_08-x-ROI_205-x-glomerulus-x-66873-x-91322-x-476-x-477.png,Global disappearing glomerulosclerosis,3
+22732_2017-04-07 18_17_08-x-ROI_206-x-glomerulus-x-73580-x-177212-x-505-x-505.png,Global disappearing glomerulosclerosis,3
+22732_2017-04-07 18_17_08-x-ROI_207-x-glomerulus-x-51592-x-81581-x-643-x-643.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_208-x-glomerulus-x-67346-x-175597-x-465-x-465.png,Global disappearing glomerulosclerosis,3
+22732_2017-04-07 18_17_08-x-ROI_209-x-glomerulus-x-56617-x-88880-x-561-x-561.png,Global obsolescent glomerulosclerosis,1
+22732_2017-04-07 18_17_08-x-ROI_21-x-glomerulus-x-53520-x-76955-x-883-x-882.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_210-x-glomerulus-x-65891-x-169606-x-689-x-690.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_211-x-glomerulus-x-49381-x-167621-x-549-x-550.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_212-x-glomerulus-x-66293-x-174724-x-420-x-420.png,Global disappearing glomerulosclerosis,3
+22732_2017-04-07 18_17_08-x-ROI_213-x-glomerulus-x-59642-x-174229-x-490-x-490.png,Global disappearing glomerulosclerosis,3
+22732_2017-04-07 18_17_08-x-ROI_214-x-glomerulus-x-53581-x-170855-x-630-x-630.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_215-x-glomerulus-x-53039-x-85821-x-550-x-550.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_216-x-glomerulus-x-65204-x-90825-x-498-x-498.png,Global disappearing glomerulosclerosis,3
+22732_2017-04-07 18_17_08-x-ROI_217-x-glomerulus-x-73950-x-177525-x-416-x-417.png,Global disappearing glomerulosclerosis,3
+22732_2017-04-07 18_17_08-x-ROI_218-x-glomerulus-x-61646-x-168658-x-615-x-615.png,Global obsolescent glomerulosclerosis,1
+22732_2017-04-07 18_17_08-x-ROI_219-x-glomerulus-x-69966-x-164143-x-714-x-714.png,Periglomerular fibrosis,4
+22732_2017-04-07 18_17_08-x-ROI_22-x-glomerulus-x-44662-x-162471-x-861-x-861.png,Periglomerular fibrosis,4
+22732_2017-04-07 18_17_08-x-ROI_220-x-glomerulus-x-59305-x-174412-x-416-x-416.png,Global obsolescent glomerulosclerosis,1
+22732_2017-04-07 18_17_08-x-ROI_221-x-glomerulus-x-67919-x-175804-x-445-x-445.png,Global disappearing glomerulosclerosis,3
+22732_2017-04-07 18_17_08-x-ROI_222-x-glomerulus-x-59203-x-168488-x-850-x-850.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_223-x-glomerulus-x-56598-x-168795-x-825-x-825.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_224-x-glomerulus-x-49046-x-82288-x-549-x-548.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_225-x-glomerulus-x-59322-x-88460-x-415-x-416.png,Global obsolescent glomerulosclerosis,1
+22732_2017-04-07 18_17_08-x-ROI_226-x-glomerulus-x-70269-x-93659-x-589-x-589.png,Global obsolescent glomerulosclerosis,1
+22732_2017-04-07 18_17_08-x-ROI_227-x-glomerulus-x-63361-x-173678-x-400-x-400.png,Global disappearing glomerulosclerosis,3
+22732_2017-04-07 18_17_08-x-ROI_228-x-glomerulus-x-59046-x-168037-x-547-x-547.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_229-x-glomerulus-x-56823-x-80767-x-595-x-596.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_23-x-glomerulus-x-45943-x-161970-x-774-x-775.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_230-x-glomerulus-x-58474-x-89660-x-428-x-429.png,Global obsolescent glomerulosclerosis,1
+22732_2017-04-07 18_17_08-x-ROI_231-x-glomerulus-x-60103-x-173214-x-443-x-443.png,Global obsolescent glomerulosclerosis,1
+22732_2017-04-07 18_17_08-x-ROI_232-x-glomerulus-x-73985-x-88180-x-448-x-448.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_233-x-glomerulus-x-55081-x-82933-x-692-x-692.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_234-x-glomerulus-x-69978-x-81911-x-806-x-806.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_235-x-glomerulus-x-41544-x-77037-x-453-x-452.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_236-x-glomerulus-x-57905-x-173761-x-426-x-426.png,Global disappearing glomerulosclerosis,3
+22732_2017-04-07 18_17_08-x-ROI_237-x-glomerulus-x-64832-x-85496-x-530-x-510.png,Global disappearing glomerulosclerosis,3
+22732_2017-04-07 18_17_08-x-ROI_238-x-glomerulus-x-35492-x-152244-x-576-x-734.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_239-x-glomerulus-x-70390-x-166242-x-858-x-722.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_24-x-glomerulus-x-35089-x-69452-x-833-x-833.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_240-x-glomerulus-x-64002-x-171808-x-530-x-472.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_241-x-glomerulus-x-56178-x-83786-x-706-x-798.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_242-x-glomerulus-x-69492-x-83144-x-802-x-710.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_243-x-glomerulus-x-36398-x-65888-x-582-x-698.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_244-x-glomerulus-x-65450-x-169970-x-562-x-676.png,Global disappearing glomerulosclerosis,3
+22732_2017-04-07 18_17_08-x-ROI_245-x-glomerulus-x-75668-x-171372-x-416-x-462.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_246-x-glomerulus-x-73216-x-92286-x-558-x-658.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_247-x-glomerulus-x-73168-x-91344-x-598-x-570.png,Global disappearing glomerulosclerosis,3
+22732_2017-04-07 18_17_08-x-ROI_248-x-glomerulus-x-72422-x-91952-x-482-x-486.png,Periglomerular fibrosis,4
+22732_2017-04-07 18_17_08-x-ROI_249-x-glomerulus-x-66556-x-91486-x-474-x-496.png,Global disappearing glomerulosclerosis,3
+22732_2017-04-07 18_17_08-x-ROI_25-x-glomerulus-x-56378-x-169549-x-740-x-740.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_250-x-glomerulus-x-67310-x-91864-x-516-x-484.png,Global disappearing glomerulosclerosis,3
+22732_2017-04-07 18_17_08-x-ROI_251-x-glomerulus-x-70080-x-167474-x-724-x-620.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_252-x-glomerulus-x-69030-x-168964-x-770-x-724.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_253-x-glomerulus-x-62496-x-89122-x-410-x-426.png,Global disappearing glomerulosclerosis,3
+22732_2017-04-07 18_17_08-x-ROI_254-x-glomerulus-x-63300-x-87242-x-450-x-390.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_255-x-glomerulus-x-67604-x-175844-x-422-x-608.png,Global disappearing glomerulosclerosis,3
+22732_2017-04-07 18_17_08-x-ROI_256-x-glomerulus-x-61136-x-83954-x-572-x-550.png,Global obsolescent glomerulosclerosis,1
+22732_2017-04-07 18_17_08-x-ROI_257-x-glomerulus-x-58608-x-83244-x-450-x-438.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_258-x-glomerulus-x-58850-x-89418-x-594-x-488.png,Global obsolescent glomerulosclerosis,1
+22732_2017-04-07 18_17_08-x-ROI_259-x-glomerulus-x-41094-x-60800-x-613-x-863.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_26-x-glomerulus-x-37496-x-148876-x-653-x-654.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_260-x-glomerulus-x-47003-x-75338-x-550-x-591.png,Periglomerular fibrosis,4
+22732_2017-04-07 18_17_08-x-ROI_261-x-glomerulus-x-46123-x-82316-x-504-x-625.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_262-x-glomerulus-x-50078-x-77620-x-492-x-517.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_263-x-glomerulus-x-52155-x-86978-x-428-x-446.png,Global disappearing glomerulosclerosis,3
+22732_2017-04-07 18_17_08-x-ROI_264-x-glomerulus-x-57164-x-88927-x-425-x-453.png,Global disappearing glomerulosclerosis,3
+22732_2017-04-07 18_17_08-x-ROI_265-x-glomerulus-x-60992-x-78624-x-560-x-591.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_266-x-glomerulus-x-59792-x-83593-x-388-x-387.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_267-x-glomerulus-x-61793-x-77065-x-597-x-487.png,Global obsolescent glomerulosclerosis,1
+22732_2017-04-07 18_17_08-x-ROI_268-x-glomerulus-x-66661-x-79387-x-388-x-490.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_269-x-glomerulus-x-71074-x-88989-x-972-x-750.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_27-x-glomerulus-x-66787-x-172396-x-693-x-693.png,Periglomerular fibrosis,4
+22732_2017-04-07 18_17_08-x-ROI_270-x-glomerulus-x-73383-x-83008-x-625-x-697.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_271-x-glomerulus-x-74261-x-89862-x-819-x-850.png,Periglomerular fibrosis,4
+22732_2017-04-07 18_17_08-x-ROI_272-x-glomerulus-x-74826-x-87405-x-457-x-485.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_273-x-glomerulus-x-39669-x-147067-x-486-x-781.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_274-x-glomerulus-x-40050-x-147024-x-633-x-715.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_275-x-glomerulus-x-41983-x-161182-x-443-x-519.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_276-x-glomerulus-x-50112-x-162920-x-476-x-571.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_277-x-glomerulus-x-55508-x-167910-x-657-x-757.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_278-x-glomerulus-x-56417-x-164582-x-452-x-471.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_279-x-glomerulus-x-60184-x-168330-x-548-x-514.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_28-x-glomerulus-x-45981-x-76364-x-783-x-782.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_280-x-glomerulus-x-61136-x-163382-x-672-x-572.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_281-x-glomerulus-x-61841-x-161738-x-591-x-581.png,Global obsolescent glomerulosclerosis,1
+22732_2017-04-07 18_17_08-x-ROI_282-x-glomerulus-x-66902-x-163867-x-381-x-515.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_283-x-glomerulus-x-68336-x-176115-x-605-x-704.png,Global disappearing glomerulosclerosis,3
+22732_2017-04-07 18_17_08-x-ROI_284-x-glomerulus-x-73545-x-176024-x-558-x-500.png,Periglomerular fibrosis,4
+22732_2017-04-07 18_17_08-x-ROI_29-x-glomerulus-x-67596-x-89566-x-747-x-747.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_3-x-glomerulus-x-72602-x-84362-x-804-x-805.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_30-x-glomerulus-x-33069-x-151937-x-654-x-654.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_31-x-glomerulus-x-63865-x-167699-x-758-x-758.png,Periglomerular fibrosis,4
+22732_2017-04-07 18_17_08-x-ROI_32-x-glomerulus-x-57374-x-163169-x-856-x-856.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_33-x-glomerulus-x-68513-x-169077-x-675-x-676.png,Global obsolescent glomerulosclerosis,1
+22732_2017-04-07 18_17_08-x-ROI_34-x-glomerulus-x-43541-x-76895-x-867-x-867.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_35-x-glomerulus-x-73212-x-168476-x-835-x-835.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_36-x-glomerulus-x-62439-x-173754-x-655-x-655.png,Global obsolescent glomerulosclerosis,1
+22732_2017-04-07 18_17_08-x-ROI_37-x-glomerulus-x-63373-x-83142-x-701-x-701.png,Periglomerular fibrosis,4
+22732_2017-04-07 18_17_08-x-ROI_38-x-glomerulus-x-71573-x-165884-x-694-x-694.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_39-x-glomerulus-x-35522-x-65949-x-608-x-608.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_4-x-glomerulus-x-53157-x-164743-x-806-x-806.png,Periglomerular fibrosis,4
+22732_2017-04-07 18_17_08-x-ROI_40-x-glomerulus-x-36282-x-69721-x-858-x-858.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_41-x-glomerulus-x-64366-x-82176-x-652-x-652.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_42-x-glomerulus-x-44477-x-164490-x-868-x-869.png,Periglomerular fibrosis,4
+22732_2017-04-07 18_17_08-x-ROI_43-x-glomerulus-x-36840-x-151180-x-655-x-656.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_44-x-glomerulus-x-38294-x-151178-x-864-x-864.png,Periglomerular fibrosis,4
+22732_2017-04-07 18_17_08-x-ROI_45-x-glomerulus-x-50688-x-84074-x-767-x-767.png,Periglomerular fibrosis,4
+22732_2017-04-07 18_17_08-x-ROI_46-x-glomerulus-x-33510-x-66544-x-677-x-678.png,Periglomerular fibrosis,4
+22732_2017-04-07 18_17_08-x-ROI_47-x-glomerulus-x-39187-x-159490-x-829-x-828.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_48-x-glomerulus-x-38779-x-74417-x-850-x-850.png,Periglomerular fibrosis,4
+22732_2017-04-07 18_17_08-x-ROI_49-x-glomerulus-x-38528-x-160498-x-912-x-912.png,Periglomerular fibrosis,4
+22732_2017-04-07 18_17_08-x-ROI_5-x-glomerulus-x-49644-x-80135-x-808-x-808.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_50-x-glomerulus-x-63476-x-84146-x-757-x-757.png,Periglomerular fibrosis,4
+22732_2017-04-07 18_17_08-x-ROI_51-x-glomerulus-x-50202-x-170180-x-784-x-784.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_52-x-glomerulus-x-54832-x-171581-x-821-x-821.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_53-x-glomerulus-x-40977-x-73388-x-709-x-709.png,Periglomerular fibrosis,4
+22732_2017-04-07 18_17_08-x-ROI_54-x-glomerulus-x-41924-x-76087-x-845-x-845.png,Periglomerular fibrosis,4
+22732_2017-04-07 18_17_08-x-ROI_55-x-glomerulus-x-44959-x-81297-x-666-x-665.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_56-x-glomerulus-x-53582-x-162117-x-859-x-860.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_57-x-glomerulus-x-61722-x-163571-x-785-x-786.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_58-x-glomerulus-x-68541-x-173932-x-733-x-733.png,Periglomerular fibrosis,4
+22732_2017-04-07 18_17_08-x-ROI_59-x-glomerulus-x-74360-x-176336-x-649-x-649.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_6-x-glomerulus-x-62427-x-84729-x-698-x-699.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_60-x-glomerulus-x-71019-x-81057-x-784-x-784.png,Periglomerular fibrosis,4
+22732_2017-04-07 18_17_08-x-ROI_61-x-glomerulus-x-54454-x-172054-x-630-x-630.png,Global obsolescent glomerulosclerosis,1
+22732_2017-04-07 18_17_08-x-ROI_62-x-glomerulus-x-62251-x-78038-x-668-x-668.png,Periglomerular fibrosis,4
+22732_2017-04-07 18_17_08-x-ROI_63-x-glomerulus-x-64758-x-166712-x-673-x-673.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_64-x-glomerulus-x-75996-x-176038-x-549-x-549.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_65-x-glomerulus-x-65491-x-170728-x-608-x-608.png,Periglomerular fibrosis,4
+22732_2017-04-07 18_17_08-x-ROI_66-x-glomerulus-x-64835-x-86190-x-594-x-594.png,Periglomerular fibrosis,4
+22732_2017-04-07 18_17_08-x-ROI_67-x-glomerulus-x-34352-x-66800-x-747-x-746.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_68-x-glomerulus-x-44441-x-78850-x-839-x-838.png,Periglomerular fibrosis,4
+22732_2017-04-07 18_17_08-x-ROI_69-x-glomerulus-x-61512-x-78832-x-758-x-758.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_7-x-glomerulus-x-39966-x-72073-x-833-x-833.png,Periglomerular fibrosis,4
+22732_2017-04-07 18_17_08-x-ROI_70-x-glomerulus-x-64713-x-84358-x-724-x-723.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_71-x-glomerulus-x-34768-x-151366-x-807-x-806.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_72-x-glomerulus-x-62384-x-162727-x-735-x-735.png,Periglomerular fibrosis,4
+22732_2017-04-07 18_17_08-x-ROI_73-x-glomerulus-x-71364-x-165274-x-779-x-780.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_74-x-glomerulus-x-41853-x-161909-x-845-x-845.png,Periglomerular fibrosis,4
+22732_2017-04-07 18_17_08-x-ROI_75-x-glomerulus-x-69354-x-170277-x-665-x-665.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_76-x-glomerulus-x-55823-x-81125-x-715-x-715.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_77-x-glomerulus-x-47775-x-83739-x-672-x-672.png,Capsular drop,-1
+22732_2017-04-07 18_17_08-x-ROI_78-x-glomerulus-x-64027-x-168781-x-735-x-735.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_79-x-glomerulus-x-65992-x-87884-x-753-x-753.png,Periglomerular fibrosis,4
+22732_2017-04-07 18_17_08-x-ROI_8-x-glomerulus-x-42913-x-163810-x-826-x-825.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_80-x-glomerulus-x-62097-x-164119-x-692-x-693.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_81-x-glomerulus-x-52962-x-87052-x-656-x-656.png,Global disappearing glomerulosclerosis,3
+22732_2017-04-07 18_17_08-x-ROI_82-x-glomerulus-x-72135-x-173087-x-865-x-865.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_83-x-glomerulus-x-63102-x-171495-x-724-x-725.png,Global obsolescent glomerulosclerosis,1
+22732_2017-04-07 18_17_08-x-ROI_84-x-glomerulus-x-69659-x-79803-x-722-x-722.png,Periglomerular fibrosis,4
+22732_2017-04-07 18_17_08-x-ROI_85-x-glomerulus-x-55876-x-84599-x-721-x-720.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_86-x-glomerulus-x-51985-x-166842-x-568-x-568.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_87-x-glomerulus-x-69367-x-84064-x-859-x-859.png,Periglomerular fibrosis,4
+22732_2017-04-07 18_17_08-x-ROI_88-x-glomerulus-x-35676-x-64952-x-863-x-862.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_89-x-glomerulus-x-48853-x-76798-x-686-x-685.png,Global disappearing glomerulosclerosis,3
+22732_2017-04-07 18_17_08-x-ROI_9-x-glomerulus-x-49713-x-84894-x-787-x-787.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_90-x-glomerulus-x-38496-x-62643-x-688-x-688.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_91-x-glomerulus-x-62998-x-169345-x-747-x-747.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_92-x-glomerulus-x-65862-x-174997-x-621-x-622.png,Global obsolescent glomerulosclerosis,1
+22732_2017-04-07 18_17_08-x-ROI_93-x-glomerulus-x-61909-x-79434-x-662-x-661.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_94-x-glomerulus-x-48805-x-162183-x-690-x-690.png,Global obsolescent glomerulosclerosis,1
+22732_2017-04-07 18_17_08-x-ROI_95-x-glomerulus-x-73143-x-84782-x-596-x-596.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_96-x-glomerulus-x-65281-x-168917-x-707-x-707.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_97-x-glomerulus-x-71209-x-81619-x-808-x-809.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_98-x-glomerulus-x-67596-x-88709-x-563-x-562.png,Normal,0
+22732_2017-04-07 18_17_08-x-ROI_99-x-glomerulus-x-53555-x-172130-x-628-x-628.png,Global disappearing glomerulosclerosis,3
+22862_2017-04-08 11_59_04-x-ROI_0-x-glomerulus-x-70649-x-161605-x-1127-x-1127.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_1-x-glomerulus-x-76804-x-72307-x-1013-x-1013.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_10-x-glomerulus-x-73467-x-89199-x-884-x-884.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_100-x-glomerulus-x-76683-x-91127-x-616-x-616.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_101-x-glomerulus-x-40071-x-100095-x-741-x-741.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_102-x-glomerulus-x-41437-x-176057-x-801-x-801.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_103-x-glomerulus-x-70657-x-96122-x-617-x-617.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_104-x-glomerulus-x-67350-x-175330-x-706-x-706.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_105-x-glomerulus-x-62931-x-183026-x-691-x-692.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_106-x-glomerulus-x-58264-x-99553-x-811-x-811.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_107-x-glomerulus-x-79893-x-89734-x-707-x-707.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_108-x-glomerulus-x-76333-x-158449-x-936-x-936.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_109-x-glomerulus-x-70663-x-170212-x-849-x-849.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_11-x-glomerulus-x-51955-x-98981-x-944-x-944.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_110-x-glomerulus-x-43401-x-183620-x-649-x-649.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_111-x-glomerulus-x-61939-x-97680-x-673-x-673.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_112-x-glomerulus-x-80216-x-175664-x-703-x-704.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_113-x-glomerulus-x-45309-x-90749-x-912-x-912.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_114-x-glomerulus-x-39635-x-176495-x-882-x-882.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_115-x-glomerulus-x-68174-x-178555-x-745-x-745.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_116-x-glomerulus-x-77618-x-165865-x-697-x-698.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_117-x-glomerulus-x-65698-x-182626-x-709-x-709.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_118-x-glomerulus-x-55474-x-181505-x-868-x-867.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_119-x-glomerulus-x-57401-x-178755-x-1046-x-1046.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_12-x-glomerulus-x-36367-x-177825-x-1108-x-1108.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_120-x-glomerulus-x-59557-x-183253-x-822-x-822.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_121-x-glomerulus-x-64067-x-183126-x-634-x-634.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_122-x-glomerulus-x-70225-x-83185-x-743-x-744.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_123-x-glomerulus-x-80557-x-155891-x-682-x-682.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_124-x-glomerulus-x-46241-x-178917-x-679-x-680.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_125-x-glomerulus-x-55989-x-95855-x-640-x-639.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_126-x-glomerulus-x-77428-x-151218-x-795-x-795.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_127-x-glomerulus-x-43735-x-99909-x-589-x-589.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_128-x-glomerulus-x-79311-x-92749-x-700-x-701.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_129-x-glomerulus-x-67186-x-95330-x-651-x-650.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_13-x-glomerulus-x-74101-x-167617-x-1020-x-1020.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_130-x-glomerulus-x-49417-x-184658-x-626-x-626.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_131-x-glomerulus-x-75113-x-74850-x-1035-x-1034.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_132-x-glomerulus-x-40987-x-90314-x-836-x-835.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_133-x-glomerulus-x-41412-x-184909-x-779-x-778.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_134-x-glomerulus-x-53978-x-92844-x-705-x-705.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_135-x-glomerulus-x-69623-x-181298-x-657-x-656.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_136-x-glomerulus-x-64897-x-184059-x-640-x-640.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_137-x-glomerulus-x-58567-x-94411-x-764-x-764.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_138-x-glomerulus-x-65923-x-183118-x-630-x-630.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_139-x-glomerulus-x-39131-x-92205-x-685-x-685.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_14-x-glomerulus-x-62050-x-175718-x-683-x-683.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_140-x-glomerulus-x-73425-x-89909-x-624-x-624.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_141-x-glomerulus-x-75104-x-90638-x-690-x-690.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_142-x-glomerulus-x-82950-x-79907-x-711-x-711.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_143-x-glomerulus-x-75193-x-75740-x-923-x-924.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_144-x-glomerulus-x-61589-x-99609-x-680-x-680.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_145-x-glomerulus-x-74539-x-85949-x-657-x-658.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_146-x-glomerulus-x-78045-x-86927-x-735-x-735.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_147-x-glomerulus-x-37240-x-94345-x-1006-x-1006.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_148-x-glomerulus-x-62707-x-99783-x-640-x-640.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_149-x-glomerulus-x-77959-x-67269-x-764-x-764.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_15-x-glomerulus-x-76029-x-153599-x-762-x-763.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_150-x-glomerulus-x-35214-x-179182-x-689-x-689.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_151-x-glomerulus-x-75806-x-91828-x-673-x-672.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_152-x-glomerulus-x-47903-x-183948-x-709-x-709.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_153-x-glomerulus-x-77128-x-153798-x-626-x-625.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_154-x-glomerulus-x-64924-x-96951-x-744-x-744.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_155-x-glomerulus-x-69612-x-149699-x-752-x-752.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_156-x-glomerulus-x-63549-x-99125-x-735-x-735.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_157-x-glomerulus-x-78394-x-93729-x-650-x-651.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_158-x-glomerulus-x-76227-x-153037-x-727-x-727.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_159-x-glomerulus-x-73860-x-165980-x-986-x-986.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_16-x-glomerulus-x-63144-x-181171-x-671-x-672.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_160-x-glomerulus-x-65311-x-98969-x-675-x-675.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_161-x-glomerulus-x-80873-x-155186-x-651-x-650.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_162-x-glomerulus-x-71377-x-62068-x-741-x-741.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_163-x-glomerulus-x-43225-x-97972-x-744-x-744.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_164-x-glomerulus-x-56033-x-100499-x-736-x-736.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_165-x-glomerulus-x-52712-x-94174-x-652-x-652.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_166-x-glomerulus-x-82117-x-83260-x-798-x-798.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_167-x-glomerulus-x-61830-x-177897-x-779-x-779.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_168-x-glomerulus-x-76874-x-154530-x-835-x-834.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_169-x-glomerulus-x-66620-x-182213-x-664-x-664.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_17-x-glomerulus-x-61218-x-91917-x-701-x-700.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_170-x-glomerulus-x-77498-x-69855-x-669-x-669.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_171-x-glomerulus-x-75970-x-177781-x-625-x-625.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_172-x-glomerulus-x-60901-x-94210-x-777-x-777.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_173-x-glomerulus-x-49516-x-101228-x-697-x-697.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_174-x-glomerulus-x-71153-x-95117-x-632-x-632.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_175-x-glomerulus-x-67602-x-93427-x-757-x-756.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_176-x-glomerulus-x-37282-x-89660-x-1057-x-1056.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_177-x-glomerulus-x-38973-x-183603-x-681-x-682.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_178-x-glomerulus-x-64860-x-176605-x-668-x-669.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_179-x-glomerulus-x-65987-x-99913-x-637-x-637.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_18-x-glomerulus-x-81436-x-165091-x-698-x-698.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_180-x-glomerulus-x-74177-x-170971-x-871-x-872.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_181-x-glomerulus-x-37660-x-98649-x-672-x-673.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_182-x-glomerulus-x-81195-x-155956-x-696-x-696.png,Global solidified glomerulosclerosis,2
+22862_2017-04-08 11_59_04-x-ROI_183-x-glomerulus-x-45218-x-93343-x-728-x-729.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_184-x-glomerulus-x-72015-x-155979-x-905-x-904.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_185-x-glomerulus-x-65646-x-89460-x-660-x-659.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_186-x-glomerulus-x-70521-x-166836-x-745-x-745.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_187-x-glomerulus-x-74719-x-84891-x-740-x-740.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_188-x-glomerulus-x-80803-x-72241-x-685-x-684.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_189-x-glomerulus-x-78316-x-165932-x-644-x-644.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_19-x-glomerulus-x-82406-x-166393-x-809-x-809.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_190-x-glomerulus-x-80134-x-88614-x-715-x-715.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_191-x-glomerulus-x-64851-x-182491-x-681-x-681.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_192-x-glomerulus-x-80729-x-171637-x-753-x-754.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_193-x-glomerulus-x-74018-x-66752-x-663-x-664.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_194-x-glomerulus-x-72178-x-178231-x-628-x-629.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_195-x-glomerulus-x-81739-x-172377-x-628-x-629.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_196-x-glomerulus-x-53709-x-178454-x-690-x-689.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_197-x-glomerulus-x-43330-x-95846-x-905-x-905.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_198-x-glomerulus-x-43204-x-99054-x-669-x-669.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_199-x-glomerulus-x-74963-x-94777-x-627-x-626.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_2-x-glomerulus-x-35307-x-92708-x-1073-x-1073.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_20-x-glomerulus-x-53280-x-183219-x-913-x-913.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_200-x-glomerulus-x-45127-x-184612-x-585-x-586.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_201-x-glomerulus-x-57056-x-179879-x-657-x-658.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_202-x-glomerulus-x-80752-x-162100-x-767-x-767.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_203-x-glomerulus-x-76512-x-67421-x-780-x-781.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_204-x-glomerulus-x-55439-x-180723-x-775-x-775.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_205-x-glomerulus-x-38601-x-181468-x-594-x-593.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_206-x-glomerulus-x-77218-x-70652-x-793-x-793.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_207-x-glomerulus-x-83261-x-76291-x-663-x-663.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_208-x-glomerulus-x-54315-x-96587-x-761-x-761.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_209-x-glomerulus-x-78430-x-93145-x-674-x-674.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_21-x-glomerulus-x-74027-x-161766-x-1092-x-1092.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_210-x-glomerulus-x-77033-x-65204-x-683-x-683.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_211-x-glomerulus-x-78560-x-170133-x-736-x-736.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_212-x-glomerulus-x-78501-x-92417-x-600-x-600.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_213-x-glomerulus-x-67717-x-92299-x-640-x-639.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_214-x-glomerulus-x-48077-x-100261-x-570-x-569.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_215-x-glomerulus-x-79688-x-82061-x-774-x-774.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_216-x-glomerulus-x-36624-x-86036-x-974-x-974.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_217-x-glomerulus-x-80994-x-158715-x-682-x-682.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_218-x-glomerulus-x-38322-x-179432-x-929-x-928.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_219-x-glomerulus-x-37480-x-174380-x-714-x-714.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_22-x-glomerulus-x-33208-x-178316-x-1026-x-1027.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_220-x-glomerulus-x-72021-x-97193-x-556-x-555.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_221-x-glomerulus-x-69605-x-68949-x-675-x-675.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_222-x-glomerulus-x-83050-x-163140-x-724-x-724.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_223-x-glomerulus-x-79352-x-175383-x-606-x-605.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_224-x-glomerulus-x-70745-x-181703-x-605-x-605.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_225-x-glomerulus-x-56665-x-92002-x-732-x-732.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_226-x-glomerulus-x-40454-x-93731-x-653-x-653.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_227-x-glomerulus-x-80357-x-70506-x-573-x-573.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_228-x-glomerulus-x-68858-x-98782-x-547-x-547.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_229-x-glomerulus-x-74579-x-150361-x-572-x-572.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_23-x-glomerulus-x-59521-x-178307-x-768-x-769.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_230-x-glomerulus-x-43584-x-100595-x-625-x-625.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_231-x-glomerulus-x-79983-x-154267-x-570-x-569.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_232-x-glomerulus-x-79936-x-165347-x-784-x-784.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_233-x-glomerulus-x-80744-x-90045-x-655-x-654.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_234-x-glomerulus-x-50907-x-185537-x-724-x-724.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_235-x-glomerulus-x-81548-x-72350-x-609-x-608.png,Global solidified glomerulosclerosis,2
+22862_2017-04-08 11_59_04-x-ROI_236-x-glomerulus-x-71717-x-179201-x-675-x-675.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_237-x-glomerulus-x-68409-x-98238-x-676-x-676.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_238-x-glomerulus-x-75021-x-169334-x-642-x-641.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_239-x-glomerulus-x-68492-x-176143-x-830-x-830.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_24-x-glomerulus-x-74920-x-158624-x-1058-x-1058.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_240-x-glomerulus-x-76707-x-69108-x-673-x-673.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_241-x-glomerulus-x-75171-x-153454-x-932-x-932.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_242-x-glomerulus-x-37635-x-88811-x-613-x-613.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_243-x-glomerulus-x-79498-x-91046-x-631-x-630.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_244-x-glomerulus-x-76399-x-149296-x-697-x-697.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_245-x-glomerulus-x-74187-x-95943-x-587-x-586.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_246-x-glomerulus-x-64859-x-180856-x-676-x-677.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_247-x-glomerulus-x-69572-x-174308-x-792-x-793.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_248-x-glomerulus-x-67175-x-94146-x-666-x-666.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_249-x-glomerulus-x-79283-x-91454-x-673-x-672.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_25-x-glomerulus-x-76436-x-69651-x-746-x-745.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_250-x-glomerulus-x-32144-x-91879-x-753-x-753.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_251-x-glomerulus-x-34592-x-91844-x-592-x-592.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_252-x-glomerulus-x-44291-x-184396-x-510-x-510.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_253-x-glomerulus-x-84102-x-167048-x-600-x-600.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_254-x-glomerulus-x-68829-x-90927-x-748-x-748.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_255-x-glomerulus-x-81429-x-172978-x-697-x-697.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_256-x-glomerulus-x-81089-x-89434-x-604-x-605.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_257-x-glomerulus-x-63430-x-182379-x-648-x-648.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_258-x-glomerulus-x-81389-x-88574-x-627-x-627.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_259-x-glomerulus-x-70108-x-178152-x-662-x-662.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_26-x-glomerulus-x-54697-x-98521-x-976-x-976.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_260-x-glomerulus-x-70092-x-71714-x-636-x-637.png,Global disappearing glomerulosclerosis,3
+22862_2017-04-08 11_59_04-x-ROI_261-x-glomerulus-x-75167-x-66192-x-603-x-604.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_262-x-glomerulus-x-76368-x-70956-x-704-x-704.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_263-x-glomerulus-x-71120-x-164947-x-894-x-895.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_264-x-glomerulus-x-63386-x-176880-x-746-x-746.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_265-x-glomerulus-x-64723-x-98422-x-685-x-685.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_266-x-glomerulus-x-33271-x-177089-x-731-x-731.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_267-x-glomerulus-x-36945-x-99433-x-703-x-704.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_268-x-glomerulus-x-62245-x-100387-x-594-x-594.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_269-x-glomerulus-x-61172-x-97995-x-637-x-637.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_27-x-glomerulus-x-61425-x-90985-x-901-x-901.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_270-x-glomerulus-x-63675-x-183785-x-529-x-529.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_271-x-glomerulus-x-78907-x-89523-x-690-x-691.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_272-x-glomerulus-x-75995-x-154867-x-710-x-710.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_273-x-glomerulus-x-46263-x-178137-x-680-x-680.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_274-x-glomerulus-x-71461-x-82024-x-670-x-670.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_275-x-glomerulus-x-68911-x-99382-x-557-x-557.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_276-x-glomerulus-x-69768-x-155873-x-592-x-591.png,Global disappearing glomerulosclerosis,3
+22862_2017-04-08 11_59_04-x-ROI_277-x-glomerulus-x-72683-x-179372-x-781-x-782.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_278-x-glomerulus-x-71195-x-84284-x-747-x-747.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_279-x-glomerulus-x-64390-x-99385-x-649-x-649.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_28-x-glomerulus-x-72526-x-76164-x-997-x-997.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_280-x-glomerulus-x-78879-x-74687-x-982-x-982.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_281-x-glomerulus-x-68415-x-182112-x-738-x-739.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_282-x-glomerulus-x-68059-x-94063-x-620-x-620.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_283-x-glomerulus-x-78083-x-82593-x-596-x-597.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_284-x-glomerulus-x-80082-x-158000-x-629-x-629.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_285-x-glomerulus-x-42920-x-99672-x-535-x-534.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_286-x-glomerulus-x-73715-x-152072-x-654-x-654.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_287-x-glomerulus-x-79321-x-176667-x-684-x-684.png,Global solidified glomerulosclerosis,2
+22862_2017-04-08 11_59_04-x-ROI_288-x-glomerulus-x-78667-x-177441-x-596-x-595.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_289-x-glomerulus-x-80450-x-71503-x-594-x-594.png,Global solidified glomerulosclerosis,2
+22862_2017-04-08 11_59_04-x-ROI_29-x-glomerulus-x-80207-x-166736-x-994-x-994.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_290-x-glomerulus-x-35083-x-98130-x-688-x-688.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_291-x-glomerulus-x-68168-x-177502-x-657-x-658.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_292-x-glomerulus-x-73577-x-82499-x-965-x-966.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_293-x-glomerulus-x-75170-x-168334-x-651-x-651.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_294-x-glomerulus-x-66326-x-173103-x-627-x-627.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_295-x-glomerulus-x-56004-x-182562-x-992-x-992.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_296-x-glomerulus-x-44486-x-180598-x-885-x-885.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_297-x-glomerulus-x-82012-x-171572-x-618-x-619.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_298-x-glomerulus-x-53831-x-101005-x-648-x-647.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_299-x-glomerulus-x-62174-x-98943-x-609-x-610.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_3-x-glomerulus-x-54292-x-97428-x-838-x-838.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_30-x-glomerulus-x-33900-x-95658-x-909-x-909.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_300-x-glomerulus-x-49583-x-92353-x-698-x-698.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_301-x-glomerulus-x-56429-x-94754-x-1045-x-1044.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_302-x-glomerulus-x-66451-x-147059-x-560-x-560.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_303-x-glomerulus-x-80217-x-91942-x-581-x-581.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_304-x-glomerulus-x-81139-x-75218-x-667-x-667.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_305-x-glomerulus-x-61352-x-184786-x-583-x-582.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_306-x-glomerulus-x-75980-x-151463-x-781-x-781.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_307-x-glomerulus-x-63482-x-100756-x-628-x-629.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_308-x-glomerulus-x-54894-x-177079-x-694-x-694.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_309-x-glomerulus-x-79739-x-155438-x-622-x-623.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_31-x-glomerulus-x-65502-x-180949-x-708-x-707.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_310-x-glomerulus-x-61722-x-180200-x-574-x-574.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_311-x-glomerulus-x-80835-x-70557-x-591-x-592.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_312-x-glomerulus-x-50791-x-96132-x-905-x-904.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_313-x-glomerulus-x-38402-x-178250-x-597-x-596.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_314-x-glomerulus-x-51504-x-179811-x-654-x-655.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_315-x-glomerulus-x-75818-x-173822-x-721-x-721.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_316-x-glomerulus-x-68124-x-62164-x-852-x-853.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_317-x-glomerulus-x-83394-x-78595-x-591-x-591.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_318-x-glomerulus-x-82862-x-86501-x-650-x-650.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_319-x-glomerulus-x-78480-x-176531-x-565-x-566.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_32-x-glomerulus-x-68793-x-96429-x-787-x-787.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_320-x-glomerulus-x-46099-x-175503-x-986-x-986.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_321-x-glomerulus-x-34049-x-94013-x-715-x-715.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_322-x-glomerulus-x-42313-x-180874-x-656-x-656.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_323-x-glomerulus-x-55245-x-185036-x-652-x-652.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_324-x-glomerulus-x-71602-x-167949-x-695-x-695.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_325-x-glomerulus-x-69132-x-153218-x-625-x-624.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_326-x-glomerulus-x-43282-x-101005-x-613-x-612.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_327-x-glomerulus-x-70237-x-85589-x-594-x-594.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_328-x-glomerulus-x-83598-x-163594-x-603-x-604.png,Wire loop,-1
+22862_2017-04-08 11_59_04-x-ROI_329-x-glomerulus-x-62513-x-182348-x-703-x-702.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_33-x-glomerulus-x-39796-x-179304-x-931-x-931.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_330-x-glomerulus-x-70089-x-181828-x-534-x-534.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_331-x-glomerulus-x-74258-x-73084-x-594-x-594.png,Global disappearing glomerulosclerosis,3
+22862_2017-04-08 11_59_04-x-ROI_332-x-glomerulus-x-43799-x-184442-x-625-x-626.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_333-x-glomerulus-x-80044-x-71748-x-580-x-580.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_334-x-glomerulus-x-42380-x-99637-x-690-x-690.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_335-x-glomerulus-x-67127-x-98994-x-749-x-749.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_336-x-glomerulus-x-42058-x-98825-x-648-x-647.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_337-x-glomerulus-x-81181-x-71482-x-676-x-676.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_338-x-glomerulus-x-80094-x-174466-x-611-x-611.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_339-x-glomerulus-x-65291-x-100322-x-584-x-583.png,Global solidified glomerulosclerosis,2
+22862_2017-04-08 11_59_04-x-ROI_34-x-glomerulus-x-72355-x-71891-x-966-x-967.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_340-x-glomerulus-x-73881-x-156893-x-738-x-738.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_341-x-glomerulus-x-75609-x-69398-x-981-x-982.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_342-x-glomerulus-x-69048-x-94923-x-687-x-687.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_343-x-glomerulus-x-64544-x-99842-x-660-x-661.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_344-x-glomerulus-x-41673-x-92131-x-638-x-638.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_345-x-glomerulus-x-66204-x-92277-x-548-x-547.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_346-x-glomerulus-x-77493-x-174202-x-610-x-609.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_347-x-glomerulus-x-62351-x-181555-x-635-x-634.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_348-x-glomerulus-x-45832-x-93086-x-593-x-594.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_349-x-glomerulus-x-78985-x-89961-x-719-x-719.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_35-x-glomerulus-x-75656-x-79968-x-978-x-978.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_350-x-glomerulus-x-83168-x-159710-x-663-x-662.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_351-x-glomerulus-x-74008-x-180985-x-602-x-602.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_352-x-glomerulus-x-74222-x-67910-x-654-x-653.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_353-x-glomerulus-x-73450-x-150958-x-632-x-633.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_354-x-glomerulus-x-78745-x-67610-x-472-x-473.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_355-x-glomerulus-x-47089-x-97642-x-636-x-636.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_356-x-glomerulus-x-41904-x-175304-x-784-x-784.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_357-x-glomerulus-x-51163-x-100762-x-745-x-745.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_358-x-glomerulus-x-81015-x-174845-x-643-x-644.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_359-x-glomerulus-x-72622-x-94679-x-703-x-702.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_36-x-glomerulus-x-66068-x-88764-x-881-x-881.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_360-x-glomerulus-x-77724-x-94516-x-556-x-556.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_361-x-glomerulus-x-80475-x-154302-x-595-x-595.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_362-x-glomerulus-x-67735-x-146263-x-737-x-738.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_363-x-glomerulus-x-37381-x-96455-x-579-x-578.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_364-x-glomerulus-x-60617-x-96518-x-586-x-587.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_365-x-glomerulus-x-37364-x-93200-x-560-x-560.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_366-x-glomerulus-x-77924-x-80298-x-808-x-808.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_367-x-glomerulus-x-54525-x-99064-x-489-x-489.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_368-x-glomerulus-x-77556-x-93580-x-565-x-565.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_369-x-glomerulus-x-83750-x-83982-x-563-x-564.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_37-x-glomerulus-x-74096-x-173163-x-677-x-677.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_370-x-glomerulus-x-78141-x-66397-x-537-x-537.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_371-x-glomerulus-x-37341-x-171218-x-957-x-957.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_372-x-glomerulus-x-75704-x-88073-x-603-x-604.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_373-x-glomerulus-x-79383-x-176142-x-585-x-585.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_374-x-glomerulus-x-66661-x-183528-x-536-x-536.png,Global solidified glomerulosclerosis,2
+22862_2017-04-08 11_59_04-x-ROI_375-x-glomerulus-x-77181-x-169408-x-671-x-671.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_376-x-glomerulus-x-72368-x-160056-x-1021-x-1021.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_377-x-glomerulus-x-67299-x-183074-x-707-x-708.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_378-x-glomerulus-x-72718-x-97517-x-439-x-439.png,Global disappearing glomerulosclerosis,3
+22862_2017-04-08 11_59_04-x-ROI_379-x-glomerulus-x-45125-x-94145-x-711-x-711.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_38-x-glomerulus-x-70646-x-77771-x-1078-x-1077.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_380-x-glomerulus-x-65060-x-95618-x-527-x-528.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_381-x-glomerulus-x-70185-x-182383-x-576-x-577.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_382-x-glomerulus-x-72387-x-172563-x-750-x-750.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_383-x-glomerulus-x-77050-x-173925-x-553-x-553.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_384-x-glomerulus-x-76287-x-90802-x-543-x-542.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_385-x-glomerulus-x-68539-x-169663-x-677-x-676.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_386-x-glomerulus-x-80703-x-78704-x-776-x-776.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_387-x-glomerulus-x-46849-x-177791-x-600-x-600.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_388-x-glomerulus-x-79627-x-92132-x-528-x-527.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_389-x-glomerulus-x-76429-x-150587-x-594-x-594.png,Wire loop,-1
+22862_2017-04-08 11_59_04-x-ROI_39-x-glomerulus-x-80590-x-172704-x-723-x-723.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_390-x-glomerulus-x-62048-x-95755-x-592-x-592.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_391-x-glomerulus-x-79843-x-83490-x-962-x-962.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_392-x-glomerulus-x-76656-x-174876-x-622-x-623.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_393-x-glomerulus-x-66075-x-178979-x-555-x-555.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_394-x-glomerulus-x-76637-x-86047-x-738-x-738.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_395-x-glomerulus-x-73610-x-177742-x-724-x-724.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_396-x-glomerulus-x-73448-x-156458-x-587-x-587.png,Global solidified glomerulosclerosis,2
+22862_2017-04-08 11_59_04-x-ROI_397-x-glomerulus-x-72395-x-97863-x-453-x-453.png,Global disappearing glomerulosclerosis,3
+22862_2017-04-08 11_59_04-x-ROI_398-x-glomerulus-x-77737-x-90908-x-676-x-676.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_399-x-glomerulus-x-50769-x-100358-x-473-x-474.png,Wire loop,-1
+22862_2017-04-08 11_59_04-x-ROI_4-x-glomerulus-x-74121-x-172502-x-882-x-882.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_40-x-glomerulus-x-41525-x-178673-x-660-x-660.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_400-x-glomerulus-x-68093-x-86043-x-668-x-668.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_401-x-glomerulus-x-52616-x-185036-x-641-x-642.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_402-x-glomerulus-x-53873-x-179791-x-1013-x-1014.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_403-x-glomerulus-x-39128-x-179681-x-611-x-611.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_404-x-glomerulus-x-44954-x-185275-x-620-x-619.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_405-x-glomerulus-x-44672-x-185665-x-661-x-660.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_406-x-glomerulus-x-80187-x-155247-x-491-x-490.png,Global solidified glomerulosclerosis,2
+22862_2017-04-08 11_59_04-x-ROI_407-x-glomerulus-x-64374-x-91673-x-533-x-532.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_408-x-glomerulus-x-73694-x-97168-x-429-x-429.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_409-x-glomerulus-x-77543-x-150411-x-581-x-581.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_41-x-glomerulus-x-66760-x-172390-x-855-x-855.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_410-x-glomerulus-x-59948-x-98865-x-509-x-509.png,Global disappearing glomerulosclerosis,3
+22862_2017-04-08 11_59_04-x-ROI_411-x-glomerulus-x-48341-x-182147-x-717-x-718.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_412-x-glomerulus-x-30404-x-94513-x-896-x-896.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_413-x-glomerulus-x-78002-x-93286-x-581-x-581.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_414-x-glomerulus-x-59844-x-101252-x-620-x-619.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_415-x-glomerulus-x-79719-x-176966-x-462-x-462.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_416-x-glomerulus-x-78681-x-153773-x-625-x-625.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_417-x-glomerulus-x-78228-x-151542-x-500-x-499.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_418-x-glomerulus-x-62221-x-174770-x-889-x-889.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_419-x-glomerulus-x-77014-x-66529-x-598-x-597.png,Wire loop,-1
+22862_2017-04-08 11_59_04-x-ROI_42-x-glomerulus-x-62494-x-93211-x-727-x-727.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_420-x-glomerulus-x-83036-x-170176-x-472-x-472.png,Global disappearing glomerulosclerosis,3
+22862_2017-04-08 11_59_04-x-ROI_421-x-glomerulus-x-36056-x-183874-x-547-x-546.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_422-x-glomerulus-x-59389-x-94612-x-486-x-486.png,Wire loop,-1
+22862_2017-04-08 11_59_04-x-ROI_423-x-glomerulus-x-68567-x-175769-x-618-x-619.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_424-x-glomerulus-x-78743-x-158353-x-954-x-954.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_425-x-glomerulus-x-34681-x-98786-x-667-x-666.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_426-x-glomerulus-x-78777-x-94045-x-479-x-479.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_427-x-glomerulus-x-71787-x-149567-x-1047-x-1047.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_428-x-glomerulus-x-69155-x-182514-x-681-x-681.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_429-x-glomerulus-x-38019-x-94671-x-606-x-605.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_43-x-glomerulus-x-50527-x-176870-x-666-x-666.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_430-x-glomerulus-x-83191-x-161060-x-652-x-652.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_431-x-glomerulus-x-69070-x-61764-x-498-x-497.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_432-x-glomerulus-x-64039-x-180269-x-702-x-702.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_433-x-glomerulus-x-52361-x-185257-x-525-x-525.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_434-x-glomerulus-x-79121-x-69954-x-571-x-571.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_435-x-glomerulus-x-58698-x-177418-x-649-x-649.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_436-x-glomerulus-x-70906-x-173899-x-644-x-644.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_437-x-glomerulus-x-75759-x-158956-x-1036-x-1036.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_438-x-glomerulus-x-50469-x-95459-x-588-x-587.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_439-x-glomerulus-x-38598-x-100632-x-619-x-619.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_44-x-glomerulus-x-63952-x-93021-x-690-x-691.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_440-x-glomerulus-x-71768-x-89266-x-617-x-616.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_441-x-glomerulus-x-67834-x-99520-x-534-x-535.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_442-x-glomerulus-x-65177-x-175290-x-481-x-481.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_443-x-glomerulus-x-83119-x-77711-x-698-x-698.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_444-x-glomerulus-x-69016-x-177388-x-625-x-626.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_445-x-glomerulus-x-70778-x-90139-x-668-x-668.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_446-x-glomerulus-x-73162-x-180235-x-580-x-580.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_447-x-glomerulus-x-40012-x-185545-x-579-x-579.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_448-x-glomerulus-x-40840-x-101133-x-457-x-457.png,Global disappearing glomerulosclerosis,3
+22862_2017-04-08 11_59_04-x-ROI_449-x-glomerulus-x-65549-x-184012-x-511-x-511.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_45-x-glomerulus-x-83398-x-161866-x-618-x-619.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_450-x-glomerulus-x-68386-x-146327-x-461-x-461.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_451-x-glomerulus-x-54548-x-179634-x-541-x-541.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_452-x-glomerulus-x-83460-x-169549-x-528-x-528.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_453-x-glomerulus-x-76392-x-90416-x-576-x-576.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_454-x-glomerulus-x-57775-x-93465-x-653-x-653.png,Wire loop,-1
+22862_2017-04-08 11_59_04-x-ROI_455-x-glomerulus-x-80825-x-87244-x-557-x-557.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_456-x-glomerulus-x-68444-x-61691-x-670-x-670.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_457-x-glomerulus-x-79547-x-156196-x-518-x-518.png,Global disappearing glomerulosclerosis,3
+22862_2017-04-08 11_59_04-x-ROI_458-x-glomerulus-x-78341-x-152106-x-529-x-528.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_459-x-glomerulus-x-42689-x-177036-x-588-x-588.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_46-x-glomerulus-x-74034-x-78066-x-1064-x-1064.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_460-x-glomerulus-x-69863-x-99094-x-565-x-564.png,Wire loop,-1
+22862_2017-04-08 11_59_04-x-ROI_461-x-glomerulus-x-40167-x-177270-x-577-x-577.png,Global disappearing glomerulosclerosis,3
+22862_2017-04-08 11_59_04-x-ROI_462-x-glomerulus-x-73602-x-180869-x-409-x-409.png,Global disappearing glomerulosclerosis,3
+22862_2017-04-08 11_59_04-x-ROI_463-x-glomerulus-x-67031-x-175773-x-565-x-564.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_464-x-glomerulus-x-53440-x-101537-x-789-x-790.png,Global disappearing glomerulosclerosis,3
+22862_2017-04-08 11_59_04-x-ROI_465-x-glomerulus-x-46571-x-99426-x-666-x-665.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_466-x-glomerulus-x-78323-x-159476-x-1184-x-1183.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_467-x-glomerulus-x-70657-x-169201-x-531-x-530.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_468-x-glomerulus-x-40115-x-97290-x-625-x-625.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_469-x-glomerulus-x-35736-x-177072-x-439-x-439.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_47-x-glomerulus-x-38302-x-184400-x-718-x-718.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_470-x-glomerulus-x-64128-x-100725-x-532-x-532.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_471-x-glomerulus-x-38767-x-184946-x-760-x-759.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_472-x-glomerulus-x-69058-x-96025-x-440-x-418.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_473-x-glomerulus-x-79682-x-173053-x-638-x-600.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_474-x-glomerulus-x-78426-x-87957-x-382-x-456.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_475-x-glomerulus-x-75316-x-92069-x-714-x-820.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_476-x-glomerulus-x-79024-x-171141-x-408-x-432.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_477-x-glomerulus-x-37466-x-100065-x-598-x-642.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_478-x-glomerulus-x-78788-x-177083-x-364-x-380.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_479-x-glomerulus-x-78910-x-176229-x-580-x-602.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_48-x-glomerulus-x-51978-x-180502-x-828-x-828.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_480-x-glomerulus-x-51016-x-101033-x-448-x-446.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_481-x-glomerulus-x-73268-x-94911-x-546-x-490.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_482-x-glomerulus-x-72792-x-98013-x-618-x-594.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_483-x-glomerulus-x-77140-x-173543-x-616-x-544.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_484-x-glomerulus-x-76146-x-175167-x-748-x-710.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_485-x-glomerulus-x-73866-x-180437-x-456-x-506.png,Global disappearing glomerulosclerosis,3
+22862_2017-04-08 11_59_04-x-ROI_486-x-glomerulus-x-52655-x-95446-x-1207-x-1208.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_487-x-glomerulus-x-62893-x-96769-x-730-x-730.png,Wire loop,-1
+22862_2017-04-08 11_59_04-x-ROI_488-x-glomerulus-x-62072-x-87748-x-694-x-694.png,Wire loop,-1
+22862_2017-04-08 11_59_04-x-ROI_489-x-glomerulus-x-70914-x-98485-x-735-x-735.png,Wire loop,-1
+22862_2017-04-08 11_59_04-x-ROI_49-x-glomerulus-x-77668-x-152881-x-671-x-672.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_490-x-glomerulus-x-78717-x-84404-x-968-x-968.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_491-x-glomerulus-x-77590-x-85366-x-714-x-714.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_492-x-glomerulus-x-78292-x-75668-x-1284-x-1284.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_493-x-glomerulus-x-79956-x-75457-x-676-x-676.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_494-x-glomerulus-x-79845-x-72536-x-418-x-419.png,Global disappearing glomerulosclerosis,3
+22862_2017-04-08 11_59_04-x-ROI_495-x-glomerulus-x-79690-x-72172-x-444-x-443.png,Global disappearing glomerulosclerosis,3
+22862_2017-04-08 11_59_04-x-ROI_496-x-glomerulus-x-72154-x-64977-x-1442-x-1443.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_497-x-glomerulus-x-38034-x-174607-x-1244-x-1243.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_498-x-glomerulus-x-35005-x-180701-x-1182-x-1182.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_499-x-glomerulus-x-31714-x-179670-x-650-x-650.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_5-x-glomerulus-x-38639-x-91446-x-896-x-895.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_50-x-glomerulus-x-57547-x-176100-x-706-x-706.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_500-x-glomerulus-x-41340-x-182185-x-713-x-713.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_501-x-glomerulus-x-61226-x-182436-x-532-x-533.png,Global disappearing glomerulosclerosis,3
+22862_2017-04-08 11_59_04-x-ROI_502-x-glomerulus-x-63100-x-179337-x-608-x-608.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_503-x-glomerulus-x-71104-x-180621-x-596-x-596.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_504-x-glomerulus-x-70612-x-176973-x-636-x-636.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_505-x-glomerulus-x-74764-x-180037-x-580-x-580.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_506-x-glomerulus-x-75240-x-178953-x-532-x-532.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_507-x-glomerulus-x-78556-x-173925-x-524-x-524.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_508-x-glomerulus-x-78488-x-175929-x-540-x-540.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_509-x-glomerulus-x-79096-x-167677-x-992-x-992.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_51-x-glomerulus-x-73772-x-84231-x-962-x-962.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_510-x-glomerulus-x-77964-x-168489-x-832-x-832.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_511-x-glomerulus-x-76888-x-170617-x-704-x-704.png,Wire loop,-1
+22862_2017-04-08 11_59_04-x-ROI_512-x-glomerulus-x-81347-x-170225-x-611-x-611.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_513-x-glomerulus-x-79862-x-159010-x-642-x-642.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_52-x-glomerulus-x-44516-x-182759-x-709-x-709.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_53-x-glomerulus-x-67622-x-92778-x-831-x-832.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_54-x-glomerulus-x-66500-x-91847-x-727-x-727.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_55-x-glomerulus-x-70231-x-65238-x-741-x-741.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_56-x-glomerulus-x-40781-x-98110-x-844-x-844.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_57-x-glomerulus-x-81155-x-81859-x-777-x-776.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_58-x-glomerulus-x-69502-x-98681-x-640-x-641.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_59-x-glomerulus-x-78015-x-163672-x-863-x-862.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_6-x-glomerulus-x-73621-x-87628-x-850-x-850.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_60-x-glomerulus-x-68581-x-176790-x-692-x-692.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_61-x-glomerulus-x-82034-x-85097-x-777-x-777.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_62-x-glomerulus-x-43795-x-177393-x-829-x-829.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_63-x-glomerulus-x-36892-x-98092-x-797-x-797.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_64-x-glomerulus-x-70174-x-90531-x-585-x-585.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_65-x-glomerulus-x-42131-x-182962-x-826-x-826.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_66-x-glomerulus-x-82457-x-168195-x-737-x-737.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_67-x-glomerulus-x-70692-x-146532-x-705-x-705.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_68-x-glomerulus-x-66080-x-180307-x-715-x-714.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_69-x-glomerulus-x-75847-x-172522-x-916-x-915.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_7-x-glomerulus-x-71294-x-177528-x-886-x-887.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_70-x-glomerulus-x-36371-x-183177-x-736-x-735.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_71-x-glomerulus-x-78115-x-68965-x-703-x-703.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_72-x-glomerulus-x-77352-x-82486-x-681-x-681.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_73-x-glomerulus-x-64316-x-97596-x-733-x-733.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_74-x-glomerulus-x-38668-x-94303-x-947-x-947.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_75-x-glomerulus-x-65969-x-181738-x-689-x-688.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_76-x-glomerulus-x-42776-x-92537-x-814-x-814.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_77-x-glomerulus-x-38464-x-173879-x-626-x-626.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_78-x-glomerulus-x-40485-x-91052-x-807-x-807.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_79-x-glomerulus-x-41153-x-96006-x-614-x-614.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_8-x-glomerulus-x-76164-x-88303-x-768-x-768.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_80-x-glomerulus-x-79584-x-172570-x-690-x-689.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_81-x-glomerulus-x-65368-x-177430-x-720-x-720.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_82-x-glomerulus-x-75069-x-159478-x-927-x-927.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_83-x-glomerulus-x-80267-x-174024-x-640-x-640.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_84-x-glomerulus-x-76801-x-171551-x-723-x-723.png,Global obsolescent glomerulosclerosis,1
+22862_2017-04-08 11_59_04-x-ROI_85-x-glomerulus-x-69886-x-179600-x-730-x-730.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_86-x-glomerulus-x-71646-x-96440-x-664-x-664.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_87-x-glomerulus-x-70986-x-81267-x-876-x-876.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_88-x-glomerulus-x-38216-x-183111-x-751-x-751.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_89-x-glomerulus-x-75167-x-89302-x-935-x-935.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_9-x-glomerulus-x-32033-x-93085-x-1089-x-1088.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_90-x-glomerulus-x-76533-x-156154-x-999-x-998.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_91-x-glomerulus-x-70170-x-86660-x-830-x-831.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_92-x-glomerulus-x-63698-x-97441-x-686-x-686.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_93-x-glomerulus-x-36641-x-89262-x-662-x-662.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_94-x-glomerulus-x-75883-x-75199-x-1035-x-1036.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_95-x-glomerulus-x-61270-x-98841-x-681-x-681.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_96-x-glomerulus-x-70331-x-94361-x-864-x-864.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_97-x-glomerulus-x-75812-x-163553-x-917-x-917.png,Normal,0
+22862_2017-04-08 11_59_04-x-ROI_98-x-glomerulus-x-44556-x-183802-x-628-x-628.png,Periglomerular fibrosis,4
+22862_2017-04-08 11_59_04-x-ROI_99-x-glomerulus-x-57423-x-184377-x-753-x-753.png,Global obsolescent glomerulosclerosis,1
+23498_2017-04-07 20_05_38-x-ROI_0-x-glomerulus-x-85848-x-138429-x-1037-x-1037.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_1-x-glomerulus-x-91651-x-65827-x-969-x-969.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_10-x-glomerulus-x-75421-x-142696-x-930-x-930.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_100-x-glomerulus-x-81729-x-74552-x-954-x-953.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_101-x-glomerulus-x-62776-x-80380-x-894-x-894.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_102-x-glomerulus-x-91822-x-67700-x-889-x-889.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_103-x-glomerulus-x-39672-x-154172-x-871-x-870.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_104-x-glomerulus-x-76655-x-142484-x-879-x-880.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_105-x-glomerulus-x-79522-x-142328-x-916-x-916.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_106-x-glomerulus-x-88042-x-147962-x-880-x-880.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_107-x-glomerulus-x-92621-x-60407-x-799-x-800.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_108-x-glomerulus-x-84670-x-148638-x-944-x-945.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_109-x-glomerulus-x-85608-x-136772-x-736-x-736.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_11-x-glomerulus-x-66711-x-78318-x-937-x-936.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_110-x-glomerulus-x-80174-x-146835-x-622-x-622.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_111-x-glomerulus-x-52440-x-77955-x-936-x-936.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_112-x-glomerulus-x-86247-x-66562-x-923-x-923.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_113-x-glomerulus-x-85063-x-72724-x-724-x-724.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_114-x-glomerulus-x-46385-x-155771-x-1043-x-1042.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_115-x-glomerulus-x-78141-x-135422-x-742-x-742.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_116-x-glomerulus-x-100219-x-67045-x-987-x-987.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_117-x-glomerulus-x-85812-x-137202-x-960-x-960.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_118-x-glomerulus-x-76927-x-67270-x-989-x-989.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_119-x-glomerulus-x-91077-x-73185-x-983-x-983.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_12-x-glomerulus-x-70065-x-143320-x-971-x-971.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_120-x-glomerulus-x-62619-x-78126-x-930-x-929.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_121-x-glomerulus-x-60728-x-160507-x-864-x-864.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_122-x-glomerulus-x-62125-x-76893-x-747-x-747.png,Global obsolescent glomerulosclerosis,1
+23498_2017-04-07 20_05_38-x-ROI_123-x-glomerulus-x-76144-x-69890-x-880-x-880.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_124-x-glomerulus-x-67816-x-144918-x-725-x-724.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_125-x-glomerulus-x-88023-x-62586-x-936-x-936.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_126-x-glomerulus-x-59960-x-154642-x-863-x-864.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_127-x-glomerulus-x-92532-x-61724-x-1019-x-1020.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_128-x-glomerulus-x-63458-x-156011-x-942-x-941.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_129-x-glomerulus-x-79513-x-79700-x-768-x-767.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_13-x-glomerulus-x-44580-x-76311-x-1017-x-1017.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_130-x-glomerulus-x-61312-x-153916-x-940-x-940.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_131-x-glomerulus-x-55774-x-154566-x-921-x-920.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_132-x-glomerulus-x-60978-x-78537-x-729-x-728.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_133-x-glomerulus-x-92409-x-61324-x-724-x-724.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_134-x-glomerulus-x-56488-x-82417-x-783-x-783.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_135-x-glomerulus-x-85351-x-143157-x-888-x-888.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_136-x-glomerulus-x-85182-x-69785-x-869-x-869.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_137-x-glomerulus-x-49470-x-160593-x-829-x-829.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_138-x-glomerulus-x-41797-x-79591-x-836-x-836.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_139-x-glomerulus-x-55924-x-77419-x-717-x-717.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_14-x-glomerulus-x-65503-x-75835-x-1026-x-1026.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_140-x-glomerulus-x-43963-x-156082-x-811-x-811.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_141-x-glomerulus-x-93119-x-142256-x-698-x-697.png,Global obsolescent glomerulosclerosis,1
+23498_2017-04-07 20_05_38-x-ROI_142-x-glomerulus-x-56946-x-80815-x-826-x-827.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_143-x-glomerulus-x-48818-x-80123-x-912-x-911.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_144-x-glomerulus-x-73240-x-81538-x-902-x-901.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_145-x-glomerulus-x-51957-x-161881-x-879-x-879.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_146-x-glomerulus-x-91128-x-58442-x-727-x-726.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_147-x-glomerulus-x-87107-x-56629-x-802-x-802.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_148-x-glomerulus-x-74510-x-141157-x-975-x-975.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_149-x-glomerulus-x-58046-x-153481-x-878-x-878.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_15-x-glomerulus-x-76496-x-74476-x-948-x-947.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_150-x-glomerulus-x-74648-x-68798-x-757-x-757.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_151-x-glomerulus-x-67997-x-76064-x-883-x-883.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_152-x-glomerulus-x-78006-x-136965-x-892-x-892.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_153-x-glomerulus-x-81241-x-76720-x-767-x-767.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_154-x-glomerulus-x-59792-x-82220-x-908-x-909.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_155-x-glomerulus-x-64149-x-149550-x-830-x-831.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_156-x-glomerulus-x-85765-x-135863-x-800-x-800.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_157-x-glomerulus-x-77694-x-78166-x-871-x-871.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_158-x-glomerulus-x-63885-x-157090-x-852-x-852.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_159-x-glomerulus-x-45756-x-75764-x-944-x-944.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_16-x-glomerulus-x-55440-x-81186-x-826-x-827.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_160-x-glomerulus-x-73247-x-154396-x-795-x-795.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_161-x-glomerulus-x-74533-x-76369-x-872-x-872.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_162-x-glomerulus-x-69016-x-152381-x-757-x-758.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_163-x-glomerulus-x-46627-x-77223-x-932-x-932.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_164-x-glomerulus-x-75102-x-150433-x-946-x-946.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_165-x-glomerulus-x-79166-x-137679-x-968-x-968.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_166-x-glomerulus-x-45703-x-79717-x-810-x-810.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_167-x-glomerulus-x-83968-x-148123-x-855-x-854.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_168-x-glomerulus-x-83609-x-58583-x-954-x-954.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_169-x-glomerulus-x-71365-x-149241-x-919-x-919.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_17-x-glomerulus-x-65188-x-153408-x-909-x-909.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_170-x-glomerulus-x-44233-x-153243-x-866-x-865.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_171-x-glomerulus-x-87371-x-62784-x-930-x-930.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_172-x-glomerulus-x-76967-x-139910-x-731-x-731.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_173-x-glomerulus-x-73817-x-147122-x-887-x-888.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_174-x-glomerulus-x-67393-x-84276-x-842-x-842.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_175-x-glomerulus-x-40836-x-152676-x-691-x-691.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_176-x-glomerulus-x-54144-x-155017-x-753-x-752.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_177-x-glomerulus-x-71811-x-71469-x-727-x-728.png,Global obsolescent glomerulosclerosis,1
+23498_2017-04-07 20_05_38-x-ROI_178-x-glomerulus-x-85292-x-149593-x-850-x-849.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_179-x-glomerulus-x-78102-x-73295-x-890-x-889.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_18-x-glomerulus-x-82774-x-133502-x-900-x-901.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_180-x-glomerulus-x-54851-x-74929-x-681-x-681.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_181-x-glomerulus-x-67847-x-152483-x-916-x-916.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_182-x-glomerulus-x-69355-x-144712-x-779-x-778.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_183-x-glomerulus-x-77239-x-143520-x-866-x-865.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_184-x-glomerulus-x-60380-x-81493-x-749-x-750.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_185-x-glomerulus-x-69453-x-157897-x-710-x-710.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_186-x-glomerulus-x-59628-x-157282-x-735-x-735.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_187-x-glomerulus-x-87554-x-136238-x-684-x-684.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_188-x-glomerulus-x-72966-x-74598-x-678-x-677.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_189-x-glomerulus-x-46846-x-82030-x-687-x-687.png,Global obsolescent glomerulosclerosis,1
+23498_2017-04-07 20_05_38-x-ROI_19-x-glomerulus-x-84412-x-141532-x-944-x-944.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_190-x-glomerulus-x-65692-x-78660-x-791-x-791.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_191-x-glomerulus-x-86074-x-61849-x-1000-x-999.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_192-x-glomerulus-x-76378-x-153549-x-873-x-873.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_193-x-glomerulus-x-51243-x-76426-x-865-x-865.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_194-x-glomerulus-x-47832-x-75790-x-761-x-761.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_195-x-glomerulus-x-82241-x-66808-x-951-x-952.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_196-x-glomerulus-x-67075-x-148706-x-864-x-864.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_197-x-glomerulus-x-45494-x-154711-x-949-x-948.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_198-x-glomerulus-x-71951-x-77269-x-839-x-840.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_199-x-glomerulus-x-55975-x-156781-x-930-x-930.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_2-x-glomerulus-x-85151-x-64640-x-1032-x-1032.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_20-x-glomerulus-x-53075-x-158693-x-915-x-915.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_200-x-glomerulus-x-50888-x-78169-x-942-x-943.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_201-x-glomerulus-x-42815-x-161562-x-694-x-694.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_202-x-glomerulus-x-50118-x-157412-x-858-x-858.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_203-x-glomerulus-x-60265-x-83843-x-671-x-670.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_204-x-glomerulus-x-36285-x-157514-x-826-x-825.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_205-x-glomerulus-x-70166-x-79843-x-920-x-920.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_206-x-glomerulus-x-69346-x-145951-x-860-x-860.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_207-x-glomerulus-x-78865-x-150089-x-778-x-778.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_208-x-glomerulus-x-89954-x-72103-x-788-x-788.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_209-x-glomerulus-x-44276-x-79155-x-836-x-836.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_21-x-glomerulus-x-83011-x-144022-x-943-x-943.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_210-x-glomerulus-x-48171-x-154972-x-921-x-921.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_211-x-glomerulus-x-89572-x-142642-x-630-x-630.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_212-x-glomerulus-x-56608-x-156046-x-764-x-765.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_213-x-glomerulus-x-80561-x-71200-x-884-x-884.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_214-x-glomerulus-x-71087-x-147301-x-729-x-729.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_215-x-glomerulus-x-83871-x-64061-x-688-x-689.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_216-x-glomerulus-x-82916-x-77811-x-908-x-907.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_217-x-glomerulus-x-62699-x-150212-x-640-x-640.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_218-x-glomerulus-x-45673-x-78467-x-935-x-935.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_219-x-glomerulus-x-73383-x-139571-x-665-x-666.png,Global obsolescent glomerulosclerosis,1
+23498_2017-04-07 20_05_38-x-ROI_22-x-glomerulus-x-51493-x-79888-x-888-x-888.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_220-x-glomerulus-x-83495-x-147598-x-769-x-769.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_221-x-glomerulus-x-80503-x-138454-x-995-x-996.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_222-x-glomerulus-x-84962-x-61089-x-873-x-873.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_223-x-glomerulus-x-53613-x-157995-x-757-x-757.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_224-x-glomerulus-x-84269-x-149807-x-763-x-763.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_225-x-glomerulus-x-60869-x-156925-x-737-x-736.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_226-x-glomerulus-x-71064-x-76123-x-832-x-832.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_227-x-glomerulus-x-79767-x-146039-x-870-x-870.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_228-x-glomerulus-x-88432-x-70796-x-765-x-764.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_229-x-glomerulus-x-78493-x-68280-x-689-x-690.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_23-x-glomerulus-x-72702-x-73042-x-860-x-860.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_230-x-glomerulus-x-63668-x-84111-x-594-x-594.png,Global obsolescent glomerulosclerosis,1
+23498_2017-04-07 20_05_38-x-ROI_231-x-glomerulus-x-69807-x-150536-x-898-x-899.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_232-x-glomerulus-x-84140-x-133976-x-733-x-734.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_233-x-glomerulus-x-47843-x-151633-x-728-x-728.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_234-x-glomerulus-x-40118-x-151185-x-745-x-744.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_235-x-glomerulus-x-86352-x-70335-x-889-x-890.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_236-x-glomerulus-x-41145-x-81511-x-713-x-713.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_237-x-glomerulus-x-81936-x-146319-x-897-x-896.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_238-x-glomerulus-x-69741-x-78223-x-856-x-856.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_239-x-glomerulus-x-75983-x-135287-x-919-x-920.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_24-x-glomerulus-x-64223-x-153578-x-932-x-931.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_240-x-glomerulus-x-85812-x-60516-x-868-x-868.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_241-x-glomerulus-x-78753-x-73022-x-665-x-665.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_242-x-glomerulus-x-38797-x-156638-x-797-x-797.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_243-x-glomerulus-x-75688-x-76328-x-731-x-731.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_244-x-glomerulus-x-49711-x-159018-x-790-x-790.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_245-x-glomerulus-x-79434-x-144590-x-858-x-858.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_246-x-glomerulus-x-86069-x-68885-x-953-x-954.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_247-x-glomerulus-x-39303-x-147265-x-789-x-788.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_248-x-glomerulus-x-56070-x-79977-x-709-x-709.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_249-x-glomerulus-x-78855-x-136407-x-718-x-718.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_25-x-glomerulus-x-75783-x-145236-x-960-x-959.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_250-x-glomerulus-x-64483-x-85123-x-900-x-900.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_251-x-glomerulus-x-63852-x-152614-x-713-x-713.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_252-x-glomerulus-x-67600-x-80688-x-719-x-719.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_253-x-glomerulus-x-79961-x-150466-x-623-x-623.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_254-x-glomerulus-x-94435-x-72648-x-859-x-860.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_255-x-glomerulus-x-58936-x-154991-x-753-x-753.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_256-x-glomerulus-x-57808-x-161426-x-961-x-961.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_257-x-glomerulus-x-82546-x-148948-x-769-x-768.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_258-x-glomerulus-x-70522-x-80925-x-887-x-888.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_259-x-glomerulus-x-43234-x-162650-x-752-x-752.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_26-x-glomerulus-x-70924-x-77402-x-953-x-952.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_260-x-glomerulus-x-77843-x-71260-x-763-x-763.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_261-x-glomerulus-x-78532-x-145540-x-859-x-860.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_262-x-glomerulus-x-87671-x-58065-x-771-x-771.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_263-x-glomerulus-x-59907-x-153922-x-724-x-725.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_264-x-glomerulus-x-55601-x-161864-x-636-x-635.png,Global obsolescent glomerulosclerosis,1
+23498_2017-04-07 20_05_38-x-ROI_265-x-glomerulus-x-76070-x-154597-x-791-x-791.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_266-x-glomerulus-x-83830-x-70937-x-1141-x-1141.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_267-x-glomerulus-x-70587-x-76407-x-751-x-751.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_268-x-glomerulus-x-89019-x-73409-x-756-x-756.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_269-x-glomerulus-x-67560-x-143621-x-791-x-790.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_27-x-glomerulus-x-90409-x-139696-x-893-x-893.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_270-x-glomerulus-x-57946-x-77779-x-743-x-744.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_271-x-glomerulus-x-83299-x-149684-x-878-x-878.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_272-x-glomerulus-x-43074-x-158191-x-883-x-883.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_273-x-glomerulus-x-61128-x-83982-x-917-x-917.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_274-x-glomerulus-x-87730-x-71807-x-827-x-826.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_275-x-glomerulus-x-82618-x-78777-x-826-x-826.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_276-x-glomerulus-x-86726-x-71147-x-659-x-659.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_277-x-glomerulus-x-64863-x-77097-x-921-x-921.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_278-x-glomerulus-x-85207-x-59622-x-708-x-708.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_279-x-glomerulus-x-47177-x-74355-x-705-x-705.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_28-x-glomerulus-x-38717-x-155379-x-947-x-947.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_280-x-glomerulus-x-83248-x-148093-x-603-x-603.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_281-x-glomerulus-x-76000-x-81904-x-686-x-686.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_282-x-glomerulus-x-74527-x-67466-x-733-x-733.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_283-x-glomerulus-x-34846-x-156546-x-797-x-798.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_284-x-glomerulus-x-61911-x-81897-x-649-x-649.png,Global obsolescent glomerulosclerosis,1
+23498_2017-04-07 20_05_38-x-ROI_285-x-glomerulus-x-86737-x-148034-x-666-x-666.png,Global obsolescent glomerulosclerosis,1
+23498_2017-04-07 20_05_38-x-ROI_286-x-glomerulus-x-80885-x-150971-x-629-x-629.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_287-x-glomerulus-x-41129-x-151237-x-798-x-798.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_288-x-glomerulus-x-46420-x-70360-x-833-x-833.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_289-x-glomerulus-x-83464-x-66667-x-865-x-865.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_29-x-glomerulus-x-70412-x-81914-x-811-x-810.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_290-x-glomerulus-x-83997-x-67742-x-806-x-806.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_291-x-glomerulus-x-49181-x-156585-x-764-x-764.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_292-x-glomerulus-x-94180-x-144189-x-518-x-517.png,Global obsolescent glomerulosclerosis,1
+23498_2017-04-07 20_05_38-x-ROI_293-x-glomerulus-x-42451-x-158860-x-711-x-712.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_294-x-glomerulus-x-66351-x-81004-x-733-x-733.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_295-x-glomerulus-x-90911-x-141998-x-633-x-633.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_296-x-glomerulus-x-89962-x-141907-x-724-x-725.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_297-x-glomerulus-x-47653-x-156950-x-891-x-891.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_298-x-glomerulus-x-83129-x-59376-x-849-x-850.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_299-x-glomerulus-x-70747-x-144741-x-941-x-941.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_3-x-glomerulus-x-37573-x-153301-x-976-x-976.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_30-x-glomerulus-x-44602-x-156673-x-863-x-863.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_300-x-glomerulus-x-81508-x-146740-x-622-x-622.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_301-x-glomerulus-x-88442-x-76417-x-742-x-742.png,Global obsolescent glomerulosclerosis,1
+23498_2017-04-07 20_05_38-x-ROI_302-x-glomerulus-x-65931-x-155030-x-587-x-587.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_303-x-glomerulus-x-49593-x-84722-x-698-x-698.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_304-x-glomerulus-x-64123-x-79548-x-826-x-826.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_305-x-glomerulus-x-55251-x-153389-x-710-x-711.png,Global obsolescent glomerulosclerosis,1
+23498_2017-04-07 20_05_38-x-ROI_306-x-glomerulus-x-49299-x-82001-x-779-x-780.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_307-x-glomerulus-x-72715-x-83859-x-655-x-654.png,Global obsolescent glomerulosclerosis,1
+23498_2017-04-07 20_05_38-x-ROI_308-x-glomerulus-x-44240-x-158443-x-647-x-648.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_309-x-glomerulus-x-56240-x-83978-x-775-x-775.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_31-x-glomerulus-x-69502-x-80022-x-710-x-710.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_310-x-glomerulus-x-69554-x-74032-x-629-x-630.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_311-x-glomerulus-x-62422-x-154192-x-693-x-692.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_312-x-glomerulus-x-69193-x-77988-x-666-x-667.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_313-x-glomerulus-x-97416-x-64027-x-706-x-706.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_314-x-glomerulus-x-62262-x-85471-x-692-x-692.png,Global obsolescent glomerulosclerosis,1
+23498_2017-04-07 20_05_38-x-ROI_315-x-glomerulus-x-95907-x-67424-x-636-x-636.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_316-x-glomerulus-x-58811-x-158059-x-834-x-835.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_317-x-glomerulus-x-62819-x-156247-x-684-x-684.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_318-x-glomerulus-x-39932-x-158922-x-702-x-702.png,Global obsolescent glomerulosclerosis,1
+23498_2017-04-07 20_05_38-x-ROI_319-x-glomerulus-x-90653-x-74354-x-766-x-767.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_32-x-glomerulus-x-63701-x-157990-x-926-x-926.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_320-x-glomerulus-x-45736-x-154087-x-774-x-774.png,Global obsolescent glomerulosclerosis,1
+23498_2017-04-07 20_05_38-x-ROI_321-x-glomerulus-x-99084-x-67335-x-682-x-682.png,Global obsolescent glomerulosclerosis,1
+23498_2017-04-07 20_05_38-x-ROI_322-x-glomerulus-x-72439-x-84287-x-690-x-690.png,Global obsolescent glomerulosclerosis,1
+23498_2017-04-07 20_05_38-x-ROI_323-x-glomerulus-x-43273-x-80555-x-781-x-781.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_324-x-glomerulus-x-74912-x-144663-x-691-x-692.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_325-x-glomerulus-x-100116-x-69219-x-546-x-545.png,Global obsolescent glomerulosclerosis,1
+23498_2017-04-07 20_05_38-x-ROI_326-x-glomerulus-x-80552-x-133762-x-799-x-799.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_327-x-glomerulus-x-81122-x-142580-x-525-x-525.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_328-x-glomerulus-x-49430-x-84092-x-790-x-790.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_329-x-glomerulus-x-51223-x-74619-x-830-x-830.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_33-x-glomerulus-x-81186-x-147402-x-874-x-874.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_330-x-glomerulus-x-42356-x-81343-x-759-x-758.png,Global obsolescent glomerulosclerosis,1
+23498_2017-04-07 20_05_38-x-ROI_331-x-glomerulus-x-66662-x-155595-x-776-x-775.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_332-x-glomerulus-x-54531-x-80254-x-815-x-815.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_333-x-glomerulus-x-66691-x-158353-x-616-x-617.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_334-x-glomerulus-x-43562-x-79442-x-644-x-644.png,Global obsolescent glomerulosclerosis,1
+23498_2017-04-07 20_05_38-x-ROI_335-x-glomerulus-x-66659-x-77626-x-794-x-794.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_336-x-glomerulus-x-42644-x-160898-x-777-x-776.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_337-x-glomerulus-x-81996-x-152041-x-706-x-705.png,Global obsolescent glomerulosclerosis,1
+23498_2017-04-07 20_05_38-x-ROI_338-x-glomerulus-x-56917-x-157929-x-763-x-762.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_339-x-glomerulus-x-34264-x-158536-x-637-x-637.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_34-x-glomerulus-x-84214-x-68566-x-1000-x-999.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_340-x-glomerulus-x-66153-x-159940-x-669-x-670.png,Global obsolescent glomerulosclerosis,1
+23498_2017-04-07 20_05_38-x-ROI_341-x-glomerulus-x-92371-x-72054-x-754-x-754.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_342-x-glomerulus-x-68758-x-154379-x-642-x-643.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_343-x-glomerulus-x-64336-x-152285-x-847-x-848.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_344-x-glomerulus-x-89671-x-145561-x-811-x-811.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_345-x-glomerulus-x-52695-x-77320-x-780-x-780.png,Global obsolescent glomerulosclerosis,1
+23498_2017-04-07 20_05_38-x-ROI_346-x-glomerulus-x-49967-x-152226-x-577-x-577.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_347-x-glomerulus-x-55964-x-160185-x-614-x-614.png,Global obsolescent glomerulosclerosis,1
+23498_2017-04-07 20_05_38-x-ROI_348-x-glomerulus-x-89692-x-72539-x-631-x-631.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_349-x-glomerulus-x-49004-x-154094-x-715-x-716.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_35-x-glomerulus-x-74616-x-152538-x-834-x-834.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_350-x-glomerulus-x-41586-x-160578-x-656-x-656.png,Global obsolescent glomerulosclerosis,1
+23498_2017-04-07 20_05_38-x-ROI_351-x-glomerulus-x-51114-x-81605-x-677-x-677.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_352-x-glomerulus-x-83648-x-78050-x-621-x-621.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_353-x-glomerulus-x-65485-x-81748-x-840-x-840.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_354-x-glomerulus-x-81687-x-68757-x-704-x-705.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_355-x-glomerulus-x-74883-x-145559-x-597-x-597.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_356-x-glomerulus-x-86701-x-143297-x-902-x-902.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_357-x-glomerulus-x-80392-x-78289-x-835-x-835.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_358-x-glomerulus-x-66152-x-150745-x-668-x-668.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_359-x-glomerulus-x-67412-x-157237-x-517-x-517.png,Global obsolescent glomerulosclerosis,1
+23498_2017-04-07 20_05_38-x-ROI_36-x-glomerulus-x-82538-x-69390-x-982-x-982.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_360-x-glomerulus-x-47712-x-162216-x-537-x-537.png,Global obsolescent glomerulosclerosis,1
+23498_2017-04-07 20_05_38-x-ROI_361-x-glomerulus-x-94354-x-60958-x-640-x-639.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_362-x-glomerulus-x-88230-x-74476-x-607-x-606.png,Global obsolescent glomerulosclerosis,1
+23498_2017-04-07 20_05_38-x-ROI_363-x-glomerulus-x-93159-x-72682-x-611-x-611.png,Global obsolescent glomerulosclerosis,1
+23498_2017-04-07 20_05_38-x-ROI_364-x-glomerulus-x-78002-x-80863-x-871-x-870.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_365-x-glomerulus-x-80400-x-63583-x-633-x-634.png,Global obsolescent glomerulosclerosis,1
+23498_2017-04-07 20_05_38-x-ROI_366-x-glomerulus-x-35729-x-154610-x-576-x-576.png,Wire loop,-1
+23498_2017-04-07 20_05_38-x-ROI_367-x-glomerulus-x-57297-x-78572-x-589-x-589.png,Global obsolescent glomerulosclerosis,1
+23498_2017-04-07 20_05_38-x-ROI_368-x-glomerulus-x-90417-x-72663-x-864-x-864.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_369-x-glomerulus-x-50390-x-155169-x-574-x-574.png,Global obsolescent glomerulosclerosis,1
+23498_2017-04-07 20_05_38-x-ROI_37-x-glomerulus-x-51518-x-152700-x-1012-x-1013.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_370-x-glomerulus-x-58442-x-76140-x-1044-x-1045.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_371-x-glomerulus-x-88049-x-71135-x-633-x-633.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_372-x-glomerulus-x-86462-x-74790-x-617-x-617.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_373-x-glomerulus-x-36597-x-156356-x-724-x-723.png,Global obsolescent glomerulosclerosis,1
+23498_2017-04-07 20_05_38-x-ROI_374-x-glomerulus-x-40605-x-81926-x-674-x-675.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_375-x-glomerulus-x-44208-x-151437-x-711-x-711.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_376-x-glomerulus-x-35420-x-158318-x-768-x-768.png,Global obsolescent glomerulosclerosis,1
+23498_2017-04-07 20_05_38-x-ROI_377-x-glomerulus-x-48252-x-74438-x-717-x-718.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_378-x-glomerulus-x-81730-x-150047-x-614-x-614.png,Global obsolescent glomerulosclerosis,1
+23498_2017-04-07 20_05_38-x-ROI_379-x-glomerulus-x-39117-x-157425-x-567-x-567.png,Global disappearing glomerulosclerosis,3
+23498_2017-04-07 20_05_38-x-ROI_38-x-glomerulus-x-96634-x-68580-x-855-x-856.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_380-x-glomerulus-x-96275-x-66744-x-700-x-700.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_381-x-glomerulus-x-33645-x-158937-x-668-x-668.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_382-x-glomerulus-x-73795-x-154147-x-856-x-856.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_383-x-glomerulus-x-81616-x-69717-x-592-x-592.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_384-x-glomerulus-x-78410-x-79242-x-735-x-735.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_385-x-glomerulus-x-97214-x-66895-x-584-x-584.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_386-x-glomerulus-x-89762-x-74146-x-870-x-871.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_387-x-glomerulus-x-63647-x-81595-x-635-x-635.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_388-x-glomerulus-x-72322-x-156575-x-662-x-661.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_389-x-glomerulus-x-58265-x-151313-x-635-x-635.png,Global obsolescent glomerulosclerosis,1
+23498_2017-04-07 20_05_38-x-ROI_39-x-glomerulus-x-91130-x-70680-x-955-x-955.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_390-x-glomerulus-x-75366-x-78346-x-648-x-648.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_391-x-glomerulus-x-92903-x-140224-x-723-x-723.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_392-x-glomerulus-x-78825-x-77165-x-527-x-527.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_393-x-glomerulus-x-55164-x-158305-x-682-x-682.png,Global obsolescent glomerulosclerosis,1
+23498_2017-04-07 20_05_38-x-ROI_394-x-glomerulus-x-71456-x-156795-x-877-x-877.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_395-x-glomerulus-x-87399-x-75394-x-545-x-544.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_396-x-glomerulus-x-93161-x-67980-x-788-x-787.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_397-x-glomerulus-x-89140-x-144671-x-478-x-478.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_398-x-glomerulus-x-83747-x-75428-x-663-x-662.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_399-x-glomerulus-x-63337-x-146892-x-642-x-642.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_4-x-glomerulus-x-89545-x-68483-x-930-x-930.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_40-x-glomerulus-x-87609-x-139422-x-868-x-867.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_400-x-glomerulus-x-93342-x-66640-x-777-x-778.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_401-x-glomerulus-x-56971-x-160479-x-607-x-607.png,Global obsolescent glomerulosclerosis,1
+23498_2017-04-07 20_05_38-x-ROI_402-x-glomerulus-x-88602-x-146288-x-694-x-694.png,Global obsolescent glomerulosclerosis,1
+23498_2017-04-07 20_05_38-x-ROI_403-x-glomerulus-x-86797-x-142053-x-963-x-963.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_404-x-glomerulus-x-46376-x-159191-x-619-x-619.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_405-x-glomerulus-x-91700-x-74172-x-880-x-881.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_406-x-glomerulus-x-80765-x-151697-x-592-x-591.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_407-x-glomerulus-x-78871-x-80664-x-641-x-641.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_408-x-glomerulus-x-72603-x-78963-x-561-x-561.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_409-x-glomerulus-x-73233-x-82238-x-690-x-690.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_41-x-glomerulus-x-94241-x-141952-x-1030-x-1030.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_410-x-glomerulus-x-57176-x-74743-x-636-x-636.png,Global obsolescent glomerulosclerosis,1
+23498_2017-04-07 20_05_38-x-ROI_411-x-glomerulus-x-48469-x-83809-x-545-x-544.png,Global obsolescent glomerulosclerosis,1
+23498_2017-04-07 20_05_38-x-ROI_412-x-glomerulus-x-95989-x-70347-x-760-x-759.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_413-x-glomerulus-x-53566-x-155069-x-484-x-484.png,Global disappearing glomerulosclerosis,3
+23498_2017-04-07 20_05_38-x-ROI_414-x-glomerulus-x-74114-x-73547-x-720-x-720.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_415-x-glomerulus-x-72011-x-148941-x-711-x-711.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_416-x-glomerulus-x-46002-x-80537-x-587-x-587.png,Global disappearing glomerulosclerosis,3
+23498_2017-04-07 20_05_38-x-ROI_417-x-glomerulus-x-57567-x-160502-x-496-x-497.png,Global obsolescent glomerulosclerosis,1
+23498_2017-04-07 20_05_38-x-ROI_418-x-glomerulus-x-99027-x-65326-x-676-x-675.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_419-x-glomerulus-x-73318-x-79711-x-742-x-742.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_42-x-glomerulus-x-75337-x-79467-x-805-x-805.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_420-x-glomerulus-x-71867-x-155215-x-685-x-686.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_421-x-glomerulus-x-42730-x-77651-x-620-x-620.png,Wire loop,-1
+23498_2017-04-07 20_05_38-x-ROI_422-x-glomerulus-x-72139-x-153043-x-595-x-595.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_423-x-glomerulus-x-49098-x-153386-x-658-x-659.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_424-x-glomerulus-x-57680-x-151154-x-707-x-706.png,Global obsolescent glomerulosclerosis,1
+23498_2017-04-07 20_05_38-x-ROI_425-x-glomerulus-x-56915-x-75614-x-546-x-546.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_426-x-glomerulus-x-77132-x-151154-x-702-x-702.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_427-x-glomerulus-x-50146-x-151303-x-795-x-794.png,Global obsolescent glomerulosclerosis,1
+23498_2017-04-07 20_05_38-x-ROI_428-x-glomerulus-x-59339-x-160803-x-535-x-535.png,Global obsolescent glomerulosclerosis,1
+23498_2017-04-07 20_05_38-x-ROI_429-x-glomerulus-x-71205-x-143132-x-541-x-541.png,Wire loop,-1
+23498_2017-04-07 20_05_38-x-ROI_43-x-glomerulus-x-78459-x-148424-x-740-x-740.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_430-x-glomerulus-x-35532-x-160873-x-396-x-395.png,Global disappearing glomerulosclerosis,3
+23498_2017-04-07 20_05_38-x-ROI_431-x-glomerulus-x-40804-x-149727-x-537-x-537.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_432-x-glomerulus-x-65430-x-77946-x-542-x-543.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_433-x-glomerulus-x-42431-x-83877-x-431-x-431.png,Global disappearing glomerulosclerosis,3
+23498_2017-04-07 20_05_38-x-ROI_434-x-glomerulus-x-60439-x-78642-x-419-x-419.png,Global disappearing glomerulosclerosis,3
+23498_2017-04-07 20_05_38-x-ROI_435-x-glomerulus-x-94082-x-71702-x-598-x-598.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_436-x-glomerulus-x-54403-x-85558-x-539-x-538.png,Global obsolescent glomerulosclerosis,1
+23498_2017-04-07 20_05_38-x-ROI_437-x-glomerulus-x-76209-x-68664-x-762-x-762.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_438-x-glomerulus-x-65877-x-156093-x-544-x-543.png,Wire loop,-1
+23498_2017-04-07 20_05_38-x-ROI_439-x-glomerulus-x-62737-x-83826-x-517-x-518.png,Global disappearing glomerulosclerosis,3
+23498_2017-04-07 20_05_38-x-ROI_44-x-glomerulus-x-85112-x-141319-x-971-x-970.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_440-x-glomerulus-x-70315-x-70714-x-533-x-533.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_441-x-glomerulus-x-77185-x-153884-x-535-x-535.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_442-x-glomerulus-x-67386-x-149658-x-696-x-695.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_443-x-glomerulus-x-51028-x-154374-x-776-x-777.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_444-x-glomerulus-x-59023-x-159803-x-581-x-581.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_445-x-glomerulus-x-95628-x-139755-x-609-x-609.png,Global obsolescent glomerulosclerosis,1
+23498_2017-04-07 20_05_38-x-ROI_446-x-glomerulus-x-87690-x-147020-x-549-x-548.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_447-x-glomerulus-x-87313-x-146989-x-520-x-520.png,Global obsolescent glomerulosclerosis,1
+23498_2017-04-07 20_05_38-x-ROI_448-x-glomerulus-x-47832-x-72770-x-715-x-714.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_449-x-glomerulus-x-49454-x-78148-x-559-x-559.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_45-x-glomerulus-x-54439-x-160439-x-919-x-920.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_450-x-glomerulus-x-54260-x-79354-x-760-x-759.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_451-x-glomerulus-x-54724-x-85358-x-622-x-622.png,Global obsolescent glomerulosclerosis,1
+23498_2017-04-07 20_05_38-x-ROI_452-x-glomerulus-x-56994-x-79822-x-681-x-681.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_453-x-glomerulus-x-59587-x-75007-x-611-x-610.png,Global disappearing glomerulosclerosis,3
+23498_2017-04-07 20_05_38-x-ROI_454-x-glomerulus-x-65185-x-74973-x-602-x-603.png,Global obsolescent glomerulosclerosis,1
+23498_2017-04-07 20_05_38-x-ROI_455-x-glomerulus-x-64638-x-74874-x-596-x-596.png,Global disappearing glomerulosclerosis,3
+23498_2017-04-07 20_05_38-x-ROI_456-x-glomerulus-x-64247-x-84030-x-581-x-580.png,Global obsolescent glomerulosclerosis,1
+23498_2017-04-07 20_05_38-x-ROI_457-x-glomerulus-x-65924-x-84437-x-712-x-712.png,Global obsolescent glomerulosclerosis,1
+23498_2017-04-07 20_05_38-x-ROI_458-x-glomerulus-x-65640-x-83495-x-619-x-619.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_459-x-glomerulus-x-87723-x-66912-x-647-x-648.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_46-x-glomerulus-x-61172-x-152341-x-880-x-880.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_460-x-glomerulus-x-87241-x-75984-x-738-x-738.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_461-x-glomerulus-x-93702-x-71534-x-596-x-596.png,Global obsolescent glomerulosclerosis,1
+23498_2017-04-07 20_05_38-x-ROI_462-x-glomerulus-x-94948-x-70961-x-834-x-834.png,Global obsolescent glomerulosclerosis,1
+23498_2017-04-07 20_05_38-x-ROI_47-x-glomerulus-x-57370-x-155949-x-809-x-809.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_48-x-glomerulus-x-71085-x-154112-x-899-x-900.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_49-x-glomerulus-x-53334-x-79131-x-959-x-959.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_5-x-glomerulus-x-58657-x-152175-x-1033-x-1033.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_50-x-glomerulus-x-38803-x-148401-x-796-x-795.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_51-x-glomerulus-x-53307-x-80925-x-829-x-829.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_52-x-glomerulus-x-96824-x-64553-x-832-x-832.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_53-x-glomerulus-x-77612-x-68699-x-973-x-973.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_54-x-glomerulus-x-64925-x-147636-x-787-x-787.png,Global obsolescent glomerulosclerosis,1
+23498_2017-04-07 20_05_38-x-ROI_55-x-glomerulus-x-46843-x-154207-x-728-x-728.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_56-x-glomerulus-x-76674-x-82644-x-712-x-713.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_57-x-glomerulus-x-76434-x-134490-x-942-x-942.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_58-x-glomerulus-x-68744-x-155485-x-809-x-809.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_59-x-glomerulus-x-90953-x-65981-x-956-x-955.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_6-x-glomerulus-x-81335-x-134606-x-990-x-990.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_60-x-glomerulus-x-73855-x-72588-x-862-x-863.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_61-x-glomerulus-x-85926-x-147450-x-771-x-772.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_62-x-glomerulus-x-85420-x-74374-x-747-x-747.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_63-x-glomerulus-x-63028-x-154467-x-849-x-848.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_64-x-glomerulus-x-49985-x-81375-x-856-x-856.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_65-x-glomerulus-x-90341-x-143728-x-899-x-898.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_66-x-glomerulus-x-63373-x-79622-x-778-x-778.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_67-x-glomerulus-x-88363-x-58952-x-992-x-993.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_68-x-glomerulus-x-78346-x-140410-x-1033-x-1033.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_69-x-glomerulus-x-68112-x-77671-x-912-x-912.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_7-x-glomerulus-x-50870-x-79255-x-854-x-853.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_70-x-glomerulus-x-71628-x-144290-x-692-x-693.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_71-x-glomerulus-x-55098-x-78290-x-897-x-897.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_72-x-glomerulus-x-41925-x-156990-x-873-x-873.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_73-x-glomerulus-x-44006-x-154953-x-872-x-872.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_74-x-glomerulus-x-81391-x-65234-x-1013-x-1013.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_75-x-glomerulus-x-65837-x-160330-x-756-x-755.png,Global obsolescent glomerulosclerosis,1
+23498_2017-04-07 20_05_38-x-ROI_76-x-glomerulus-x-37344-x-156094-x-790-x-789.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_77-x-glomerulus-x-38682-x-152647-x-1027-x-1027.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_78-x-glomerulus-x-70123-x-71854-x-1036-x-1035.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_79-x-glomerulus-x-91040-x-139182-x-659-x-659.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_8-x-glomerulus-x-77160-x-146714-x-1129-x-1129.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_80-x-glomerulus-x-72985-x-155611-x-815-x-814.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_81-x-glomerulus-x-89827-x-57918-x-878-x-878.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_82-x-glomerulus-x-81164-x-138267-x-950-x-949.png,Normal,0
+23498_2017-04-07 20_05_38-x-ROI_83-x-glomerulus-x-53729-x-77418-x-790-x-790.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_84-x-glomerulus-x-70141-x-158595-x-753-x-753.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_85-x-glomerulus-x-46422-x-157643-x-895-x-896.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_86-x-glomerulus-x-48630-x-157802-x-836-x-836.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_87-x-glomerulus-x-84700-x-146109-x-999-x-999.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_88-x-glomerulus-x-53598-x-160317-x-642-x-642.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_89-x-glomerulus-x-49962-x-85904-x-740-x-740.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_9-x-glomerulus-x-63254-x-148080-x-1045-x-1044.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_90-x-glomerulus-x-45890-x-71452-x-827-x-827.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_91-x-glomerulus-x-77500-x-144382-x-993-x-993.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_92-x-glomerulus-x-66714-x-157636-x-878-x-878.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_93-x-glomerulus-x-70984-x-73361-x-844-x-843.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_94-x-glomerulus-x-79843-x-78513-x-775-x-775.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_95-x-glomerulus-x-92493-x-62996-x-1031-x-1031.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_96-x-glomerulus-x-79897-x-132316-x-818-x-818.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_97-x-glomerulus-x-65867-x-149149-x-923-x-922.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_98-x-glomerulus-x-94199-x-64096-x-811-x-811.png,Periglomerular fibrosis,4
+23498_2017-04-07 20_05_38-x-ROI_99-x-glomerulus-x-58625-x-85384-x-867-x-867.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_0-x-glomerulus-x-47617-x-137860-x-812-x-812.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_1-x-glomerulus-x-68986-x-142056-x-964-x-964.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_10-x-glomerulus-x-61080-x-58950-x-930-x-930.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_100-x-glomerulus-x-55734-x-133961-x-739-x-739.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_101-x-glomerulus-x-27000-x-59399-x-848-x-848.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_102-x-glomerulus-x-66737-x-61392-x-822-x-822.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_103-x-glomerulus-x-35464-x-138044-x-836-x-836.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_104-x-glomerulus-x-49199-x-64071-x-957-x-957.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_105-x-glomerulus-x-68639-x-62706-x-848-x-848.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_106-x-glomerulus-x-70120-x-141328-x-907-x-908.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_107-x-glomerulus-x-29031-x-131001-x-849-x-850.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_108-x-glomerulus-x-65824-x-144767-x-757-x-757.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_109-x-glomerulus-x-71474-x-139558-x-880-x-880.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_11-x-glomerulus-x-49988-x-60227-x-819-x-820.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_110-x-glomerulus-x-36129-x-58310-x-780-x-781.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_111-x-glomerulus-x-40481-x-67805-x-921-x-921.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_112-x-glomerulus-x-29044-x-64748-x-739-x-739.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_113-x-glomerulus-x-35631-x-50067-x-949-x-949.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_114-x-glomerulus-x-53034-x-135783-x-826-x-826.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_115-x-glomerulus-x-50482-x-133450-x-735-x-736.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_116-x-glomerulus-x-43730-x-146350-x-940-x-940.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_117-x-glomerulus-x-45124-x-145649-x-984-x-984.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_118-x-glomerulus-x-55396-x-63712-x-836-x-836.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_119-x-glomerulus-x-38654-x-132466-x-732-x-732.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_12-x-glomerulus-x-37668-x-127762-x-893-x-893.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_120-x-glomerulus-x-41449-x-130367-x-832-x-832.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_121-x-glomerulus-x-40907-x-134534-x-757-x-758.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_122-x-glomerulus-x-55257-x-140027-x-760-x-761.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_123-x-glomerulus-x-33949-x-125853-x-650-x-650.png,Global obsolescent glomerulosclerosis,1
+24738_2017-04-08 04_30_36-x-ROI_124-x-glomerulus-x-38094-x-65423-x-834-x-834.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_125-x-glomerulus-x-36138-x-135521-x-739-x-739.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_126-x-glomerulus-x-55407-x-134262-x-816-x-816.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_127-x-glomerulus-x-61598-x-71158-x-977-x-977.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_128-x-glomerulus-x-57128-x-65215-x-907-x-907.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_129-x-glomerulus-x-29562-x-132752-x-867-x-867.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_13-x-glomerulus-x-68310-x-61965-x-901-x-902.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_130-x-glomerulus-x-52214-x-144687-x-687-x-687.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_131-x-glomerulus-x-66787-x-62158-x-889-x-889.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_132-x-glomerulus-x-51299-x-140542-x-889-x-889.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_133-x-glomerulus-x-41667-x-146906-x-774-x-775.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_134-x-glomerulus-x-59829-x-137234-x-882-x-882.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_135-x-glomerulus-x-35568-x-53268-x-760-x-760.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_136-x-glomerulus-x-45549-x-69487-x-825-x-826.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_137-x-glomerulus-x-49918-x-143945-x-740-x-740.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_138-x-glomerulus-x-26559-x-66235-x-870-x-870.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_139-x-glomerulus-x-43942-x-135735-x-772-x-772.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_14-x-glomerulus-x-38331-x-56433-x-829-x-828.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_140-x-glomerulus-x-36752-x-53995-x-902-x-901.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_141-x-glomerulus-x-51447-x-62550-x-861-x-861.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_142-x-glomerulus-x-34316-x-127843-x-819-x-819.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_143-x-glomerulus-x-42154-x-69438-x-848-x-848.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_144-x-glomerulus-x-35619-x-55686-x-791-x-791.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_145-x-glomerulus-x-60441-x-66366-x-736-x-737.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_146-x-glomerulus-x-41864-x-67039-x-964-x-964.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_147-x-glomerulus-x-47342-x-140511-x-886-x-886.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_148-x-glomerulus-x-29182-x-58285-x-825-x-825.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_149-x-glomerulus-x-32020-x-64634-x-938-x-938.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_15-x-glomerulus-x-46132-x-71079-x-715-x-715.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_150-x-glomerulus-x-60244-x-148575-x-765-x-765.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_151-x-glomerulus-x-53498-x-71195-x-924-x-925.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_152-x-glomerulus-x-43080-x-146735-x-910-x-911.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_153-x-glomerulus-x-62381-x-67285-x-746-x-746.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_154-x-glomerulus-x-62594-x-143113-x-1065-x-1066.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_155-x-glomerulus-x-34561-x-126845-x-720-x-720.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_156-x-glomerulus-x-32792-x-56238-x-884-x-884.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_157-x-glomerulus-x-34736-x-135249-x-865-x-865.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_158-x-glomerulus-x-34305-x-67967-x-847-x-847.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_159-x-glomerulus-x-37508-x-146370-x-837-x-837.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_16-x-glomerulus-x-47578-x-133342-x-895-x-896.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_160-x-glomerulus-x-47723-x-70572-x-707-x-707.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_161-x-glomerulus-x-36203-x-63231-x-723-x-724.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_162-x-glomerulus-x-44362-x-140548-x-884-x-883.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_163-x-glomerulus-x-46602-x-65200-x-771-x-771.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_164-x-glomerulus-x-58251-x-150368-x-947-x-947.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_165-x-glomerulus-x-48215-x-55670-x-818-x-818.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_166-x-glomerulus-x-31038-x-46540-x-555-x-555.png,Global obsolescent glomerulosclerosis,1
+24738_2017-04-08 04_30_36-x-ROI_167-x-glomerulus-x-47485-x-144780-x-873-x-873.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_168-x-glomerulus-x-70253-x-63692-x-701-x-701.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_169-x-glomerulus-x-67054-x-64280-x-936-x-936.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_17-x-glomerulus-x-58348-x-69731-x-877-x-877.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_170-x-glomerulus-x-24174-x-57644-x-908-x-908.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_171-x-glomerulus-x-53223-x-58829-x-832-x-832.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_172-x-glomerulus-x-25804-x-51567-x-942-x-942.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_173-x-glomerulus-x-39785-x-68197-x-958-x-958.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_174-x-glomerulus-x-55350-x-149769-x-822-x-822.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_175-x-glomerulus-x-38327-x-140079-x-921-x-921.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_176-x-glomerulus-x-26420-x-49995-x-813-x-813.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_177-x-glomerulus-x-35779-x-145906-x-726-x-726.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_178-x-glomerulus-x-25631-x-64985-x-851-x-850.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_179-x-glomerulus-x-27642-x-134545-x-746-x-746.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_18-x-glomerulus-x-57271-x-149354-x-948-x-948.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_180-x-glomerulus-x-24419-x-55267-x-796-x-795.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_181-x-glomerulus-x-52117-x-61366-x-798-x-799.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_182-x-glomerulus-x-44829-x-138613-x-683-x-683.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_183-x-glomerulus-x-48891-x-66036-x-685-x-685.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_184-x-glomerulus-x-61974-x-147502-x-872-x-871.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_185-x-glomerulus-x-37792-x-55424-x-721-x-721.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_186-x-glomerulus-x-58581-x-142055-x-805-x-805.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_187-x-glomerulus-x-23989-x-59867-x-708-x-708.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_188-x-glomerulus-x-64481-x-69633-x-592-x-591.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_189-x-glomerulus-x-33894-x-146161-x-721-x-721.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_19-x-glomerulus-x-57254-x-139024-x-872-x-872.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_190-x-glomerulus-x-56277-x-134506-x-691-x-692.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_191-x-glomerulus-x-44449-x-143342-x-662-x-661.png,Global obsolescent glomerulosclerosis,1
+24738_2017-04-08 04_30_36-x-ROI_192-x-glomerulus-x-44752-x-55404-x-763-x-763.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_193-x-glomerulus-x-59101-x-139456-x-676-x-675.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_194-x-glomerulus-x-73184-x-140308-x-615-x-615.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_195-x-glomerulus-x-42271-x-136206-x-754-x-754.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_196-x-glomerulus-x-52873-x-55251-x-751-x-750.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_197-x-glomerulus-x-45362-x-70889-x-691-x-691.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_198-x-glomerulus-x-38934-x-126993-x-684-x-684.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_199-x-glomerulus-x-36700-x-138745-x-810-x-810.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_2-x-glomerulus-x-48892-x-147962-x-957-x-957.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_20-x-glomerulus-x-59347-x-65220-x-1053-x-1052.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_200-x-glomerulus-x-68144-x-146743-x-602-x-602.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_201-x-glomerulus-x-33488-x-66241-x-696-x-696.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_202-x-glomerulus-x-56570-x-70628-x-786-x-787.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_203-x-glomerulus-x-28786-x-143515-x-860-x-860.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_204-x-glomerulus-x-49977-x-55764-x-751-x-751.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_205-x-glomerulus-x-67678-x-62753-x-715-x-715.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_206-x-glomerulus-x-37354-x-125725-x-652-x-652.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_207-x-glomerulus-x-58890-x-149019-x-966-x-966.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_208-x-glomerulus-x-59129-x-59820-x-564-x-564.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_209-x-glomerulus-x-58986-x-62903-x-988-x-987.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_21-x-glomerulus-x-37521-x-56163-x-882-x-882.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_210-x-glomerulus-x-41212-x-64547-x-670-x-670.png,Global obsolescent glomerulosclerosis,1
+24738_2017-04-08 04_30_36-x-ROI_211-x-glomerulus-x-53508-x-74113-x-732-x-731.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_212-x-glomerulus-x-55137-x-71013-x-981-x-981.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_213-x-glomerulus-x-59340-x-72770-x-548-x-548.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_214-x-glomerulus-x-46488-x-55659-x-635-x-635.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_215-x-glomerulus-x-39478-x-142056-x-678-x-678.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_216-x-glomerulus-x-59253-x-67566-x-746-x-745.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_217-x-glomerulus-x-34448-x-46441-x-633-x-633.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_218-x-glomerulus-x-52489-x-142779-x-910-x-911.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_219-x-glomerulus-x-47236-x-53507-x-782-x-782.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_22-x-glomerulus-x-31525-x-51974-x-916-x-916.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_220-x-glomerulus-x-51304-x-149127-x-630-x-631.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_221-x-glomerulus-x-28925-x-49567-x-588-x-588.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_222-x-glomerulus-x-39934-x-147700-x-726-x-726.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_223-x-glomerulus-x-35241-x-143274-x-993-x-992.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_224-x-glomerulus-x-56709-x-65640-x-597-x-597.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_225-x-glomerulus-x-26516-x-43454-x-698-x-697.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_226-x-glomerulus-x-38440-x-51228-x-775-x-774.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_227-x-glomerulus-x-70233-x-145309-x-876-x-875.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_228-x-glomerulus-x-30720-x-67686-x-705-x-705.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_229-x-glomerulus-x-66632-x-68621-x-703-x-703.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_23-x-glomerulus-x-38152-x-127011-x-970-x-970.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_230-x-glomerulus-x-36727-x-69358-x-698-x-698.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_231-x-glomerulus-x-62686-x-145345-x-779-x-779.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_232-x-glomerulus-x-62735-x-66004-x-890-x-890.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_233-x-glomerulus-x-59987-x-143816-x-572-x-572.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_234-x-glomerulus-x-29928-x-138840-x-766-x-766.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_235-x-glomerulus-x-59145-x-69790-x-798-x-798.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_236-x-glomerulus-x-62100-x-141071-x-871-x-871.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_237-x-glomerulus-x-41475-x-135556-x-684-x-683.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_238-x-glomerulus-x-35976-x-61218-x-586-x-586.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_239-x-glomerulus-x-38395-x-68406-x-802-x-802.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_24-x-glomerulus-x-41713-x-59628-x-736-x-736.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_240-x-glomerulus-x-31939-x-129657-x-728-x-728.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_241-x-glomerulus-x-64058-x-150093-x-553-x-553.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_242-x-glomerulus-x-65324-x-64605-x-621-x-621.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_243-x-glomerulus-x-28983-x-138518-x-744-x-743.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_244-x-glomerulus-x-66144-x-143469-x-857-x-856.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_245-x-glomerulus-x-49749-x-69777-x-519-x-519.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_246-x-glomerulus-x-32921-x-64602-x-740-x-740.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_247-x-glomerulus-x-34838-x-127512-x-778-x-778.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_248-x-glomerulus-x-54715-x-58048-x-533-x-533.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_249-x-glomerulus-x-53425-x-55818-x-710-x-710.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_25-x-glomerulus-x-71055-x-138882-x-897-x-896.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_250-x-glomerulus-x-36017-x-47799-x-628-x-628.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_251-x-glomerulus-x-37527-x-134338-x-630-x-630.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_252-x-glomerulus-x-63235-x-150307-x-567-x-567.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_253-x-glomerulus-x-63881-x-66693-x-766-x-766.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_254-x-glomerulus-x-53852-x-65108-x-476-x-475.png,Global obsolescent glomerulosclerosis,1
+24738_2017-04-08 04_30_36-x-ROI_255-x-glomerulus-x-39511-x-66458-x-802-x-802.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_256-x-glomerulus-x-42823-x-145113-x-793-x-793.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_257-x-glomerulus-x-33029-x-61505-x-963-x-963.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_258-x-glomerulus-x-27244-x-135831-x-897-x-897.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_259-x-glomerulus-x-66973-x-140592-x-533-x-533.png,Global solidified glomerulosclerosis,2
+24738_2017-04-08 04_30_36-x-ROI_26-x-glomerulus-x-61303-x-70399-x-809-x-809.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_260-x-glomerulus-x-60121-x-72607-x-622-x-623.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_261-x-glomerulus-x-59737-x-146810-x-516-x-517.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_262-x-glomerulus-x-43082-x-141292-x-583-x-583.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_263-x-glomerulus-x-36102-x-143245-x-1048-x-1048.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_264-x-glomerulus-x-51371-x-145504-x-866-x-865.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_265-x-glomerulus-x-29600-x-62200-x-470-x-470.png,Global obsolescent glomerulosclerosis,1
+24738_2017-04-08 04_30_36-x-ROI_266-x-glomerulus-x-50393-x-139378-x-527-x-528.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_267-x-glomerulus-x-53008-x-144396-x-941-x-941.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_268-x-glomerulus-x-27468-x-52404-x-626-x-626.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_269-x-glomerulus-x-42389-x-129803-x-669-x-668.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_27-x-glomerulus-x-51471-x-72826-x-926-x-926.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_270-x-glomerulus-x-37051-x-136268-x-800-x-801.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_271-x-glomerulus-x-25828-x-59573-x-729-x-729.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_272-x-glomerulus-x-50223-x-132522-x-698-x-699.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_273-x-glomerulus-x-31487-x-56096-x-869-x-869.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_274-x-glomerulus-x-58634-x-145474-x-783-x-783.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_275-x-glomerulus-x-63854-x-62976-x-602-x-601.png,Global solidified glomerulosclerosis,2
+24738_2017-04-08 04_30_36-x-ROI_276-x-glomerulus-x-33036-x-54430-x-680-x-680.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_277-x-glomerulus-x-56153-x-61086-x-603-x-602.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_278-x-glomerulus-x-57155-x-143506-x-526-x-526.png,Global obsolescent glomerulosclerosis,1
+24738_2017-04-08 04_30_36-x-ROI_279-x-glomerulus-x-33956-x-57138-x-757-x-757.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_28-x-glomerulus-x-29724-x-144738-x-855-x-855.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_280-x-glomerulus-x-34090-x-130007-x-629-x-629.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_281-x-glomerulus-x-39208-x-140131-x-641-x-641.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_282-x-glomerulus-x-32158-x-143220-x-871-x-871.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_283-x-glomerulus-x-33510-x-143352-x-522-x-522.png,Global disappearing glomerulosclerosis,3
+24738_2017-04-08 04_30_36-x-ROI_284-x-glomerulus-x-32821-x-141022-x-548-x-548.png,Global obsolescent glomerulosclerosis,1
+24738_2017-04-08 04_30_36-x-ROI_285-x-glomerulus-x-32332-x-137207-x-945-x-945.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_286-x-glomerulus-x-31969-x-128922-x-733-x-734.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_287-x-glomerulus-x-36006-x-129563-x-585-x-585.png,Global solidified glomerulosclerosis,2
+24738_2017-04-08 04_30_36-x-ROI_288-x-glomerulus-x-36117-x-133551-x-833-x-834.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_289-x-glomerulus-x-38580-x-134667-x-1000-x-1000.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_29-x-glomerulus-x-51309-x-61133-x-897-x-897.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_290-x-glomerulus-x-41284-x-126994-x-512-x-512.png,Global disappearing glomerulosclerosis,3
+24738_2017-04-08 04_30_36-x-ROI_291-x-glomerulus-x-39304-x-137241-x-960-x-960.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_292-x-glomerulus-x-37171-x-140514-x-780-x-780.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_293-x-glomerulus-x-36171-x-140479-x-774-x-774.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_294-x-glomerulus-x-36723-x-144681-x-850-x-850.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_295-x-glomerulus-x-47656-x-134289-x-820-x-820.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_296-x-glomerulus-x-48341-x-133109-x-786-x-786.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_297-x-glomerulus-x-50335-x-134533-x-826-x-826.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_298-x-glomerulus-x-52777-x-134207-x-1169-x-1170.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_299-x-glomerulus-x-56177-x-140203-x-818-x-819.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_3-x-glomerulus-x-64885-x-138729-x-846-x-846.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_30-x-glomerulus-x-56676-x-62427-x-914-x-914.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_300-x-glomerulus-x-57498-x-136477-x-711-x-712.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_301-x-glomerulus-x-61621-x-139722-x-1237-x-1237.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_302-x-glomerulus-x-61935-x-138009-x-623-x-622.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_303-x-glomerulus-x-64545-x-140241-x-740-x-741.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_304-x-glomerulus-x-62686-x-147320-x-1082-x-1082.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_305-x-glomerulus-x-63319-x-148151-x-1147-x-1146.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_306-x-glomerulus-x-60402-x-151411-x-989-x-990.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_307-x-glomerulus-x-67213-x-143908-x-960-x-960.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_308-x-glomerulus-x-68190-x-143449-x-820-x-820.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_309-x-glomerulus-x-68329-x-141781-x-856-x-855.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_31-x-glomerulus-x-47527-x-54501-x-770-x-769.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_310-x-glomerulus-x-72890-x-141634-x-519-x-519.png,Global disappearing glomerulosclerosis,3
+24738_2017-04-08 04_30_36-x-ROI_311-x-glomerulus-x-29463-x-123012-x-866-x-867.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_312-x-glomerulus-x-30584-x-131757-x-673-x-673.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_32-x-glomerulus-x-36040-x-52853-x-975-x-975.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_33-x-glomerulus-x-65032-x-147815-x-840-x-839.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_34-x-glomerulus-x-45404-x-147966-x-892-x-893.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_35-x-glomerulus-x-48113-x-61770-x-934-x-934.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_36-x-glomerulus-x-50136-x-56988-x-786-x-787.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_37-x-glomerulus-x-54641-x-141164-x-869-x-870.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_38-x-glomerulus-x-41404-x-144121-x-795-x-796.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_39-x-glomerulus-x-35355-x-61892-x-783-x-784.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_4-x-glomerulus-x-34719-x-48489-x-867-x-867.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_40-x-glomerulus-x-43235-x-58011-x-885-x-885.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_41-x-glomerulus-x-34684-x-131317-x-932-x-932.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_42-x-glomerulus-x-27454-x-136817-x-818-x-818.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_43-x-glomerulus-x-60648-x-63967-x-758-x-759.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_44-x-glomerulus-x-51618-x-71404-x-897-x-897.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_45-x-glomerulus-x-44204-x-66072-x-859-x-859.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_46-x-glomerulus-x-48788-x-149384-x-667-x-667.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_47-x-glomerulus-x-59691-x-140663-x-980-x-980.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_48-x-glomerulus-x-39083-x-57069-x-887-x-887.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_49-x-glomerulus-x-60366-x-143329-x-897-x-897.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_5-x-glomerulus-x-30217-x-138416-x-834-x-834.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_50-x-glomerulus-x-44190-x-61645-x-932-x-932.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_51-x-glomerulus-x-38546-x-140748-x-795-x-794.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_52-x-glomerulus-x-39439-x-52794-x-930-x-930.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_53-x-glomerulus-x-44911-x-144104-x-869-x-869.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_54-x-glomerulus-x-32557-x-67378-x-719-x-719.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_55-x-glomerulus-x-69454-x-138612-x-811-x-810.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_56-x-glomerulus-x-49609-x-149548-x-706-x-705.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_57-x-glomerulus-x-55356-x-151039-x-949-x-948.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_58-x-glomerulus-x-54212-x-60442-x-930-x-931.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_59-x-glomerulus-x-65412-x-148520-x-957-x-958.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_6-x-glomerulus-x-41641-x-65367-x-884-x-885.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_60-x-glomerulus-x-54215-x-147135-x-954-x-954.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_61-x-glomerulus-x-53043-x-139001-x-807-x-807.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_62-x-glomerulus-x-63759-x-141818-x-783-x-783.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_63-x-glomerulus-x-52600-x-132949-x-878-x-879.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_64-x-glomerulus-x-57041-x-58893-x-900-x-900.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_65-x-glomerulus-x-47627-x-130840-x-918-x-918.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_66-x-glomerulus-x-57601-x-152168-x-814-x-814.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_67-x-glomerulus-x-40651-x-135261-x-909-x-909.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_68-x-glomerulus-x-44622-x-54349-x-889-x-890.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_69-x-glomerulus-x-41202-x-61675-x-829-x-828.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_7-x-glomerulus-x-65870-x-64907-x-922-x-921.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_70-x-glomerulus-x-69601-x-139341-x-869-x-869.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_71-x-glomerulus-x-47996-x-66985-x-848-x-848.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_72-x-glomerulus-x-31291-x-48451-x-818-x-819.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_73-x-glomerulus-x-70564-x-139745-x-732-x-733.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_74-x-glomerulus-x-39890-x-133166-x-870-x-871.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_75-x-glomerulus-x-27269-x-138859-x-676-x-676.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_76-x-glomerulus-x-50761-x-68713-x-905-x-905.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_77-x-glomerulus-x-44736-x-51874-x-862-x-861.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_78-x-glomerulus-x-32217-x-58997-x-933-x-932.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_79-x-glomerulus-x-46277-x-136979-x-904-x-903.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_8-x-glomerulus-x-49768-x-54100-x-888-x-889.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_80-x-glomerulus-x-49744-x-65812-x-894-x-894.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_81-x-glomerulus-x-62014-x-60897-x-903-x-903.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_82-x-glomerulus-x-54438-x-139848-x-872-x-872.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_83-x-glomerulus-x-26416-x-53433-x-869-x-869.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_84-x-glomerulus-x-63805-x-136897-x-922-x-922.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_85-x-glomerulus-x-29532-x-129421-x-780-x-779.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_86-x-glomerulus-x-39111-x-132060-x-974-x-974.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_87-x-glomerulus-x-37584-x-52909-x-880-x-880.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_88-x-glomerulus-x-35118-x-61160-x-954-x-955.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_89-x-glomerulus-x-40673-x-132063-x-860-x-860.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_9-x-glomerulus-x-40851-x-56658-x-795-x-795.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_90-x-glomerulus-x-44551-x-58963-x-766-x-767.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_91-x-glomerulus-x-52541-x-55575-x-791-x-792.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_92-x-glomerulus-x-42441-x-131923-x-900-x-900.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_93-x-glomerulus-x-56195-x-137441-x-832-x-832.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_94-x-glomerulus-x-54385-x-72314-x-970-x-969.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_95-x-glomerulus-x-51161-x-134602-x-769-x-769.png,Periglomerular fibrosis,4
+24738_2017-04-08 04_30_36-x-ROI_96-x-glomerulus-x-38629-x-129316-x-960-x-960.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_97-x-glomerulus-x-35169-x-47678-x-1047-x-1047.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_98-x-glomerulus-x-31799-x-48176-x-727-x-727.png,Normal,0
+24738_2017-04-08 04_30_36-x-ROI_99-x-glomerulus-x-63800-x-144129-x-684-x-684.png,Normal,0
+25119_2017-04-07 23_56_37-x-ROI_0-x-glomerulus-x-63798-x-89262-x-1326-x-1326.png,Periglomerular fibrosis,4
+25119_2017-04-07 23_56_37-x-ROI_1-x-glomerulus-x-63211-x-100086-x-1068-x-1068.png,Periglomerular fibrosis,4
+25119_2017-04-07 23_56_37-x-ROI_10-x-glomerulus-x-69709-x-101087-x-1276-x-1276.png,Periglomerular fibrosis,4
+25119_2017-04-07 23_56_37-x-ROI_11-x-glomerulus-x-64019-x-90965-x-1108-x-1108.png,Periglomerular fibrosis,4
+25119_2017-04-07 23_56_37-x-ROI_12-x-glomerulus-x-93548-x-100714-x-1343-x-1342.png,Normal,0
+25119_2017-04-07 23_56_37-x-ROI_13-x-glomerulus-x-79560-x-103178-x-1063-x-1063.png,Periglomerular fibrosis,4
+25119_2017-04-07 23_56_37-x-ROI_14-x-glomerulus-x-77886-x-94954-x-1188-x-1187.png,Periglomerular fibrosis,4
+25119_2017-04-07 23_56_37-x-ROI_15-x-glomerulus-x-69150-x-85789-x-1100-x-1100.png,Periglomerular fibrosis,4
+25119_2017-04-07 23_56_37-x-ROI_16-x-glomerulus-x-84598-x-107973-x-1191-x-1191.png,Normal,0
+25119_2017-04-07 23_56_37-x-ROI_17-x-glomerulus-x-89922-x-105774-x-1060-x-1061.png,Periglomerular fibrosis,4
+25119_2017-04-07 23_56_37-x-ROI_18-x-glomerulus-x-65870-x-88633-x-902-x-902.png,Periglomerular fibrosis,4
+25119_2017-04-07 23_56_37-x-ROI_19-x-glomerulus-x-85889-x-95228-x-1032-x-1032.png,Periglomerular fibrosis,4
+25119_2017-04-07 23_56_37-x-ROI_2-x-glomerulus-x-78577-x-101567-x-1214-x-1213.png,Periglomerular fibrosis,4
+25119_2017-04-07 23_56_37-x-ROI_20-x-glomerulus-x-67897-x-103917-x-934-x-935.png,Normal,0
+25119_2017-04-07 23_56_37-x-ROI_21-x-glomerulus-x-81074-x-100858-x-947-x-946.png,Global obsolescent glomerulosclerosis,1
+25119_2017-04-07 23_56_37-x-ROI_22-x-glomerulus-x-78091-x-90844-x-975-x-975.png,Periglomerular fibrosis,4
+25119_2017-04-07 23_56_37-x-ROI_23-x-glomerulus-x-85704-x-101647-x-1127-x-1128.png,Periglomerular fibrosis,4
+25119_2017-04-07 23_56_37-x-ROI_24-x-glomerulus-x-68599-x-104659-x-1412-x-1412.png,Periglomerular fibrosis,4
+25119_2017-04-07 23_56_37-x-ROI_25-x-glomerulus-x-88975-x-105292-x-1154-x-1154.png,Periglomerular fibrosis,4
+25119_2017-04-07 23_56_37-x-ROI_26-x-glomerulus-x-69520-x-89983-x-1287-x-1288.png,Normal,0
+25119_2017-04-07 23_56_37-x-ROI_27-x-glomerulus-x-76394-x-98161-x-1107-x-1107.png,Normal,0
+25119_2017-04-07 23_56_37-x-ROI_28-x-glomerulus-x-82299-x-95754-x-1049-x-1049.png,Periglomerular fibrosis,4
+25119_2017-04-07 23_56_37-x-ROI_29-x-glomerulus-x-62667-x-87222-x-1031-x-1031.png,Global obsolescent glomerulosclerosis,1
+25119_2017-04-07 23_56_37-x-ROI_3-x-glomerulus-x-76646-x-101671-x-1092-x-1093.png,Periglomerular fibrosis,4
+25119_2017-04-07 23_56_37-x-ROI_30-x-glomerulus-x-68864-x-92657-x-935-x-934.png,Periglomerular fibrosis,4
+25119_2017-04-07 23_56_37-x-ROI_31-x-glomerulus-x-74041-x-97803-x-894-x-894.png,Periglomerular fibrosis,4
+25119_2017-04-07 23_56_37-x-ROI_32-x-glomerulus-x-66182-x-89479-x-863-x-862.png,Periglomerular fibrosis,4
+25119_2017-04-07 23_56_37-x-ROI_33-x-glomerulus-x-90144-x-95800-x-824-x-824.png,Periglomerular fibrosis,4
+25119_2017-04-07 23_56_37-x-ROI_34-x-glomerulus-x-77641-x-93220-x-1120-x-1120.png,Periglomerular fibrosis,4
+25119_2017-04-07 23_56_37-x-ROI_35-x-glomerulus-x-68889-x-98649-x-1388-x-1388.png,Normal,0
+25119_2017-04-07 23_56_37-x-ROI_36-x-glomerulus-x-75398-x-89952-x-880-x-880.png,Normal,0
+25119_2017-04-07 23_56_37-x-ROI_37-x-glomerulus-x-61485-x-92279-x-973-x-972.png,Global obsolescent glomerulosclerosis,1
+25119_2017-04-07 23_56_37-x-ROI_38-x-glomerulus-x-75930-x-96297-x-1235-x-1235.png,Periglomerular fibrosis,4
+25119_2017-04-07 23_56_37-x-ROI_39-x-glomerulus-x-65181-x-76365-x-888-x-887.png,Periglomerular fibrosis,4
+25119_2017-04-07 23_56_37-x-ROI_4-x-glomerulus-x-84923-x-103739-x-1313-x-1313.png,Normal,0
+25119_2017-04-07 23_56_37-x-ROI_40-x-glomerulus-x-84773-x-105450-x-966-x-966.png,Normal,0
+25119_2017-04-07 23_56_37-x-ROI_41-x-glomerulus-x-66106-x-86002-x-652-x-651.png,Global solidified glomerulosclerosis,2
+25119_2017-04-07 23_56_37-x-ROI_42-x-glomerulus-x-86319-x-98047-x-696-x-696.png,Global solidified glomerulosclerosis,2
+25119_2017-04-07 23_56_37-x-ROI_43-x-glomerulus-x-66337-x-85048-x-808-x-808.png,Periglomerular fibrosis,4
+25119_2017-04-07 23_56_37-x-ROI_44-x-glomerulus-x-86133-x-98852-x-841-x-841.png,Global obsolescent glomerulosclerosis,1
+25119_2017-04-07 23_56_37-x-ROI_45-x-glomerulus-x-75988-x-90333-x-970-x-970.png,Periglomerular fibrosis,4
+25119_2017-04-07 23_56_37-x-ROI_46-x-glomerulus-x-80109-x-86763-x-730-x-730.png,Wire loop,-1
+25119_2017-04-07 23_56_37-x-ROI_47-x-glomerulus-x-74023-x-95488-x-1073-x-1073.png,Normal,0
+25119_2017-04-07 23_56_37-x-ROI_48-x-glomerulus-x-92720-x-105398-x-840-x-840.png,Global disappearing glomerulosclerosis,3
+25119_2017-04-07 23_56_37-x-ROI_49-x-glomerulus-x-71789-x-100721-x-1111-x-1111.png,Periglomerular fibrosis,4
+25119_2017-04-07 23_56_37-x-ROI_5-x-glomerulus-x-81684-x-107115-x-1245-x-1245.png,Normal,0
+25119_2017-04-07 23_56_37-x-ROI_50-x-glomerulus-x-63338-x-93730-x-1227-x-1227.png,Normal,0
+25119_2017-04-07 23_56_37-x-ROI_51-x-glomerulus-x-74964-x-93515-x-854-x-854.png,Periglomerular fibrosis,4
+25119_2017-04-07 23_56_37-x-ROI_52-x-glomerulus-x-71393-x-96177-x-1079-x-1080.png,Normal,0
+25119_2017-04-07 23_56_37-x-ROI_53-x-glomerulus-x-82360-x-104588-x-1290-x-1290.png,Periglomerular fibrosis,4
+25119_2017-04-07 23_56_37-x-ROI_54-x-glomerulus-x-71667-x-86409-x-807-x-806.png,Global obsolescent glomerulosclerosis,1
+25119_2017-04-07 23_56_37-x-ROI_55-x-glomerulus-x-59529-x-86064-x-919-x-919.png,Normal,0
+25119_2017-04-07 23_56_37-x-ROI_56-x-glomerulus-x-64139-x-93164-x-797-x-797.png,Periglomerular fibrosis,4
+25119_2017-04-07 23_56_37-x-ROI_57-x-glomerulus-x-79883-x-101931-x-658-x-658.png,Normal,0
+25119_2017-04-07 23_56_37-x-ROI_58-x-glomerulus-x-85538-x-97767-x-877-x-877.png,Global obsolescent glomerulosclerosis,1
+25119_2017-04-07 23_56_37-x-ROI_59-x-glomerulus-x-68151-x-96694-x-396-x-396.png,Wire loop,-1
+25119_2017-04-07 23_56_37-x-ROI_6-x-glomerulus-x-91775-x-100853-x-1060-x-1061.png,Global obsolescent glomerulosclerosis,1
+25119_2017-04-07 23_56_37-x-ROI_60-x-glomerulus-x-63576-x-92527-x-988-x-988.png,Periglomerular fibrosis,4
+25119_2017-04-07 23_56_37-x-ROI_61-x-glomerulus-x-69075-x-94334-x-894-x-894.png,Global obsolescent glomerulosclerosis,1
+25119_2017-04-07 23_56_37-x-ROI_62-x-glomerulus-x-70927-x-94358-x-1285-x-1284.png,Periglomerular fibrosis,4
+25119_2017-04-07 23_56_37-x-ROI_63-x-glomerulus-x-92650-x-101836-x-417-x-418.png,Global disappearing glomerulosclerosis,3
+25119_2017-04-07 23_56_37-x-ROI_64-x-glomerulus-x-67431-x-96629-x-804-x-803.png,Global solidified glomerulosclerosis,2
+25119_2017-04-07 23_56_37-x-ROI_65-x-glomerulus-x-78762-x-98932-x-1206-x-1206.png,Normal,0
+25119_2017-04-07 23_56_37-x-ROI_66-x-glomerulus-x-64582-x-74201-x-1299-x-1299.png,Periglomerular fibrosis,4
+25119_2017-04-07 23_56_37-x-ROI_67-x-glomerulus-x-83534-x-105758-x-1595-x-1595.png,Normal,0
+25119_2017-04-07 23_56_37-x-ROI_68-x-glomerulus-x-90446-x-94683-x-1506-x-1507.png,Periglomerular fibrosis,4
+25119_2017-04-07 23_56_37-x-ROI_7-x-glomerulus-x-71988-x-93559-x-1340-x-1340.png,Normal,0
+25119_2017-04-07 23_56_37-x-ROI_8-x-glomerulus-x-64595-x-85081-x-1380-x-1380.png,Periglomerular fibrosis,4
+25119_2017-04-07 23_56_37-x-ROI_9-x-glomerulus-x-81262-x-95617-x-1045-x-1045.png,Periglomerular fibrosis,4
