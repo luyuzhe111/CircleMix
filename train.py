@@ -1,33 +1,24 @@
 from __future__ import print_function
 
-import math
 import sys
-sys.path.append('/home/cheny82/anaconda3/envs/torch11/lib/python3.7/site-packages')
-
-import argparse
 import shutil
 import time
-import random
-import json
 
+import torch
 import cv2
 import numpy as np
 from tqdm import tqdm
-import torch
 import torch.nn as nn
 import torch.nn.parallel
-import torch.backends.cudnn as cudnn
 import torch.optim as optim
-import torch.utils.data as data
+import torch.utils.data
 import torchvision.transforms as transforms
 import torch.nn.functional as F
 
 import os
 import pandas as pd
-from pandas import DataFrame
 from sklearn.metrics import f1_score
-from sklearn.metrics import precision_score
-from sklearn.metrics import recall_score
+from sklearn.metrics import balanced_accuracy_score
 
 import models.resnet as resnet
 import models.wideresnet as models
@@ -36,46 +27,24 @@ import models.senet as senet
 from models.efficientnet import EfficientNet
 import models.inceptionv4 as inceptionv4
 from data_loader import DataLoader
-import data_loader as dataset
-from utils import Logger, AverageMeter, accuracy, mkdir_p, savefig
-from tensorboardX import SummaryWriter
-
+from utils import AverageMeter, accuracy
 from easydict import EasyDict as edict
 from argparse import Namespace
 import yaml
-
-from utils import focal_loss
-
-import imgaug.augmenters as iaa
-from data_loader import normalise, transpose
-from PIL import Image
+from utils import loss_func
 
 
-def cfg_from_file(filename):
-    """Load a config file and merge it into the default options."""
+config_dir = sys.argv[1]
+config_file = os.path.basename(config_dir)
+print('Train with ' + config_file)
 
-    with open(filename, 'r') as f:  # not valid grammar in Python 2.5
-        yaml_cfg = edict(yaml.load(f, Loader=yaml.FullLoader))
-    return yaml_cfg
-
-
-parser = argparse.ArgumentParser(description='PyTorch MixMatch Training')
-
-parser.add_argument('--config', default='EfficientNetb1_none_none_fold1.yaml', help='config file')
-
-args = parser.parse_args([])
-config = sys.argv[1]
-# config = 'MobileNet_none_none_fold1.yaml'
-print('Train with ' + config)
-config_file = os.path.join('/Data/luy8/centermix/config/', config)
-args = cfg_from_file(config_file)
+with open(config_dir, 'r') as f:
+    args = edict(yaml.load(f, Loader=yaml.FullLoader))
 
 args = Namespace(**args)
-state = {k: v for k, v in args._get_kwargs()}
-# config = os.path.join('config', args.config)
-args.expname = config.replace('.yaml', '')
+args.expname = config_file.split('.yaml')[0]
 
-output_csv_dir = os.path.join(args.output_csv_dir, 'config', args.expname)
+output_csv_dir = os.path.join(args.output_csv_dir, args.expname)
 if not os.path.exists(output_csv_dir):
     os.makedirs(output_csv_dir)
 
@@ -85,139 +54,67 @@ if not os.path.exists(save_model_dir):
 
 
 def main():
-    # Use CUDA
-    os.environ['CUDA_VISIBLE_DEVICES'] = args.gpu
-    use_cuda = torch.cuda.is_available()
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-    # best test accuracy
-    # global best_acc
     best_acc = 0
     best_f1 = 0
 
-    if not os.path.isdir(args.out):
-        mkdir_p(args.out)
-
-    # Data
-    print(f'==> Preparing kidpath')
     transform_train = transforms.Compose([
-        # dataset.Resize((size, size)),
-        # dataset.RandomPadandCrop(size),
-        # dataset.RandomFlip(),
-        dataset.ToTensor(),
+        transforms.RandomResizedCrop(224),
+        transforms.RandomHorizontalFlip(p=0.5),
+        transforms.RandomVerticalFlip(p=0.5),
+        transforms.ToTensor(),
+        transforms.Normalize((0.485, 0.456, 0.406), (0.229, 0.224, 0.225)),
     ])
 
     transform_val = transforms.Compose([
-        # dataset.Resize((size, size)),
-        dataset.ToTensor(),
+        transforms.CenterCrop(224),
+        transforms.ToTensor(),
+        transforms.Normalize((0.485, 0.456, 0.406), (0.229, 0.224, 0.225)),
     ])
 
-    train_labeled_set = DataLoader(args.train_list,
-                                   transform=transform_train,
-                                   split='train', aug=args.aug,
-                                   aggregate=args.aggregate)
+    train_set = DataLoader(args.train_list, transform=transform_train)
+    train_loader = torch.utils.data.DataLoader(train_set,
+                                               batch_size=args.batch_size,
+                                               shuffle=True,
+                                               num_workers=args.num_workers)
 
-    labeled_trainloader = torch.utils.data.DataLoader(train_labeled_set,
-                                                      batch_size=args.batch_size,
-                                                      shuffle=True,
-                                                      num_workers=args.num_workers)
-
-    val_set = DataLoader(args.val_list, transform=transform_val, split='val', aug=args.aug, aggregate=args.aggregate)
+    val_set = DataLoader(args.val_list, transform=transform_val)
     val_loader = torch.utils.data.DataLoader(val_set,
                                              batch_size=args.batch_size,
                                              shuffle=False,
-                                             num_workers=args.num_workers,)
+                                             num_workers=args.num_workers)
 
-    # Model
-    print("==> creating model")
+    # Load model
+    print("==> Creating model")
+    print('==> {} optimizer'.format(args.optimizer))
+    criterion = select_loss_func()
 
     num_classes = args.num_classes
-    def create_model(args, num_classes, ema=False):
-        if args.network == 101:
-            model = models.WideResNet(num_classes=num_classes)
-        elif args.network == 102:
-            model = resnet.resnet101(pretrained=True)
-            num_ftrs = model.fc.in_features
-            model.fc = nn.Linear(num_ftrs, num_classes)
-        elif args.network == 103:
-            model = netv2.mobilenet_v2(pretrained=True)
-            num_ftrs = model.classifier.in_features
-            model.classifier = nn.Linear(num_ftrs, num_classes)
-        elif args.network == 104:
-            model = senet.se_resnet50(num_classes=num_classes)
-        elif args.network == 105:
-            # model = EfficientNet.from_name('efficientnet-b0')
-            model = EfficientNet.from_pretrained(sys.argv[2], num_classes=num_classes)
-        elif args.network == 106:
-            model = inceptionv4.inceptionv4(num_classes=num_classes, pretrained=None)
+    model = create_model(num_classes).to(device)
 
-        model = model.cuda()
-
-        if ema:
-            for param in model.parameters():
-                param.detach_()
-
-        return model
-
-    model = create_model(args, num_classes=num_classes)
-    ema_model = create_model(args, num_classes=num_classes, ema=True)
-
-    cudnn.benchmark = True
-    print('    Total params: %.2fM' % (sum(p.numel() for p in model.parameters()) / 1000000.0))
-
-    criterion = focal_loss.FocalLoss()
-    optimizer = optim.Adam(model.parameters(), lr=args.lr)
-
-    start_epoch = 0
-
-    # Resume
-    title = 'noisy-kidpath'
-    if args.resume:
-        # Load checkpoint.
-        print('==> Resuming from checkpoint..')
-        assert os.path.isfile(args.resume), 'Error: no checkpoint directory found!'
-        args.out = os.path.dirname(args.resume)
-        checkpoint = torch.load(args.resume)
-        best_acc = checkpoint['best_acc']
-        start_epoch = checkpoint['epoch']
-        model.load_state_dict(checkpoint['state_dict'])
-        ema_model.load_state_dict(checkpoint['ema_state_dict'])
-        optimizer.load_state_dict(checkpoint['optimizer'])
-        logger = Logger(os.path.join(args.out, 'log.txt'), title=title, resume=True)
-        logger.set_names(['Train Loss', 'Valid Loss', 'Valid Acc'])
+    if args.optimizer == 'adam':
+        optimizer = optim.Adam(model.parameters(), lr=args.lr)
     else:
-        logger = Logger(os.path.join(args.out, 'log.txt'), title=title)
-        logger.set_names(['Train Loss', 'Valid Loss', 'Valid Acc'])
+        optimizer = torch.optim.SGD(model.parameters(), args.lr, momentum=0.9, weight_decay=1e-4, nesterov=True)
 
-    writer = SummaryWriter(args.out)
-    test_accs = []
+    start_epoch = args.start_epoch
 
-    # output performance of a model with each epoch
-
-    # Train and val
-    df = pd.DataFrame(columns=['cur_model', 'supervised', 'epoch_num', 'train_loss',
-                               'val_loss', 'val_acc', 'train_acc', 'precision', 'recall', 'f1'])
+    # output performance of a model for each epoch
+    df = pd.DataFrame(columns=['model', 'lr', 'epoch_num', 'train_loss',
+                               'val_loss', 'train_acc', 'val_acc', 'f1', 'mul_acc'])
 
     for epoch in range(start_epoch, args.epochs):
         epoch += 1
 
-        print('\nEpoch: [%d | %d] LR: %f' % (epoch, args.epochs, state['lr']))
+        cur_lr = adjust_learning_rate(optimizer, epoch)
+        print('\nEpoch: [%d | %d] LR: %f' % (epoch, args.epochs, cur_lr))
 
-        train_loss, train_acc = train_supervise(labeled_trainloader, model, optimizer, criterion, use_cuda)
-        val_loss, val_acc, precision, recall, f1 = validate(output_csv_dir, val_loader, model, criterion, epoch, use_cuda, mode='Valid Stats')
-
-        step = args.val_iteration * (epoch)
-
-        writer.add_scalar('losses/train_loss', train_loss, step)
-        writer.add_scalar('losses/valid_loss', val_loss, step)
-
-        writer.add_scalar('accuracy/train_acc', train_acc, step)
-        writer.add_scalar('accuracy/val_acc', val_acc, step)
-
-        logger.append([train_loss, val_loss, val_acc])
+        train_loss, train_acc = train(train_loader, model, optimizer, criterion, device)
+        val_loss, val_acc, f1, mul_acc = validate(output_csv_dir, val_loader, model, criterion, epoch, device)
 
         # write to csv
-        df.loc[epoch] = [args.network, args.supervised, epoch, train_loss,
-                         val_loss, val_acc, train_acc, precision, recall, f1]
+        df.loc[epoch] = [args.network, cur_lr, epoch, train_loss, val_loss, train_acc, val_acc, f1, mul_acc]
 
         output_csv_file = os.path.join(output_csv_dir, 'output.csv')
         df.to_csv(output_csv_file, index=False)
@@ -225,42 +122,73 @@ def main():
         # save model
         is_best_f1 = f1 > best_f1
         best_f1 = max(f1, best_f1)
-        is_best_acc = val_acc > best_acc
-        best_acc = max(val_acc, best_acc)
+        is_best_acc = mul_acc > best_acc
+        best_acc = max(mul_acc, best_acc)
         save_checkpoint({
             'epoch': epoch,
             'state_dict': model.state_dict(),
-            'ema_state_dict': ema_model.state_dict(),
             'acc': val_acc,
             'best_acc': best_acc,
             'optimizer': optimizer.state_dict(),
         }, is_best_acc, is_best_f1, epoch, save_model_dir)
-        test_accs.append(val_acc)
-    logger.close()
-    writer.close()
 
     print('Best acc:')
     print(best_acc)
 
-    print('Mean acc:')
-    print(np.mean(test_accs[-20:]))
+
+def create_model(num_classes):
+    if args.network == 101:
+        model = models.WideResNet(num_classes=num_classes)
+    elif args.network == 102:
+        model = resnet.resnet50()
+        num_ftrs = model.fc.in_features
+        model.fc = nn.Linear(num_ftrs, num_classes)
+    elif args.network == 103:
+        model = netv2.mobilenet_v2(pretrained=True)
+        num_ftrs = model.classifier.in_features
+        model.classifier = nn.Linear(num_ftrs, num_classes)
+    elif args.network == 104:
+        model = senet.se_resnet50(num_classes=num_classes)
+    elif args.network == 105:
+        model = EfficientNet.from_pretrained(sys.argv[2], num_classes=num_classes)
+    elif args.network == 106:
+        model = inceptionv4.inceptionv4(num_classes=num_classes, pretrained=None)
+    else:
+        print('model not available! Using EfficientNet-b0 as default')
+        model = EfficientNet.from_pretrained('efficientnet-b0', num_classes=num_classes)
+
+    return model
 
 
-def train_supervise(labeled_trainloader, model, optimizer, criterion, use_cuda):
+def select_loss_func(choice='CrossEntropy'):
+    print("==> {} loss".format(choice))
+    if choice == 'Focal':
+        return loss_func.FocalLoss(alpha=1, gamma=2, reduce=True).cuda()
+    elif choice == 'Class-Balanced':
+        return loss_func.EffectiveSamplesLoss(beta=0.999,
+                                              num_cls=args.num_classes,
+                                              sample_per_cls=np.array([500, 300, 20, 30, 400]),
+                                              focal=False,
+                                              focal_gamma=2,
+                                              focal_alpha=4).cuda()
+    else:
+        return nn.CrossEntropyLoss().cuda()
+
+
+def train(train_loader, model, optimizer, criterion, device):
     batch_time = AverageMeter()
     data_time = AverageMeter()
     losses = AverageMeter()
     end = time.time()
     top1 = AverageMeter()
-    tbar = tqdm(labeled_trainloader, desc='\r')
+    tbar = tqdm(train_loader, desc='\r')
 
     model.train()
     for batch_idx, (inputs, targets, image_path) in enumerate(tbar):
         # measure data loading time
         data_time.update(time.time() - end)
 
-        if use_cuda:
-            inputs, targets = inputs.cuda(), targets.cuda()
+        inputs, targets = inputs.to(device), targets.to(device)
 
         r = np.random.rand(1)
         if args.centermix_prob > r:
@@ -271,8 +199,7 @@ def train_supervise(labeled_trainloader, model, optimizer, criterion, use_cuda):
 
             r1 = np.random.randint(0, 360)
             r2 = np.random.randint(0, 360)
-            start = min(r1, r2)
-            end = max(r1, r2)
+            start, end = min(r1, r2), max(r1, r2)
             lam = (end - start) / 360
 
             height = inputs.shape[2]
@@ -291,20 +218,13 @@ def train_supervise(labeled_trainloader, model, optimizer, criterion, use_cuda):
             roi_mask = cv2.fillPoly(mask, np.array([vertices]), 255)
             roi_mask_rgb = np.repeat(roi_mask[np.newaxis, :, :], inputs.shape[1], axis=0)
             roi_mask_batch = np.repeat(roi_mask_rgb[np.newaxis, :, :, :], inputs.shape[0], axis=0)
-            roi_mask_batch = torch.tensor(roi_mask_batch)
+            roi_mask_batch = torch.from_numpy(roi_mask_batch)
 
-            if use_cuda:
-                roi_mask_batch = roi_mask_batch.cuda()
-                rand_index = rand_index.cuda()
+            roi_mask_batch = roi_mask_batch.to(device)
+            rand_index = rand_index.to(device)
 
             inputs2 = inputs[rand_index].clone()
             inputs[roi_mask_batch > 0] = inputs2[roi_mask_batch > 0]
-
-            # common data augmentation
-            inputs = runtime_da(inputs)
-
-            inputs = inputs.float()
-            inputs = inputs.cuda()
 
             # compute output
             outputs = model(inputs)
@@ -314,7 +234,7 @@ def train_supervise(labeled_trainloader, model, optimizer, criterion, use_cuda):
         elif args.beta > 0 and args.cutmix_prob > r:
             # generate mixed sample
             lam = np.random.beta(args.beta, args.beta)
-            rand_index = torch.randperm(inputs.size()[0]).cuda()
+            rand_index = torch.randperm(inputs.size()[0]).to(device)
             target_a = targets
             target_b = targets[rand_index]
             bbx1, bby1, bbx2, bby2 = rand_bbox(inputs.size(), lam)
@@ -322,8 +242,6 @@ def train_supervise(labeled_trainloader, model, optimizer, criterion, use_cuda):
 
             # adjust lambda to exactly match pixel ratio
             lam = 1 - ((bbx2 - bbx1) * (bby2 - bby1) / (inputs.size()[-1] * inputs.size()[-2]))
-
-            inputs = runtime_da(inputs)
 
             # compute output
             outputs = model(inputs)
@@ -353,37 +271,13 @@ def train_supervise(labeled_trainloader, model, optimizer, criterion, use_cuda):
     return losses.avg, top1.avg
 
 
-def runtime_da(inputs):
-    seq = iaa.Sequential([
-        iaa.MultiplyAndAddToBrightness(mul=(0.5, 1.5), add=(-30, 30)),
-        iaa.Affine(rotate=(-180, 180)),
-        iaa.Fliplr(0.5),
-        iaa.GaussianBlur(sigma=(0, 1.0))
-    ])
+def adjust_learning_rate(optimizer, epoch):
+    """Sets the learning rate to the initial LR decayed by 100 at every 1/3 of all epochs"""
+    lr = args.lr * (0.1 ** ( (epoch - 1) // (args.epochs * 1/3)) )
+    for param_group in optimizer.param_groups:
+        param_group['lr'] = lr
 
-    transform_train = transforms.Compose([
-        dataset.ToTensor(),
-    ])
-
-    # inputs_normed = np.zeros(inputs.shape)
-    # inputs = inputs.float()
-    inputs = inputs.cpu().numpy()
-    inputs_normed = np.zeros(inputs.shape)
-    for i in range(inputs.shape[0]):
-        tmp = inputs[i]
-        tmp = np.transpose(tmp, (1, 2, 0))
-        tmp_img = np.expand_dims(tmp, axis=0)
-        tmp_img = seq(images=tmp_img)
-
-        # if we would like to see the data augmentation
-        # seq.show_grid([tmp_img[0]], cols=4, rows=4)
-
-        tmp = transpose(normalise(tmp_img[0]))
-        # tmp = transform_train(tmp)
-        inputs_normed[i] = tmp
-
-    inputs = transform_train(inputs_normed).float().cuda()
-    return inputs
+    return lr
 
 
 def polygon_vertices(size, start, end):
@@ -436,7 +330,7 @@ def rand_bbox(size, lam):
     return bbx1, bby1, bbx2, bby2
 
 
-def validate(out_dir, valloader, model, criterion, epoch, use_cuda, mode):
+def validate(out_dir, val_loader, model, criterion, epoch, device):
     batch_time = AverageMeter()
     data_time = AverageMeter()
     losses = AverageMeter()
@@ -444,26 +338,21 @@ def validate(out_dir, valloader, model, criterion, epoch, use_cuda, mode):
 
     # switch to evaluate mode
     model.eval()
-    tbar = tqdm(valloader, desc='\r')
+    tbar = tqdm(val_loader, desc='\r')
     end = time.time()
 
     with torch.no_grad():
-        correct = 0
         pred_history = []
         target_history = []
         name_history = []
-        prob_history = []
 
         for batch_idx, (inputs, targets, image_path) in enumerate(tbar):
             # measure data loading time
             data_time.update(time.time() - end)
             inputs = inputs.float()
 
-            if use_cuda:
-                inputs, targets = inputs.cuda(), targets.cuda(non_blocking=True)
-            # compute output
+            inputs, targets = inputs.to(device), targets.to(device)
             outputs = model(inputs)
-            prob_out = F.softmax(outputs, dim=1)
             loss = criterion(outputs, targets)
 
             # measure accuracy and record loss
@@ -477,24 +366,20 @@ def validate(out_dir, valloader, model, criterion, epoch, use_cuda, mode):
 
             pred_clss = F.softmax(outputs, dim=1)
             pred = pred_clss.data.max(1)[1]  # ge
-            correct += pred.eq(targets.data).cpu().sum()
             pred_history = np.concatenate((pred_history, pred.data.cpu().numpy()), axis=0)
             target_history = np.concatenate((target_history, targets.data.cpu().numpy()), axis=0)
             name_history = np.concatenate((name_history, image_path), axis=0)
-            if batch_idx == 0:
-                prob_history = prob_out.data.cpu().numpy()
-            else:
-                prob_history = np.concatenate((prob_history, prob_out.data.cpu().numpy()), axis=0)
 
-            tbar.set_description('\r %s Loss: %.3f | Top1: %.3f' % (mode, losses.avg, top1.avg))
+            tbar.set_description('\r %s Loss: %.3f | Top1: %.3f' % ('Valid Stats', losses.avg, top1.avg))
 
-        precision = precision_score(pred_history, target_history, average='binary')
-        recall = recall_score(pred_history, target_history, average='binary')
-        f1 = f1_score(pred_history, target_history, average='binary')
+        f1s = f1_score(target_history, pred_history, average=None)
+        f1_avg = sum(f1s)/len(f1s)
+
+        mul_acc = balanced_accuracy_score(target_history, pred_history)
 
         epoch_summary(out_dir, epoch, name_history, pred_history, target_history)
 
-    return losses.avg, top1.avg, precision, recall, f1
+    return losses.avg, top1.avg, f1_avg, mul_acc
 
 
 # output csv file for result in each epoch
@@ -508,15 +393,6 @@ def epoch_summary(out_dir, epoch, name_history, pred_history, target_history):
     df['image'] = name_history
     df['prediction'] = pred_history
     df['target'] = target_history
-
-    # columns = ['image', 'prediction', 'true', 'acc']
-    # for pi in range(prob_history.shape[1]):
-    #     columns = columns + ['clss_%d'%(pi)]
-    #
-    # df = DataFrame(columns=columns)
-    # for i in range(len(pred_history)):
-    #     # df.loc[i] = [name_history[i], pred_history[i], target_history[i]]
-    #     df.loc[i] = [name_history[i], pred_history[i], target_history[i], acc] + list(prob_history[i])
     df.to_csv(csv_file_name)
 
 
@@ -531,8 +407,6 @@ def save_checkpoint(state, is_best_acc, is_best_f1, epoch, checkpoint, filename=
 
 
 def load_checkpoint(model, filepath):
-    # filename = 'epoch' + str(epoch) + '_' + filename
-    # filepath = os.path.join(checkpoint, filename)
     assert os.path.isfile(filepath), 'Error: no checkpoint directory found!'
     checkpoint = torch.load(filepath)
     model.load_state_dict(checkpoint['state_dict'])
@@ -541,7 +415,3 @@ def load_checkpoint(model, filepath):
 
 if __name__ == '__main__':
     main()
-
-
-
-

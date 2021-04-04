@@ -50,7 +50,7 @@ from easydict import EasyDict as edict
 from argparse import Namespace
 import yaml
 
-from utils import focal_loss
+from utils import loss_func
 from PIL import Image
 
 
@@ -102,7 +102,7 @@ def main():
         dataset.ToTensor(),
     ])
 
-    val_set = DataLoader(args.test_list,
+    val_set = DataLoader(args.val_list,
                          transform=transform_val,
                          split='val',
                          aug=args.aug,
@@ -142,7 +142,7 @@ def main():
         return model
 
     model = create_model(args, num_classes=num_classes)
-    criterion = focal_loss.FocalLoss().cuda()
+    criterion = loss_func.FocalLoss().cuda()
 
     # testing
     df = pd.DataFrame(columns=['exp', 'train', 'val', 'test', 'test_loss', 'test_acc', 'f1', 'mul_acc'])
@@ -171,7 +171,7 @@ def main():
             best_bal_mul_acc = mul_acc
             shutil.copyfile(os.path.join(save_model_dir, saved_model), os.path.join(save_model_dir, 'model_best_acc.pth.tar'))
 
-    output_csv_file = os.path.join(output_dir, 'full_test.csv')
+    output_csv_file = os.path.join(output_dir, 'full_val.csv')
     df.to_csv(output_csv_file, index=False)
 
 

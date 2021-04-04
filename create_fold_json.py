@@ -3,23 +3,19 @@ import pandas as pd
 import os
 import shutil
 
+
 def main():
     fold_assignment = 'csv/folds_assignment.csv'
-    df = pd.read_csv(fold_assignment)
+    df = pd.read_csv(fold_assignment, index_col=0)
 
-    np_ratio(df, 1)
-    np_ratio(df, 2)
-    np_ratio(df, 3)
-    np_ratio(df, 4)
-    np_ratio(df, 5)
+    for i in range(1, 6):
+        np_ratio(df, i)
 
-    data_dir = '/Data/luy8/centermix/resized_data/train'
+    data_dir = '/Data/luy8/centermix/resized_data'
     json_dir = 'json'
-    json_each_fold(df, 1, data_dir, json_dir)
-    json_each_fold(df, 2, data_dir, json_dir)
-    json_each_fold(df, 3, data_dir, json_dir)
-    json_each_fold(df, 4, data_dir, json_dir)
-    json_each_fold(df, 5, data_dir, json_dir)
+    keys = ['patient_id', 'image_name', 'target']
+    for i in range(1, 6):
+        json_each_fold(df, i, data_dir, json_dir, keys)
 
 
 def np_ratio(df, fold):
@@ -29,21 +25,21 @@ def np_ratio(df, fold):
                                                                                fold1_pos, len(df[df['fold'] == fold])))
 
 
-def json_each_fold(df, fold, data_dir, json_dir):
-    root_dir = os.path.dirname(data_dir)
-    fold_dir = os.path.join(root_dir, 'fold'+str(fold))
+def json_each_fold(df, fold, data_dir, json_dir, keys):
+    patient_id, image_name, label = keys
+    fold_dir = os.path.join(data_dir, 'fold'+str(fold))
     if not os.path.exists(fold_dir):
         os.mkdir(fold_dir)
 
     df_fold = df[df['fold'] == fold]
     data_list = []
-    for idx, row in df_fold.iterrows():
-        img = row['image_name']
+    for index, row in df_fold.iterrows():
+        img = index
         img_dir = os.path.join(data_dir, img + '.png')
         img_fold_dir = os.path.join(fold_dir, img + '.png')
-        shutil.copy(img_dir, img_fold_dir)
-        target = row['target']
-        patient = row['patient_id']
+        # shutil.copy(img_dir, img_fold_dir)
+        target = row[label]
+        patient = row[patient_id]
 
         one_entry = {'name': img, 'patient': patient, 'image_dir': img_fold_dir, 'target': target}
         data_list.append(one_entry)
