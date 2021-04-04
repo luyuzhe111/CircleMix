@@ -27,6 +27,7 @@ from easydict import EasyDict as edict
 from argparse import Namespace
 import yaml
 
+from utils import loss_func
 
 config_dir = sys.argv[1]
 config_file = os.path.basename(config_dir)
@@ -69,7 +70,9 @@ def main():
     num_classes = args.num_classes
     model = create_model(num_classes).to(device)
 
+
     criterion = nn.CrossEntropyLoss()
+    criterion = loss_func.FocalLoss().cuda()
 
     # testing
     df = pd.DataFrame(columns=['exp', 'train', 'val', 'test', 'test_loss', 'test_acc', 'f1', 'mul_acc'])

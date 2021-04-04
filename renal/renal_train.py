@@ -1,6 +1,10 @@
 from __future__ import print_function
 
 import sys
+<<<<<<< HEAD
+=======
+sys.path.append('/Data/luy8/centermix')
+>>>>>>> 63622a3560fd9e08742417d8cea407581f878aa6
 import shutil
 import time
 
@@ -78,7 +82,11 @@ def main():
         transforms.ToTensor(),
     ])
 
+<<<<<<< HEAD
     train_set = DataLoader(args.train_list, transform=transform_train)
+=======
+    train_set = DataLoader(args.train_list, transform=transform_train, split='train', aug=args.aug)
+>>>>>>> 63622a3560fd9e08742417d8cea407581f878aa6
     # use imbalanced dataset sampler
     # train_loader = torch.utils.data.DataLoader(train_set,
     #                                           batch_size=args.batch_size,
@@ -91,7 +99,11 @@ def main():
                                                shuffle=True,
                                                num_workers=args.num_workers)
 
+<<<<<<< HEAD
     val_set = DataLoader(args.val_list, transform=transform_val)
+=======
+    val_set = DataLoader(args.val_list, transform=transform_val, split='val', aug=args.aug)
+>>>>>>> 63622a3560fd9e08742417d8cea407581f878aa6
     val_loader = torch.utils.data.DataLoader(val_set,
                                              batch_size=args.batch_size,
                                              shuffle=False,

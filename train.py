@@ -73,11 +73,13 @@ def main():
         transforms.Normalize((0.485, 0.456, 0.406), (0.229, 0.224, 0.225)),
     ])
 
+
     train_set = DataLoader(args.train_list, transform=transform_train)
     train_loader = torch.utils.data.DataLoader(train_set,
                                                batch_size=args.batch_size,
                                                shuffle=True,
                                                num_workers=args.num_workers)
+
 
     val_set = DataLoader(args.val_list, transform=transform_val)
     val_loader = torch.utils.data.DataLoader(val_set,
