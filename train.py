@@ -1,7 +1,6 @@
 from __future__ import print_function
 
 import sys
-sys.path.append('/Data/luy8/centermix')
 import shutil
 import time
 
@@ -12,7 +11,7 @@ from tqdm import tqdm
 import torch.nn as nn
 import torch.nn.parallel
 import torch.optim as optim
-import torch.utils.data as data
+import torch.utils.data
 import torchvision.transforms as transforms
 import torch.nn.functional as F
 
@@ -29,28 +28,19 @@ from models.efficientnet import EfficientNet
 import models.inceptionv4 as inceptionv4
 from data_loader import DataLoader
 from utils import AverageMeter, accuracy
-
 from easydict import EasyDict as edict
 from argparse import Namespace
 import yaml
-
 from utils import loss_func
-from utils.torchsampler.imbalanced import ImbalancedDatasetSampler
-
-
-def cfg_from_file(filename):
-    """Load a config file and merge it into the default options."""
-
-    with open(filename, 'r') as f:  # not valid grammar in Python 2.5
-        yaml_cfg = edict(yaml.load(f, Loader=yaml.FullLoader))
-    return yaml_cfg
 
 
 config_dir = sys.argv[1]
 config_file = os.path.basename(config_dir)
 print('Train with ' + config_file)
 
-args = cfg_from_file(config_dir)
+with open(config_dir, 'r') as f:
+    args = edict(yaml.load(f, Loader=yaml.FullLoader))
+
 args = Namespace(**args)
 args.expname = config_file.split('.yaml')[0]
 
@@ -64,35 +54,32 @@ if not os.path.exists(save_model_dir):
 
 
 def main():
-    # Use CUDA
-    os.environ['CUDA_VISIBLE_DEVICES'] = args.gpu
-    use_cuda = torch.cuda.is_available()
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     best_acc = 0
     best_f1 = 0
 
     transform_train = transforms.Compose([
+        transforms.RandomResizedCrop(224),
+        transforms.RandomHorizontalFlip(p=0.5),
+        transforms.RandomVerticalFlip(p=0.5),
         transforms.ToTensor(),
+        transforms.Normalize((0.485, 0.456, 0.406), (0.229, 0.224, 0.225)),
     ])
 
     transform_val = transforms.Compose([
+        transforms.CenterCrop(224),
         transforms.ToTensor(),
+        transforms.Normalize((0.485, 0.456, 0.406), (0.229, 0.224, 0.225)),
     ])
 
-    train_set = DataLoader(args.train_list, transform=transform_train, split='train', aug=args.aug)
-    # use imbalanced dataset sampler
-    # train_loader = torch.utils.data.DataLoader(train_set,
-    #                                           batch_size=args.batch_size,
-    #                                           sampler=ImbalancedDatasetSampler(train_set,
-    #                                                                            num_samples=len(train_set),
-    #                                                                            callback_get_label=train_set.data),
-    #                                           num_workers=args.num_workers)
+    train_set = DataLoader(args.train_list, transform=transform_train, split='train')
     train_loader = torch.utils.data.DataLoader(train_set,
                                                batch_size=args.batch_size,
                                                shuffle=True,
                                                num_workers=args.num_workers)
 
-    val_set = DataLoader(args.val_list, transform=transform_val, split='val', aug=args.aug)
+    val_set = DataLoader(args.val_list, transform=transform_val, split='val')
     val_loader = torch.utils.data.DataLoader(val_set,
                                              batch_size=args.batch_size,
                                              shuffle=False,
@@ -104,92 +91,30 @@ def main():
     criterion = select_loss_func()
 
     num_classes = args.num_classes
-    if args.network == 101:
-        model = models.WideResNet(num_classes=num_classes)
-    elif args.network == 102:
-        model = resnet.resnet50(pretrained=True)
-        num_ftrs = model.fc.in_features
-        model.fc = nn.Linear(num_ftrs, num_classes)
-    elif args.network == 103:
-        model = netv2.mobilenet_v2(pretrained=True)
-        num_ftrs = model.classifier.in_features
-        model.classifier = nn.Linear(num_ftrs, num_classes)
-    elif args.network == 104:
-        model = senet.se_resnet50(num_classes=num_classes)
-    elif args.network == 105:
-        model = EfficientNet.from_pretrained(sys.argv[2], num_classes=num_classes)
-    elif args.network == 106:
-        model = inceptionv4.inceptionv4(num_classes=num_classes, pretrained=None)
-    else:
-        print('model not available! Using EfficientNet-b0 as default')
-        model = EfficientNet.from_pretrained('efficientnet-b0', num_classes=num_classes)
-
-    model = model.cuda()
-
-    if args.num_classes < 5 and args.c5_pretrained is True:
-        hierarchy = '-' + config_file.split('_')[0].split('-')[1]
-        pretrained_config = config_file.split(hierarchy)[0] + config_file.split(hierarchy)[1]
-        exp_dir = args.output_csv_dir
-        pretrained_model = os.path.join(exp_dir, pretrained_config.split('.')[0], 'models', 'model_best_acc.pth.tar')
-        checkpoint = torch.load(pretrained_model)
-        if 'Efficient' in pretrained_config:
-            checkpoint['state_dict'].pop('_fc.weight')
-            checkpoint['state_dict'].pop('_fc.bias')
-        elif 'MobileNet' in pretrained_config:
-            checkpoint['state_dict'].pop('classifier.weight')
-            checkpoint['state_dict'].pop('classifier.bias')
-        model.load_state_dict(checkpoint['state_dict'], strict=False)
-
-        for param in model.parameters():
-            param.requires_grad = False
-
-        model._fc.weight.requires_grad = True
-        model._fc.bias.requires_grad = True
-
-        model._conv_head._parameters['weight'].requires_grad = True
-        # unfreeze 11 - 15 for NC2
-        # unfreeze 13 - 15 for C3
-        # unfreeze 14 - 15 for C2
-        for i in range(1, 16):
-            for param in model._blocks[i].parameters():
-                param.requires_grad = True
-
-        print('Successfully loaded C5 model {}\n'.format(pretrained_config))
-
-    print('    Total params: %.2fM' % (sum(p.numel() for p in model.parameters()) / 1000000.0))
+    model = create_model(num_classes).to(device)
 
     if args.optimizer == 'adam':
         optimizer = optim.Adam(model.parameters(), lr=args.lr)
     else:
-        optimizer = torch.optim.SGD(model.parameters(),
-                                    args.lr,
-                                    momentum=0.9,
-                                    weight_decay=1e-4,
-                                    nesterov=True)
+        optimizer = torch.optim.SGD(model.parameters(), args.lr, momentum=0.9, weight_decay=1e-4, nesterov=True)
 
     start_epoch = args.start_epoch
 
     # output performance of a model for each epoch
-    val_accs = []
-    df = pd.DataFrame(columns=['cur_model', 'supervised', 'epoch_num', 'train_loss',
-                               'val_loss', 'val_acc', 'train_acc', 'f1', 'mul_acc'])
+    df = pd.DataFrame(columns=['model', 'lr', 'epoch_num', 'train_loss',
+                               'val_loss', 'train_acc', 'val_acc', 'f1', 'mul_acc'])
 
     for epoch in range(start_epoch, args.epochs):
         epoch += 1
-        if args.optimizer != 'adam':
-            cur_lr = args.lr
-            dec_lr = adjust_learning_rate(optimizer, epoch)
-            cur_lr = min(cur_lr, dec_lr)
-            print('\nEpoch: [%d | %d] LR: %f' % (epoch, args.epochs, cur_lr))
-        else:
-            print('\nEpoch: [%d | %d] LR: %f' % (epoch, args.epochs, args.lr))
 
-        train_loss, train_acc = train(train_loader, model, optimizer, criterion, use_cuda)
-        val_loss, val_acc, f1, mul_acc = validate(output_csv_dir, val_loader, model, criterion, epoch, use_cuda, mode='Valid Stats')
+        cur_lr = adjust_learning_rate(optimizer, epoch)
+        print('\nEpoch: [%d | %d] LR: %f' % (epoch, args.epochs, cur_lr))
+
+        train_loss, train_acc = train(train_loader, model, optimizer, criterion, device)
+        val_loss, val_acc, f1, mul_acc = validate(output_csv_dir, val_loader, model, criterion, epoch, device)
 
         # write to csv
-        df.loc[epoch] = [args.network, args.supervised, epoch, train_loss,
-                         val_loss, val_acc, train_acc, f1, mul_acc]
+        df.loc[epoch] = [args.network, cur_lr, epoch, train_loss, val_loss, train_acc, val_acc, f1, mul_acc]
 
         output_csv_file = os.path.join(output_csv_dir, 'output.csv')
         df.to_csv(output_csv_file, index=False)
@@ -206,13 +131,33 @@ def main():
             'best_acc': best_acc,
             'optimizer': optimizer.state_dict(),
         }, is_best_acc, is_best_f1, epoch, save_model_dir)
-        val_accs.append(val_acc)
 
     print('Best acc:')
     print(best_acc)
 
-    print('Mean acc:')
-    print(np.mean(val_accs[-20:]))
+
+def create_model(num_classes):
+    if args.network == 101:
+        model = models.WideResNet(num_classes=num_classes)
+    elif args.network == 102:
+        model = resnet.resnet50()
+        num_ftrs = model.fc.in_features
+        model.fc = nn.Linear(num_ftrs, num_classes)
+    elif args.network == 103:
+        model = netv2.mobilenet_v2(pretrained=True)
+        num_ftrs = model.classifier.in_features
+        model.classifier = nn.Linear(num_ftrs, num_classes)
+    elif args.network == 104:
+        model = senet.se_resnet50(num_classes=num_classes)
+    elif args.network == 105:
+        model = EfficientNet.from_pretrained(sys.argv[2], num_classes=num_classes)
+    elif args.network == 106:
+        model = inceptionv4.inceptionv4(num_classes=num_classes, pretrained=None)
+    else:
+        print('model not available! Using EfficientNet-b0 as default')
+        model = EfficientNet.from_pretrained('efficientnet-b0', num_classes=num_classes)
+
+    return model
 
 
 def select_loss_func(choice='CrossEntropy'):
@@ -230,7 +175,7 @@ def select_loss_func(choice='CrossEntropy'):
         return nn.CrossEntropyLoss().cuda()
 
 
-def train(train_loader, model, optimizer, criterion, use_cuda):
+def train(train_loader, model, optimizer, criterion, device):
     batch_time = AverageMeter()
     data_time = AverageMeter()
     losses = AverageMeter()
@@ -243,8 +188,7 @@ def train(train_loader, model, optimizer, criterion, use_cuda):
         # measure data loading time
         data_time.update(time.time() - end)
 
-        if use_cuda:
-            inputs, targets = inputs.cuda(), targets.cuda()
+        inputs, targets = inputs.to(device), targets.to(device)
 
         r = np.random.rand(1)
         if args.centermix_prob > r:
@@ -255,8 +199,7 @@ def train(train_loader, model, optimizer, criterion, use_cuda):
 
             r1 = np.random.randint(0, 360)
             r2 = np.random.randint(0, 360)
-            start = min(r1, r2)
-            end = max(r1, r2)
+            start, end = min(r1, r2), max(r1, r2)
             lam = (end - start) / 360
 
             height = inputs.shape[2]
@@ -275,11 +218,10 @@ def train(train_loader, model, optimizer, criterion, use_cuda):
             roi_mask = cv2.fillPoly(mask, np.array([vertices]), 255)
             roi_mask_rgb = np.repeat(roi_mask[np.newaxis, :, :], inputs.shape[1], axis=0)
             roi_mask_batch = np.repeat(roi_mask_rgb[np.newaxis, :, :, :], inputs.shape[0], axis=0)
-            roi_mask_batch = torch.tensor(roi_mask_batch)
+            roi_mask_batch = torch.from_numpy(roi_mask_batch)
 
-            if use_cuda:
-                roi_mask_batch = roi_mask_batch.cuda()
-                rand_index = rand_index.cuda()
+            roi_mask_batch = roi_mask_batch.to(device)
+            rand_index = rand_index.to(device)
 
             inputs2 = inputs[rand_index].clone()
             inputs[roi_mask_batch > 0] = inputs2[roi_mask_batch > 0]
@@ -292,7 +234,7 @@ def train(train_loader, model, optimizer, criterion, use_cuda):
         elif args.beta > 0 and args.cutmix_prob > r:
             # generate mixed sample
             lam = np.random.beta(args.beta, args.beta)
-            rand_index = torch.randperm(inputs.size()[0]).cuda()
+            rand_index = torch.randperm(inputs.size()[0]).to(device)
             target_a = targets
             target_b = targets[rand_index]
             bbx1, bby1, bbx2, bby2 = rand_bbox(inputs.size(), lam)
@@ -388,7 +330,7 @@ def rand_bbox(size, lam):
     return bbx1, bby1, bbx2, bby2
 
 
-def validate(out_dir, val_loader, model, criterion, epoch, use_cuda, mode):
+def validate(out_dir, val_loader, model, criterion, epoch, device):
     batch_time = AverageMeter()
     data_time = AverageMeter()
     losses = AverageMeter()
@@ -409,9 +351,7 @@ def validate(out_dir, val_loader, model, criterion, epoch, use_cuda, mode):
             data_time.update(time.time() - end)
             inputs = inputs.float()
 
-            if use_cuda:
-                inputs, targets = inputs.cuda(), targets.cuda(non_blocking=True)
-            # compute output
+            inputs, targets = inputs.to(device), targets.to(device)
             outputs = model(inputs)
             loss = criterion(outputs, targets)
 
@@ -430,13 +370,10 @@ def validate(out_dir, val_loader, model, criterion, epoch, use_cuda, mode):
             target_history = np.concatenate((target_history, targets.data.cpu().numpy()), axis=0)
             name_history = np.concatenate((name_history, image_path), axis=0)
 
-            tbar.set_description('\r %s Loss: %.3f | Top1: %.3f' % (mode, losses.avg, top1.avg))
+            tbar.set_description('\r %s Loss: %.3f | Top1: %.3f' % ('Valid Stats', losses.avg, top1.avg))
 
-        if args.num_classes != 2:
-            f1s = f1_score(target_history, pred_history, average=None)
-            f1_avg = sum(f1s)/len(f1s)
-        else:
-            f1_avg = f1_score(target_history, pred_history, average='binary')
+        f1s = f1_score(target_history, pred_history, average=None)
+        f1_avg = sum(f1s)/len(f1s)
 
         mul_acc = balanced_accuracy_score(target_history, pred_history)
 
@@ -478,7 +415,3 @@ def load_checkpoint(model, filepath):
 
 if __name__ == '__main__':
     main()
-
-
-
-

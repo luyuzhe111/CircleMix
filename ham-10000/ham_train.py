@@ -1,7 +1,16 @@
 from __future__ import print_function
 
 import sys
-sys.path.append('/Data/luy8/centermix')
+sys.path = ['/Data/luy8/centermix',
+            '/snap/pycharm-professional/209/plugins/python/helpers/pycharm_display',
+            '/home/hrlblab/anaconda3/envs/centermix/lib/python37.zip',
+            '/home/hrlblab/anaconda3/envs/centermix/lib/python3.7',
+            '/home/hrlblab/anaconda3/envs/centermix/lib/python3.7/lib-dynload',
+            '/home/hrlblab/anaconda3/envs/centermix/lib/python3.7/site-packages',
+            '/snap/pycharm-professional/209/plugins/python/helpers/pycharm_matplotlib_backend',
+            '/usr/lib/python3.7'
+            ]
+
 import shutil
 import time
 
@@ -29,6 +38,7 @@ from models.efficientnet import EfficientNet
 import models.inceptionv4 as inceptionv4
 from data_loader import DataLoader
 from utils import AverageMeter, accuracy
+from tensorboardX import SummaryWriter
 
 from easydict import EasyDict as edict
 from argparse import Namespace
@@ -107,7 +117,7 @@ def main():
     if args.network == 101:
         model = models.WideResNet(num_classes=num_classes)
     elif args.network == 102:
-        model = resnet.resnet50(pretrained=True)
+        model = resnet.resnet50()
         num_ftrs = model.fc.in_features
         model.fc = nn.Linear(num_ftrs, num_classes)
     elif args.network == 103:
@@ -125,38 +135,6 @@ def main():
         model = EfficientNet.from_pretrained('efficientnet-b0', num_classes=num_classes)
 
     model = model.cuda()
-
-    if args.num_classes < 5 and args.c5_pretrained is True:
-        hierarchy = '-' + config_file.split('_')[0].split('-')[1]
-        pretrained_config = config_file.split(hierarchy)[0] + config_file.split(hierarchy)[1]
-        exp_dir = args.output_csv_dir
-        pretrained_model = os.path.join(exp_dir, pretrained_config.split('.')[0], 'models', 'model_best_acc.pth.tar')
-        checkpoint = torch.load(pretrained_model)
-        if 'Efficient' in pretrained_config:
-            checkpoint['state_dict'].pop('_fc.weight')
-            checkpoint['state_dict'].pop('_fc.bias')
-        elif 'MobileNet' in pretrained_config:
-            checkpoint['state_dict'].pop('classifier.weight')
-            checkpoint['state_dict'].pop('classifier.bias')
-        model.load_state_dict(checkpoint['state_dict'], strict=False)
-
-        for param in model.parameters():
-            param.requires_grad = False
-
-        model._fc.weight.requires_grad = True
-        model._fc.bias.requires_grad = True
-
-        model._conv_head._parameters['weight'].requires_grad = True
-        # unfreeze 11 - 15 for NC2
-        # unfreeze 13 - 15 for C3
-        # unfreeze 14 - 15 for C2
-        for i in range(1, 16):
-            for param in model._blocks[i].parameters():
-                param.requires_grad = True
-
-        print('Successfully loaded C5 model {}\n'.format(pretrained_config))
-
-    print('    Total params: %.2fM' % (sum(p.numel() for p in model.parameters()) / 1000000.0))
 
     if args.optimizer == 'adam':
         optimizer = optim.Adam(model.parameters(), lr=args.lr)
@@ -331,7 +309,7 @@ def train(train_loader, model, optimizer, criterion, use_cuda):
 
 def adjust_learning_rate(optimizer, epoch):
     """Sets the learning rate to the initial LR decayed by 100 at every 1/3 of all epochs"""
-    lr = args.lr * (0.1 ** ( (epoch - 1) // (args.epochs * 1/3)) )
+    lr = args.lr * (0.1 ** ( (epoch - 1) // (args.epochs * 1/2)) )
     for param_group in optimizer.param_groups:
         param_group['lr'] = lr
 

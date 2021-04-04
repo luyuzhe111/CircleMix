@@ -78,7 +78,7 @@ if __name__ == "__main__":
     image_dir = 'renal/resized_image'
     json_dir = 'renal/annotation_json'
 
-    output_dir = 'folds_csv'
+    output_dir = 'folds'
 
     labels = ['Glomerular', 'Bowman', 'Other']
 

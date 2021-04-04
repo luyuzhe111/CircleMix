@@ -10,9 +10,9 @@ import seaborn as sn
 
 
 def ensemble(dataset, expname, title=None, hierarchical=False):
+    # output_dir = '/Data/luy8/centermix/exp_results/renal_paper_ready/Efficientb0_flip_aug_SGD_CE_EP100'
     output_dir = 'exp_results'
     if hierarchical:
-        # choose which child classifier to combine
         epoch_file = 'ng_combined_prediction.csv'
         ensemble_epoch_file = 'combined_ensembled_epochs_acc.csv'
     else:
@@ -20,6 +20,7 @@ def ensemble(dataset, expname, title=None, hierarchical=False):
         ensemble_epoch_file = 'ensembled_epochs.csv'
 
     root_dir = os.path.join(output_dir, 'config_' + dataset)
+    # root_dir = output_dir
     df = pd.DataFrame(columns=['image', 'prediction', 'target'])
     img_history = []
     pred_history = []
@@ -35,6 +36,8 @@ def ensemble(dataset, expname, title=None, hierarchical=False):
             else:
                 pred_history += list(file['prediction'])
             target_history += list(file['target'])
+
+    # assert count == 5, "somethig is wrong"
 
     df['image'] = img_history
     df['prediction'] = pred_history
@@ -56,44 +59,49 @@ def ensemble(dataset, expname, title=None, hierarchical=False):
 
     cm = confusion_matrix(target_history,pred_history)
     print(cm)
-
-    if title is not None:
-        df_cm = pd.DataFrame(cm, range(7), range(7))
-        sn.set(font_scale=1.4)
-        sn.heatmap(df_cm, annot=True, cmap='Blues', fmt='g', annot_kws={"size": 16}, vmin=0, vmax=2500)  # font size
-        plt.yticks(rotation=0)
-        plt.title(title)
-        plt.show()
-        plt.clf()
+    # df_cm = pd.DataFrame(cm, range(7), range(7))
+    # sn.set(font_scale=1.4)
+    # sn.heatmap(df_cm, annot=True, cmap='Blues', fmt='g', annot_kws={"size": 16}, vmin=0, vmax=2500)  # font size
+    # plt.yticks(rotation=0)
+    # # plt.title(title)
+    # plt.savefig(os.path.join('exp_results/config_renal/confusion_matrix', title + '.svg'))
+    # plt.clf()
+    # # plt.show()
 
 
 def main():
     print('=====Renal=====')
     print('=====Plain Result=====')
-    ensemble('renal', 'Efficientb0-NC2_us_aug_none', hierarchical=False)
-    ensemble('renal', 'Efficientb0-NC2_us_aug_cutmix', hierarchical=False)
-    ensemble('renal', 'Efficientb0-NC2_us_aug_centermix', hierarchical=False)
+    # ensemble('renal', 'Efficientb0-NC2_us_aug_none', hierarchical=False)
+    # ensemble('renal', 'Efficientb0-NC2_us_aug_cutmix', hierarchical=False)
+    # ensemble('renal', 'Efficientb0-NC2_us_aug_centermix', hierarchical=False)
+    #
+    # ensemble('renal', 'Efficientb0-C2_us_aug_none', hierarchical=False)
+    # ensemble('renal', 'Efficientb0-C2_us_aug_cutmix', hierarchical=False)
+    # ensemble('renal', 'Efficientb0-C2_us_aug_centermix', hierarchical=False)
+    #
+    # ensemble('renal', 'Efficientb0-C3_us_aug_none', hierarchical=False)
+    # ensemble('renal', 'Efficientb0-C3_us_aug_cutmix', hierarchical=False)
+    # ensemble('renal', 'Efficientb0-C3_us_aug_centermix', hierarchical=False)
 
-    ensemble('renal', 'Efficientb0-C2_us_aug_none', hierarchical=False)
-    ensemble('renal', 'Efficientb0-C2_us_aug_cutmix', hierarchical=False)
-    ensemble('renal', 'Efficientb0-C2_us_aug_centermix', hierarchical=False)
+    # ensemble('renal', 'Efficientb0-B_us_aug_none', hierarchical=False)
+    # ensemble('renal', 'Efficientb0-B_us_aug_cutmix', hierarchical=False)
+    # ensemble('renal', 'Efficientb0-B_us_aug_centermix', hierarchical=False)
 
-    ensemble('renal', 'Efficientb0-C3_us_aug_none', hierarchical=False)
-    ensemble('renal', 'Efficientb0-C3_us_aug_cutmix', hierarchical=False)
-    ensemble('renal', 'Efficientb0-C3_us_aug_centermix', hierarchical=False)
+    # ensemble('renal', 'Efficientb0_us_aug_none', title='Baseline', hierarchical=False)
+    # ensemble('renal', 'Efficientb0_us_aug_cutmix', title='CutMix', hierarchical=False)
+    # ensemble('renal', 'Efficientb0_us_aug_centermix', title='CircleMix', hierarchical=False)
+    #
+    # print('=====Hierarchical Result=====')
+    # ensemble('renal', 'Efficientb0_us_aug_none', title='Baseline_h', hierarchical=True)
+    # ensemble('renal', 'Efficientb0_us_aug_cutmix', title='CutMix_h', hierarchical=True)
+    # ensemble('renal', 'Efficientb0_us_aug_centermix', title='CircleMix_h', hierarchical=True)
 
-    ensemble('renal', 'Efficientb0-B_us_aug_none', hierarchical=False)
-    ensemble('renal', 'Efficientb0-B_us_aug_cutmix', hierarchical=False)
-    ensemble('renal', 'Efficientb0-B_us_aug_centermix', hierarchical=False)
-
-    ensemble('renal', 'Efficientb0_us_aug_none', title='Baseline', hierarchical=False)
-    ensemble('renal', 'Efficientb0_us_aug_cutmix', title='CutMix', hierarchical=False)
-    ensemble('renal', 'Efficientb0_us_aug_centermix', title='CircleMix', hierarchical=False)
-
-    print('=====Hierarchical Result=====')
-    ensemble('renal', 'Efficientb0_us_aug_none', title='Baseline_h', hierarchical=True)
-    ensemble('renal', 'Efficientb0_us_aug_cutmix', title='CutMix_h', hierarchical=True)
-    ensemble('renal', 'Efficientb0_us_aug_centermix', title='CircleMix_h', hierarchical=True)
+    print('=====HAM-10000=====')
+    print('=====Plain Result=====')
+    ensemble('ham', 'Efficientb0_none', hierarchical=False)
+    # ensemble('ham', 'Efficientb0_cutmix',  hierarchical=False)
+    ensemble('ham', 'Efficientb0_centermix',  hierarchical=False)
 
 
 if __name__ == '__main__':
