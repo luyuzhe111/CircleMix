@@ -32,7 +32,7 @@ from easydict import EasyDict as edict
 from argparse import Namespace
 import yaml
 from utils import loss_func
-
+from utils.torchsampler.imbalanced import ImbalancedDatasetSampler
 
 config_dir = sys.argv[1]
 config_file = os.path.basename(config_dir)
@@ -75,10 +75,17 @@ def main():
 
 
     train_set = DataLoader(args.train_list, transform=transform_train)
+    # train_loader = torch.utils.data.DataLoader(train_set,
+    #                                            batch_size=args.batch_size,
+    #                                            shuffle=True,
+    #                                            num_workers=args.num_workers)
+
     train_loader = torch.utils.data.DataLoader(train_set,
-                                               batch_size=args.batch_size,
-                                               shuffle=True,
-                                               num_workers=args.num_workers)
+                                              batch_size=args.batch_size,
+                                              sampler=ImbalancedDatasetSampler(train_set,
+                                                                               num_samples=len(train_set),
+                                                                               callback_get_label=train_set.data),
+                                              num_workers=args.num_workers)
 
 
     val_set = DataLoader(args.val_list, transform=transform_val)

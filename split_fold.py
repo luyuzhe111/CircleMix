@@ -1,10 +1,13 @@
-import pandas as pd
 import random
 
+'''
+This function split samples into specified number of folds at subject level
+patient_col is a list of patient ids for each sample
+'''
 
-def split_folds(df, patient_col):
+def split_folds(df, patient_col, num_folds):
     patients = df[patient_col].unique()
-    fold_assignment = [random.randint(1, 5) for i in patients]
+    fold_assignment = [random.randint(1, num_folds) for _ in patients]
     fold_dict = {}
     for i in range(len(patients)):
         fold_dict[patients[i]] = fold_assignment[i]
@@ -14,16 +17,4 @@ def split_folds(df, patient_col):
         df.loc[index, 'fold'] = fold_dict[row[patient_col]]
 
     return df
-
-
-if __name__ == '__main__':
-    df = pd.read_csv('train.csv')
-    patient_col = 'patient_id'
-
-    df = split_folds(df, patient_col)
-    for i in range(1, 6):
-        print('Number of images in fold {}'.format(i), len(df[df['fold'] == i]))
-
-    print(df.head())
-    df.to_csv('/csv/folds_assignment.csv')
 
