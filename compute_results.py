@@ -15,14 +15,14 @@ def ensemble(dataset, expname, title=None):
     ensemble_epoch_file = 'ensembled_epochs.csv'
 
     root_dir = os.path.join(output_dir, f'config_{dataset}')
-    # root_dir = os.path.join(output_dir, f'config_{dataset}', 'exp1')
+    # root_dir = os.path.join(output_dir, f'config_{dataset}', 'exp2')
     df = pd.DataFrame(columns=['image', 'prediction', 'target'])
     img_history = []
     pred_history = []
     target_history = []
     count = 0
     for dir in os.listdir(root_dir):
-        if expname in dir:
+        if expname in dir and ('fold4' not in dir and 'fold5' not in dir):
             count += 1
             file = pd.read_csv(os.path.join(root_dir, dir, epoch_file))
             img_history += list(file['image'])
@@ -30,7 +30,7 @@ def ensemble(dataset, expname, title=None):
             pred_history += list(file['prediction'])
             target_history += list(file['target'])
 
-    assert count == 5, "somethig is wrong"
+    # assert count == 5, "somethig is wrong"
 
     df['image'] = img_history
     df['prediction'] = pred_history
@@ -60,15 +60,15 @@ def ensemble(dataset, expname, title=None):
 
 
 def main():
-    print('=====Renal=====')
-    # ensemble('renal', 'Efficientb0_us_aug_none', title='Baseline_h', hierarchical=False)
-    # ensemble('renal', 'Efficientb0_us_aug_cutmix', title='CutMix_h', hierarchical=False)
-    # ensemble('renal', 'Efficientb0_us_aug_centermix', title='CircleMix_h', hierarchical=False)
+    # print('=====Renal=====')
+    # ensemble('renal', 'Efficientb0_none')
+    # ensemble('renal', 'Efficientb0_cutmix')
+    ensemble('renal', 'Efficientb0_centermix')
 
-    print('=====HAM-10000=====')
-    ensemble('ham', 'Efficientb0_none')
-    ensemble('ham', 'Efficientb0_cutmix')
-    ensemble('ham', 'Efficientb0_centermix')
+    # print('=====HAM-10000=====')
+    # ensemble('ham', 'Efficientb0_none')
+    # ensemble('ham', 'Efficientb0_cutmix')
+    # ensemble('ham', 'Efficientb0_centermix')
 
 
 if __name__ == '__main__':

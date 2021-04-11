@@ -2,11 +2,11 @@ from collections import Counter
 import json
 import os
 
-fold1 = 'renal/json/ng_fold1.json'
-fold2 = 'renal/json/ng_fold2.json'
-fold3 = 'renal/json/ng_fold3.json'
-fold4 = 'renal/json/ng_fold4.json'
-fold5 = 'renal/json/ng_fold5.json'
+fold1 = 'renal/json/fold1_trim.json'
+fold2 = 'renal/json/fold2_trim.json'
+fold3 = 'renal/json/fold3_trim.json'
+fold4 = 'renal/json/fold4_trim.json'
+fold5 = 'renal/json/fold5_trim.json'
 
 folds = [fold1, fold2, fold3, fold4, fold5]
 
@@ -20,5 +20,5 @@ for fold in folds:
     labels_dist = dict(sorted(labels_dist.items(), key=lambda i:i[0]))
     names_set = len(list(set(images)))
     print(labels_dist)
-    print("Number of unique samples: ", (names_set))
+    print("Number of samples: ", (names_set))
     print()
