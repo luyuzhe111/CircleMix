@@ -1,6 +1,6 @@
 # CircleMix
 
-In this project, we collected 8841 glomeruli patches labeled with the EasierPath open source software https://github.com/luyuzhe111/EasierPath to perform the 
+In this project, we collected 8841 glomeruli patches labeled with the [EasierPath](https://github.com/luyuzhe111/EasierPath) open source software to perform the 
 fine-grained glomeruli classification. 
 
 We proposed the CircleMix, a novel data augmentation optimized for for the ballshaped biomedical objects, such as the glomeruli, to improve the performance of 
