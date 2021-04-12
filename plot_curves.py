@@ -2,10 +2,6 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 
-baseline = 'exp_results/config_ham/Efficientb0_none_fold1/output.csv'
-cutmix = 'exp_results/config_ham/Efficientb0_cutmix_fold1/output.csv'
-circlemix = 'exp_results/config_ham/Efficientb0_centermix_fold1/output.csv'
-
 def loss_curve(df, exp):
     epochs = df['epoch_num']
     train_loss = df['train_loss']
@@ -18,6 +14,10 @@ def loss_curve(df, exp):
     plt.show()
     plt.close()
 
+
+baseline = 'exp_results/config_ham/Efficientb0_none_fold1/output.csv'
+cutmix = 'exp_results/config_ham/Efficientb0_cutmix_fold1/output.csv'
+circlemix = 'exp_results/config_ham/Efficientb0_centermix_fold1/output.csv'
 
 df_bl = pd.read_csv(baseline, index_col=0)
 df_cutmix = pd.read_csv(cutmix, index_col=0)

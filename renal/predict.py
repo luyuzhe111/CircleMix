@@ -1,40 +1,17 @@
 from __future__ import print_function
-
 import sys
-sys.path = ['/Data/luy8/centermix',
-            '/snap/pycharm-professional/209/plugins/python/helpers/pycharm_display',
-            '/home/hrlblab/anaconda3/envs/centermix/lib/python37.zip',
-            '/home/hrlblab/anaconda3/envs/centermix/lib/python3.7',
-            '/home/hrlblab/anaconda3/envs/centermix/lib/python3.7/lib-dynload',
-            '/home/hrlblab/anaconda3/envs/centermix/lib/python3.7/site-packages',
-            '/snap/pycharm-professional/209/plugins/python/helpers/pycharm_matplotlib_backend',
-            '/usr/lib/python3.7'
-            ]
-import argparse
-import shutil
 import time
 import random
-import json
-
-import cv2
 import numpy as np
 from tqdm import tqdm
 import torch
 import torch.nn as nn
 import torch.nn.parallel
-import torch.backends.cudnn as cudnn
 import torch.utils.data as data
 import torchvision.transforms as transforms
 import torch.nn.functional as F
-
 import os
 import pandas as pd
-from pandas import DataFrame
-from sklearn.metrics import f1_score
-from sklearn.metrics import balanced_accuracy_score
-from sklearn.metrics import precision_score
-from sklearn.metrics import recall_score
-
 import models.resnet as resnet
 import models.wideresnet as models
 import models.mobileNetV2 as netv2
@@ -42,15 +19,11 @@ import models.senet as senet
 from models.efficientnet import EfficientNet
 import models.inceptionv4 as inceptionv4
 from data_loader import DataLoader
-import data_loader as dataset
-from utils import AverageMeter, accuracy
+from utils import AverageMeter, accuracy, mkdir_p
 
 from easydict import EasyDict as edict
 from argparse import Namespace
 import yaml
-
-from utils import loss_func
-from PIL import Image
 
 
 def cfg_from_file(filename):
@@ -62,13 +35,13 @@ def cfg_from_file(filename):
 
 
 config_dir = sys.argv[1]
-config_file = os.path.basename(config_dir)
-print('Test with ' + config_file + '\n')
+config = os.path.basename(config_dir)
+print('Test with ' + config)
 
 args = cfg_from_file(config_dir)
 args = Namespace(**args)
-args.expname = config_file.split('.yaml')[0]
 
+args.expname = config.replace('.yaml', '')
 output_dir = os.path.join(args.output_csv_dir, args.expname)
 if not os.path.exists(output_dir):
     os.makedirs(output_dir)
@@ -92,11 +65,7 @@ def main():
         transforms.ToTensor(),
     ])
 
-    val_set = DataLoader(args.test_list,
-                         transform=transform_val,
-                         split='val',
-                         aug=args.aug,)
-
+    val_set = DataLoader(args.test_list, transform=transform_val)
     val_loader = torch.utils.data.DataLoader(val_set,
                                              batch_size=args.batch_size,
                                              shuffle=False,
@@ -132,28 +101,12 @@ def main():
         return model
 
     model = create_model(args, num_classes=num_classes)
-    criterion = nn.CrossEntropyLoss()
-
-    # testing
-    df = pd.DataFrame(columns=['exp', 'train', 'val', 'test', 'test_loss', 'test_acc', 'f1', 'mul_acc'])
 
     expname = args.expname.split('/')[-1]
-    print('\n' + expname + ': TESTING!')
-    train_set = os.path.basename(args.train_list).split('.')[0]
-    val_set = os.path.basename(args.val_list).split('.')[0]
-    test_set = os.path.basename(args.test_list).split('.')[0]
+    print('\n' + expname + ': Predicting!')
 
     model = load_checkpoint(model, save_model_dir, 'model_best_acc.pth.tar')
-    test_loss, test_acc, f1, mul_acc = validate(output_dir,
-                                                          val_loader,
-                                                          model,
-                                                          criterion,
-                                                          use_cuda,
-                                                          mode='Test Stats')
-
-    df.loc[len(df)] = [expname, train_set, val_set, test_set, test_loss, test_acc, f1, mul_acc]
-    output_csv_file = os.path.join(output_dir, 'test.csv')
-    df.to_csv(output_csv_file, index=False)
+    validate(output_dir, val_loader, model, use_cuda, mode='Test Stats')
 
 
 def load_checkpoint(model, checkpoint, filename):
@@ -164,7 +117,7 @@ def load_checkpoint(model, checkpoint, filename):
     return model
 
 
-def validate(out_dir, valloader, model, criterion, use_cuda, mode):
+def validate(out_dir, valloader, model, use_cuda, mode):
     batch_time = AverageMeter()
     data_time = AverageMeter()
     losses = AverageMeter()
@@ -176,11 +129,9 @@ def validate(out_dir, valloader, model, criterion, use_cuda, mode):
     end = time.time()
 
     with torch.no_grad():
-        correct = 0
         pred_history = []
         target_history = []
         name_history = []
-        prob_history = []
 
         for batch_idx, (inputs, targets, image_path) in enumerate(tbar):
             # measure data loading time
@@ -191,13 +142,6 @@ def validate(out_dir, valloader, model, criterion, use_cuda, mode):
                  inputs, targets = inputs.cuda(), targets.cuda(non_blocking=True)
             # compute output
             outputs = model(inputs)
-            prob_out = F.softmax(outputs, dim=1)
-            loss = criterion(outputs, targets)
-
-            # measure accuracy and record loss
-            [prec1, ] = accuracy(outputs, targets, topk=(1,))
-            losses.update(loss.item(), inputs.size(0))
-            top1.update(prec1.item(), inputs.size(0))
 
             # measure elapsed time
             batch_time.update(time.time() - end)
@@ -205,39 +149,38 @@ def validate(out_dir, valloader, model, criterion, use_cuda, mode):
 
             pred_clss = F.softmax(outputs, dim=1)
             pred = pred_clss.data.max(1)[1]  # ge
-            correct += pred.eq(targets.data).cpu().sum()
             pred_history = np.concatenate((pred_history, pred.data.cpu().numpy()), axis=0)
             target_history = np.concatenate((target_history, targets.data.cpu().numpy()), axis=0)
             name_history = np.concatenate((name_history, image_path), axis=0)
-            if batch_idx == 0:
-                prob_history = prob_out.data.cpu().numpy()
-            else:
-                prob_history = np.concatenate((prob_history, prob_out.data.cpu().numpy()), axis=0)
 
             tbar.set_description('\r %s Loss: %.3f | Top1: %.3f' % (mode, losses.avg, top1.avg))
 
-        if args.num_classes != 2:
-            f1s = f1_score(target_history, pred_history, average=None)
-            f1_avg = sum(f1s) / len(f1s)
-        else:
-            f1_avg = f1_score(target_history, pred_history, average='binary')
-
-        mul_acc = balanced_accuracy_score(target_history, pred_history)
         epoch_summary(out_dir, name_history, pred_history, target_history)
-
-    return losses.avg, top1.avg, f1_avg, mul_acc
 
 
 # output csv file for result in each epoch
 def epoch_summary(out_dir, name_history, pred_history, target_history):
-    csv_file_name = os.path.join(out_dir, 'epoch_test.csv')
+    csv_file_name = os.path.join(out_dir, 'prediction.csv')
 
     df = pd.DataFrame()
     df['image'] = name_history
-    df['prediction'] = pred_history
     df['target'] = target_history
+    df['prediction'] = pred_history
+    if args.num_classes < 5:
+        hierarchy = config.split('_')[0].split('-')[1]
+        if hierarchy == 'NC2':
+            df['prediction'] = df['prediction'] * 4
+        if hierarchy == 'C3':
+            df['prediction'] = df['prediction'] + 1
+        if hierarchy == 'C2':
+            df['prediction'] = df['prediction'] + 2
+
     df.to_csv(csv_file_name)
 
 
 if __name__ == '__main__':
     main()
+
+
+
+
