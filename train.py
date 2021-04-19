@@ -31,7 +31,8 @@ from utils import AverageMeter, accuracy
 from easydict import EasyDict as edict
 from argparse import Namespace
 import yaml
-from utils import loss_func
+from utils import loss
+from utils.optimizer import SAM
 from utils.torchsampler.imbalanced import ImbalancedDatasetSampler
 
 config_dir = sys.argv[1]
@@ -60,7 +61,7 @@ def main():
     best_f1 = 0
 
     transform_train = transforms.Compose([
-        transforms.RandomResizedCrop(224),
+        transforms.RandomCrop(224),
         transforms.RandomHorizontalFlip(p=0.5),
         transforms.RandomVerticalFlip(p=0.5),
         transforms.ToTensor(),
@@ -81,11 +82,11 @@ def main():
     #                                            num_workers=args.num_workers)
 
     train_loader = torch.utils.data.DataLoader(train_set,
-                                              batch_size=args.batch_size,
-                                              sampler=ImbalancedDatasetSampler(train_set,
-                                                                               num_samples=len(train_set),
-                                                                               callback_get_label=train_set.data),
-                                              num_workers=args.num_workers)
+                                               batch_size=args.batch_size,
+                                               sampler=ImbalancedDatasetSampler(train_set,
+                                                                                num_samples=len(train_set),
+                                                                                callback_get_label=train_set.data),
+                                               num_workers=args.num_workers)
 
 
     val_set = DataLoader(args.val_list, transform=transform_val)
@@ -102,7 +103,10 @@ def main():
     num_classes = args.num_classes
     model = create_model(num_classes).to(device)
 
-    if args.optimizer == 'adam':
+    if args.optimizer == 'SAM':
+        base_optimizer = torch.optim.SGD
+        optimizer = SAM(model.parameters(), base_optimizer, lr=0.1, momentum=0.9)
+    elif args.optimizer == 'ADAM':
         optimizer = optim.Adam(model.parameters(), lr=args.lr)
     else:
         optimizer = torch.optim.SGD(model.parameters(), args.lr, momentum=0.9, weight_decay=1e-4, nesterov=True)
@@ -172,14 +176,14 @@ def create_model(num_classes):
 def select_loss_func(choice='CrossEntropy'):
     print("==> {} loss".format(choice))
     if choice == 'Focal':
-        return loss_func.FocalLoss(alpha=1, gamma=2, reduce=True).cuda()
+        return loss.FocalLoss(alpha=1, gamma=2, reduce=True).cuda()
     elif choice == 'Class-Balanced':
-        return loss_func.EffectiveSamplesLoss(beta=0.999,
-                                              num_cls=args.num_classes,
-                                              sample_per_cls=np.array([500, 300, 20, 30, 400]),
-                                              focal=False,
-                                              focal_gamma=2,
-                                              focal_alpha=4).cuda()
+        return loss.EffectiveSamplesLoss(beta=0.999,
+                                         num_cls=args.num_classes,
+                                         sample_per_cls=np.array([500, 300, 20, 30, 400]),
+                                         focal=False,
+                                         focal_gamma=2,
+                                         focal_alpha=4).cuda()
     else:
         return nn.CrossEntropyLoss().cuda()
 
@@ -239,6 +243,18 @@ def train(train_loader, model, optimizer, criterion, device):
             outputs = model(inputs)
             loss = criterion(outputs, target_a) * (1. - lam) + criterion(outputs, target_b) * lam
 
+            if args.optimizer == 'SAM':
+                loss.backward()
+                optimizer.first_step(zero_grad=True)
+
+                # second forward-backward pass
+                criterion(model(inputs), targets).backward()  # make sure to do a full forward pass
+                optimizer.second_step(zero_grad=True)
+            else:
+                loss.backward()
+                optimizer.step()
+                optimizer.zero_grad()
+
         # compute output
         elif args.beta > 0 and args.cutmix_prob > r:
             # generate mixed sample
@@ -256,14 +272,34 @@ def train(train_loader, model, optimizer, criterion, device):
             outputs = model(inputs)
             loss = criterion(outputs, target_a) * lam + criterion(outputs, target_b) * (1. - lam)
 
+            if args.optimizer == 'SAM':
+                loss.backward()
+                optimizer.first_step(zero_grad=True)
+
+                # second forward-backward pass
+                criterion(model(inputs), targets).backward()  # make sure to do a full forward pass
+                optimizer.second_step(zero_grad=True)
+            else:
+                loss.backward()
+                optimizer.step()
+                optimizer.zero_grad()
+
         else:
             inputs = inputs.float()
             outputs = model(inputs)
             loss = criterion(outputs, targets)
 
-        optimizer.zero_grad()
-        loss.backward()
-        optimizer.step()
+            if args.optimizer == 'SAM':
+                loss.backward()
+                optimizer.first_step(zero_grad=True)
+
+                # second forward-backward pass
+                criterion(model(inputs), targets).backward()  # make sure to do a full forward pass
+                optimizer.second_step(zero_grad=True)
+            else:
+                loss.backward()
+                optimizer.step()
+                optimizer.zero_grad()
 
         # record loss
         [acc1, ] = accuracy(outputs, targets, topk=(1,))
