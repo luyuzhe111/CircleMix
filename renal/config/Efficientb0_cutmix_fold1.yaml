@@ -1,0 +1,29 @@
+train_list: '../renal/json/all/trainset1.json'
+
+val_list: '../renal/json/all/fold4.json'
+
+test_list: '../renal/json/all/fold5.json'
+
+output_csv_dir: '../exp_results/config_renal'
+
+num_classes: 5
+
+epochs: 60
+
+start_epoch: 0
+
+batch_size: 16
+
+lr: 0.01
+
+optimizer: 'SAM'
+
+network: 105
+
+num_workers: 4
+
+beta: 1
+
+cutmix_prob: 1
+
+centermix_prob: 0
