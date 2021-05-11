@@ -18,11 +18,11 @@ import torch.nn.functional as F
 import os
 import pandas as pd
 from sklearn.metrics import f1_score
-from sklearn.metrics import balanced_accuracy_score
+from sklearn.metrics import balanced_accuracy_score, confusion_matrix
 
 import models.resnet as resnet
 import models.wideresnet as models
-import models.mobileNetV2 as netv2
+import models.mobilenetv2 as mobilenetv2
 import models.senet as senet
 from models.efficientnet import EfficientNet
 import models.inceptionv4 as inceptionv4
@@ -47,11 +47,11 @@ args.expname = config_file.split('.yaml')[0]
 
 output_csv_dir = os.path.join(args.output_csv_dir, args.expname)
 if not os.path.exists(output_csv_dir):
-    os.makedirs(output_csv_dir)
+    os.mkdir(output_csv_dir)
 
 save_model_dir = os.path.join(output_csv_dir, 'models')
 if not os.path.exists(save_model_dir):
-    os.makedirs(save_model_dir)
+    os.mkdir(save_model_dir)
 
 
 def main():
@@ -64,6 +64,7 @@ def main():
         transforms.RandomCrop(224),
         transforms.RandomHorizontalFlip(p=0.5),
         transforms.RandomVerticalFlip(p=0.5),
+        # transforms.ColorJitter(brightness=0.4, contrast=0.4, saturation=0.4),
         transforms.ToTensor(),
         transforms.Normalize((0.485, 0.456, 0.406), (0.229, 0.224, 0.225)),
     ])
@@ -115,7 +116,9 @@ def main():
 
     # output performance of a model for each epoch
     df = pd.DataFrame(columns=['model', 'lr', 'epoch_num', 'train_loss',
-                               'val_loss', 'train_acc', 'val_acc', 'f1', 'mul_acc'])
+                               'val_loss', 'train_acc', 'val_acc',
+                               'normal', 'obsolescent', 'solidified', 'disappearing', 'fibrosis',
+                               'mul_acc', 'f1'])
 
     for epoch in range(start_epoch, args.epochs):
         epoch += 1
@@ -127,7 +130,8 @@ def main():
         val_loss, val_acc, f1, mul_acc = validate(output_csv_dir, val_loader, model, criterion, epoch, device)
 
         # write to csv
-        df.loc[epoch] = [args.network, cur_lr, epoch, train_loss, val_loss, train_acc, val_acc, f1, mul_acc]
+        mul_acc_avg = sum(mul_acc) / len(mul_acc)
+        df.loc[epoch] = [args.network, cur_lr, epoch, train_loss, val_loss, train_acc, val_acc] + mul_acc + [mul_acc_avg,  f1]
 
         output_csv_file = os.path.join(output_csv_dir, 'output.csv')
         df.to_csv(output_csv_file, index=False)
@@ -135,8 +139,8 @@ def main():
         # save model
         is_best_f1 = f1 > best_f1
         best_f1 = max(f1, best_f1)
-        is_best_acc = mul_acc > best_acc
-        best_acc = max(mul_acc, best_acc)
+        is_best_acc = mul_acc_avg > best_acc
+        best_acc = max(mul_acc_avg, best_acc)
         save_checkpoint({
             'epoch': epoch,
             'state_dict': model.state_dict(),
@@ -157,7 +161,7 @@ def create_model(num_classes):
         num_ftrs = model.fc.in_features
         model.fc = nn.Linear(num_ftrs, num_classes)
     elif args.network == 103:
-        model = netv2.mobilenet_v2(pretrained=True)
+        model = mobilenetv2.mobilenet_v2(pretrained=True)
         num_ftrs = model.classifier.in_features
         model.classifier = nn.Linear(num_ftrs, num_classes)
     elif args.network == 104:
@@ -248,7 +252,7 @@ def train(train_loader, model, optimizer, criterion, device):
                 optimizer.first_step(zero_grad=True)
 
                 # second forward-backward pass
-                criterion(model(inputs), targets).backward()  # make sure to do a full forward pass
+                (criterion(model(inputs), target_a) * (1. - lam) + criterion(model(inputs), target_b) * lam).backward()
                 optimizer.second_step(zero_grad=True)
             else:
                 loss.backward()
@@ -277,7 +281,7 @@ def train(train_loader, model, optimizer, criterion, device):
                 optimizer.first_step(zero_grad=True)
 
                 # second forward-backward pass
-                criterion(model(inputs), targets).backward()  # make sure to do a full forward pass
+                (criterion(model(inputs), target_a) * (1. - lam) + criterion(model(inputs), target_b) * lam).backward()
                 optimizer.second_step(zero_grad=True)
             else:
                 loss.backward()
@@ -420,7 +424,10 @@ def validate(out_dir, val_loader, model, criterion, epoch, device):
         f1s = f1_score(target_history, pred_history, average=None)
         f1_avg = sum(f1s)/len(f1s)
 
-        mul_acc = balanced_accuracy_score(target_history, pred_history)
+        # mul_acc = balanced_accuracy_score(target_history, pred_history)
+
+        c_matirx = confusion_matrix(target_history, pred_history)
+        mul_acc = list(c_matirx.diagonal() / c_matirx.sum(axis=1))
 
         epoch_summary(out_dir, epoch, name_history, pred_history, target_history)
 

@@ -15,14 +15,23 @@ def loss_curve(df, exp):
     plt.close()
 
 
-baseline = 'exp_results/config_ham/Efficientb0_none_fold1/output.csv'
-cutmix = 'exp_results/config_ham/Efficientb0_cutmix_fold1/output.csv'
-circlemix = 'exp_results/config_ham/Efficientb0_centermix_fold1/output.csv'
+df1 = pd.read_csv('exp_results/config_renal/seed5/output.csv', index_col=0)
+df2 = pd.read_csv('exp_results/config_renal/seed10/output.csv', index_col=0)
 
-df_bl = pd.read_csv(baseline, index_col=0)
-df_cutmix = pd.read_csv(cutmix, index_col=0)
-df_circlemix = pd.read_csv(circlemix, index_col=0)
+num_cls = 5
+fig, axes = plt.subplots(nrows=1, ncols=num_cls, figsize=(15, 3))
+labels = ['normal', 'obsolescent', 'solidified', 'disappearing', 'fibrosis']
+for idx, label in enumerate(labels):
+    x1 = df1['epoch_num']
+    x2 = df2['epoch_num']
 
-loss_curve(df_bl, 'baseline')
-loss_curve(df_cutmix, 'cutmix')
-loss_curve(df_circlemix, 'circlemix')
+    y1 = df1[label]
+    y2 = df2[label]
+
+    axes[idx].plot(x1, y1, label='seed5')
+    axes[idx].plot(x2, y2, label='seed10')
+    axes[idx].set_title(label)
+
+fig.tight_layout()
+plt.legend()
+plt.show()
