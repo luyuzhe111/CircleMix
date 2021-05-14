@@ -19,6 +19,7 @@ import os
 import pandas as pd
 from sklearn.metrics import f1_score
 from sklearn.metrics import balanced_accuracy_score, confusion_matrix
+from sklearn.utils import compute_class_weight
 
 import models.resnet as resnet
 import models.wideresnet as models
@@ -44,6 +45,7 @@ with open(config_dir, 'r') as f:
 
 args = Namespace(**args)
 args.expname = config_file.split('.yaml')[0]
+args.optimizer = 'SAM'
 
 output_csv_dir = os.path.join(args.output_csv_dir, args.expname)
 if not os.path.exists(output_csv_dir):
@@ -99,7 +101,10 @@ def main():
     # Load model
     print("==> Creating model")
     print('==> {} optimizer'.format(args.optimizer))
-    criterion = select_loss_func()
+
+    targets = [i['target'] for i in train_set.data]
+    weights = compute_class_weight('balanced', classes=np.unique(targets), y=np.array(targets))
+    criterion = select_loss_func(choice='CrossEntropy', weights=torch.tensor(weights, dtype=torch.float))
 
     num_classes = args.num_classes
     model = create_model(num_classes).to(device)
@@ -177,10 +182,14 @@ def create_model(num_classes):
     return model
 
 
-def select_loss_func(choice='CrossEntropy'):
-    print("==> {} loss".format(choice))
+def select_loss_func(choice='CrossEntropy', weights=None):
+    if weights is not None:
+        print("==>Weighted {} loss".format(choice))
+    else:
+        print("==>{} loss".format(choice))
+
     if choice == 'Focal':
-        return loss.FocalLoss(alpha=1, gamma=2, reduce=True).cuda()
+        return loss.FocalLoss(alpha=4, gamma=2, reduce=True).cuda()
     elif choice == 'Class-Balanced':
         return loss.EffectiveSamplesLoss(beta=0.999,
                                          num_cls=args.num_classes,
@@ -189,7 +198,7 @@ def select_loss_func(choice='CrossEntropy'):
                                          focal_gamma=2,
                                          focal_alpha=4).cuda()
     else:
-        return nn.CrossEntropyLoss().cuda()
+        return nn.CrossEntropyLoss(weight=weights).cuda()
 
 
 def train(train_loader, model, optimizer, criterion, device):
@@ -222,10 +231,10 @@ def train(train_loader, model, optimizer, criterion, device):
             height = inputs.shape[2]
             width = inputs.shape[3]
 
-            if inputs.dtype == torch.float32:
-                mask = np.zeros((height, width), np.float32)
-            else:
-                mask = np.zeros((height, width), np.uint8)
+            # if inputs.dtype == torch.float32:
+            #     mask = np.zeros((height, width), np.float32)
+            # else:
+            mask = np.zeros((height, width), np.uint8)
 
             assert height == width, 'height does not equal to width'
             side = height
