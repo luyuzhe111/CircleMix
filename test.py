@@ -124,7 +124,6 @@ def test(out_dir, test_loader, model, criterion, device):
     tbar = tqdm(test_loader, desc='\r')
 
     with torch.no_grad():
-        correct = 0
         pred_history = []
         target_history = []
         name_history = []
@@ -145,7 +144,6 @@ def test(out_dir, test_loader, model, criterion, device):
 
             prob = F.softmax(outputs, dim=1)
             pred = prob.data.max(1)[1]
-            correct += pred.eq(targets.data).cpu().sum()
             pred_history = np.concatenate((pred_history, pred.data.cpu().numpy()), axis=0)
             target_history = np.concatenate((target_history, targets.data.cpu().numpy()), axis=0)
             name_history = np.concatenate((name_history, image_path), axis=0)
@@ -179,7 +177,7 @@ def epoch_summary(out_dir, name_history, prob_history, pred_history, target_hist
                                          'prob_0', 'prob_1', 'prob_2', 'prob_3', 'prob_4', 'pred_pos',
                                          'prediction', 'target'])
     else:
-        data = np.concatenate((name_history[..., np.newaxis], pred_history, target_history[..., np.newaxis]))
+        data = np.concatenate((name_history[..., np.newaxis], pred_history[..., np.newaxis], target_history[..., np.newaxis]), axis=1)
         df = pd.DataFrame(data, columns=['image', 'prediction', 'target'])
     df.to_csv(csv_file_name)
 

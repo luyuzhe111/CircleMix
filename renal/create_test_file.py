@@ -21,7 +21,7 @@ if __name__ == "__main__":
     norm_dir = '/Data/luy8/glomeruli/renal/test_data/normal'
     scl_dir = '/Data/luy8/glomeruli/renal/test_data/sclerosed'
     normal = extract_label(norm_dir, 'normal')
-    scl = extract_label(norm_dir, 'sclerosed')
+    scl = extract_label(scl_dir, 'sclerosed')
 
     all = normal + scl
 

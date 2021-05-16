@@ -35,6 +35,13 @@ with open(config_dir, 'r') as f:
 args = Namespace(**args)
 args.expname = config_file.split('.yaml')[0]
 
+if args.dataset == 'ham':
+    args.ext_test_list = '/Data/luy8/glomeruli/skin/json/test.json'
+elif args.dataset == 'renal':
+    args.ext_test_list = '/Data/luy8/glomeruli/renal/json/all/test.json'
+else:
+    raise ValueError('dataset does not exist')
+
 output_csv_dir = os.path.join(args.output_csv_dir, args.expname)
 if not os.path.exists(output_csv_dir):
     os.mkdir(output_csv_dir)
@@ -43,7 +50,7 @@ save_model_dir = os.path.join(output_csv_dir, 'models')
 if not os.path.exists(save_model_dir):
     os.mkdir(save_model_dir)
 
-pretrained_model = os.path.join(save_model_dir, 'model_best_acc.pth.tar')
+pretrained_model = os.path.join(save_model_dir, 'model_best_f1.pth.tar')
 
 
 def main():
@@ -140,7 +147,6 @@ def predict(out_dir, valloader, model, device):
 
         if args.dataset == 'renal':
             prob_pos = prob_history[:, 1] + prob_history[:, 2] + prob_history[:, 3]
-            bi_pred_history = list(map(lambda x: 0 if x < 0.5 else 1, list(prob_pos)))
             data = np.concatenate((name_history[..., np.newaxis],
                                    prob_history,
                                    prob_pos[..., np.newaxis],
@@ -148,10 +154,10 @@ def predict(out_dir, valloader, model, device):
             df = pd.DataFrame(data, columns=['image',
                                              'prob_0', 'prob_1', 'prob_2', 'prob_3', 'prob_4', 'pro_pos', 'target'])
         else:
-            data = np.concatenate((name_history[..., np.newaxis], pred_history, target_history[..., np.newaxis]))
+            data = np.concatenate((name_history[..., np.newaxis], pred_history[..., np.newaxis], target_history[..., np.newaxis]), axis=1)
             df = pd.DataFrame(data, columns=['image', 'prediction', 'target'])
 
-        df.to_csv(os.path.join(out_dir, 'predict.csv'), index=False)
+        df.to_csv(os.path.join(out_dir, 'predict_f1.csv'), index=False)
 
 
 if __name__ == '__main__':

@@ -57,6 +57,7 @@ if not os.path.exists(save_model_dir):
 
 def main():
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    torch.manual_seed(0)
 
     best_acc = 0
     best_f1 = 0

@@ -1,8 +1,6 @@
-train_list: '/Data/luy8/glomeruli/skin/json/trainset2.json'
+train_list: '/Data/luy8/glomeruli/skin/json/train.json'
 
-val_list: '/Data/luy8/glomeruli/skin/json/fold5.json'
-
-test_list: '/Data/luy8/glomeruli/skin/json/fold1.json'
+val_list: '/Data/luy8/glomeruli/skin/json/val.json'
 
 output_csv_dir: '/Data/luy8/glomeruli/exp_results/config_ham'
 
@@ -16,7 +14,7 @@ start_epoch: 0
 
 batch_size: 16
 
-lr: 0.01
+lr: 0.001
 
 network: 105
 

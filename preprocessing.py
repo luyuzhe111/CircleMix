@@ -11,7 +11,8 @@ import numpy as np
 this function performs center crop as pre-processing
 '''
 def crop_center(input_dir, output_dir, new_size):
-    for image in os.listdir(input_dir):
+    for idx, image in enumerate(os.listdir(input_dir)):
+        print(idx)
         img = Image.open(os.path.join(input_dir, image))
         width, height = img.size
         crop_size = min(width, height)

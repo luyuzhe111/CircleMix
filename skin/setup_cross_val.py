@@ -33,7 +33,7 @@ def split_fold():
         print('fold{} dist:{} total:{}'.format(i, dict_i, sum(list(dict_i.values()))))
 
     # create json file for fold
-    data_dir = '/Data/luy8/glomeruli/skin/resized_data'
+    data_dir = '/skin/resized_data_tmp'
     json_dir = 'json'
 
     df = pd.read_csv('csv/folds_assignment.csv', index_col=0)

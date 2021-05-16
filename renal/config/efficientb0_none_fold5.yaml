@@ -4,6 +4,8 @@ val_list: '../renal/json/all/fold3.json'
 
 test_list: '../renal/json/all/fold4.json'
 
+ext_test_list: '../renal/json/all/test.json'
+
 output_csv_dir: '../exp_results/config_renal'
 
 dataset: 'renal'

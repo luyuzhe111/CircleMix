@@ -1,10 +1,12 @@
-train_list: 'renal/json/all/trainset1.json'
+train_list: '../renal/json/all/trainset1.json'
 
-val_list: 'renal/json/all/fold4.json'
+val_list: '../renal/json/all/fold4.json'
 
-test_list: 'renal/json/all/fold5.json'
+test_list: '../renal/json/all/fold5.json'
 
-output_csv_dir: 'exp_results/config_renal'
+ext_test_list: '../renal/json/all/test.json'
+
+output_csv_dir: '../exp_results/config_renal'
 
 dataset: 'renal'
 
