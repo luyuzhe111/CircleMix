@@ -1,5 +1,3 @@
-from __future__ import print_function
-
 import sys
 import shutil
 import time
@@ -9,7 +7,6 @@ import cv2
 import numpy as np
 from tqdm import tqdm
 import torch.nn as nn
-import torch.nn.parallel
 import torch.optim as optim
 import torch.utils.data
 import torchvision.transforms as transforms
@@ -18,7 +15,7 @@ import torch.nn.functional as F
 import os
 import pandas as pd
 from sklearn.metrics import f1_score
-from sklearn.metrics import balanced_accuracy_score, confusion_matrix
+from sklearn.metrics import confusion_matrix
 from sklearn.utils import compute_class_weight
 
 import models.resnet as resnet
@@ -46,6 +43,8 @@ with open(config_dir, 'r') as f:
 args = Namespace(**args)
 args.expname = config_file.split('.yaml')[0]
 args.optimizer = 'SAM'
+args.resample = True
+args.weighted_loss = False
 
 output_csv_dir = os.path.join(args.output_csv_dir, args.expname)
 if not os.path.exists(output_csv_dir):
@@ -66,7 +65,6 @@ def main():
         transforms.RandomCrop(224),
         transforms.RandomHorizontalFlip(p=0.5),
         transforms.RandomVerticalFlip(p=0.5),
-        # transforms.ColorJitter(brightness=0.4, contrast=0.4, saturation=0.4),
         transforms.ToTensor(),
         transforms.Normalize((0.485, 0.456, 0.406), (0.229, 0.224, 0.225)),
     ])
@@ -79,18 +77,19 @@ def main():
 
 
     train_set = DataLoader(args.train_list, transform=transform_train)
-    # train_loader = torch.utils.data.DataLoader(train_set,
-    #                                            batch_size=args.batch_size,
-    #                                            shuffle=True,
-    #                                            num_workers=args.num_workers)
 
-    train_loader = torch.utils.data.DataLoader(train_set,
-                                               batch_size=args.batch_size,
-                                               sampler=ImbalancedDatasetSampler(train_set,
-                                                                                num_samples=len(train_set),
-                                                                                callback_get_label=train_set.data),
-                                               num_workers=args.num_workers)
-
+    if args.resample:
+        train_loader = torch.utils.data.DataLoader(train_set,
+                                                   batch_size=args.batch_size,
+                                                   sampler=ImbalancedDatasetSampler(train_set,
+                                                                                    num_samples=len(train_set),
+                                                                                    callback_get_label=train_set.data),
+                                                   num_workers=args.num_workers)
+    else:
+        train_loader = torch.utils.data.DataLoader(train_set,
+                                                   batch_size=args.batch_size,
+                                                   shuffle=True,
+                                                   num_workers=args.num_workers)
 
     val_set = DataLoader(args.val_list, transform=transform_val)
     val_loader = torch.utils.data.DataLoader(val_set,
@@ -100,15 +99,19 @@ def main():
 
     # Load model
     print("==> Creating model")
-    print('==> {} optimizer'.format(args.optimizer))
-
-    targets = [i['target'] for i in train_set.data]
-    weights = compute_class_weight('balanced', classes=np.unique(targets), y=np.array(targets))
-    criterion = select_loss_func(choice='CrossEntropy', weights=torch.tensor(weights, dtype=torch.float))
-
     num_classes = args.num_classes
     model = create_model(num_classes).to(device)
 
+    # choose loss function
+    if args.weighted_loss:
+        targets = [i['target'] for i in train_set.data]
+        weights = compute_class_weight('balanced', classes=np.unique(targets), y=np.array(targets))
+        criterion = select_loss_func(choice='CrossEntropy', weights=torch.tensor(weights, dtype=torch.float))
+    else:
+        criterion = select_loss_func(choice='CrossEntropy')
+
+    # choose optimizer
+    print('==> {} optimizer'.format(args.optimizer))
     if args.optimizer == 'SAM':
         base_optimizer = torch.optim.SGD
         optimizer = SAM(model.parameters(), base_optimizer, lr=0.1, momentum=0.9)
@@ -117,13 +120,17 @@ def main():
     else:
         optimizer = torch.optim.SGD(model.parameters(), args.lr, momentum=0.9, weight_decay=1e-4, nesterov=True)
 
+    # set up training
     start_epoch = args.start_epoch
+    if args.dataset == 'renal':
+        df = pd.DataFrame(columns=['model', 'lr', 'epoch_num', 'train_loss', 'val_loss', 'train_acc', 'val_acc',
+                                   'normal', 'obsolescent', 'solidified', 'disappearing', 'fibrosis', 'mul_acc', 'f1'])
 
-    # output performance of a model for each epoch
-    df = pd.DataFrame(columns=['model', 'lr', 'epoch_num', 'train_loss',
-                               'val_loss', 'train_acc', 'val_acc',
-                               'normal', 'obsolescent', 'solidified', 'disappearing', 'fibrosis',
-                               'mul_acc', 'f1'])
+    elif args.dataset == 'ham':
+        df = pd.DataFrame(columns=['model', 'lr', 'epoch_num', 'train_loss', 'val_loss', 'train_acc', 'val_acc',
+                                   'MEL', 'NV', 'BCC', 'AKIEC', 'BKL', 'DF', 'VASC', 'mul_acc', 'f1'])
+    else:
+        raise ValueError('no such dataset exists!')
 
     for epoch in range(start_epoch, args.epochs):
         epoch += 1
@@ -136,7 +143,7 @@ def main():
 
         # write to csv
         mul_acc_avg = sum(mul_acc) / len(mul_acc)
-        df.loc[epoch] = [args.network, cur_lr, epoch, train_loss, val_loss, train_acc, val_acc] + mul_acc + [mul_acc_avg,  f1]
+        df.loc[epoch] = [args.network, cur_lr, epoch, train_loss, val_loss, train_acc, val_acc] + mul_acc + [mul_acc_avg, f1]
 
         output_csv_file = os.path.join(output_csv_dir, 'output.csv')
         df.to_csv(output_csv_file, index=False)
@@ -184,9 +191,9 @@ def create_model(num_classes):
 
 def select_loss_func(choice='CrossEntropy', weights=None):
     if weights is not None:
-        print("==>Weighted {} loss".format(choice))
+        print("==> Weighted {} loss".format(choice))
     else:
-        print("==>{} loss".format(choice))
+        print("==> {} loss".format(choice))
 
     if choice == 'Focal':
         return loss.FocalLoss(alpha=4, gamma=2, reduce=True).cuda()
@@ -217,7 +224,7 @@ def train(train_loader, model, optimizer, criterion, device):
         inputs, targets = inputs.to(device), targets.to(device)
 
         r = np.random.rand(1)
-        if args.centermix_prob > r:
+        if args.circlemix_prob > r:
             # generate circlemix sample
             rand_index = torch.randperm(inputs.size()[0])
             target_a = targets
@@ -231,13 +238,10 @@ def train(train_loader, model, optimizer, criterion, device):
             height = inputs.shape[2]
             width = inputs.shape[3]
 
-            # if inputs.dtype == torch.float32:
-            #     mask = np.zeros((height, width), np.float32)
-            # else:
-            mask = np.zeros((height, width), np.uint8)
-
             assert height == width, 'height does not equal to width'
             side = height
+
+            mask = np.zeros((side, side), np.uint8)
 
             vertices = polygon_vertices(side, start, end)
 
@@ -432,8 +436,6 @@ def validate(out_dir, val_loader, model, criterion, epoch, device):
 
         f1s = f1_score(target_history, pred_history, average=None)
         f1_avg = sum(f1s)/len(f1s)
-
-        # mul_acc = balanced_accuracy_score(target_history, pred_history)
 
         c_matirx = confusion_matrix(target_history, pred_history)
         mul_acc = list(c_matirx.diagonal() / c_matirx.sum(axis=1))

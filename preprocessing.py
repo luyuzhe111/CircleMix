@@ -49,23 +49,6 @@ def create_data_file(train_csv, data_dir, output_dir):
 
 
 '''
-This function split data into specified number of folds at subject level
-patient_col is a list of patient ids for each sample
-'''
-def split_folds(df, patient_col, num_folds):
-    patients = df[patient_col].unique()
-    fold_assignment = [random.randint(1, num_folds) for _ in patients]
-    fold_dict = {}
-    for i in range(len(patients)):
-        fold_dict[patients[i]] = fold_assignment[i]
-
-    df['fold'] = 0
-    for index, row in df.iterrows():
-        df.loc[index, 'fold'] = fold_dict[row[patient_col]]
-
-    return df
-
-'''
 check whether there is contamination between folds
 '''
 def check_contam(fold_dir, dataset):
@@ -92,21 +75,16 @@ create a json file for each fold
 '''
 def create_fold_file(df, fold, data_dir, json_dir, keys):
     patient_id, image_name, label = keys
-    fold_dir = os.path.join(data_dir, 'fold'+str(fold))
-    if not os.path.exists(fold_dir):
-        os.mkdir(fold_dir)
 
     df_fold = df[df['fold'] == fold]
     data_list = []
     for index, row in df_fold.iterrows():
         img = index
         img_dir = os.path.join(data_dir, img + '.png')
-        img_fold_dir = os.path.join(fold_dir, img + '.png')
-        shutil.copy(img_dir, img_fold_dir)
         target = row[label]
         patient = row[patient_id]
 
-        one_entry = {'name': img, 'patient': patient, 'image_dir': img_fold_dir, 'target': target}
+        one_entry = {'subj': patient, 'image': img, 'image_dir': img_dir, 'target': target}
         data_list.append(one_entry)
 
     output_json = os.path.join(json_dir, 'fold'+str(fold)+'.json')

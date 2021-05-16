@@ -1,5 +1,3 @@
-from __future__ import print_function
-
 import sys
 import numpy as np
 from tqdm import tqdm
@@ -16,7 +14,7 @@ from sklearn.metrics import f1_score
 from sklearn.metrics import balanced_accuracy_score
 import models.resnet as resnet
 import models.wideresnet as models
-import models.mobileNetV2 as netv2
+import models.mobilenetv2 as netv2
 import models.senet as senet
 from models.efficientnet import EfficientNet
 import models.inceptionv4 as inceptionv4
@@ -26,8 +24,6 @@ from utils import AverageMeter, accuracy
 from easydict import EasyDict as edict
 from argparse import Namespace
 import yaml
-
-from utils import loss_func
 
 config_dir = sys.argv[1]
 config_file = os.path.basename(config_dir)
@@ -41,15 +37,14 @@ args.expname = config_file.split('.yaml')[0]
 
 output_csv_dir = os.path.join(args.output_csv_dir, args.expname)
 if not os.path.exists(output_csv_dir):
-    os.makedirs(output_csv_dir)
+    os.mkdir(output_csv_dir)
 
 save_model_dir = os.path.join(output_csv_dir, 'models')
 if not os.path.exists(save_model_dir):
-    os.makedirs(save_model_dir)
+    os.mkdir(save_model_dir)
 
 
 def main():
-    # Use CUDA
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     transform_test = transforms.Compose([
@@ -70,9 +65,7 @@ def main():
     num_classes = args.num_classes
     model = create_model(num_classes).to(device)
 
-
     criterion = nn.CrossEntropyLoss()
-    criterion = loss_func.FocalLoss().cuda()
 
     # testing
     df = pd.DataFrame(columns=['exp', 'train', 'val', 'test', 'test_loss', 'test_acc', 'f1', 'mul_acc'])
@@ -127,7 +120,6 @@ def test(out_dir, test_loader, model, criterion, device):
     losses = AverageMeter()
     top1 = AverageMeter()
 
-    # switch to evaluate mode
     model.eval()
     tbar = tqdm(test_loader, desc='\r')
 
@@ -144,7 +136,6 @@ def test(out_dir, test_loader, model, criterion, device):
             inputs, targets = inputs.to(device), targets.to(device)
             # compute output
             outputs = model(inputs)
-            prob_out = F.softmax(outputs, dim=1)
             loss = criterion(outputs, targets)
 
             # measure accuracy and record loss
@@ -152,16 +143,17 @@ def test(out_dir, test_loader, model, criterion, device):
             losses.update(loss.item(), inputs.size(0))
             top1.update(prec1.item(), inputs.size(0))
 
-            pred_clss = F.softmax(outputs, dim=1)
-            pred = pred_clss.data.max(1)[1]  # ge
+            prob = F.softmax(outputs, dim=1)
+            pred = prob.data.max(1)[1]
             correct += pred.eq(targets.data).cpu().sum()
             pred_history = np.concatenate((pred_history, pred.data.cpu().numpy()), axis=0)
             target_history = np.concatenate((target_history, targets.data.cpu().numpy()), axis=0)
             name_history = np.concatenate((name_history, image_path), axis=0)
+
             if batch_idx == 0:
-                prob_history = prob_out.data.cpu().numpy()
+                prob_history = prob.data.cpu().numpy()
             else:
-                prob_history = np.concatenate((prob_history, prob_out.data.cpu().numpy()), axis=0)
+                prob_history = np.concatenate((prob_history, prob.data.cpu().numpy()), axis=0)
 
             tbar.set_description('\r %s Loss: %.3f | Top1: %.3f' % ('Test Stats', losses.avg, top1.avg))
 
@@ -169,19 +161,26 @@ def test(out_dir, test_loader, model, criterion, device):
         f1_avg = sum(f1s) / len(f1s)
 
         mul_acc = balanced_accuracy_score(target_history, pred_history)
-        epoch_summary(out_dir, name_history, pred_history, target_history)
+        epoch_summary(out_dir, name_history, prob_history, pred_history, target_history)
 
     return losses.avg, top1.avg, f1_avg, mul_acc
 
 
 # output csv file for result in each epoch
-def epoch_summary(out_dir, name_history, pred_history, target_history):
+def epoch_summary(out_dir, name_history, prob_history, pred_history, target_history):
     csv_file_name = os.path.join(out_dir, 'epoch_test.csv')
-
-    df = pd.DataFrame()
-    df['image'] = name_history
-    df['prediction'] = pred_history
-    df['target'] = target_history
+    if args.dataset == 'renal':
+        data = np.concatenate((name_history[..., np.newaxis],
+                               prob_history,
+                               (prob_history[:, 1] + prob_history[:, 2] + prob_history[:, 3])[..., np.newaxis],
+                               pred_history[..., np.newaxis],
+                               target_history[..., np.newaxis]), axis=1)
+        df = pd.DataFrame(data, columns=['image',
+                                         'prob_0', 'prob_1', 'prob_2', 'prob_3', 'prob_4', 'pred_pos',
+                                         'prediction', 'target'])
+    else:
+        data = np.concatenate((name_history[..., np.newaxis], pred_history, target_history[..., np.newaxis]))
+        df = pd.DataFrame(data, columns=['image', 'prediction', 'target'])
     df.to_csv(csv_file_name)
 
 

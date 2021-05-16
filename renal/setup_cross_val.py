@@ -2,6 +2,8 @@ import json
 import random
 from collections import Counter
 from preprocessing import create_train_file
+import pandas as pd
+
 
 def split_fold(root_dir):
     with open(f'{root_dir}/data.json') as f:
@@ -10,11 +12,28 @@ def split_fold(root_dir):
     subj_set = list(sorted(set([i['subj'] for i in data])))
     num_subj = len(subj_set)
 
-    random.seed(10)
+    subj_records = []
+    for subj in subj_set:
+        subj_data = [i for i in data if i['subj'] == subj]
+        prefix = subj_data[0]['image']
+        subj_label = [i['target'] for i in subj_data]
+
+        counter = Counter(subj_label)
+        labels = ['normal', 'obsolescent', 'solidified', 'disappearing', 'fibrosis']
+        subj_record = [subj, prefix]
+        for idx, _ in enumerate(labels):
+            subj_record.append(counter[idx])
+        subj_records.append(subj_record)
+
+    df = pd.DataFrame(subj_records, columns=['subj', 'prefix', 'normal', 'obsolescent', 'solidified', 'disappearing', 'fibrosis'])
+    df.to_csv('csv/subj_summary.csv')
+
+    # 10 is the best
+    random.seed(0)
     fold_assignment = [random.randint(1, 6) for _ in range(num_subj)]
-    for subj, fold in zip(subj_set, fold_assignment):
-        for item in data:
-            if subj == item['subj']:
+    for item in data:
+        for subj, fold in zip(subj_set, fold_assignment):
+            if item['subj'] == subj:
                 item['fold'] = fold
 
     print(Counter([i['subj'] for i in data]))
