@@ -1,7 +1,7 @@
 import sys
 import shutil
 import time
-
+import matplotlib.pyplot as plt
 import torch
 import cv2
 import numpy as np
@@ -57,7 +57,7 @@ if not os.path.exists(save_model_dir):
 
 def main():
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    torch.manual_seed(0)
+    torch.manual_seed(10)
 
     best_acc = 0
     best_f1 = 0
@@ -243,7 +243,6 @@ def train(train_loader, model, optimizer, criterion, device):
             side = height
 
             mask = np.zeros((side, side), np.uint8)
-
             vertices = polygon_vertices(side, start, end)
 
             roi_mask = cv2.fillPoly(mask, np.array([vertices]), 255)
@@ -273,8 +272,7 @@ def train(train_loader, model, optimizer, criterion, device):
                 optimizer.step()
                 optimizer.zero_grad()
 
-        # compute output
-        elif args.beta > 0 and args.cutmix_prob > r:
+        elif args.cutmix_prob > r:
             # generate mixed sample
             lam = np.random.beta(args.beta, args.beta)
             rand_index = torch.randperm(inputs.size()[0]).to(device)
@@ -302,6 +300,27 @@ def train(train_loader, model, optimizer, criterion, device):
                 optimizer.step()
                 optimizer.zero_grad()
 
+        elif args.cutout_prob > r:
+            lam = np.random.beta(args.beta, args.beta)
+            bbx1, bby1, bbx2, bby2 = rand_bbox(inputs.size(), lam)
+            inputs[:, :, bbx1:bbx2, bby1:bby2] = 0
+
+            # compute output
+            outputs = model(inputs)
+            loss = criterion(outputs, targets)
+
+            if args.optimizer == 'SAM':
+                loss.backward()
+                optimizer.first_step(zero_grad=True)
+
+                # second forward-backward pass
+                criterion(model(inputs), targets).backward()
+                optimizer.second_step(zero_grad=True)
+            else:
+                loss.backward()
+                optimizer.step()
+                optimizer.zero_grad()
+
         else:
             inputs = inputs.float()
             outputs = model(inputs)
@@ -321,7 +340,6 @@ def train(train_loader, model, optimizer, criterion, device):
 
         # record loss
         [acc1, ] = accuracy(outputs, targets, topk=(1,))
-        # print('acc1 = %.2f' % acc1)
         losses.update(loss.item(), inputs.size(0))
         top1.update(acc1.item(), inputs.size(0))
 

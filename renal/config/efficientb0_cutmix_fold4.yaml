@@ -29,3 +29,5 @@ beta: 1
 cutmix_prob: 1
 
 circlemix_prob: 0
+
+cutout_prob: 0

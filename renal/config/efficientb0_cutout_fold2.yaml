@@ -18,7 +18,7 @@ start_epoch: 0
 
 batch_size: 16
 
-lr: 0.01
+lr: 0.001
 
 network: 105
 
@@ -26,8 +26,8 @@ num_workers: 4
 
 beta: 1
 
-cutmix_prob: 1
+cutmix_prob: 0
 
 circlemix_prob: 0
 
-cutout_prob: 0
+cutout_prob: 1

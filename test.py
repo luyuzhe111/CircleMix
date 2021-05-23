@@ -35,14 +35,18 @@ with open(config_dir, 'r') as f:
 args = Namespace(**args)
 args.expname = config_file.split('.yaml')[0]
 
-output_csv_dir = os.path.join(args.output_csv_dir, args.expname)
+output_csv_dir = os.path.join(args.output_csv_dir, 'trial2', args.expname)
 if not os.path.exists(output_csv_dir):
     os.mkdir(output_csv_dir)
+
+print(output_csv_dir)
 
 save_model_dir = os.path.join(output_csv_dir, 'models')
 if not os.path.exists(save_model_dir):
     os.mkdir(save_model_dir)
 
+
+avg = False
 
 def main():
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -68,20 +72,34 @@ def main():
     criterion = nn.CrossEntropyLoss()
 
     # testing
-    df = pd.DataFrame(columns=['exp', 'train', 'val', 'test', 'test_loss', 'test_acc', 'f1', 'mul_acc'])
-
     expname = args.expname.split('/')[-1]
     print('\n' + expname + ': TESTING!')
     train_set = os.path.basename(args.train_list).split('.')[0]
     val_set = os.path.basename(args.val_list).split('.')[0]
     test_set = os.path.basename(args.test_list).split('.')[0]
 
-    model = load_checkpoint(model, save_model_dir, 'model_best_acc.pth.tar')
-    test_loss, test_acc, f1, mul_acc = test(output_csv_dir, test_loader, model, criterion, device)
+    if avg:
+        record = pd.read_csv(os.path.join(output_csv_dir, 'output.csv'), index_col=0)
+        sorted_r = record.sort_values('mul_acc', ascending=False)
 
-    df.loc[len(df)] = [expname, train_set, val_set, test_set, test_loss, test_acc, f1, mul_acc]
-    output_csv_file = os.path.join(output_csv_dir, 'test.csv')
-    df.to_csv(output_csv_file, index=False)
+        model_list = list(sorted_r['epoch_num'].astype(int))[:3]
+        df = pd.DataFrame(columns=['exp', 'train', 'val', 'test', 'test_loss', 'test_acc', 'f1', 'mul_acc'])
+        for idx, epoch in enumerate(model_list):
+            idx += 1
+            model = load_checkpoint(model, save_model_dir, f'epoch{epoch}_checkpoint.pth.tar')
+            test_loss, test_acc, f1, mul_acc = test(output_csv_dir, test_loader, model, criterion, device, ep_idx=idx)
+
+            df.loc[len(df)] = [expname, train_set, val_set, test_set, test_loss, test_acc, f1, mul_acc]
+        output_csv_file = os.path.join(output_csv_dir, 'test_acc.csv')
+        df.to_csv(output_csv_file, index=False)
+    else:
+        df = pd.DataFrame(columns=['exp', 'train', 'val', 'test', 'test_loss', 'test_acc', 'f1', 'mul_acc'])
+        model = load_checkpoint(model, save_model_dir, 'model_best_acc.pth.tar')
+        test_loss, test_acc, f1, mul_acc = test(output_csv_dir, test_loader, model, criterion, device)
+
+        df.loc[len(df)] = [expname, train_set, val_set, test_set, test_loss, test_acc, f1, mul_acc]
+        output_csv_file = os.path.join(output_csv_dir, 'test_acc.csv')
+        df.to_csv(output_csv_file, index=False)
 
 
 def create_model(num_classes):
@@ -116,7 +134,7 @@ def load_checkpoint(model, checkpoint, filename):
     return model
 
 
-def test(out_dir, test_loader, model, criterion, device):
+def test(out_dir, test_loader, model, criterion, device, ep_idx=None):
     losses = AverageMeter()
     top1 = AverageMeter()
 
@@ -159,14 +177,20 @@ def test(out_dir, test_loader, model, criterion, device):
         f1_avg = sum(f1s) / len(f1s)
 
         mul_acc = balanced_accuracy_score(target_history, pred_history)
-        epoch_summary(out_dir, name_history, prob_history, pred_history, target_history)
+        if ep_idx is None:
+            epoch_summary(out_dir, name_history, prob_history, pred_history, target_history)
+        else:
+            epoch_summary(out_dir, name_history, prob_history, pred_history, target_history, ep_idx=ep_idx)
 
     return losses.avg, top1.avg, f1_avg, mul_acc
 
 
 # output csv file for result in each epoch
-def epoch_summary(out_dir, name_history, prob_history, pred_history, target_history):
-    csv_file_name = os.path.join(out_dir, 'epoch_test.csv')
+def epoch_summary(out_dir, name_history, prob_history, pred_history, target_history, ep_idx=None):
+    if ep_idx is None:
+        csv_file_name = os.path.join(out_dir, 'epoch_test_acc.csv')
+    else:
+        csv_file_name = os.path.join(out_dir, f'top{ep_idx}_epoch_test_acc.csv')
     if args.dataset == 'renal':
         data = np.concatenate((name_history[..., np.newaxis],
                                prob_history,
