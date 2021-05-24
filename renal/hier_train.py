@@ -1,10 +1,4 @@
-from __future__ import print_function
-
 import sys
-<<<<<<< HEAD
-=======
-sys.path.append('/Data/luy8/centermix')
->>>>>>> 63622a3560fd9e08742417d8cea407581f878aa6
 import shutil
 import time
 
@@ -26,7 +20,7 @@ from sklearn.metrics import balanced_accuracy_score
 
 import models.resnet as resnet
 import models.wideresnet as models
-import models.mobileNetV2 as netv2
+import models.mobilenetv2 as netv2
 import models.senet as senet
 from models.efficientnet import EfficientNet
 import models.inceptionv4 as inceptionv4
@@ -37,7 +31,7 @@ from easydict import EasyDict as edict
 from argparse import Namespace
 import yaml
 
-from utils import loss_func
+from utils import loss
 from utils.torchsampler.imbalanced import ImbalancedDatasetSampler
 
 
@@ -82,11 +76,7 @@ def main():
         transforms.ToTensor(),
     ])
 
-<<<<<<< HEAD
     train_set = DataLoader(args.train_list, transform=transform_train)
-=======
-    train_set = DataLoader(args.train_list, transform=transform_train, split='train', aug=args.aug)
->>>>>>> 63622a3560fd9e08742417d8cea407581f878aa6
     # use imbalanced dataset sampler
     # train_loader = torch.utils.data.DataLoader(train_set,
     #                                           batch_size=args.batch_size,
@@ -99,11 +89,7 @@ def main():
                                                shuffle=True,
                                                num_workers=args.num_workers)
 
-<<<<<<< HEAD
     val_set = DataLoader(args.val_list, transform=transform_val)
-=======
-    val_set = DataLoader(args.val_list, transform=transform_val, split='val', aug=args.aug)
->>>>>>> 63622a3560fd9e08742417d8cea407581f878aa6
     val_loader = torch.utils.data.DataLoader(val_set,
                                              batch_size=args.batch_size,
                                              shuffle=False,
@@ -229,14 +215,14 @@ def main():
 def select_loss_func(choice='CrossEntropy'):
     print("==> {} loss".format(choice))
     if choice == 'Focal':
-        return loss_func.FocalLoss(alpha=1, gamma=2, reduce=True).cuda()
+        return loss.FocalLoss(alpha=1, gamma=2, reduce=True).cuda()
     elif choice == 'Class-Balanced':
-        return loss_func.EffectiveSamplesLoss(beta=0.999,
-                                              num_cls=args.num_classes,
-                                              sample_per_cls=np.array([500, 300, 20, 30, 400]),
-                                              focal=False,
-                                              focal_gamma=2,
-                                              focal_alpha=4).cuda()
+        return loss.EffectiveSamplesLoss(beta=0.999,
+                                         num_cls=args.num_classes,
+                                         sample_per_cls=np.array([500, 300, 20, 30, 400]),
+                                         focal=False,
+                                         focal_gamma=2,
+                                         focal_alpha=4).cuda()
     else:
         return nn.CrossEntropyLoss().cuda()
 

@@ -35,18 +35,10 @@ with open(config_dir, 'r') as f:
 args = Namespace(**args)
 args.expname = config_file.split('.yaml')[0]
 
-output_csv_dir = os.path.join(args.output_csv_dir, 'trial2', args.expname)
-if not os.path.exists(output_csv_dir):
-    os.mkdir(output_csv_dir)
-
-print(output_csv_dir)
-
+output_csv_dir = os.path.join(args.output_csv_dir, args.expname)
 save_model_dir = os.path.join(output_csv_dir, 'models')
-if not os.path.exists(save_model_dir):
-    os.mkdir(save_model_dir)
 
-
-avg = False
+avg = True
 
 def main():
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -104,11 +96,11 @@ def main():
 
 def create_model(num_classes):
     if args.network == 101:
-        model = models.WideResNet(num_classes=num_classes)
-    elif args.network == 102:
         model = resnet.resnet50()
         num_ftrs = model.fc.in_features
         model.fc = nn.Linear(num_ftrs, num_classes)
+    elif args.network == 102:
+        model = models.WideResNet(num_classes=num_classes)
     elif args.network == 103:
         model = netv2.mobilenet_v2(pretrained=True)
         num_ftrs = model.classifier.in_features
@@ -160,7 +152,7 @@ def test(out_dir, test_loader, model, criterion, device, ep_idx=None):
             losses.update(loss.item(), inputs.size(0))
             top1.update(prec1.item(), inputs.size(0))
 
-            prob = F.softmax(outputs, dim=1)
+            prob = F.softmax(outputs, dim=1)[:, :5]
             pred = prob.data.max(1)[1]
             pred_history = np.concatenate((pred_history, pred.data.cpu().numpy()), axis=0)
             target_history = np.concatenate((target_history, targets.data.cpu().numpy()), axis=0)
@@ -185,7 +177,6 @@ def test(out_dir, test_loader, model, criterion, device, ep_idx=None):
     return losses.avg, top1.avg, f1_avg, mul_acc
 
 
-# output csv file for result in each epoch
 def epoch_summary(out_dir, name_history, prob_history, pred_history, target_history, ep_idx=None):
     if ep_idx is None:
         csv_file_name = os.path.join(out_dir, 'epoch_test_acc.csv')

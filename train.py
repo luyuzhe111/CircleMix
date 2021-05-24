@@ -44,7 +44,7 @@ args = Namespace(**args)
 args.expname = config_file.split('.yaml')[0]
 args.optimizer = 'SAM'
 args.resample = True
-args.weighted_loss = False
+args.weighted_loss = True
 
 output_csv_dir = os.path.join(args.output_csv_dir, args.expname)
 if not os.path.exists(output_csv_dir):
@@ -168,11 +168,11 @@ def main():
 
 def create_model(num_classes):
     if args.network == 101:
-        model = models.WideResNet(num_classes=num_classes)
-    elif args.network == 102:
-        model = resnet.resnet50()
+        model = resnet.resnet50(pretrained=True)
         num_ftrs = model.fc.in_features
         model.fc = nn.Linear(num_ftrs, num_classes)
+    elif args.network == 102:
+        model = models.WideResNet(num_classes=num_classes)
     elif args.network == 103:
         model = mobilenetv2.mobilenet_v2(pretrained=True)
         num_ftrs = model.classifier.in_features
@@ -184,7 +184,7 @@ def create_model(num_classes):
     elif args.network == 106:
         model = inceptionv4.inceptionv4(num_classes=num_classes, pretrained=None)
     else:
-        print('model not available! Using EfficientNet-b0 as default')
+        print('model not available! Using efficientnet-b0 as default')
         model = EfficientNet.from_pretrained('efficientnet-b0', num_classes=num_classes)
 
     return model
@@ -353,8 +353,7 @@ def train(train_loader, model, optimizer, criterion, device):
 
 
 def adjust_learning_rate(optimizer, epoch):
-    """Sets the learning rate to the initial LR decayed by 100 at every 1/3 of all epochs"""
-    lr = args.lr * (0.1 ** ( (epoch - 1) // (args.epochs * 1/3)) )
+    lr = args.lr * (0.1 ** ( (epoch - 1) // (args.epochs * 1/2)) )
     for param_group in optimizer.param_groups:
         param_group['lr'] = lr
 
@@ -445,7 +444,7 @@ def validate(out_dir, val_loader, model, criterion, epoch, device):
             batch_time.update(time.time() - end)
             end = time.time()
 
-            pred_clss = F.softmax(outputs, dim=1)
+            pred_clss = F.softmax(outputs, dim=1)[:, :5]
             pred = pred_clss.data.max(1)[1]  # ge
             pred_history = np.concatenate((pred_history, pred.data.cpu().numpy()), axis=0)
             target_history = np.concatenate((target_history, targets.data.cpu().numpy()), axis=0)
@@ -457,6 +456,10 @@ def validate(out_dir, val_loader, model, criterion, epoch, device):
         f1_avg = sum(f1s)/len(f1s)
 
         c_matirx = confusion_matrix(target_history, pred_history)
+        # gt_sum = c_matirx.sum(axis=1)
+        # ones = np.ones(len(gt_sum), dtype=int)
+        # gt_sum = np.where(gt_sum != 0, gt_sum, ones)
+        # mul_acc = list(c_matirx.diagonal() / gt_sum)
         mul_acc = list(c_matirx.diagonal() / c_matirx.sum(axis=1))
 
         epoch_summary(out_dir, epoch, name_history, pred_history, target_history)

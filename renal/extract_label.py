@@ -80,40 +80,42 @@ def get_normal(img_dir, annot_data, group):
     return records_lst
 
 
+def get_non_glom(img_dir):
+    img = os.listdir(img_dir)
+    records_lst = []
+    for i in img:
+        records_lst.append({
+            'subj': i.split('_')[0],
+            'image': i,
+            'image_dir': os.path.join(img_dir, i),
+            'label': 'non_glom',
+            'target': 5
+        })
+
+    return records_lst
+
+
 if __name__ == '__main__':
-    data = []
-    for idx in [1, 2]:
-        group_annot_data = get_annot(f'renal/annotation/group{idx}', idx)
-        group_norm_data = get_normal(f'renal/resized_image/group{idx}', group_annot_data, idx)
-
-        group_data = [i for i in group_annot_data + group_norm_data if i['target'] != -1]
-        data.extend(group_data)
-        print(Counter([i['label'] for i in group_data]))
-
-    # filter out some obsolescent data, specifically subj 22861, which has over 1200 obsolescent glomeruli
-    obs_data = [i for i in data if i['label'] == 'obsolescent']
-    other_data = [i for i in data if i['label'] != 'obsolescent']
-
-    random.seed(0)
-    random.shuffle(obs_data)
-    trimmed_data = obs_data + other_data
-    # trimmed_data = obs_data[:int(len(obs_data) / 4)] + other_data
-
-    # obs_most = [i for i in obs_data if i['subj'] == '22861']
-    # obs_other = [i for i in obs_data if i['subj'] != '22861']
-
+    # data = []
+    # for idx in [1, 2]:
+    #     group_annot_data = get_annot(f'renal/annotation/group{idx}', idx)
+    #     group_norm_data = get_normal(f'renal/resized_image/group{idx}', group_annot_data, idx)
+    #
+    #     group_data = [i for i in group_annot_data + group_norm_data if i['target'] != -1]
+    #     data.extend(group_data)
+    #     print(Counter([i['label'] for i in group_data]))
+    #
+    # obs_data = [i for i in data if i['label'] == 'obsolescent']
+    # other_data = [i for i in data if i['label'] != 'obsolescent']
+    #
     # random.seed(0)
-    # random.shuffle(obs_most)
-    # random.shuffle(obs_other)
+    # random.shuffle(obs_data)
+    # trimmed_data = obs_data + other_data
     #
-    # deduction = 600
-    # trimmed_obs_data = (obs_most[:len(obs_most) - deduction] +
-    #                     obs_other[:int(len(obs_data)/2) - (len(obs_most) - deduction)])
-    #
-    # trimmed_data = trimmed_obs_data + other_data
-    # print(len([i for i in trimmed_data if i['subj'] == '22861']))
-    # print(len([i for i in trimmed_data if i['label'] == 'obsolescent']))
+    # print(Counter([i['label'] for i in trimmed_data]))
+    # with open('renal/json/all/data.json', 'w') as f:
+    #     json.dump(trimmed_data, f)
 
-    print(Counter([i['label'] for i in trimmed_data]))
-    with open('renal/json/all/data.json', 'w') as f:
-        json.dump(trimmed_data, f)
+    non_glom = get_non_glom('/Data/luy8/data/renal/no_glom')
+    with open('renal/json/non_glom/non_glom.json', 'w') as f:
+        json.dump(non_glom, f)
