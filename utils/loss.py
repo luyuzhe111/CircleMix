@@ -13,18 +13,26 @@ class FocalLoss(nn.Module):
         self.nll_loss = nn.NLLLoss(reduction='none')
 
     def forward(self, inputs, targets):
-        log_p = F.log_softmax(inputs, dim=-1)
-        ce = self.nll_loss(log_p, targets)
-        all_rows = torch.arange(len(inputs))
-        log_pt = log_p[all_rows, targets]
-
-        pt = log_pt.exp()
-        focal_term = (1 - pt) ** self.gamma
-        F_loss = focal_term * ce
+        ce_loss = F.cross_entropy(inputs, targets, reduction='none')
+        pt = torch.exp(-ce_loss)
+        focal_loss = (self.alpha * (1 - pt) ** self.gamma * ce_loss)
         if self.reduce:
-            return torch.mean(F_loss)
+            return focal_loss.mean()
         else:
-            return F_loss
+            return focal_loss
+
+        # log_p = F.log_softmax(inputs, dim=-1)
+        # ce = self.nll_loss(log_p, targets)
+        # all_rows = torch.arange(len(inputs))
+        # log_pt = log_p[all_rows, targets]
+        #
+        # pt = log_pt.exp()
+        # focal_term = (1 - pt) ** self.gamma
+        # F_loss = focal_term * ce
+        # if self.reduce:
+        #     return torch.mean(F_loss)
+        # else:
+        #     return F_loss
 
 
 class EffectiveSamplesLoss(nn.Module):

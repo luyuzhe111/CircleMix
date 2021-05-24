@@ -44,7 +44,8 @@ args = Namespace(**args)
 args.expname = config_file.split('.yaml')[0]
 args.optimizer = 'SAM'
 args.resample = True
-args.weighted_loss = True
+args.loss = 'Focal'
+args.weighted_loss = False
 
 output_csv_dir = os.path.join(args.output_csv_dir, args.expname)
 if not os.path.exists(output_csv_dir):
@@ -107,9 +108,9 @@ def main():
     if args.weighted_loss:
         targets = [i['target'] for i in train_set.data]
         weights = compute_class_weight('balanced', classes=np.unique(targets), y=np.array(targets))
-        criterion = select_loss_func(choice='CrossEntropy', weights=torch.tensor(weights, dtype=torch.float))
+        criterion = select_loss_func(choice=args.loss, weights=torch.tensor(weights, dtype=torch.float))
     else:
-        criterion = select_loss_func(choice='CrossEntropy')
+        criterion = select_loss_func(choice=args.loss)
 
     # choose optimizer
     print('==> {} optimizer'.format(args.optimizer))
