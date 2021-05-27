@@ -1,11 +1,11 @@
 import sys
 import shutil
 import time
-import matplotlib.pyplot as plt
 import torch
 import cv2
 import numpy as np
 from tqdm import tqdm
+import argparse
 import torch.nn as nn
 import torch.optim as optim
 import torch.utils.data
@@ -19,12 +19,13 @@ from sklearn.metrics import confusion_matrix
 from sklearn.utils import compute_class_weight
 
 import models.resnet as resnet
-import models.wideresnet as models
+import models.resnetv2 as resnetv2
 import models.mobilenetv2 as mobilenetv2
-import models.senet as senet
+import microsoftvision
 from models.efficientnet import EfficientNet
 import models.inceptionv4 as inceptionv4
 from data_loader import DataLoader
+from utils.augmentation import GaussianBlur
 from utils import AverageMeter, accuracy
 from easydict import EasyDict as edict
 from argparse import Namespace
@@ -33,7 +34,12 @@ from utils import loss
 from utils.optimizer import SAM
 from utils.torchsampler.imbalanced import ImbalancedDatasetSampler
 
-config_dir = sys.argv[1]
+parser = argparse.ArgumentParser()
+parser.add_argument('--config', required=True, help='configuration file')
+parser.add_argument('--bit_model', default=None, help='BiT model')
+
+cmd_args = parser.parse_args()
+config_dir = cmd_args.config
 config_file = os.path.basename(config_dir)
 print('Train with ' + config_file)
 
@@ -65,8 +71,11 @@ def main():
 
     transform_train = transforms.Compose([
         transforms.RandomCrop(224),
+        transforms.RandomRotation(30),
         transforms.RandomHorizontalFlip(p=0.5),
         transforms.RandomVerticalFlip(p=0.5),
+        transforms.ColorJitter(brightness=0.1, contrast=0.2, saturation=0.2, hue=0.02),
+        GaussianBlur(),
         transforms.ToTensor(),
         transforms.Normalize((0.485, 0.456, 0.406), (0.229, 0.224, 0.225)),
     ])
@@ -122,11 +131,11 @@ def main():
     else:
         optimizer = torch.optim.SGD(model.parameters(), args.lr, momentum=0.9, weight_decay=1e-4, nesterov=True)
 
-    # set up training
+    # set up logger
     start_epoch = args.start_epoch
     if args.dataset == 'renal':
         df = pd.DataFrame(columns=['model', 'lr', 'epoch_num', 'train_loss', 'val_loss', 'train_acc', 'val_acc',
-                                   'normal', 'obsolescent', 'solidified', 'disappearing', 'fibrosis', 'mul_acc', 'f1'])
+                                   'normal', 'obsolescent', 'solidified', 'disappearing', 'mul_acc', 'f1'])
 
     elif args.dataset == 'ham':
         df = pd.DataFrame(columns=['model', 'lr', 'epoch_num', 'train_loss', 'val_loss', 'train_acc', 'val_acc',
@@ -134,6 +143,7 @@ def main():
     else:
         raise ValueError('no such dataset exists!')
 
+    # start training
     for epoch in range(start_epoch, args.epochs):
         epoch += 1
 
@@ -169,17 +179,21 @@ def main():
 
 def create_model(num_classes):
     if args.network == 101:
-        model = resnet.resnet50(pretrained=True)
+        model = resnet.resnet50(pretrained=False)
         num_ftrs = model.fc.in_features
         model.fc = nn.Linear(num_ftrs, num_classes)
     elif args.network == 102:
-        model = models.WideResNet(num_classes=num_classes)
+        architecture = os.path.basename(cmd_args.bit_model)
+        model = resnetv2.KNOWN_MODELS[architecture.split('.')[0]](head_size=num_classes, zero_head=True)
+        model.load_from(np.load(cmd_args.bit_model))
+        print(f'Load pre-trained model {cmd_args.bit_model}')
     elif args.network == 103:
+        model = microsoftvision.resnet50(pretrained=True)
+        model.fc = nn.Linear(2048, num_classes)
+    elif args.network == 104:
         model = mobilenetv2.mobilenet_v2(pretrained=True)
         num_ftrs = model.classifier.in_features
         model.classifier = nn.Linear(num_ftrs, num_classes)
-    elif args.network == 104:
-        model = senet.se_resnet50(num_classes=num_classes)
     elif args.network == 105:
         model = EfficientNet.from_pretrained(sys.argv[2], num_classes=num_classes)
     elif args.network == 106:
@@ -198,7 +212,7 @@ def select_loss_func(choice='CrossEntropy', weights=None):
         print("==> {} loss".format(choice))
 
     if choice == 'Focal':
-        return loss.FocalLoss(alpha=4, gamma=2, reduce=True).cuda()
+        return loss.FocalLoss(alpha=weights, gamma=2, reduce=True).cuda()
     elif choice == 'Class-Balanced':
         return loss.EffectiveSamplesLoss(beta=0.999,
                                          num_cls=args.num_classes,
@@ -445,7 +459,7 @@ def validate(out_dir, val_loader, model, criterion, epoch, device):
             batch_time.update(time.time() - end)
             end = time.time()
 
-            pred_clss = F.softmax(outputs, dim=1)[:, :5]
+            pred_clss = F.softmax(outputs, dim=1)[:, :4]
             pred = pred_clss.data.max(1)[1]  # ge
             pred_history = np.concatenate((pred_history, pred.data.cpu().numpy()), axis=0)
             target_history = np.concatenate((target_history, targets.data.cpu().numpy()), axis=0)
