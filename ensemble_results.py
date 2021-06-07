@@ -11,10 +11,10 @@ import seaborn as sn
 
 def concat_crossval(dataset, expname):
     output_dir = 'exp_results'
-    epoch_file = 'top3_epoch_test_acc.csv'
+    epoch_file = 'top3_epoch_test_f1.csv'
     ensemble_epoch_file = 'ensembled_epochs.csv'
 
-    root_dir = os.path.join(output_dir, f'config_{dataset}', 'trial2')
+    root_dir = os.path.join(output_dir, f'config_{dataset}')
     df = pd.DataFrame(columns=['image', 'prediction', 'target'])
     img_history = []
     pred_history = []
@@ -28,9 +28,9 @@ def concat_crossval(dataset, expname):
             pred_history += list(file['prediction'])
             target_history += list(file['target'])
 
-            if dataset == 'renal':
-                pred_history = list(map(lambda x: 0 if x == 4 else x, pred_history))
-                target_history = list(map(lambda x: 0 if x == 4 else x, target_history))
+            # if dataset == 'renal':
+            #     pred_history = list(map(lambda x: 0 if x == 4 else x, pred_history))
+            #     target_history = list(map(lambda x: 0 if x == 4 else x, target_history))
 
     assert count == 5, "somethig is wrong"
 
@@ -66,19 +66,19 @@ def concat_crossval(dataset, expname):
     # sn.set(font_scale=1.4)
     # sn.heatmap(df_cm, annot=True, cmap='Blues', fmt='g', annot_kws={"size": 16}, vmin=0, vmax=2500)  # font size
     # plt.yticks(rotation=0)
-    # # plt.title(title)
+    # plt.title(title)
     # plt.savefig(os.path.join('exp_results/config_renal/confusion_matrix', title + '.svg'))
     # plt.clf()
-    # # plt.show()
+    # plt.show()
 
 
-def ens_prediction(dataset, expname, crossval=True):
+def ens_prediction(dataset, setting, expname, crossval=True):
     if dataset == 'renal':
         output_dir = 'exp_results'
         predict_file = 'predict_f1.csv'
         ensemble_file = 'ensembled_prediction.csv'
 
-        root_dir = os.path.join(output_dir, f'config_{dataset}')
+        root_dir = os.path.join(output_dir, f'config_{dataset}', 'without_fibrosis', setting)
         img_history = None
         pred_history = None
         target_history = None
@@ -187,23 +187,47 @@ def ens_prediction(dataset, expname, crossval=True):
 
 def main():
     print('=====Renal=====')
-    concat_crossval('renal', 'efficientb0_none')
-    concat_crossval('renal', 'efficientb0_cutout')
-    concat_crossval('renal', 'efficientb0_cutmix')
-    concat_crossval('renal', 'efficientb0_circlemix')
+    # concat_crossval('renal', 'resnet50_none')
+    # concat_crossval('renal', 'resnet50_0.25_noisy')
+    # concat_crossval('renal', 'efficientb0_none')
+    # concat_crossval('renal', 'efficientb0_cutout')
+    # concat_crossval('renal', 'efficientb0_cutmix')
+    # concat_crossval('renal', 'efficientb0_circlemix')
 
-    fpr1, tpr1, thresh1, auc_score1 = ens_prediction('renal', 'efficientb0_none')
-    fpr4, tpr4, thresh4, auc_score4 = ens_prediction('renal', 'efficientb0_cutout')
-    fpr2, tpr2, thresh2, auc_score2 = ens_prediction('renal', 'efficientb0_cutmix')
-    fpr3, tpr3, thresh3, auc_score3 = ens_prediction('renal', 'efficientb0_circlemix')
+    fpr1, tpr1, thresh1, auc_score1 = ens_prediction('renal', 'resnet50_randinit', 'resnet50_none')
+    fpr2, tpr2, thresh2, auc_score2 = ens_prediction('renal', 'resnet50_pytorch_pretrain', 'resnet50_none')
+    fpr3, tpr3, thresh3, auc_score3 = ens_prediction('renal', 'resnet50_bit-s', 'resnet50_none')
+    fpr4, tpr4, thresh4, auc_score4 = ens_prediction('renal', 'resnet50_bit-m', 'resnet50_none')
+    fpr5, tpr5, thresh5, auc_score5 = ens_prediction('renal', 'resnet50_ms_vision', 'resnet50_none')
 
-    plt.plot(fpr1, tpr1, color='orange', label=f'baseline {auc_score1}')
-    plt.plot(fpr4, tpr4, color='red', label=f'cutout {auc_score4}')
-    plt.plot(fpr2, tpr2, color='green', label=f'cutmix  {auc_score2}')
-    plt.plot(fpr3, tpr3, color='blue', label=f'circlemix  {auc_score3}')
+    plt.plot(fpr1, tpr1, color='orange', label=f'randinit {auc_score1}')
+    plt.plot(fpr2, tpr2, color='green', label=f'pytorch pretrain  {auc_score2}')
+    plt.plot(fpr3, tpr3, color='blue', label=f'google-bit-s  {auc_score3}')
+    plt.plot(fpr4, tpr4, color='red', label=f'google-bit-m {auc_score4}')
+    plt.plot(fpr5, tpr5, color='black', label=f'microsoft {auc_score5}')
+
     plt.xlabel('False Positive Rate')
     plt.ylabel('True Positive Rate')
-    plt.title('ROC Curve')
+    plt.title('Only Glom ROC Curve')
+    plt.legend()
+    plt.show()
+    plt.close()
+
+    fpr1, tpr1, thresh1, auc_score1 = ens_prediction('renal', 'resnet50_randinit', 'resnet50_0.25_noisy')
+    fpr2, tpr2, thresh2, auc_score2 = ens_prediction('renal', 'resnet50_pytorch_pretrain', 'resnet50_0.25_noisy')
+    fpr3, tpr3, thresh3, auc_score3 = ens_prediction('renal', 'resnet50_bit-s', 'resnet50_0.25_noisy')
+    fpr4, tpr4, thresh4, auc_score4 = ens_prediction('renal', 'resnet50_bit-m', 'resnet50_0.25_noisy')
+    fpr5, tpr5, thresh5, auc_score5 = ens_prediction('renal', 'resnet50_ms_vision', 'resnet50_0.25_noisy')
+
+    plt.plot(fpr1, tpr1, color='orange', label=f'randinit {auc_score1}')
+    plt.plot(fpr2, tpr2, color='green', label=f'pytorch pretrain  {auc_score2}')
+    plt.plot(fpr3, tpr3, color='blue', label=f'bit-s  {auc_score3}')
+    plt.plot(fpr4, tpr4, color='red', label=f'bit-m {auc_score4}')
+    plt.plot(fpr5, tpr5, color='black', label=f'microsoft {auc_score5}')
+
+    plt.xlabel('False Positive Rate')
+    plt.ylabel('True Positive Rate')
+    plt.title('With Non glom ROC Curve')
     plt.legend()
     plt.show()
 
