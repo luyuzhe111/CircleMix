@@ -9,13 +9,13 @@ import torchvision.transforms as transforms
 import torch.nn.functional as F
 
 import os
+import json
 import pandas as pd
 
 import models.resnet as resnet
 import models.resnetv2 as resnetv2
 import microsoftvision
 from data_loader import DataLoader
-from utils import AverageMeter
 
 from easydict import EasyDict as edict
 import argparse
@@ -23,7 +23,7 @@ from argparse import Namespace
 import yaml
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--det_result_dir', required=True, help='detection result dir')
+parser.add_argument('--input', required=True, help='list of patches to be filtered')
 parser.add_argument('--config', required=True, help='configuration file')
 parser.add_argument('--setting', required=True, help='experiment setting')
 parser.add_argument('--bit_model', default=None, help='BiT model')
@@ -63,20 +63,10 @@ def main():
         transforms.Normalize((0.485, 0.456, 0.406), (0.229, 0.224, 0.225)),
     ])
 
-    det_result_dir = args.det_result_dir
-    for folder_by_scn in os.listdir(det_result_dir):
-        folder_by_scn_dir = os.path.join(det_result_dir, folder_by_scn)
-        filter_det_result(model, folder_by_scn_dir, transform)
-
-
-    # test_set = DataLoader(args.ext_test_list, transform=transform)
-    # test_loader = torch.utils.data.DataLoader(test_set, batch_size=args.batch_size, shuffle=False)
-    #
-    # print('\nTest with ' + pretrained_model.split('/')[-3])
-    #
-    #
-    #
-    # predict(output_csv_dir, test_loader, model, device)
+    input_dir = args.input
+    with open(input_dir, 'r') as f:
+        input_data = json.load(f)
+    filter_patches(model, input_data, transform)
 
 
 def create_model(num_classes):
@@ -108,56 +98,27 @@ def load_checkpoint(model, filepath):
     return model
 
 
-def filter_det_result(model, folder_by_scn_dir, transform):
-    patch_lst = [{'image_dir': f'{folder_by_scn_dir}/{i}', 'target': -1} for i in os.listdir(folder_by_scn_dir)]
-
-    dataset = DataLoader(patch_lst, transform=transform)
-    data_loader = torch.utils.data.DataLoader(dataset, batch_size=len(patch_lst), shuffle=False)
+def filter_patches(model, input_data, transform):
+    dataset = DataLoader(input_data, transform=transform)
+    data_loader = torch.utils.data.DataLoader(dataset, batch_size=len(input_data), shuffle=False)
 
     model.eval()
     with torch.no_grad():
-        pred_history = []
-        target_history = []
-        name_history = []
-        prob_history = []
+        preds = []
+        targets = []
+        paths = []
+        probs = []
 
         for (inputs, _, image_path) in enumerate(data_loader):
 
             inputs = inputs.to(device)
             outputs = model(inputs)
-
             prob = F.softmax(outputs, dim=1)
-            pred = prob.data.max(1)[1]
-            pred_history = np.concatenate((pred_history, pred.data.cpu().numpy()), axis=0)
-            target_history = np.concatenate((target_history, targets.data.cpu().numpy()), axis=0)
-            names = [os.path.basename(i).split('.')[0] for i in list(image_path)]
-            name_history = np.concatenate((name_history, names), axis=0)
 
-            if batch_idx == 0:
-                prob_history = prob.data.cpu().numpy()
-            else:
-                prob_history = np.concatenate((prob_history, prob.data.cpu().numpy()), axis=0)
-
-        if args.dataset == 'renal':
-            prob_pos = prob_history[:, 1] + prob_history[:, 2] + prob_history[:, 3]
-            data = np.concatenate((name_history[..., np.newaxis],
-                                   prob_history,
-                                   prob_pos[..., np.newaxis],
-                                   target_history[..., np.newaxis]), axis=1)
-            if args.num_classes == 4:
-                df = pd.DataFrame(data, columns=['image',
-                                                 'prob_0', 'prob_1', 'prob_2', 'prob_3', 'pro_pos', 'target'])
-            elif args.num_classes == 5:
-                df = pd.DataFrame(data, columns=['image',
-                                                 'prob_0', 'prob_1', 'prob_2', 'prob_3', 'prob_4', 'pro_pos', 'target'])
-
-        else:
-            data = np.concatenate((name_history[..., np.newaxis],
-                                   pred_history[..., np.newaxis],
-                                   target_history[..., np.newaxis]), axis=1)
-            df = pd.DataFrame(data, columns=['image', 'prediction', 'target'])
-
-        df.to_csv(os.path.join(out_dir, 'predict_f1.csv'), index=False)
+            probs.extend(prob.tolist())
+            preds.extend(torch.argmax(prob, dim=1).tolist())
+            targets.extend(targets.tolist())
+            paths.extend(list(image_path))
 
 
 if __name__ == '__main__':

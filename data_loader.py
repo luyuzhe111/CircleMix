@@ -2,6 +2,7 @@ from torch.utils import data
 import json
 from PIL import Image
 
+
 class DataLoader(data.Dataset):
     def __init__(self, data_list, transform=None):
         with open(data_list) as json_file:
@@ -24,3 +25,5 @@ class DataLoader(data.Dataset):
 
     def __len__(self):
         return len(self.data)
+
+
