@@ -5,6 +5,7 @@ from PIL import Image
 import os
 import cv2
 import json
+import sys
 
 
 def read_mask(simg, xml_file, output_dir):
@@ -208,12 +209,14 @@ def get_contour(simg, contour, start_x, start_y):
 
 
 if __name__ == "__main__":
-    det_result_dir = 'pipeline/thd_0.01_result_2'
+    loop = int(sys.argv[1])
+    threshold = float(sys.argv[2])
+    det_result_dir = f'pipeline/thd_{threshold}_result_{loop}' if loop == 2 else f'pipeline/thd_{threshold}_result'
 
     for case in os.listdir(det_result_dir):
         case_dir = os.path.join(det_result_dir, case)
 
-        scn_file = os.path.join(case_dir,  f'{case}.scn')
+        scn_file = f'data/{case}.scn'
         det_xml = os.path.join(case_dir,  f'{case}.xml')
 
         try:

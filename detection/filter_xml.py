@@ -1,13 +1,11 @@
 import xmltodict
 import json
 import os
+import sys
 
-loop = 1
-
-if loop == 1:
-    result_dir = 'pipeline/thd_0.01_result'
-else:
-    result_dir = 'pipeline/thd_0.01_result_2'
+loop = int(sys.argv[1])
+threshold = float(sys.argv[2])
+result_dir = f'pipeline/thd_{threshold}_result_{loop}' if loop == 2 else f'pipeline/thd_{threshold}_result'
 
 for case in os.listdir(result_dir):
     print(case)
@@ -27,9 +25,11 @@ for case in os.listdir(result_dir):
     non_glom_idx = [int(os.path.basename(i['image_dir']).split('-x-')[1].split('_')[1]) for i in non_glom]
     non_glom_id = [str(i + 1) for i in non_glom_idx]
 
+    print(f'{len(det_patches)} detected glomeruli, {len(det_patches)  -  len(non_glom_id)} filtered glomeruli')
+
     glom = []
     for idx, patch in enumerate(det_patches):
-        if float(patch['@Text']) > 0.5 or patch['@Id'] not in non_glom_id:
+        if patch['@Id'] not in non_glom_id:
             glom_patch = patch.copy()
             glom_patch['@Id'] = len(glom) + 1
             glom.append(glom_patch)

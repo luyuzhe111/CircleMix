@@ -1,10 +1,10 @@
 import numpy as np
 import os
 import glob
-from detection.utils import KidPath_FirstBatch_R24
-from detection.eval_protocals.circle_eval import CIRCLEeval
+from utils import KidPath_FirstBatch_R24
+from eval_protocals.circle_eval import CIRCLEeval
 import matplotlib.pyplot as plt
-
+import sys
 
 def convert_eval_format(self, all_bboxes):
     detections = []
@@ -54,7 +54,8 @@ def save_det_as_txt(det, outdir, ftype = 'detection',maxDets = 99999):
 
 
 if __name__ == "__main__":
-    loop = 1
+    loop = int(sys.argv[1])
+    threshold = float(sys.argv[2])
     sublist = ['25119', '24739', '24738', '23681', '23499']
 
     manual_xml_dir = '/Data/luy8/detection_results/fromGe/manual_circle_final'
@@ -65,8 +66,8 @@ if __name__ == "__main__":
 
     if loop == 1:
         # use QA data
-        auto_xml_dir = '/Data/luy8/glomeruli/detection/pipeline/thd_0.01_result'
-        evaluate_dir = '/Data/luy8/glomeruli/detection/pipeline'
+        auto_xml_dir = f'/Data/luy8/glomeruli/detection/pipeline/thd_{threshold}_result'
+        evaluate_dir = f'/Data/luy8/glomeruli/detection/pipeline'
         exp_str = 'CircleNet (with filtering)'
         auto_xml_dirs.append(auto_xml_dir)
         evaluate_dirs.append(evaluate_dir)
@@ -81,7 +82,7 @@ if __name__ == "__main__":
         exp_strs.append(exp_str)
     else:
         # use QA data
-        auto_xml_dir = '/Data/luy8/glomeruli/detection/pipeline/thd_0.01_result_2'
+        auto_xml_dir = f'/Data/luy8/glomeruli/detection/pipeline/thd_{threshold}_result_2'
         evaluate_dir = '/Data/luy8/glomeruli/detection/pipeline'
         exp_str = 'CircleNet (with filtering)'
         auto_xml_dirs.append(auto_xml_dir)
@@ -89,7 +90,7 @@ if __name__ == "__main__":
         exp_strs.append(exp_str)
 
         # use raw data
-        auto_xml_dir = '/Data/luy8/glomeruli/detection/pipeline/thd_0.01_result_2'
+        auto_xml_dir = f'/Data/luy8/glomeruli/detection/pipeline/thd_{threshold}_result_2'
         evaluate_dir = '/Data/luy8/glomeruli/detection/pipeline'
         exp_str = 'CircleNet'
         auto_xml_dirs.append(auto_xml_dir)
@@ -168,15 +169,10 @@ if __name__ == "__main__":
         recalls.append(recall)
         precisions.append(precision)
 
-
     plt.plot(recalls[0], precisions[0], label='Precision')
     plt.plot(recalls[1], precisions[1], label='Precision')
     plt.xlabel('recall')
     plt.ylabel('precision')
-
-
-    # ap_str = "{0:.3f}".format(np.mean(precision) )
-    # ap_str = "{0:.4f}%".format(average_precision * 100)
     plt.title('Precision x Recall curve')
 
     plt.legend(exp_strs, shadow=True)
@@ -201,9 +197,7 @@ if __name__ == "__main__":
         ap = 0
         for i in ii:
             ap = ap + np.sum((mrec[i] - mrec[i - 1]) * mpre[i])
-        # return [ap, mpre[1:len(mpre)-1], mrec[1:len(mpre)-1], ii]
         return [ap, mpre[0:len(mpre) - 1], mrec[0:len(mpre) - 1], ii]
 
-
-    [ap, mpre, mrec, ii] = CalculateAveragePrecision(recall[0],precision[0])
+    [ap, mpre, mrec, ii] = CalculateAveragePrecision(recalls[0], precisions[0])
     print(ap)

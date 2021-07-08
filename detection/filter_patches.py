@@ -104,7 +104,7 @@ def load_checkpoint(model, filepath):
 
 def filter_patches(model, input_data, transform):
     dataset = DataLoader(input_data, transform=transform)
-    data_loader = torch.utils.data.DataLoader(dataset, batch_size=32, shuffle=False, num_workers=args.num_workers)
+    data_loader = torch.utils.data.DataLoader(dataset, batch_size=32, shuffle=False, num_workers=64)
     tbar = tqdm(data_loader, desc='\r')
 
     model.eval()
