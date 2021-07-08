@@ -70,6 +70,7 @@ def read_mask(simg, xml_file, output_dir):
 
 def save_patch(output_dir, xml_file, img, bbox, idx=0):
     img_all_out = Image.fromarray(img)
+    img_all_out = img_all_out.resize((256, 256))
     img_all_out_file = os.path.join(output_dir, '%s-x-ROI_%d-x-%d-x-%d-x-%d-x-%d.png' %
                                     (os.path.basename(xml_file).strip('.xml'), idx, bbox[0], bbox[1], bbox[2], bbox[3]))
     img_all_out.save(img_all_out_file)
@@ -207,7 +208,7 @@ def get_contour(simg, contour, start_x, start_y):
 
 
 if __name__ == "__main__":
-    det_result_dir = '../detection/result'
+    det_result_dir = 'pipeline/thd_0.01_result_2'
 
     for case in os.listdir(det_result_dir):
         case_dir = os.path.join(det_result_dir, case)

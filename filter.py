@@ -1,4 +1,3 @@
-import time
 import numpy as np
 from tqdm import tqdm
 import torch
@@ -10,7 +9,6 @@ import torch.nn.functional as F
 
 import os
 import json
-import pandas as pd
 
 import models.resnet as resnet
 import models.resnetv2 as resnetv2
@@ -58,15 +56,21 @@ def main():
     model = load_checkpoint(model, pretrained_model).to(device)
 
     transform = transforms.Compose([
-        transforms.Resize(224),
+        transforms.Resize((224, 224)),
         transforms.ToTensor(),
         transforms.Normalize((0.485, 0.456, 0.406), (0.229, 0.224, 0.225)),
     ])
 
-    input_dir = args.input
-    with open(input_dir, 'r') as f:
-        input_data = json.load(f)
-    filter_patches(model, input_data, transform)
+    input_data = cmd_args.input
+
+    if os.path.isdir(input_data):
+        input_folder_lst = [os.path.join(input_data, i) for i in os.listdir(input_data)]
+        for input_folder in input_folder_lst:
+            print(os.path.basename(input_folder))
+            input_data = os.path.join(input_folder, 'patch.json')
+            filter_patches(model, input_data, transform)
+    else:
+        filter_patches(model, input_data, transform)
 
 
 def create_model(num_classes):
@@ -100,25 +104,31 @@ def load_checkpoint(model, filepath):
 
 def filter_patches(model, input_data, transform):
     dataset = DataLoader(input_data, transform=transform)
-    data_loader = torch.utils.data.DataLoader(dataset, batch_size=len(input_data), shuffle=False)
+    data_loader = torch.utils.data.DataLoader(dataset, batch_size=32, shuffle=False, num_workers=args.num_workers)
+    tbar = tqdm(data_loader, desc='\r')
 
     model.eval()
     with torch.no_grad():
-        preds = []
-        targets = []
-        paths = []
         probs = []
+        preds = []
+        paths = []
 
-        for (inputs, _, image_path) in enumerate(data_loader):
-
+        for idx, (inputs, _, image_path) in enumerate(tbar):
             inputs = inputs.to(device)
-            outputs = model(inputs)
+            outputs = model(inputs).to(device)
             prob = F.softmax(outputs, dim=1)
 
             probs.extend(prob.tolist())
             preds.extend(torch.argmax(prob, dim=1).tolist())
-            targets.extend(targets.tolist())
             paths.extend(list(image_path))
+
+        binary_preds = map(lambda x: 0 if x != 4 else 1, preds)
+
+    result = [{'image_dir': img, 'pred': pred} for img, pred in zip(paths, binary_preds)]
+
+    output_f = os.path.join(os.path.dirname(input_data), 'patch_pred.json')
+    with open(output_f, 'w') as f:
+        json.dump(result, f)
 
 
 if __name__ == '__main__':
