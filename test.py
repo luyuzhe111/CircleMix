@@ -11,34 +11,36 @@ import torch.nn.functional as F
 import os
 import pandas as pd
 from sklearn.metrics import f1_score
-from sklearn.metrics import balanced_accuracy_score
+from sklearn.metrics import confusion_matrix
 import models.resnet as resnet
-import models.wideresnet as models
-import models.mobilenetv2 as netv2
-import models.senet as senet
+import models.resnetv2 as resnetv2
+import microsoftvision
+import models.mobilenetv2 as mobilenetv2
 from models.efficientnet import EfficientNet
 import models.inceptionv4 as inceptionv4
 from data_loader import DataLoader
 from utils import AverageMeter, accuracy
-
+import argparse
 from easydict import EasyDict as edict
-from argparse import Namespace
 import yaml
 
-config_dir = sys.argv[1]
+parser = argparse.ArgumentParser()
+parser.add_argument('--config', required=True, help='configuration file')
+parser.add_argument('--bit_model', default=None, help='BiT model')
+parser.add_argument('--average', default=False, help='whether to average top3 models')
+
+cmd_args = parser.parse_args()
+config_dir = cmd_args.config
 config_file = os.path.basename(config_dir)
-print('Test with ' + config_file)
+print('Train with ' + config_file)
 
 with open(config_dir, 'r') as f:
     args = edict(yaml.load(f, Loader=yaml.FullLoader))
 
-args = Namespace(**args)
 args.expname = config_file.split('.yaml')[0]
 
 output_csv_dir = os.path.join(args.output_csv_dir, args.expname)
 save_model_dir = os.path.join(output_csv_dir, 'models')
-
-avg = True
 
 def main():
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -70,50 +72,52 @@ def main():
     val_set = os.path.basename(args.val_list).split('.')[0]
     test_set = os.path.basename(args.test_list).split('.')[0]
 
-    if avg:
+    if args.average:
         record = pd.read_csv(os.path.join(output_csv_dir, 'output.csv'), index_col=0)
-        sorted_r = record.sort_values('mul_acc', ascending=False)
+        sorted_r = record.sort_values('f1', ascending=False)
 
         model_list = list(sorted_r['epoch_num'].astype(int))[:3]
-        df = pd.DataFrame(columns=['exp', 'train', 'val', 'test', 'test_loss', 'test_acc', 'f1', 'mul_acc'])
+        df = pd.DataFrame(columns=['exp', 'train', 'val', 'test', 'test_loss', 'test_acc', 'f1'])
         for idx, epoch in enumerate(model_list):
-            idx += 1
             model = load_checkpoint(model, save_model_dir, f'epoch{epoch}_checkpoint.pth.tar')
-            test_loss, test_acc, f1, mul_acc = test(output_csv_dir, test_loader, model, criterion, device, ep_idx=idx)
+            test_loss, test_acc, f1, _ = test(output_csv_dir, test_loader, model, criterion, device, ep_idx=idx+1)
 
-            df.loc[len(df)] = [expname, train_set, val_set, test_set, test_loss, test_acc, f1, mul_acc]
+            df.loc[len(df)] = [expname, train_set, val_set, test_set, test_loss, test_acc, f1]
+
         output_csv_file = os.path.join(output_csv_dir, 'test_acc.csv')
         df.to_csv(output_csv_file, index=False)
     else:
-        df = pd.DataFrame(columns=['exp', 'train', 'val', 'test', 'test_loss', 'test_acc', 'f1', 'mul_acc'])
-        model = load_checkpoint(model, save_model_dir, 'model_best_acc.pth.tar')
-        test_loss, test_acc, f1, mul_acc = test(output_csv_dir, test_loader, model, criterion, device)
+        df = pd.DataFrame(columns=['exp', 'train', 'val', 'test', 'test_loss', 'test_acc', 'f1'])
+        model = load_checkpoint(model, save_model_dir, 'model_best_f1.pth.tar')
+        test_loss, test_acc, f1, _ = test(output_csv_dir, test_loader, model, criterion, device)
 
-        df.loc[len(df)] = [expname, train_set, val_set, test_set, test_loss, test_acc, f1, mul_acc]
-        output_csv_file = os.path.join(output_csv_dir, 'test_acc.csv')
+        df.loc[len(df)] = [expname, train_set, val_set, test_set, test_loss, test_acc, f1]
+        output_csv_file = os.path.join(output_csv_dir, 'test_f1.csv')
         df.to_csv(output_csv_file, index=False)
 
 
 def create_model(num_classes):
+    if args.network == 100:
+        model = resnet.resnet18(pretrained=args.pretrain)
+        num_ftrs = model.fc.in_features
+        model.fc = nn.Linear(num_ftrs, num_classes)
     if args.network == 101:
-        model = resnet.resnet50()
+        model = resnet.resnet50(pretrained=args.pretrain)
         num_ftrs = model.fc.in_features
         model.fc = nn.Linear(num_ftrs, num_classes)
     elif args.network == 102:
-        model = models.WideResNet(num_classes=num_classes)
+        architecture = os.path.basename(cmd_args.bit_model)
+        model = resnetv2.KNOWN_MODELS[architecture.split('.')[0]](head_size=num_classes, zero_head=True)
+        model.load_from(np.load(cmd_args.bit_model))
+        print(f'Load pre-trained model {cmd_args.bit_model}')
     elif args.network == 103:
-        model = netv2.mobilenet_v2(pretrained=True)
-        num_ftrs = model.classifier.in_features
-        model.classifier = nn.Linear(num_ftrs, num_classes)
-    elif args.network == 104:
-        model = senet.se_resnet50(num_classes=num_classes)
-    elif args.network == 105:
-        model = EfficientNet.from_pretrained(sys.argv[2], num_classes=num_classes)
-    elif args.network == 106:
-        model = inceptionv4.inceptionv4(num_classes=num_classes, pretrained=None)
+        model = microsoftvision.resnet50(pretrained=True)
+        model.fc = nn.Linear(2048, num_classes)
     else:
-        print('model not available! Using EfficientNet-b0 as default')
-        model = EfficientNet.from_pretrained('efficientnet-b0', num_classes=num_classes)
+        print('model not available! Using PyTorch ResNet50 as default')
+        model = resnet.resnet50(pretrained=args.pretrain)
+        num_ftrs = model.fc.in_features
+        model.fc = nn.Linear(num_ftrs, num_classes)
 
     return model
 
@@ -129,15 +133,14 @@ def load_checkpoint(model, checkpoint, filename):
 def test(out_dir, test_loader, model, criterion, device, ep_idx=None):
     losses = AverageMeter()
     top1 = AverageMeter()
-
-    model.eval()
     tbar = tqdm(test_loader, desc='\r')
 
+    model.eval()
     with torch.no_grad():
-        pred_history = []
-        target_history = []
-        name_history = []
-        prob_history = []
+        preds = []
+        gts = []
+        names = []
+        scores = []
 
         for batch_idx, (inputs, targets, image_path) in enumerate(tbar):
             inputs = inputs.float()
@@ -152,48 +155,41 @@ def test(out_dir, test_loader, model, criterion, device, ep_idx=None):
             losses.update(loss.item(), inputs.size(0))
             top1.update(prec1.item(), inputs.size(0))
 
-            prob = F.softmax(outputs, dim=1)[:, :5]
-            pred = prob.data.max(1)[1]
-            pred_history = np.concatenate((pred_history, pred.data.cpu().numpy()), axis=0)
-            target_history = np.concatenate((target_history, targets.data.cpu().numpy()), axis=0)
-            name_history = np.concatenate((name_history, image_path), axis=0)
+            score = F.softmax(outputs, dim=1)
+            pred = score.data.max(1)[1]
 
-            if batch_idx == 0:
-                prob_history = prob.data.cpu().numpy()
-            else:
-                prob_history = np.concatenate((prob_history, prob.data.cpu().numpy()), axis=0)
+            scores.extend(score.tolist())
+            preds.extend(pred.tolist())
+            gts.extend(targets.tolist())
+            names.extend(image_path)
 
             tbar.set_description('\r %s Loss: %.3f | Top1: %.3f' % ('Test Stats', losses.avg, top1.avg))
 
-        f1s = f1_score(target_history, pred_history, average=None)
+        print(confusion_matrix(gts, preds))
+        f1s = f1_score(gts, preds, average=None)
         f1_avg = sum(f1s) / len(f1s)
 
-        mul_acc = balanced_accuracy_score(target_history, pred_history)
         if ep_idx is None:
-            epoch_summary(out_dir, name_history, prob_history, pred_history, target_history)
+            epoch_summary(out_dir, names, scores, preds, targets)
         else:
-            epoch_summary(out_dir, name_history, prob_history, pred_history, target_history, ep_idx=ep_idx)
+            epoch_summary(out_dir, names, scores, preds, targets, ep_idx=ep_idx)
 
-    return losses.avg, top1.avg, f1_avg, mul_acc
+    return losses.avg, top1.avg, f1_avg, f1s
 
 
-def epoch_summary(out_dir, name_history, prob_history, pred_history, target_history, ep_idx=None):
+def epoch_summary(out_dir, names, scores, preds, targets, ep_idx=None):
     if ep_idx is None:
-        csv_file_name = os.path.join(out_dir, 'epoch_test_acc.csv')
+        csv_file_name = os.path.join(out_dir, 'epoch_test_f1.csv')
     else:
-        csv_file_name = os.path.join(out_dir, f'top{ep_idx}_epoch_test_acc.csv')
+        csv_file_name = os.path.join(out_dir, f'top{ep_idx}_epoch_test_f1.csv')
+
     if args.dataset == 'renal':
-        data = np.concatenate((name_history[..., np.newaxis],
-                               prob_history,
-                               (prob_history[:, 1] + prob_history[:, 2] + prob_history[:, 3])[..., np.newaxis],
-                               pred_history[..., np.newaxis],
-                               target_history[..., np.newaxis]), axis=1)
-        df = pd.DataFrame(data, columns=['image',
-                                         'prob_0', 'prob_1', 'prob_2', 'prob_3', 'prob_4', 'pred_pos',
-                                         'prediction', 'target'])
+        data =[[name, pred, sum(score[1:4]), target] for name, pred, score, target in zip(names, preds, scores, targets)]
+        df = pd.DataFrame(data, columns=['image', 'prediction', 'sclerosis_score', 'target'])
     else:
-        data = np.concatenate((name_history[..., np.newaxis], pred_history[..., np.newaxis], target_history[..., np.newaxis]), axis=1)
+        data =[[name, pred, target] for name, pred, target in zip(names, preds, targets)]
         df = pd.DataFrame(data, columns=['image', 'prediction', 'target'])
+
     df.to_csv(csv_file_name)
 
 

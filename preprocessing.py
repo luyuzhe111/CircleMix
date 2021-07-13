@@ -32,7 +32,7 @@ def crop_center(input_dir, output_dir, new_size):
 '''
 create json file from csv file
 '''
-def create_data_file(train_csv, data_dir, output_dir):
+def save_data_in_json(train_csv, data_dir, output_dir):
     df = pd.read_csv(train_csv)
 
     data_list = []
@@ -50,53 +50,9 @@ def create_data_file(train_csv, data_dir, output_dir):
 
 
 '''
-check whether there is contamination between folds
-'''
-def check_contam(fold_dir, dataset):
-    fold_lst = []
-    num_folds = 5
-    for i in range(num_folds):
-        with open(f'{fold_dir}/fold{i + 1}.json') as f:
-            data = json.load(f)
-            patient = [i['patient'] for i in data]
-            fold_lst.append(patient)
-
-
-    print(f'Checking {dataset} dataset...')
-    for i in range(num_folds):
-        for j in range(i + 1, num_folds):
-            cur_fold = set(fold_lst[i])
-            next_fold = set(fold_lst[j])
-            contam = cur_fold.intersection(next_fold)
-            print(f'Between {i+1} and {j+1} contam:', contam)
-
-
-'''
-create a json file for each fold
-'''
-def create_fold_file(df, fold, data_dir, json_dir, keys):
-    patient_id, image_name, label = keys
-
-    df_fold = df[df['fold'] == fold]
-    data_list = []
-    for index, row in df_fold.iterrows():
-        img = index
-        img_dir = os.path.join(data_dir, img + '.png')
-        target = row[label]
-        patient = row[patient_id]
-
-        one_entry = {'subj': patient, 'image': img, 'image_dir': img_dir, 'target': target}
-        data_list.append(one_entry)
-
-    output_json = os.path.join(json_dir, 'fold'+str(fold)+'.json')
-    with open(output_json, 'w') as out_file:
-        json.dump(data_list, out_file)
-
-
-'''
 create training set from a subset of folds
 '''
-def create_train_file(fold_1, fold_2, fold_3, train_set, output_dir):
+def save_train_file(fold_1, fold_2, fold_3, train_set, output_dir):
     data_set = []
     with open(fold_1, 'r') as json_file:
         data1 = json.load(json_file)

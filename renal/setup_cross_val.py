@@ -1,12 +1,12 @@
 import json
 import random
 from collections import Counter
-from preprocessing import create_train_file
+from preprocessing import save_train_file
 import pandas as pd
 
 
 def split_fold(root_dir):
-    with open(f'{root_dir}/data.json') as f:
+    with open(f'{root_dir}/usable_data.json') as f:
         data = json.load(f)
 
     subj_set = list(sorted(set([i['subj'] for i in data])))
@@ -19,17 +19,17 @@ def split_fold(root_dir):
         subj_label = [i['target'] for i in subj_data]
 
         counter = Counter(subj_label)
-        labels = ['normal', 'obsolescent', 'solidified', 'disappearing', 'fibrosis']
+        labels = ['normal', 'obsolescent', 'solidified', 'disappearing', 'non-glomerulous']
         subj_record = [subj, prefix]
         for idx, _ in enumerate(labels):
             subj_record.append(counter[idx])
         subj_records.append(subj_record)
 
-    df = pd.DataFrame(subj_records, columns=['subj', 'prefix', 'normal', 'obsolescent', 'solidified', 'disappearing', 'fibrosis'])
+    df = pd.DataFrame(subj_records, columns=['subj', 'prefix', 'normal', 'obsolescent', 'solidified', 'disappearing', 'non-glomerulous'])
     df.to_csv('csv/subj_summary.csv')
 
-    # 10 is the best
-    random.seed(0)
+    # 9 is the best
+    random.seed(9)
     fold_assignment = [random.randint(1, 6) for _ in range(num_subj)]
     for item in data:
         for subj, fold in zip(subj_set, fold_assignment):
@@ -63,10 +63,10 @@ def create_trainset(root_dir):
 
         print(fold_i, fold_j, fold_k)
 
-        create_train_file(fold_i, fold_j, fold_k, f'trainset{i}', root_dir)
+        save_train_file(fold_i, fold_j, fold_k, f'trainset{i}', root_dir)
 
 
 if __name__ == '__main__':
-    root_dir = 'json/all'
-    split_fold(root_dir)
-    create_trainset(root_dir)
+    out_dir = 'json'
+    split_fold(out_dir)
+    create_trainset(out_dir)

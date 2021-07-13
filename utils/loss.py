@@ -6,10 +6,9 @@ import numpy as np
 class FocalLoss(nn.Module):
     def __init__(self, alpha=None, gamma=2, reduce=True):
         super(FocalLoss, self).__init__()
-        self.alpha = 4 if alpha is None else alpha
+        self.alpha = 1 if alpha is None else alpha
         self.gamma = gamma
         self.reduce = reduce
-        self.nll_loss = nn.NLLLoss(reduction='none')
 
     def forward(self, inputs, targets):
         if isinstance(self.alpha, int):
