@@ -26,7 +26,8 @@ class StdConv2d(nn.Conv2d):
 
     def forward(self, x):
         w = self.weight
-        v, m = torch.var_mean(w, dim=[1, 2, 3], keepdim=True, unbiased=False)
+        v = torch.var(w, dim=[1, 2, 3], keepdim=True, unbiased=False)
+        m = torch.mean(w, dim=[1, 2, 3], keepdim=True)
         w = (w - m) / torch.sqrt(v + 1e-10)
         return F.conv2d(x, w, self.bias, self.stride, self.padding,
                         self.dilation, self.groups)
@@ -147,7 +148,8 @@ class ResNetV2(nn.Module):
             ('gn', nn.GroupNorm(32, 2048 * wf)),
             ('relu', nn.ReLU(inplace=True)),
             ('avg', nn.AdaptiveAvgPool2d(output_size=1)),
-            ('conv', nn.Conv2d(2048 * wf, head_size, kernel_size=1, bias=True)),
+            ('dropout', nn.Dropout(0.5)),
+            ('conv', nn.Conv2d(2048 * wf, head_size, kernel_size=1, bias=True))
         ]))
 
     def forward(self, x):

@@ -1,0 +1,33 @@
+train_list: '/Data/luy8/glomeruli/renal/json/trainset1.json'
+
+val_list: '/Data/luy8/glomeruli/renal/json/fold4.json'
+
+test_list: '/Data/luy8/glomeruli/renal/json/fold5.json'
+
+output_csv_dir: '/Data/luy8/glomeruli/exp_results/config_renal'
+
+dataset: 'renal'
+
+pretrain: False
+
+num_classes: 5
+
+epochs: 50
+
+start_epoch: 0
+
+batch_size: 8
+
+lr: 0.0001
+
+network: 101
+
+num_workers: 16
+
+beta: 1
+
+cutmix_prob: 0
+
+circlemix_prob: 0
+
+cutout_prob: 0

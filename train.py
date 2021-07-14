@@ -22,7 +22,7 @@ import models.mobilenetv2 as mobilenetv2
 import microsoftvision
 from models.efficientnet import EfficientNet
 from data_loader import DataLoader
-from utils.augmentation import GaussianBlur, rand_bbox, coordinate, polygon_vertices
+from utils.augmentation import GaussianBlur, RandomErasing, rand_bbox, coordinate, polygon_vertices
 from utils import AverageMeter, accuracy
 import argparse
 from easydict import EasyDict as edict
@@ -50,19 +50,19 @@ with open(config_dir, 'r') as f:
     args = edict(yaml.load(f, Loader=yaml.FullLoader))
 
 args.expname = config_file.split('.yaml')[0]
-args.hyperparam_tune = True
+args.hyperparam_tune = False
 args.optimizer = 'ADAM'
 args.resample = True
 args.loss = 'Focal'
 args.weighted_loss = False
 
-output_csv_dir = os.path.join(args.output_csv_dir, args.expname)
+output_csv_dir = os.path.abspath(f'{args.output_csv_dir}/{args.expname}')
 os.makedirs(output_csv_dir, exist_ok=True)
 
-log_dir = os.path.join(output_csv_dir, 'log')
+log_dir = os.path.abspath(f'{output_csv_dir}/log')
 os.makedirs(log_dir, exist_ok=True)
 
-save_model_dir = os.path.join(output_csv_dir, 'models')
+save_model_dir = os.path.abspath(f'{output_csv_dir}/models')
 os.makedirs(save_model_dir, exist_ok=True)
 
 
@@ -70,12 +70,9 @@ def main(config, checkpoint_dir=None):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     torch.manual_seed(10)
 
-    if args.hyperparam_tune:
-        batch_size = config['batch_size']
-        lr = config['lr']
-    else:
-        batch_size = args.batch_size
-        lr = args.lr
+    batch_size = config['batch_size']
+    lr = config['lr']
+    gamma = config['gamma']
 
     best_f1 = 0
 
@@ -88,6 +85,7 @@ def main(config, checkpoint_dir=None):
         GaussianBlur(),
         transforms.ToTensor(),
         transforms.Normalize((0.485, 0.456, 0.406), (0.229, 0.224, 0.225)),
+        RandomErasing()
     ])
 
     transform_val = transforms.Compose([
@@ -127,9 +125,9 @@ def main(config, checkpoint_dir=None):
     if args.weighted_loss:
         targets = [i['target'] for i in train_set.data]
         weights = compute_class_weight('balanced', classes=np.unique(targets), y=np.array(targets))
-        criterion = select_loss_func(choice=args.loss, weights=torch.tensor(weights, dtype=torch.float))
+        criterion = select_loss_func(choice=args.loss, weights=torch.tensor(weights, dtype=torch.float), gamma=gamma)
     else:
-        criterion = select_loss_func(choice=args.loss)
+        criterion = select_loss_func(choice=args.loss, gamma=gamma)
 
     # choose optimizer
     print('==> {} optimizer'.format(args.optimizer))
@@ -192,27 +190,31 @@ def main(config, checkpoint_dir=None):
             'optimizer': optimizer.state_dict(),
         }, is_best_f1, epoch, save_model_dir)
 
-    print('Best acc:')
-    print(best_acc)
+    print('Best f1:')
+    print(best_f1)
 
 
 def create_model(num_classes):
     if args.network == 100:
         model = resnet.resnet18(pretrained=args.pretrain)
         num_ftrs = model.fc.in_features
-        model.fc = nn.Linear(num_ftrs, num_classes)
-    if args.network == 101:
+        model.fc = nn.Sequential(nn.Dropout(0.5), nn.Linear(num_ftrs, num_classes))
+    elif args.network == 101:
         model = resnet.resnet50(pretrained=args.pretrain)
         num_ftrs = model.fc.in_features
-        model.fc = nn.Linear(num_ftrs, num_classes)
+        model.fc = nn.Sequential(nn.Dropout(0.5), nn.Linear(num_ftrs, num_classes))
     elif args.network == 102:
         architecture = os.path.basename(cmd_args.bit_model)
         model = resnetv2.KNOWN_MODELS[architecture.split('.')[0]](head_size=num_classes, zero_head=True)
         model.load_from(np.load(cmd_args.bit_model))
         print(f'Load pre-trained model {cmd_args.bit_model}')
     elif args.network == 103:
+        model = resnet.resnet101(pretrained=args.pretrain)
+        num_ftrs = model.fc.in_features
+        model.fc = nn.Sequential(nn.Dropout(0.5), nn.Linear(num_ftrs, num_classes))
+    elif args.network == 104:
         model = microsoftvision.resnet50(pretrained=True)
-        model.fc = nn.Linear(2048, num_classes)
+        model.fc = model.fc = nn.Sequential(nn.Dropout(0.5), nn.Linear(2048, num_classes))
     else:
         print('model not available! Using PyTorch ResNet50 as default')
         model = resnet.resnet50(pretrained=args.pretrain)
@@ -222,14 +224,14 @@ def create_model(num_classes):
     return model
 
 
-def select_loss_func(choice='CrossEntropy', weights=None):
+def select_loss_func(choice='CrossEntropy', weights=None, gamma=2):
     if weights is not None:
         print("==> Weighted {} loss".format(choice))
     else:
         print("==> {} loss".format(choice))
 
     if choice == 'Focal':
-        return loss.FocalLoss(alpha=weights, gamma=2, reduce=True).cuda()
+        return loss.FocalLoss(alpha=weights, gamma=gamma, reduce=True).cuda()
     elif choice == 'Class-Balanced':
         return loss.EffectiveSamplesLoss(beta=0.999,
                                          num_cls=args.num_classes,
@@ -489,8 +491,9 @@ if __name__ == '__main__':
         gpus_per_trial = 1
 
         config = {
-            "lr": tune.grid_search([1e-4, 1e-3, 1e-2]),
-            "batch_size": tune.grid_search([8, 16])
+            "lr": tune.grid_search([1e-5, 1e-4, 1e-3]),
+            "batch_size": tune.grid_search([8, 16]),
+            "gamma": tune.grid_search([2.5]),  # fixed after one sweep
         }
         scheduler = ASHAScheduler(
             max_t=max_num_epochs,
@@ -513,5 +516,9 @@ if __name__ == '__main__':
         print("Best trial final validation accuracy: {}".format(best_trial.last_result["accuracy"]))
 
     else:
-        config = {}
+        config = {
+            "lr": args.lr,
+            "batch_size": args.batch_size,
+            "gamma": 2.5,
+        }
         main(config)

@@ -1,11 +1,11 @@
 from torch.utils import data
 import json
 from PIL import Image
-
+import os
 
 class DataLoader(data.Dataset):
     def __init__(self, data_list, transform=None):
-        with open(data_list) as json_file:
+        with open(os.path.abspath(data_list)) as json_file:
             data = json.load(json_file)
 
         self.data = data
@@ -21,7 +21,6 @@ class DataLoader(data.Dataset):
         if self.transform is not None:
             img = self.transform(img)
         return img, label, image_dir
-
 
     def __len__(self):
         return len(self.data)

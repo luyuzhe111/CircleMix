@@ -27,7 +27,7 @@ import yaml
 parser = argparse.ArgumentParser()
 parser.add_argument('--config', required=True, help='configuration file')
 parser.add_argument('--bit_model', default=None, help='BiT model')
-parser.add_argument('--average', default=False, help='whether to average top3 models')
+parser.add_argument('--average', default=False, type=bool, help='whether to average top3 models')
 
 cmd_args = parser.parse_args()
 config_dir = cmd_args.config
@@ -72,7 +72,7 @@ def main():
     val_set = os.path.basename(args.val_list).split('.')[0]
     test_set = os.path.basename(args.test_list).split('.')[0]
 
-    if args.average:
+    if cmd_args.average:
         record = pd.read_csv(os.path.join(output_csv_dir, 'output.csv'), index_col=0)
         sorted_r = record.sort_values('f1', ascending=False)
 
@@ -100,11 +100,11 @@ def create_model(num_classes):
     if args.network == 100:
         model = resnet.resnet18(pretrained=args.pretrain)
         num_ftrs = model.fc.in_features
-        model.fc = nn.Linear(num_ftrs, num_classes)
+        model.fc = nn.Sequential(nn.Dropout(0.5), nn.Linear(num_ftrs, num_classes))
     if args.network == 101:
         model = resnet.resnet50(pretrained=args.pretrain)
         num_ftrs = model.fc.in_features
-        model.fc = nn.Linear(num_ftrs, num_classes)
+        model.fc = nn.Sequential(nn.Dropout(0.5), nn.Linear(num_ftrs, num_classes))
     elif args.network == 102:
         architecture = os.path.basename(cmd_args.bit_model)
         model = resnetv2.KNOWN_MODELS[architecture.split('.')[0]](head_size=num_classes, zero_head=True)
@@ -112,7 +112,7 @@ def create_model(num_classes):
         print(f'Load pre-trained model {cmd_args.bit_model}')
     elif args.network == 103:
         model = microsoftvision.resnet50(pretrained=True)
-        model.fc = nn.Linear(2048, num_classes)
+        model.fc = nn.Sequential(nn.Dropout(0.5), nn.Linear(2048, num_classes))
     else:
         print('model not available! Using PyTorch ResNet50 as default')
         model = resnet.resnet50(pretrained=args.pretrain)
@@ -170,9 +170,9 @@ def test(out_dir, test_loader, model, criterion, device, ep_idx=None):
         f1_avg = sum(f1s) / len(f1s)
 
         if ep_idx is None:
-            epoch_summary(out_dir, names, scores, preds, targets)
+            epoch_summary(out_dir, names, scores, preds, gts)
         else:
-            epoch_summary(out_dir, names, scores, preds, targets, ep_idx=ep_idx)
+            epoch_summary(out_dir, names, scores, preds, gts, ep_idx=ep_idx)
 
     return losses.avg, top1.avg, f1_avg, f1s
 
