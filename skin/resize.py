@@ -1,7 +1,7 @@
-from preprocessing import crop_center
+from utils.preprocessing import crop_center
 
-raw_train_dir = 'raw_test'
-resized_train_dir = 'resized_test'
+raw_data_dir = 'raw_train'
+resized_data_dir = 'resized_data'
 
 new_size = 256
-crop_center(raw_train_dir, resized_train_dir, new_size)
+crop_center(raw_data_dir, resized_data_dir, new_size)

@@ -1,7 +1,7 @@
 import json
 import random
 from collections import Counter
-from preprocessing import save_train_file
+from utils.preprocessing import save_train_file
 import pandas as pd
 
 
@@ -9,41 +9,38 @@ def split_fold(root_dir):
     with open(f'{root_dir}/usable_data.json') as f:
         data = json.load(f)
 
-    subj_set = list(sorted(set([i['subj'] for i in data])))
-    num_subj = len(subj_set)
+    labels = ['normal', 'obsolescent', 'solidified', 'disappearing', 'non-glomerulous']
+    num_classes = len(labels)
+    subjects = list(sorted(set([i['subj'] for i in data])))
+    num_subj = len(subjects)
 
     subj_records = []
-    for subj in subj_set:
+    for subj in subjects:
         subj_data = [i for i in data if i['subj'] == subj]
-        prefix = subj_data[0]['image']
+        prefix = subj_data[0]['image'].split(' ')[0]
         subj_label = [i['target'] for i in subj_data]
 
         counter = Counter(subj_label)
-        labels = ['normal', 'obsolescent', 'solidified', 'disappearing', 'non-glomerulous']
-        subj_record = [subj, prefix]
-        for idx, _ in enumerate(labels):
-            subj_record.append(counter[idx])
+        subj_record = [subj, prefix] + [counter[i] for i in range(len(labels))]
         subj_records.append(subj_record)
 
-    df = pd.DataFrame(subj_records, columns=['subj', 'prefix', 'normal', 'obsolescent', 'solidified', 'disappearing', 'non-glomerulous'])
+    df = pd.DataFrame(subj_records, columns=['subj', 'prefix',
+                                             'normal', 'obsolescent', 'solidified', 'disappearing', 'non-glomerulous'])
     df.to_csv('csv/subj_summary.csv')
 
-    # 9 is the best
-    random.seed(9)
-    fold_assignment = [random.randint(1, 6) for _ in range(num_subj)]
+    random.seed(0)
+    fold_assignment = dict(zip(subjects, [random.randint(1, num_classes) for _ in range(num_subj)]))  # randint is inclusive...
     for item in data:
-        for subj, fold in zip(subj_set, fold_assignment):
-            if item['subj'] == subj:
-                item['fold'] = fold
+        item['fold'] = fold_assignment[item['subj']]
 
     print(Counter([i['subj'] for i in data]))
 
-    for fold in range(1, 6):
+    for fold in range(1, num_classes + 1):
         fold_data = [i for i in data if i['fold'] == fold]
 
         print(sorted(Counter([i['target'] for i in fold_data]).items()))
-        with open(f'{root_dir}/fold{fold}.json', 'w') as f:
-            json.dump(fold_data, f)
+        # with open(f'{root_dir}/fold{fold}.json', 'w') as f:
+        #     json.dump(fold_data, f)
 
 
 def create_trainset(root_dir):
@@ -63,7 +60,7 @@ def create_trainset(root_dir):
 
         print(fold_i, fold_j, fold_k)
 
-        save_train_file(fold_i, fold_j, fold_k, f'trainset{i}', root_dir)
+        # save_train_file(fold_i, fold_j, fold_k, f'trainset{i}', root_dir)
 
 
 if __name__ == '__main__':

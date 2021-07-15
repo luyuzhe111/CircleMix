@@ -10,8 +10,8 @@ import matplotlib.pyplot as plt
 import seaborn as sn
 from collections import defaultdict
 
-def concat_crossval(dataset, class_names, expname, topk=1, show_heatmap=False, verbose=False):
-    topk_imgs = []
+
+def concat_crossval(dataset, class_names, expname, topk=1, show_heatmap=False, binary_result=False, verbose=False):
     topk_targets = []
     topk_preds = []
     topk_f1s = []
@@ -21,7 +21,6 @@ def concat_crossval(dataset, class_names, expname, topk=1, show_heatmap=False, v
         ensemble_epoch_file = f'{expname}_top{k}_ensembled_epochs.csv'
 
         root_dir = os.path.join(output_dir, f'config_{dataset}')
-        df = pd.DataFrame(columns=['image', 'prediction', 'target'])
         imgs = []
         preds = []
         targets = []
@@ -36,29 +35,32 @@ def concat_crossval(dataset, class_names, expname, topk=1, show_heatmap=False, v
 
         assert count == 5, "something is wrong"
 
-        df['image'], df['prediction'], df['target'] = imgs, preds, targets
-        topk_imgs.append(imgs)
         topk_targets.append(targets)
         topk_preds.append(preds)
 
+        data = [[img, pred, target] for img, pred, target in zip(imgs, preds, targets)]
+        df = pd.DataFrame(data, columns=['image', 'prediction', 'target'])
         output_dir = os.path.join(output_dir, dataset)
         os.makedirs(output_dir, exist_ok=True)
         df.to_csv(os.path.join(output_dir, ensemble_epoch_file))
 
-        accuracy = accuracy_score(targets, preds)
-
-        f1s = f1_score(targets, preds, average=None)
-        f1 = sum(f1s)/len(f1s)
-        print(expname, 'balanced f1: {}, overall accuracy: {}'.format(round(f1, 4), round(accuracy, 4)))
-
         cm = confusion_matrix(targets, preds)
-        print(cm)
+        accuracy = accuracy_score(targets, preds)
+        f1s = [round(f1, 4) for f1 in f1_score(targets, preds, average=None)]
+        f1 = sum(f1s)/len(f1s)
 
-        f1s = [round(f1, 4) for f1 in f1s]
         topk_f1s.append(f1s)
-        print('f1 score', f'{class_names[0]}: {f1s[0]}, {class_names[1]}: {f1s[1]}, {class_names[2]}: {f1s[2]}, {class_names[3]}: {f1s[3]}, {class_names[4]}: {f1s[4]}', '\n')
 
-        if dataset == 'renal' and verbose:
+        if verbose:
+            print(expname, 'balanced f1: {}, overall accuracy: {}'.format(round(f1, 4), round(accuracy, 4)))
+            print(cm)
+            print('f1 score', f'{class_names[0]}: {f1s[0]}, '
+                              f'{class_names[1]}: {f1s[1]}, '
+                              f'{class_names[2]}: {f1s[2]}, '
+                              f'{class_names[3]}: {f1s[3]}, '
+                              f'{class_names[4]}: {f1s[4]}', '\n')
+
+        if binary_result:
             bi_targets = list(map(lambda x: 1 if x != 4 else 0, targets))
             bi_preds = list(map(lambda x: 1 if x != 4 else 0, preds))
 
@@ -74,11 +76,16 @@ def concat_crossval(dataset, class_names, expname, topk=1, show_heatmap=False, v
             sn.heatmap(df_cm, annot=True, cmap='Blues', fmt='g', annot_kws={"size": 16}, vmin=0, vmax=2500)  # font size
             plt.yticks(rotation=0)
             plt.title(title)
-            plt.savefig(os.path.join(f'exp_results/config_{dataset}/confusion_matrix', title + '.svg'))
-            plt.clf()
             plt.show()
 
-    print(f'Average results for {topk} models with 95% confidence interval')
+    print('\n===========================================================================')
+    print(f'{expname} - average results for {topk} models with 95% confidence interval')
+
+    ba_f1s = [sum(f1s) / len(f1s) for f1s in topk_f1s]
+    ba_f1_mean = sum(ba_f1s) / len(ba_f1s)
+    ba_f1_std = math.sqrt(sum((x - ba_f1_mean) ** 2 for x in ba_f1s) / len(ba_f1s)) * 1.96
+    print(f"overall balanced f1: {round(ba_f1_mean * 100, 2)} \u00B1 {round(ba_f1_std * 100, 2)}\n")
+
     for i, class_name in enumerate(class_names):
         class_f1s = [topk_f1[i] for topk_f1 in topk_f1s]
         mean = sum(class_f1s) / len(class_f1s)
@@ -87,45 +94,37 @@ def concat_crossval(dataset, class_names, expname, topk=1, show_heatmap=False, v
         print(f"{class_name} f1: {round(mean * 100, 2) } \u00B1 {round(std * 100, 2)}")
 
 
-def ens_prediction(dataset, setting, expname, crossval=True):
+def ens_prediction(dataset, expname, crossval=True):
     if dataset == 'renal':
         output_dir = 'exp_results'
         predict_file = 'predict_f1.csv'
-        ensemble_file = 'ensembled_prediction.csv'
+        ensemble_file = f'{expname}_ensembled_prediction.csv'
 
-        root_dir = os.path.join(output_dir, f'config_{dataset}', setting)
-        img_history = None
-        pred_history = None
-        target_history = None
-
+        root_dir = os.path.join(output_dir, f'config_{dataset}')
+        imgs = targets = scores = None
         count = 0
         for dir in os.listdir(root_dir):
             if expname in dir:
                 count += 1
                 file = pd.read_csv(os.path.join(root_dir, dir, predict_file))
 
-                if img_history is None:
-                    img_history = list(file['image'])
+                imgs = file['image']
+                targets = file['target']
 
-                if target_history is None:
-                    target_history = list(file['target'])
-
-                if pred_history is None:
-                    pred_history = np.asarray(list(file['pro_pos']))
+                if scores is None:
+                    scores = np.asarray(list(file['sclerosis_score']))
                 else:
-                    pred_history += np.asarray(list(file['pro_pos']))
+                    scores += np.asarray(list(file['sclerosis_score']))
 
         assert count == 5, "something is wrong"
 
-        pos_prob = list(pred_history / 5)
-        df = pd.DataFrame(columns=['image', 'prob', 'target'])
-        df['image'] = img_history
-        df['prob'] = pos_prob
-        df['target'] = target_history
-        df.to_csv(os.path.join(output_dir, expname + '_' + ensemble_file))
+        averaged_scores = list(scores / 5)
+        data = [[img, score, target] for img, score, target in zip(imgs, averaged_scores, targets)]
+        df = pd.DataFrame(data, columns=['image', 'score', 'target'])
+        df.to_csv(os.path.join(output_dir, ensemble_file))
 
-        fpr, tpr, thresh = roc_curve(target_history, pos_prob, pos_label=1)
-        auc_score = roc_auc_score(target_history, pos_prob)
+        fpr, tpr, thresh = roc_curve(targets, averaged_scores, pos_label=1)
+        auc_score = roc_auc_score(targets, averaged_scores)
 
         return fpr, tpr, thresh, round(auc_score, 3)
 
@@ -145,13 +144,11 @@ def ens_prediction(dataset, setting, expname, crossval=True):
                 if expname in dir:
                     count += 1
                     file = pd.read_csv(os.path.join(root_dir, dir, predict_file))
-
-                    if img_history is None:
-                        img_history = np.asarray(file['image'])
+                    img_history = np.asarray(file['image'])
 
                     pred_history.append(list(file['prediction']))
 
-            assert count == 5, "somethig is wrong"
+            assert count == 5, "something is wrong"
 
             pred_num = len(pred_history[0])
             ens_pred_history = []
@@ -165,8 +162,7 @@ def ens_prediction(dataset, setting, expname, crossval=True):
                 ens_pred_history.append(pred_entry)
 
             output_dir = os.path.join(output_dir, dataset)
-            if not os.path.exists(output_dir):
-                os.mkdir(output_dir)
+            os.makedirs(output_dir, exist_ok=True)
 
             data = np.concatenate((img_history[..., np.newaxis], np.stack(ens_pred_history, axis=0)), axis=1)
             df = pd.DataFrame(data, columns=['image', 'MEL', 'NV', 'BCC', 'AKIEC', 'BKL', 'DF', 'VASC'])
@@ -200,47 +196,37 @@ def ens_prediction(dataset, setting, expname, crossval=True):
             df.to_csv(os.path.join(output_dir, expname + '_' + ensemble_file), index=False)
 
 
-def main():
-    print('=====Renal=====')
-    class_names = ['normal', 'obsolescent', 'solidified', 'disappearing', 'non-glom']
-    concat_crossval('renal', class_names, 'resnet50_torch', topk=3)
+def summarize_crossval_results(experiments, class_names):
+    for exp in experiments:
+        concat_crossval('renal', class_names, exp, topk=3)
 
-    # fpr1, tpr1, thresh1, auc_score1 = ens_prediction('renal', 'resnet50_randinit', 'resnet50_none')
-    # fpr2, tpr2, thresh2, auc_score2 = ens_prediction('renal', 'resnet50_pytorch_pretrain', 'resnet50_none')
-    # fpr3, tpr3, thresh3, auc_score3 = ens_prediction('renal', 'resnet50_bit-s', 'resnet50_none')
-    # fpr4, tpr4, thresh4, auc_score4 = ens_prediction('renal', 'resnet50_bit-m', 'resnet50_none')
-    # fpr5, tpr5, thresh5, auc_score5 = ens_prediction('renal', 'resnet50_ms_vision', 'resnet50_none')
-    #
-    # plt.plot(fpr1, tpr1, color='orange', label=f'randinit {auc_score1}')
-    # plt.plot(fpr2, tpr2, color='green', label=f'pytorch pretrain  {auc_score2}')
-    # plt.plot(fpr3, tpr3, color='blue', label=f'google-bit-s  {auc_score3}')
-    # plt.plot(fpr4, tpr4, color='red', label=f'google-bit-m {auc_score4}')
-    # plt.plot(fpr5, tpr5, color='black', label=f'microsoft {auc_score5}')
-    #
-    # plt.xlabel('False Positive Rate')
-    # plt.ylabel('True Positive Rate')
-    # plt.title('Only Glom ROC Curve')
-    # plt.legend()
-    # plt.show()
-    # plt.close()
-    #
-    # fpr1, tpr1, thresh1, auc_score1 = ens_prediction('renal', 'resnet50_randinit', 'resnet50_0.25_noisy')
-    # fpr2, tpr2, thresh2, auc_score2 = ens_prediction('renal', 'resnet50_pytorch_pretrain', 'resnet50_0.25_noisy')
-    # fpr3, tpr3, thresh3, auc_score3 = ens_prediction('renal', 'resnet50_bit-s', 'resnet50_0.25_noisy')
-    # fpr4, tpr4, thresh4, auc_score4 = ens_prediction('renal', 'resnet50_bit-m', 'resnet50_0.25_noisy')
-    # fpr5, tpr5, thresh5, auc_score5 = ens_prediction('renal', 'resnet50_ms_vision', 'resnet50_0.25_noisy')
-    #
-    # plt.plot(fpr1, tpr1, color='orange', label=f'randinit {auc_score1}')
-    # plt.plot(fpr2, tpr2, color='green', label=f'pytorch pretrain  {auc_score2}')
-    # plt.plot(fpr3, tpr3, color='blue', label=f'bit-s  {auc_score3}')
-    # plt.plot(fpr4, tpr4, color='red', label=f'bit-m {auc_score4}')
-    # plt.plot(fpr5, tpr5, color='black', label=f'microsoft {auc_score5}')
-    #
-    # plt.xlabel('False Positive Rate')
-    # plt.ylabel('True Positive Rate')
-    # plt.title('With Non glom ROC Curve')
-    # plt.legend()
-    # plt.show()
+
+def summarize_extval_results(experiments):
+    color_dict = {'torch': 'tab:blue', 'bit-s': 'tab:orange', 'bit-m': 'tab:green'}
+    results = [{exp: ens_prediction('renal', exp)} for exp in experiments]
+
+    # plt.plot([0, 1], [0, 1], color='black', lw=2, linestyle='--')
+    for result in results:
+        exp = list(result.keys())[0]
+        fpr, tpr, thresh, auc_score = result[exp]
+        line_color = color_dict[exp.split('_')[1]]
+        line_style = 'dashed' if '101' in exp else 'solid'
+        plt.plot(fpr, tpr, color=line_color, lw=2, linestyle=line_style, label=f'{exp}  {auc_score}')
+
+    plt.xlabel('False Positive Rate')
+    plt.ylabel('True Positive Rate')
+    plt.title('ROC Curve')
+    plt.legend()
+    plt.show()
+
+
+def main():
+    experiments = ['resnet50_torch', 'resnet50_bit-s', 'resnet101_torch']
+    class_names = ['normal', 'obsolescent', 'solidified', 'disappearing', 'non-glom']
+    summarize_crossval_results(experiments, class_names)
+
+    experiments = ['resnet50_torch', 'resnet50_bit-s', 'resnet101_torch']
+    summarize_extval_results(experiments)
 
 
 if __name__ == '__main__':

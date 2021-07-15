@@ -3,31 +3,24 @@ import sys
 import time
 import shutil
 import cv2
-import numpy as np
-from tqdm import tqdm
 
 import torch
 import torch.nn as nn
-import torch.optim as optim
+import torch.optim
 import torch.utils.data
 import torchvision.transforms as transforms
 import torch.nn.functional as F
 
+import numpy as np
 import pandas as pd
 from sklearn.metrics import f1_score, confusion_matrix
 from sklearn.utils import compute_class_weight
-import models.resnet as resnet
-import models.resnetv2 as resnetv2
-import models.mobilenetv2 as mobilenetv2
-import microsoftvision
-from models.efficientnet import EfficientNet
+
 from data_loader import DataLoader
+from tqdm import tqdm
+from util import parse_args, create_model
 from utils.augmentation import GaussianBlur, RandomErasing, rand_bbox, coordinate, polygon_vertices
 from utils import AverageMeter, accuracy
-import argparse
-from easydict import EasyDict as edict
-from argparse import Namespace
-import yaml
 from utils import loss
 from utils.optimizer import SAM
 from utils.torchsampler.imbalanced import ImbalancedDatasetSampler
@@ -37,41 +30,20 @@ import ray
 from ray import tune
 from ray.tune.schedulers import ASHAScheduler
 
-parser = argparse.ArgumentParser()
-parser.add_argument('--config', required=True, help='configuration file')
-parser.add_argument('--bit_model', default=None, help='BiT model')
-
-cmd_args = parser.parse_args()
-config_dir = cmd_args.config
-config_file = os.path.basename(config_dir)
-print('Train with ' + config_file)
-
-with open(config_dir, 'r') as f:
-    args = edict(yaml.load(f, Loader=yaml.FullLoader))
-
-args.expname = config_file.split('.yaml')[0]
-args.hyperparam_tune = False
-args.optimizer = 'ADAM'
-args.resample = True
-args.loss = 'Focal'
-args.weighted_loss = False
-
-output_csv_dir = os.path.abspath(f'{args.output_csv_dir}/{args.expname}')
-os.makedirs(output_csv_dir, exist_ok=True)
-
-log_dir = os.path.abspath(f'{output_csv_dir}/log')
-os.makedirs(log_dir, exist_ok=True)
-
-save_model_dir = os.path.abspath(f'{output_csv_dir}/models')
-os.makedirs(save_model_dir, exist_ok=True)
-
+tune_hyperparam = False
 
 def main(config, checkpoint_dir=None):
+    args = parse_args('train')
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     torch.manual_seed(10)
 
-    batch_size = config['batch_size']
-    lr = config['lr']
+    if tune_hyperparam:
+        batch_size = config['batch_size']
+        lr = config['lr']
+    else:
+        batch_size = args.batch_size
+        lr = args.lr
+
     gamma = config['gamma']
 
     best_f1 = 0
@@ -119,7 +91,7 @@ def main(config, checkpoint_dir=None):
     # Load model
     print("==> Creating model")
     num_classes = args.num_classes
-    model = create_model(num_classes).to(device)
+    model = create_model(num_classes, args).to(device)
 
     # choose loss function
     if args.weighted_loss:
@@ -135,12 +107,12 @@ def main(config, checkpoint_dir=None):
         base_optimizer = torch.optim.SGD
         optimizer = SAM(model.parameters(), base_optimizer, lr=lr, momentum=0.9)
     elif args.optimizer == 'ADAM':
-        optimizer = optim.Adam(model.parameters(), lr=lr)
+        optimizer = torch.optim.Adam(model.parameters(), lr=lr)
     else:
         optimizer = torch.optim.SGD(model.parameters(), lr, momentum=0.9, weight_decay=1e-3, nesterov=True)
 
     # set up logger
-    writer = SummaryWriter(log_dir=log_dir)
+    writer = SummaryWriter(log_dir=args.log_dir)
 
     start_epoch = args.start_epoch
     if args.dataset == 'renal':
@@ -149,7 +121,7 @@ def main(config, checkpoint_dir=None):
 
     elif args.dataset == 'ham':
         df = pd.DataFrame(columns=['model', 'lr', 'epoch_num', 'train_loss', 'val_loss', 'train_acc', 'val_acc',
-                                   'MEL', 'NV', 'BCC', 'AKIEC', 'BKL', 'DF', 'VASC', 'mul_acc', 'f1'])
+                                   'MEL', 'NV', 'BCC', 'AKIEC', 'BKL', 'DF', 'VASC', 'f1'])
     else:
         raise ValueError('no such dataset exists!')
 
@@ -164,10 +136,10 @@ def main(config, checkpoint_dir=None):
 
         print('\nEpoch: [%d | %d] LR: %f' % (epoch, args.epochs, cur_lr))
 
-        train_loss, train_acc, train_f1, train_f1s = train(train_loader, model, optimizer, criterion, device)
-        val_loss, val_acc, val_f1, val_f1s = validate(output_csv_dir, val_loader, model, criterion, epoch, device)
+        train_loss, train_acc, train_f1, train_f1s = train(train_loader, model, optimizer, criterion, device, args)
+        val_loss, val_acc, val_f1, val_f1s = validate(val_loader, model, criterion, epoch, device, args)
 
-        if args.hyperparam_tune:
+        if tune_hyperparam:
             tune.report(loss=val_loss, accuracy=val_f1)
 
         writer.add_scalars("loss/", {'train': train_loss, 'val': val_loss}, epoch)
@@ -176,7 +148,7 @@ def main(config, checkpoint_dir=None):
         # write to csv
         df.loc[epoch] = [args.network, cur_lr, epoch, train_loss, val_loss, train_acc, val_acc] + val_f1s + [val_f1]
 
-        output_csv_file = os.path.join(output_csv_dir, 'output.csv')
+        output_csv_file = os.path.join(args.output_csv_dir, 'output.csv')
         df.to_csv(output_csv_file, index=False)
 
         # save model
@@ -188,40 +160,10 @@ def main(config, checkpoint_dir=None):
             'acc': val_acc,
             'best_f1': best_f1,
             'optimizer': optimizer.state_dict(),
-        }, is_best_f1, epoch, save_model_dir)
+        }, is_best_f1, epoch, args.save_model_dir)
 
     print('Best f1:')
     print(best_f1)
-
-
-def create_model(num_classes):
-    if args.network == 100:
-        model = resnet.resnet18(pretrained=args.pretrain)
-        num_ftrs = model.fc.in_features
-        model.fc = nn.Sequential(nn.Dropout(0.5), nn.Linear(num_ftrs, num_classes))
-    elif args.network == 101:
-        model = resnet.resnet50(pretrained=args.pretrain)
-        num_ftrs = model.fc.in_features
-        model.fc = nn.Sequential(nn.Dropout(0.5), nn.Linear(num_ftrs, num_classes))
-    elif args.network == 102:
-        architecture = os.path.basename(cmd_args.bit_model)
-        model = resnetv2.KNOWN_MODELS[architecture.split('.')[0]](head_size=num_classes, zero_head=True)
-        model.load_from(np.load(cmd_args.bit_model))
-        print(f'Load pre-trained model {cmd_args.bit_model}')
-    elif args.network == 103:
-        model = resnet.resnet101(pretrained=args.pretrain)
-        num_ftrs = model.fc.in_features
-        model.fc = nn.Sequential(nn.Dropout(0.5), nn.Linear(num_ftrs, num_classes))
-    elif args.network == 104:
-        model = microsoftvision.resnet50(pretrained=True)
-        model.fc = model.fc = nn.Sequential(nn.Dropout(0.5), nn.Linear(2048, num_classes))
-    else:
-        print('model not available! Using PyTorch ResNet50 as default')
-        model = resnet.resnet50(pretrained=args.pretrain)
-        num_ftrs = model.fc.in_features
-        model.fc = nn.Linear(num_ftrs, num_classes)
-
-    return model
 
 
 def select_loss_func(choice='CrossEntropy', weights=None, gamma=2):
@@ -243,7 +185,7 @@ def select_loss_func(choice='CrossEntropy', weights=None, gamma=2):
         return nn.CrossEntropyLoss(weight=weights).cuda()
 
 
-def train(train_loader, model, optimizer, criterion, device):
+def train(train_loader, model, optimizer, criterion, device, args):
     batch_time = AverageMeter()
     data_time = AverageMeter()
     losses = AverageMeter()
@@ -263,7 +205,6 @@ def train(train_loader, model, optimizer, criterion, device):
 
         r = np.random.rand(1)
         if args.circlemix_prob > r:
-            # generate circlemix sample
             rand_index = torch.randperm(inputs.size()[0])
             target_a = targets
             target_b = targets[rand_index]
@@ -293,7 +234,6 @@ def train(train_loader, model, optimizer, criterion, device):
             inputs2 = inputs[rand_index].clone()
             inputs[roi_mask_batch > 0] = inputs2[roi_mask_batch > 0]
 
-            # compute output
             outputs = model(inputs)
             loss = criterion(outputs, target_a) * (1. - lam) + criterion(outputs, target_b) * lam
 
@@ -310,7 +250,6 @@ def train(train_loader, model, optimizer, criterion, device):
                 optimizer.zero_grad()
 
         elif args.cutmix_prob > r:
-            # generate mixed sample
             lam = np.random.beta(args.beta, args.beta)
             rand_index = torch.randperm(inputs.size()[0]).to(device)
             target_a = targets
@@ -321,7 +260,6 @@ def train(train_loader, model, optimizer, criterion, device):
             # adjust lambda to exactly match pixel ratio
             lam = 1 - ((bbx2 - bbx1) * (bby2 - bby1) / (inputs.size()[-1] * inputs.size()[-2]))
 
-            # compute output
             outputs = model(inputs)
             loss = criterion(outputs, target_a) * lam + criterion(outputs, target_b) * (1. - lam)
 
@@ -382,7 +320,6 @@ def train(train_loader, model, optimizer, criterion, device):
         gts.extend(targets.tolist())
         paths.extend(image_path)
 
-        # record loss
         [acc1, ] = accuracy(outputs, targets, topk=(1,))
         losses.update(loss.item(), inputs.size(0))
         top1.update(acc1.item(), inputs.size(0))
@@ -399,17 +336,16 @@ def train(train_loader, model, optimizer, criterion, device):
     return losses.avg, top1.avg, f1_avg, f1s
 
 
-def validate(out_dir, val_loader, model, criterion, epoch, device):
+def validate(val_loader, model, criterion, epoch, device, args):
     batch_time = AverageMeter()
     data_time = AverageMeter()
     losses = AverageMeter()
     top1 = AverageMeter()
 
-    # switch to evaluate mode
-    model.eval()
     tbar = tqdm(val_loader, desc='\r')
     end = time.time()
 
+    model.eval()
     with torch.no_grad():
         preds = []
         gts = []
@@ -424,7 +360,6 @@ def validate(out_dir, val_loader, model, criterion, epoch, device):
             outputs = model(inputs)
             loss = criterion(outputs, targets)
 
-            # measure accuracy and record loss
             [prec1,] = accuracy(outputs, targets, topk=(1,))
             losses.update(loss.item(), inputs.size(0))
             top1.update(prec1.item(), inputs.size(0))
@@ -444,7 +379,7 @@ def validate(out_dir, val_loader, model, criterion, epoch, device):
         f1s = list(f1_score(gts, preds, average=None))
         f1_avg = sum(f1s)/len(f1s)
 
-        epoch_summary(out_dir, epoch, paths, preds, gts)
+        epoch_summary(args.output_csv_dir, epoch, paths, preds, gts)
 
     return losses.avg, top1.avg, f1_avg, f1s
 
@@ -456,17 +391,13 @@ def adjust_learning_rate(lr, optimizer, epoch):
     return cur_lr
 
 
-# output csv file for result in each epoch
-def epoch_summary(out_dir, epoch, name_history, pred_history, target_history):
+def epoch_summary(out_dir, epoch, names, preds, targets):
     epoch_dir = os.path.join(out_dir, 'epochs')
-    if not os.path.exists(epoch_dir):
-        os.makedirs(epoch_dir)
+    os.makedirs(epoch_dir, exist_ok=True)
     csv_file_name = os.path.join(epoch_dir, 'epoch_%04d.csv' % epoch)
 
-    df = pd.DataFrame()
-    df['image'] = name_history
-    df['prediction'] = pred_history
-    df['target'] = target_history
+    data = [[name, pred, target] for name, pred, target in zip(names, preds, targets)]
+    df = pd.DataFrame(data, columns=['image', 'prediction', 'target'])
     df.to_csv(csv_file_name)
 
 
@@ -478,15 +409,8 @@ def save_checkpoint(state, is_best_f1, epoch, checkpoint, filename='checkpoint.p
         shutil.copyfile(filepath, os.path.join(checkpoint, 'model_best_f1.pth.tar'))
 
 
-def load_checkpoint(model, filepath):
-    assert os.path.isfile(filepath), 'Error: no checkpoint directory found!'
-    checkpoint = torch.load(filepath)
-    model.load_state_dict(checkpoint['state_dict'])
-    return model
-
-
 if __name__ == '__main__':
-    if args.hyperparam_tune:
+    if tune_hyperparam:
         max_num_epochs = 10
         gpus_per_trial = 1
 
@@ -517,8 +441,6 @@ if __name__ == '__main__':
 
     else:
         config = {
-            "lr": args.lr,
-            "batch_size": args.batch_size,
             "gamma": 2.5,
         }
         main(config)

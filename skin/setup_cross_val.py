@@ -1,4 +1,4 @@
-from preprocessing import create_fold_file, create_train_file
+from utils.preprocessing import create_fold_file, create_train_file
 import random
 import pandas as pd
 

@@ -18,12 +18,12 @@ def extract_label(data_dir, label):
 
 
 if __name__ == "__main__":
-    norm_dir = '/Data/luy8/glomeruli/renal/test_data/normal'
-    scl_dir = '/Data/luy8/glomeruli/renal/test_data/sclerosed'
+    norm_dir = os.path.abspath('test_data/normal')
+    scl_dir = os.path.abspath('test_data/sclerosed')
     normal = extract_label(norm_dir, 'normal')
     scl = extract_label(scl_dir, 'sclerosed')
 
     all = normal + scl
 
-    with open('/Data/luy8/glomeruli/renal/json/all/test.json', 'w') as f:
+    with open('json/test.json', 'w') as f:
         json.dump(all, f)

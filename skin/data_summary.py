@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 
-df = pd.read_csv('//ham-10000/csv/ground_truth.csv')
+df = pd.read_csv('csv/ground_truth.csv')
 
 sum_series = df.sum(axis=0, skipna=True)
 sum_dict = dict(sum_series.items())
