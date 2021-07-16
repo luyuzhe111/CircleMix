@@ -1,6 +1,7 @@
 import numpy as np
 import os
 import glob
+import json
 from utils import KidPath_FirstBatch_R24
 from eval_protocals.circle_eval import CIRCLEeval
 import matplotlib.pyplot as plt
@@ -168,6 +169,12 @@ if __name__ == "__main__":
 
         recalls.append(recall)
         precisions.append(precision)
+
+    baseline = [{'set': 'baseline', 'recall': r, 'precision': p} for r, p in zip(recalls[1], precisions[1])]
+    filtered = [{'set': 'filtered', 'recall': r, 'precision': p} for r, p in zip(recalls[0], precisions[0])]
+
+    with open(f'../plot_data/det_curve_{loop}.json', 'w') as f:
+        json.dump(baseline + filtered, f)
 
     plt.plot(recalls[0], precisions[0], label='Precision')
     plt.plot(recalls[1], precisions[1], label='Precision')

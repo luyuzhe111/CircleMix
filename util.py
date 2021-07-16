@@ -14,6 +14,7 @@ def parse_args(split):
     parser.add_argument('--config', required=True, help='configuration file')
     parser.add_argument('--bit_model', default=None, help='BiT model')
     parser.add_argument('--average', default=False, type=bool, help='whether to average top3 models during testing')
+    parser.add_argument('--input', default=None, help='list of patches to be filtered')
 
     opt = parser.parse_args()
     config_dir = opt.config
@@ -29,8 +30,7 @@ def parse_args(split):
         args.resample = True
         args.loss = 'Focal'
         args.weighted_loss = False
-    elif split == 'test':
-        args.expname = config_file.split('.yaml')[0]
+
     elif split == 'predict':
         args.expname = config_file.split('.yaml')[0]
         if args.dataset == 'ham':
@@ -40,9 +40,8 @@ def parse_args(split):
         else:
             raise ValueError('dataset does not exist')
 
-    else:
-        print(f'unknown split: {split}')
-        exit()
+    args.expname = config_file.split('.yaml')[0]
+    assert split in ['train', 'test', 'predict', 'filter'], f'unknown split: {split}'
 
     args.update(edict(vars(opt)))
 
@@ -54,8 +53,6 @@ def parse_args(split):
 
     args.save_model_dir = os.path.abspath(f'{args.output_csv_dir}/models')
     os.makedirs(args.save_model_dir, exist_ok=True)
-
-    args.checkpoint = os.path.join(args.save_model_dir, 'model_best_f1.pth.tar')
 
     return args
 

@@ -28,7 +28,8 @@ def split_fold(root_dir):
                                              'normal', 'obsolescent', 'solidified', 'disappearing', 'non-glomerulous'])
     df.to_csv('csv/subj_summary.csv')
 
-    random.seed(0)
+    # 40
+    random.seed(40)
     fold_assignment = dict(zip(subjects, [random.randint(1, num_classes) for _ in range(num_subj)]))  # randint is inclusive...
     for item in data:
         item['fold'] = fold_assignment[item['subj']]
@@ -39,8 +40,8 @@ def split_fold(root_dir):
         fold_data = [i for i in data if i['fold'] == fold]
 
         print(sorted(Counter([i['target'] for i in fold_data]).items()))
-        # with open(f'{root_dir}/fold{fold}.json', 'w') as f:
-        #     json.dump(fold_data, f)
+        with open(f'{root_dir}/fold{fold}.json', 'w') as f:
+            json.dump(fold_data, f)
 
 
 def create_trainset(root_dir):
@@ -60,7 +61,7 @@ def create_trainset(root_dir):
 
         print(fold_i, fold_j, fold_k)
 
-        # save_train_file(fold_i, fold_j, fold_k, f'trainset{i}', root_dir)
+        save_train_file(fold_i, fold_j, fold_k, f'trainset{i}', root_dir)
 
 
 if __name__ == '__main__':

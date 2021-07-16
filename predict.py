@@ -30,17 +30,26 @@ def main():
     test_set = DataLoader(args.ext_test, transform=transform)
     test_loader = torch.utils.data.DataLoader(test_set, batch_size=args.batch_size, shuffle=False)
 
-    print('\nPredict with ' + args.checkpoint.split('/')[-3])
-
     print("==> creating model")
     num_classes = args.num_classes
     model = create_model(num_classes, args)
-    model = load_checkpoint(model, args.checkpoint).to(device)
+
+    if args.average:
+        record = pd.read_csv(os.path.join(args.output_csv_dir, 'output.csv'), index_col=0)
+        sorted_r = record.sort_values('f1', ascending=False)
+
+        model_list = list(sorted_r['epoch_num'].astype(int))[:5]
+        for idx, epoch in enumerate(model_list):
+            print('\nPredict with ' f'epoch{epoch} checkpoint')
+            model = load_checkpoint(model, os.path.join(args.save_model_dir, f'epoch{epoch}_checkpoint.pth.tar')).to(device)
+            predict(test_loader, model, device, args, idx)
+    else:
+        predict(test_loader, model, device, args)
 
     predict(test_loader, model, device, args)
 
 
-def predict(test_loader, model, device, args):
+def predict(test_loader, model, device, args, idx=None):
     batch_time = AverageMeter()
     data_time = AverageMeter()
 
@@ -81,7 +90,10 @@ def predict(test_loader, model, device, args):
             data = [[name, pred, target] for name, pred, target in zip(names, preds, gts)]
             df = pd.DataFrame(data, columns=['image', 'prediction', 'target'])
 
-        df.to_csv(os.path.join(args.output_csv_dir, 'predict_f1.csv'), index=False)
+        if idx is None:
+            df.to_csv(os.path.join(args.output_csv_dir, 'predict_f1.csv'), index=False)
+        else:
+            df.to_csv(os.path.join(args.output_csv_dir, f'top{idx + 1}_predict_f1.csv'), index=False)
 
 
 if __name__ == '__main__':

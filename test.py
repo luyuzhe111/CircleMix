@@ -13,7 +13,7 @@ from sklearn.metrics import f1_score, confusion_matrix
 
 from data_loader import DataLoader
 from tqdm import tqdm
-from util import parse_args, create_model
+from util import parse_args, create_model, load_checkpoint
 from utils import AverageMeter, accuracy
 
 
@@ -22,7 +22,7 @@ def main():
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     transform_test = transforms.Compose([
-        transforms.CenterCrop(224),
+        transforms.Resize(224),
         transforms.ToTensor(),
         transforms.Normalize((0.485, 0.456, 0.406), (0.229, 0.224, 0.225)),
     ])
@@ -52,7 +52,7 @@ def main():
         record = pd.read_csv(os.path.join(args.output_csv_dir, 'output.csv'), index_col=0)
         sorted_r = record.sort_values('f1', ascending=False)
 
-        model_list = list(sorted_r['epoch_num'].astype(int))[:3]
+        model_list = list(sorted_r['epoch_num'].astype(int))[:5]
         df = pd.DataFrame(columns=['exp', 'train', 'val', 'test', 'test_loss', 'test_acc', 'f1'])
         for idx, epoch in enumerate(model_list):
             model = load_checkpoint(model, os.path.join(args.save_model_dir, f'epoch{epoch}_checkpoint.pth.tar'))
@@ -123,8 +123,11 @@ def epoch_summary(names, scores, preds, targets, args, epoch=None):
         csv_file_name = os.path.join(args.output_csv_dir, f'top{epoch}_epoch_test_f1.csv')
 
     if args.dataset == 'renal':
-        data =[[name, pred, sum(score[1:4]), target] for name, pred, score, target in zip(names, preds, scores, targets)]
-        df = pd.DataFrame(data, columns=['image', 'prediction', 'sclerosis_score', 'target'])
+        data =[[name, pred, target] + score + [sum(score[1:4])]
+               for name, pred, score, target in zip(names, preds, scores, targets)]
+        df = pd.DataFrame(data, columns=['image', 'prediction', 'target',
+                                         'normal', 'obsolescent', 'solidified', 'disappearing', 'non-glom',
+                                         'sclerosis_score'])
     else:
         data =[[name, pred, target] for name, pred, target in zip(names, preds, targets)]
         df = pd.DataFrame(data, columns=['image', 'prediction', 'target'])
