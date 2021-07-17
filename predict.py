@@ -83,7 +83,7 @@ def predict(test_loader, model, device, args, idx=None):
             names.extend(image_path)
 
         if args.dataset == 'renal':
-            data = [[name, pred, sum(score[1:4]), target] for name, pred, score, target in zip(names, preds, scores, gts)]
+            data = [[name, pred, sum(score[1:5]), target] for name, pred, score, target in zip(names, preds, scores, gts)]
             df = pd.DataFrame(data, columns=['image', 'prediction', 'sclerosis_score', 'target'])
 
         else:

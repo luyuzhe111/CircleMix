@@ -132,5 +132,5 @@ exp_label = {'resnet50_torch': 'R50-TORCH', 'resnet50_bit-s': 'R50-BiT-S', 'resn
              'resnet101_torch': 'R101-TORCH', 'resnet101_bit-s': 'R101-BiT-S', 'resnet101_bit-m': 'R101-BiT-M'}
 pretrain_label = {'resnet50_torch': 'TORCH', 'resnet50_bit-s': 'BiT-S', 'resnet50_bit-m': 'BiT-M',
              'resnet101_torch': 'TORCH', 'resnet101_bit-s': 'BiT-S', 'resnet101_bit-m': 'BiT-M'}
-# auc_bar_chart('exp_results/renal', experiments, pretrain_label, topk=5)
+auc_bar_chart('exp_results/renal', experiments, pretrain_label, topk=5)
 roc_curve_with_error_band('renal', experiments, exp_label, topk=5)
