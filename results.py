@@ -71,18 +71,18 @@ def concat_crossval(dataset, class_names, expname, topk=1, show_heatmap=False, v
     ba_f1s = [sum(f1s) / len(f1s) for f1s in topk_f1s]
     ba_f1_mean = sum(ba_f1s) / len(ba_f1s)
     ba_f1_std = math.sqrt(sum((x - ba_f1_mean) ** 2 for x in ba_f1s) / len(ba_f1s)) * 1.96
-    print(f"overall balanced f1: {round(ba_f1_mean * 100, 2)} \u00B1 {round(ba_f1_std * 100, 2)}\n")
+    print(f"overall balanced f1: {round(ba_f1_mean, 3)} \u00B1 {round(ba_f1_std, 3)}\n")
 
     for i, class_name in enumerate(class_names):
         class_f1s = [topk_f1[i] for topk_f1 in topk_f1s]
         mean = sum(class_f1s) / len(class_f1s)
         std = math.sqrt(sum((x - mean) ** 2 for x in class_f1s) / len(class_f1s)) * 1.96
 
-        print(f"{class_name} f1: {round(mean * 100, 2) } \u00B1 {round(std * 100, 2)}")
+        print(f"{class_name} f1: {round(mean, 3) } \u00B1 {round(std, 3)}")
 
 
 if __name__ == '__main__':
-    experiments = ['resnet50_torch', 'resnet50_bit-s', 'resnet50_bit-m']
+    experiments = ['resnet50_torch', 'resnet50_bit-s', 'resnet50_bit-m', 'resnet101_torch', 'resnet101_bit-s', 'resnet101_bit-m']
     class_names = ['normal', 'obsolescent', 'solidified', 'disappearing', 'non-glom']
     for exp in experiments:
         concat_crossval('renal', class_names, exp, topk=5, verbose=False)

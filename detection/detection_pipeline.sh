@@ -15,7 +15,7 @@ if $generate_patch; then
   python generate_patches.py ${loop} ${threshold}
 fi
 
-#python filter_patches.py --input ${result_dir} --config ../renal/config/resnet50_bit-m_fold1.yaml --bit_model models/pretrained_models/BiT-M-R50x1.npz
+python filter_patches.py --input ${result_dir} --config ../renal/config/resnet101_bit-m_fold1.yaml --bit_model models/pretrained_models/BiT-M-R101x1.npz
 
-#python filter_xml.py ${loop} ${threshold}
+python filter_xml.py ${loop} ${threshold}
 python evaluate_xml.py ${loop} ${threshold}

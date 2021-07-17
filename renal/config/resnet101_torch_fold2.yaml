@@ -12,7 +12,7 @@ pretrain: True
 
 num_classes: 5
 
-epochs: 30
+epochs: 40
 
 start_epoch: 0
 

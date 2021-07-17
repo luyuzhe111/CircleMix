@@ -2,8 +2,8 @@ import matplotlib.pyplot as plt
 import os
 import glob
 import json
+import math
 import numpy as np
-from scipy import interp
 import pandas as pd
 from sklearn.metrics import roc_curve, roc_auc_score, auc, confusion_matrix
 
@@ -24,7 +24,8 @@ def auc_bar_chart(root_dir, experiments, exp_label, topk=5):
                 data.append({
                     'classname': classname,
                     'model': exp_label[exp],
-                    'auc': roc_auc
+                    'auc': roc_auc,
+                    'set': 'R50' if 'resnet50' in exp else 'R101'
                 })
 
     with open('plot_data/auc_bars.json', 'w') as f:
@@ -35,6 +36,7 @@ def roc_curve_with_error_band(dataset, experiments, exp_label, topk=5, crossval=
     if dataset == 'renal':
         output_dir = 'exp_results'
         data = []
+        auc_scores = []
         for exp in experiments:
             root_dir = os.path.join(output_dir, f'config_{dataset}')
             fprs = []
@@ -66,6 +68,7 @@ def roc_curve_with_error_band(dataset, experiments, exp_label, topk=5, crossval=
 
                 fprs.append(fpr)
                 tprs.append(tpr)
+                auc_scores.append(auc_score)
 
             all_fpr = np.unique(np.concatenate([fpr for fpr in fprs]))
             all_tpr = []
@@ -74,6 +77,11 @@ def roc_curve_with_error_band(dataset, experiments, exp_label, topk=5, crossval=
 
             all_fpr = np.tile(all_fpr, topk)
             data.extend([{'Specificity':x, 'Sensitivity':y, 'model':exp_label[exp]} for x, y in zip(all_fpr, all_tpr)])
+
+            print(exp)
+            auc_mean = sum(auc_scores) / len(auc_scores)
+            auc_std = math.sqrt(sum((x - auc_mean) ** 2 for x in auc_scores) / len(auc_scores)) * 1.96
+            print(f"overall balanced f1: {round(auc_mean, 3)} \u00B1 {round(auc_std, 3)}\n")
 
         with open('plot_data/roc.json', 'w') as f:
             json.dump(data, f)
@@ -119,8 +127,10 @@ def roc_curve_with_error_band(dataset, experiments, exp_label, topk=5, crossval=
             df.to_csv(os.path.join(output_dir, expname + '_' + ensemble_file), index=False)
 
 
-experiments = ['resnet50_torch', 'resnet50_bit-s', 'resnet50_bit-m']
+experiments = ['resnet50_torch', 'resnet50_bit-s', 'resnet50_bit-m', 'resnet101_torch', 'resnet101_bit-s', 'resnet101_bit-m']
 exp_label = {'resnet50_torch': 'R50-TORCH', 'resnet50_bit-s': 'R50-BiT-S', 'resnet50_bit-m': 'R50-BiT-M',
              'resnet101_torch': 'R101-TORCH', 'resnet101_bit-s': 'R101-BiT-S', 'resnet101_bit-m': 'R101-BiT-M'}
-auc_bar_chart('exp_results/renal', experiments, exp_label, topk=5)
+pretrain_label = {'resnet50_torch': 'TORCH', 'resnet50_bit-s': 'BiT-S', 'resnet50_bit-m': 'BiT-M',
+             'resnet101_torch': 'TORCH', 'resnet101_bit-s': 'BiT-S', 'resnet101_bit-m': 'BiT-M'}
+# auc_bar_chart('exp_results/renal', experiments, pretrain_label, topk=5)
 roc_curve_with_error_band('renal', experiments, exp_label, topk=5)

@@ -32,7 +32,7 @@ def main():
 
     print("==> creating model")
     num_classes = args.num_classes
-    model = create_model(num_classes, args)
+    model = create_model(num_classes, args).to(device)
 
     if args.average:
         record = pd.read_csv(os.path.join(args.output_csv_dir, 'output.csv'), index_col=0)

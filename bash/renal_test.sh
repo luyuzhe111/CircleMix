@@ -1,8 +1,46 @@
 #!/bin/bash
 
-for exp in "none" "cutmix" "circlemix"
+cd ..
+
+for exp in "resnet50_torch"
   do for i in {1..5}
     do
-      python ../test.py ../renal/config/efficientb0_${exp}_fold${i}.yaml efficientnet-b0
+      python test.py --config renal/config/${exp}_fold${i}.yaml --average True
+    done
+  done
+
+for exp in "resnet50_bit-s"
+  do for i in {1..5}
+    do
+      python test.py --config renal/config/${exp}_fold${i}.yaml --average True --bit_model /Data/luy8/glomeruli/models/pretrained_models/BiT-S-R50x1.npz
+    done
+  done
+
+for exp in "resnet50_bit-m"
+  do for i in {1..5}
+    do
+      python test.py --config renal/config/${exp}_fold${i}.yaml --average True --bit_model /Data/luy8/glomeruli/models/pretrained_models/BiT-M-R50x1.npz
+    done
+  done
+
+for exp in "resnet101_torch"
+  do for i in {1..5}
+    do
+      python test.py --config renal/config/${exp}_fold${i}.yaml --average True
+    done
+  done
+
+
+for exp in "resnet101_bit-s"
+  do for i in {1..5}
+    do
+      python test.py --config renal/config/${exp}_fold${i}.yaml --average True --bit_model /Data/luy8/glomeruli/models/pretrained_models/BiT-S-R101x1.npz
+    done
+  done
+
+for exp in "resnet101_bit-m"
+  do for i in {1..5}
+    do
+      python test.py --config renal/config/${exp}_fold${i}.yaml --average True --bit_model /Data/luy8/glomeruli/models/pretrained_models/BiT-M-R101x1.npz
     done
   done
