@@ -1,4 +1,4 @@
-# Fine-grained Glomerular Lesion Classification with Deep Learning.
+# Fine-grained Glomerular Lesion Classification with Deep Learning
 
 ## Relevant Publications:
 
